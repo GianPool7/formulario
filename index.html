@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <form action="" method="post">
+
+        <div class="quien">
+
+            <div class="btn">
+                <label for="Abonado">Abonado</label>
+                <input type="radio" name="rol" id="Abonado" onclick="personales()"> 
+            </div>
+
+            <div class="btn">
+                <label for="Usuario">Usuario</label>
+                <input type="radio" name="rol" id="Usuario" onclick="usuario()"> 
+            </div>
+
+            <div class="btn">
+                <label for="Representante">Representante</label>
+                <input type="radio" name="rol" id="Representante" onclick="representante()"> 
+            </div>
+
+        </div>
+
+        <div class="datosPersonales" id="formulario_personal" style="display: none;">
+
+            <div class="nombres">
+
+                <div class="datos">
+                    <label>Nombres y Apellidos del Reclamantes</label>
+                    <input type="text" name="" placeholder="Nombre del Reclamante">
+                </div>
+    
+                <div class="datos">
+                    <label>Numero de contacto</label>
+                    <input type="text" name="" placeholder="Numero de contacto">
+                </div>
+
+            </div>
+
+            <div class="documento">
+
+                <div class="datos">
+
+                    <label for="">Tipo de Documento</label>
+                    <select name="" id="">
+                        <option value="">Dni</option>
+                        <option value="">Ruc</option>
+                        <option value="">Pasaporte</option>
+                        <option value="">CE</option>
+                        <option value="">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                    </select>
+
+                </div>
+
+                <div class="datos">
+                    <label for="">Numero de Documento</label>
+                    <input type="text">
+                </div>
+
+            </div>
+
+            <div class="direccion">
+
+                <div class="datos">
+                    <label>Dirección</label>
+                    <input type="text" name="" id="" placeholder="Dirección">
+                </div>
+
+                <div class="datos">
+                    <label>Correo electrónico</label>
+                    <input type="email" name="" id="" placeholder="Correo Electrónico">
+                </div>
+
+            </div>
+
+            <div class="autoriza">
+
+                <div class="opcion">
+                    <label for="autorizaSI">Si</label>
+                    <input type="radio" name="autoPersonal" id="autorizaSI">
+                </div>
+
+                <div class="opcion">
+                    <label for="autorizaNO">No</label>
+                    <input type="radio" name="autoPersonal" id="autorizaNO">
+                </div>
+    
+            </div>
+
+        </div>
+
+        <div class="usuario" id="formulario_usuario" style="display: none;">
+
+            <div class="nombres">
+
+                <div class="datos">
+                    <label>Nombres del Reclamantes</label>
+                    <input type="text" name="" placeholder="Nombre del Reclamante">
+                </div>
+    
+                <div class="datos">
+                    <label>Nombres del Reclamantes</label>
+                    <input type="text" name="" placeholder="Nombre del Reclamante">
+                </div>
+    
+                <div class="datos">
+                    <label>Numero de contacto</label>
+                    <input type="text" name="" placeholder="Numero de contacto">
+                </div>
+
+                <div class="datos" id="extra_usuario">
+                    <label>Especifique su relación con el cliente</label>
+                    <input type="text" name="" placeholder="Madre, Padre, Hijo, etc.">
+                </div>
+
+            </div>
+
+            <div class="documento">
+
+                <div class="datos">
+
+                    <label for="">Tipo de Documento</label>
+                    <select name="" id="">
+                        <option value="">Dni</option>
+                        <option value="">Ruc</option>
+                        <option value="">Pasaporte</option>
+                        <option value="">CE</option>
+                        <option value="">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                    </select>
+
+                </div>
+
+                <div class="datos">
+                    <label for="">Numero de Documento</label>
+                    <input type="text">
+                </div>
+
+            </div>
+
+
+            <div class="direccion">
+
+                <div class="datos">
+                    <label>Dirección</label>
+                    <input type="text" name="" placeholder="Dirección">
+                </div>
+
+                <div class="datos">
+                    <label>Correo electrónico</label>
+                    <input type="email" name="" id="">
+                </div>
+
+            </div>
+
+            <div class="autoriza">
+
+                <label for="autorizaSIU">Si</label>
+                <input type="radio" name="autoUsuario" id="autorizaSIU">
+    
+                <label for="autorizaNOU">No</label>
+                <input type="radio" name="autoUsuario" id="autorizaNOU">
+    
+            </div>
+
+        </div>
+
+        <div class="datosRepresentantes" id="formulario_representante" style="display: none;">
+
+            <div class="nombres">
+
+                <div class="datos">
+                    <label>Nombres del Representante</label>
+                    <input type="text" name="" placeholder="Nombre del Representante">
+                </div>
+    
+                <div class="datos">
+                    <label>Apellidos del Representante</label>
+                    <input type="text" name="" placeholder="Apellidos del Representante">
+                </div>
+    
+                <div class="datos">
+                    <label>Numero de contacto</label>
+                    <input type="text" name="" placeholder="Numero de contacto">
+                </div>
+
+            </div>
+
+            <div class="documento">
+
+                <div class="datos">
+
+                    <label for="">Tipo de Documento</label>
+                    <select name="" id="">
+                        <option value="">Dni</option>
+                        <option value="">Ruc</option>
+                        <option value="">Pasaporte</option>
+                        <option value="">CE</option>
+                        <option value="">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                    </select>
+
+                </div>
+
+                <div class="datos">
+                    <label for="">Numero de Documento</label>
+                    <input type="text">
+                </div>
+
+            </div>
+
+            <div class="archivo">
+                <label for="datos">Adjuntar Carta de Poder</label>
+                <input type="file" name="" id="datos">
+            </div>
+
+            <div class="direccion">
+
+                <div class="datos">
+                    <label>Dirección</label>
+                    <input type="text" name="" placeholder="Dirección">
+                </div>
+
+                <div class="datos">
+                    <label>Correo electrónico</label>
+                    <input type="email" name="" id="">
+                </div>
+
+            </div>
+
+            <div class="autoriza">
+
+                <label for="autorizaSIR">Si</label>
+                <input type="radio" name="autoR" id="autorizaSIR">
+    
+                <label for="autorizaNOR">No</label>
+                <input type="radio" name="autoR" id="autorizaNOR">
+    
+            </div>
+
+
+        </div>
+
+
+
+        <div class="materiaReclamable">
+            <label for="">Materias Reclamables</label>
+            <select name="" id="materias" onchange="selecion()">
+                <option id="mUno" value="fcs">Facturación y cobro</option>
+                <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
+                <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y promociones</option>
+                <option id="mCuatro" value="falta">Falta de servicio</option>
+                <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio</option>
+                <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio</option>
+                <option id="mSiete" value="contratacion">Contratación no solicitada</option>
+                <option id="mOcho" value="migracion">Migración</option>
+                <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
+            </select>
+        </div>
+
+        <div class="fc" id="fc" style="display: none;">
+
+            <label for="">Problema Especifico</label>
+            <select name="" id="facturados" onchange="facturado()">
+                <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados</option>
+                <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales facturados</option>
+                <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
+                <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier concepto facturado en el recibo cuyo consumo se desconoce</option>
+                <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
+                <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o realizados por documentos distinto al recibo</option>
+                <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado</option>
+                <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento</option>
+            </select>
+
+        </div>
+
+
+        <div class="respuestasfc" id="contenido" style="display: none;">
+
+            <div class="cajaRespuesta" id="a">
+                <label for="">Numero de Recibo</label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Fecha de Emision</label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Fecha de Vencimiento</label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Monto Reclamado</label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Concepto Facturado</label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Tarifa que debió aplicarse </label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Fecha en la que se efectuó el pago</label>
+                <input type="text">
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Modalidad de Pago</label>
+                <input type="radio" name="modalidadp" id="">Oficina del Operador
+                <input type="radio" name="modalidadp" id="">Oficina del Banco
+                <input type="radio" name="modalidadp" id="">Agente del Banco
+            </div>
+
+            <div class="cajaRespuesta" id="">
+                <label for="">Adjunta Hoja de Pago</label>
+                <input type="radio" name="Hpago" id="">Si
+                <input type="radio" name="Hpago" id="">No
+            </div>
+
+        </div>
+
+
+        <div class="fc" id="cs" style="display: none;">
+            <label for="calidad">Problema Especifico</label>
+            <select name="" id="calidad">
+                <option value="">Problemas con la prestación del servicio, tales como intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
+            </select>
+        </div>
+
+        <div class="fc" id="op" style="display: none;">
+            <label for="ofertas">Problema Especifico</label>
+            <select name="" id="ofertas">
+                <option value="">Incumplimiento de la aplicación de condiciones y tarifas del plan contratado distintas a las pactadas en el contrato</option>
+                <option value="">Incumplimiento de ofertas o promociones ofrecidas y/o contratadas</option>
+                <option value="">Descuentos no reconocidos de los atributos y/o beneficios del plan contratado, oferta y/o promoción</option>
+                <option value="">Omisión de información o información inexacta sobre cobertura u otras características o limitaciones del servicio</option>
+            </select>
+        </div>
+
+        <div class="fc" id="fs" style="display: none;">
+            <label for="fservicio">Problema Especifico</label>
+            <select name="serivio" id="fservicio">
+                <option value="">Interrupción, suspensión, corte o baja injustificada del servicio o sin observar el procedimiento establecido en la normativa vigente</option>
+                <option value="">Suspensión del servicio por uso prohibido en establecimientos penitenciarios</option>
+                <option value="">Falta de reactivación del servicio pese al pago del recibo</option>
+                <option value=""> Cambio de titularidad del servicio o reposición de SIM Card sin consentimiento del abonado</option>
+            </select>
+        </div>
+
+        <div class="fc" id="ia" style="display: none;">
+            <label for="instalacion">Problema Especifico</label>
+            <select name="" id="instalacion">
+                <option value="">Falta de instalación del servicio fijo</option>
+                <option value="">Falta de activación del servicio móvil</option>
+                <option value="">Falta de traslado del servicio</option>
+                <option value="">Falta de respuesta a la solicitud de trasladado o negativa a la misma</option>
+                <option value="">Falta de devolución de los montos cobrados por instalación, activación o traslado no ejecutados</option>
+            </select>
+        </div>
+
+        <div class="fc" id="sus" style="display: none;">
+            <label for="sb">Problema Especifico</label>
+            <select name="" id="sb">
+                <option value="">Falta de ejecución de la baja</option>
+                <option value="">Falta de ejecución de la suspensión temporal del servicio</option>
+                <option value="">Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla</option>
+                <option value="">Montos cobrados posteriores a la fecha en que se efectuó la suspensión temporal o correspondía efectuarla</option>
+            </select>
+        </div>
+
+        <div class="fc" id="ct" style="display: none;">
+            <label for="con">Problema Especifico</label>
+            <select name="" id="con">
+                <option value="">Desconoce contratación del servicio principal (*telefonía fija, acceso a internet, servicio móvil, televisión de paga)</option>
+                <option value="">Desconoce contratación o afiliación a servicios adicionales o suplementarios</option>
+                <option value="">Desconoce adquisición de paquetes de tráfico o señales de programación (*datos, minutos, canales, otros)</option>
+                <option value="">Desconoce contrato de adquisición o financiamiento de equipo terminal cuyo pago es incluido en el recibo como concepto facturable</option>
+            </select>
+        </div>
+
+        <div class="fc" id="mi" style="display: none;">
+            <label for="mig">Problema Especifico</label>
+            <select name="" id="mig">
+                <option value="">Condicionamiento, negativa o falta de respuesta de la solicitud de migración</option>
+                <option value="">Falta de ejecución de la migración dentro del plazo establecido</option>
+                <option value="">Facturación corresponde al plan anterior</option>
+                <option value="">Migración no solicitada</option>
+            </select>
+        </div>
+
+        <div class="fc" id="xma" style="display: none;">
+            <label for="x">Problema Especifico</label>
+            <select name="" id="x">
+                <option value="">Negativa a contratar el servicio</option>
+                <option value="">Falta de entrega de recibos</option>
+                <option value="">Negativa a brindar la facturación detallada o llamadas entrantes</option>
+            </select>
+        </div>
+
+    </form>
+
+
+    <script src="condiciones.js"></script>
+</body>
+</html>
