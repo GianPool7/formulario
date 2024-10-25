@@ -7,21 +7,45 @@ formularioPersonal.style.display="none";
 formularioUsuario.style.display="none";
 formularioRepresentante.style.display="none";
 
+//
+
+const datosPersonal=document.getElementById("dPersonales")
+const datosUsario=document.getElementById("dUsuarios")
+const datosRepresentante=document.getElementById("dRepresentantes")
+
+// datosPersonal.classList.add("activo");
+// datosUsario.classList.add("activo");
+// datosRepresentante.classList.add("activo");
+
+//
+
 function personales() {
     formularioPersonal.style.display="block";
     formularioRepresentante.style.display="none";
     formularioUsuario.style.display="none";
+    //
+    datosPersonal.classList.add("activo");
+    datosUsario.classList.remove("activo");
+    datosRepresentante.classList.remove("activo");
 }
 
 function usuario() {
     formularioPersonal.style.display="block";
     formularioUsuario.style.display="block";
     formularioRepresentante.style.display="none";
+    //
+    datosPersonal.classList.remove("activo");
+    datosUsario.classList.add("activo");
+    datosRepresentante.classList.remove("activo");
 }
 
 function representante() {
     formularioPersonal.style.display="block";
     formularioRepresentante.style.display="flex";
+    //
+    datosPersonal.classList.remove("activo");
+    datosUsario.classList.remove("activo");
+    datosRepresentante.classList.add("activo");
 }
 
 /* */
@@ -67,9 +91,9 @@ function cajaContenedor(opcion){
     const cContenidoQuejas=document.getElementById("Ccquejas")
     const cContenidoApelacion=document.getElementById("Ccapelacion")
 
-    formularioApelacion.classList.remove("activo");
-    formularioQueja.classList.remove("activo");
-    formularioReclamo.classList.remove("activo");
+    cContenidoApelacion.classList.remove("activo");
+    cContenidoQuejas.classList.remove("activo");
+    cContenidoReclamos.classList.remove("activo");
     //
     
     switch (opcion) {
@@ -81,8 +105,6 @@ function cajaContenedor(opcion){
             contenedorCajaReclamo.style.display="block";
             //
             cContenidoReclamos.classList.add("activo");
-            cContenidoQuejas.classList.remove("activo");
-            cContenidoApelacion.classList.remove("activo");
             //
             break;
         case "queja":
@@ -93,8 +115,6 @@ function cajaContenedor(opcion){
             contenedorCajaReclamo.style.display="none";
             //
             cContenidoQuejas.classList.add("activo");
-            cContenidoReclamos.classList.remove("activo");
-            cContenidoApelacion.classList.remove("activo");
             break;
         case "apelacion":
             formularioApelacion.style.display="block"
@@ -104,8 +124,6 @@ function cajaContenedor(opcion){
             contenedorCajaReclamo.style.display="none";
             //
             cContenidoApelacion.classList.add("activo");
-            cContenidoQuejas.classList.remove("activo");
-            cContenidoReclamos.classList.remove("activo");
             break;
         default:
             break;
@@ -1427,7 +1445,6 @@ function tipoDocumento() {
 
 
 /*  */
-
 
 
 /*  */
