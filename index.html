@@ -31,27 +31,33 @@
 
         <div class="quien" id="datosPersonales">
 
-            <div class="btn" onclick="personales()">
-                <img src="/imagenes/abonado.png" alt="">
-                <label for="Abonado">Abonado</label>
-            </div>
+            <div class="cajasCentradas">
 
-            <div class="btn" onclick="usuario()">
-                <img src="/imagenes/usuario.png" alt="">
-                <label for="Usuario">Usuario</label>
-            </div>
+                <div class="contenedorDatosPersonales">
+                    <div class="btn" onclick="personales()">
+                        <img src="/imagenes/abonado.png" alt="">
+                        <label for="Abonado">Abonado</label>
+                    </div>
+        
+                    <div class="btn" onclick="usuario()">
+                        <img src="/imagenes/usuario.png" alt="">
+                        <label for="Usuario">Usuario</label>
+                    </div>
+        
+                    <div class="btn" onclick="representante()">
+                        <img src="/imagenes/representante" alt="">
+                        <label for="Representante">Representante</label>
+                    </div>
+                </div>
 
-            <div class="btn" onclick="representante()">
-                <img src="/imagenes/representante" alt="">
-                <label for="Representante">Representante</label>
             </div>
 
         </div>
 
 
-        <div class="datosPersonales" id="formulario_personal" style="display: none;">
+        <div class="datosPersonales" id="formulario_personal">
 
-            <div class="nombres">
+            <div class="cajasCentradas">
 
                 <div class="contenedorDatosPersonales">
 
@@ -61,16 +67,12 @@
                     </div>
     
                     <div class="datos">
-                        <label>Apellido paterno del reclamante</label>
+                        <label>Apellidos completos</label>
                         <input type="text" name="dato" placeholder="Nombre del Reclamante">
                     </div>
     
-                    <div class="datos">
-                        <label>Apellido materno del reclamante</label>
-                        <input type="text" name="dato" placeholder="Nombre del Reclamante">
-                    </div>
         
-                    <div class="datos" id="extra_usuario" style="display: none;">
+                    <div class="datos" id="extra_usuario">
                         <label>Especifique su relación con el cliente</label>
                         <input type="text" name="dato" placeholder="Madre, Padre, Hijo, etc.">
                     </div>
@@ -171,7 +173,6 @@
                 </div>
 
             </div>
-
 
         </div>
 

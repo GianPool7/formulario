@@ -9,11 +9,14 @@ formularioRepresentante.style.display="none";
 
 function personales() {
     formularioPersonal.style.display="block";
+    formularioRepresentante.style.display="none";
+    formularioUsuario.style.display="none";
 }
 
 function usuario() {
     formularioPersonal.style.display="block";
     formularioUsuario.style.display="block";
+    formularioRepresentante.style.display="none";
 }
 
 function representante() {

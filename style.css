@@ -12,17 +12,22 @@
 
 .quien{
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     gap: 20px;
+}
+
+.contenedorCajasTpersonas{
+    background-color: red;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
 
 .btn{
     padding: 10px;
     border-radius: 20px;
     background-color: whitesmoke;
-    width: 10%;
+    width: 20%;
     cursor: pointer;
 }
 
@@ -46,7 +51,7 @@
     padding: 10px;
 }
 
-.nombres{
+.cajasCentradas{
     width: 50%;
     display: block;
     margin: auto;
@@ -68,6 +73,8 @@
 .representantecss{
     justify-content: space-around;
 }
+
+
 
 /**/
 
