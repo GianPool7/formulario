@@ -272,16 +272,12 @@ option{
     padding: 10px;
     border-radius: 20px;
     cursor: pointer;
-    width: 15%;
+    width: 20%;
     margin: 10px;
 }
 
-.contenedor:hover{
-    background-color: gainsboro;
-}
-
 .contenedor img{
-    width: 40%;
+    width: 50%;
     display: block;
     margin: auto;
     padding: 20px;
@@ -297,6 +293,12 @@ option{
 .respuestasCalidad{
     display: flex;
     justify-content: center;
+}
+
+/**/
+
+.activo{
+    background-color: rgb(238, 132, 11);
 }
 
 /**/

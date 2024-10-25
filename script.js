@@ -31,8 +31,15 @@ function representante() {
 
 /* */
 
+/* */
+
+
+
+/* */
 
 /* caja de contenido con las opciones */
+
+
 
 function cajaContenedor(opcion){
 
@@ -56,10 +63,14 @@ function cajaContenedor(opcion){
     //
 
     //
+    const cContenidoReclamos=document.getElementById("Ccreclamos")
+    const cContenidoQuejas=document.getElementById("Ccquejas")
+    const cContenidoApelacion=document.getElementById("Ccapelacion")
+
+    formularioApelacion.classList.remove("activo");
+    formularioQueja.classList.remove("activo");
+    formularioReclamo.classList.remove("activo");
     //
-
-
-
     
     switch (opcion) {
         case "reclamo":
@@ -68,6 +79,11 @@ function cajaContenedor(opcion){
             contenedorCajaApelacion.style.display="none";
             contenedorCajaQueja.style.display="none";
             contenedorCajaReclamo.style.display="block";
+            //
+            cContenidoReclamos.classList.add("activo");
+            cContenidoQuejas.classList.remove("activo");
+            cContenidoApelacion.classList.remove("activo");
+            //
             break;
         case "queja":
             formularioQueja.style.display="block"
@@ -75,6 +91,10 @@ function cajaContenedor(opcion){
             contenedorCajaApelacion.style.display="none";
             contenedorCajaQueja.style.display="block";
             contenedorCajaReclamo.style.display="none";
+            //
+            cContenidoQuejas.classList.add("activo");
+            cContenidoReclamos.classList.remove("activo");
+            cContenidoApelacion.classList.remove("activo");
             break;
         case "apelacion":
             formularioApelacion.style.display="block"
@@ -82,6 +102,10 @@ function cajaContenedor(opcion){
             contenedorCajaApelacion.style.display="block";
             contenedorCajaQueja.style.display="none";
             contenedorCajaReclamo.style.display="none";
+            //
+            cContenidoApelacion.classList.add("activo");
+            cContenidoQuejas.classList.remove("activo");
+            cContenidoReclamos.classList.remove("activo");
             break;
         default:
             break;
