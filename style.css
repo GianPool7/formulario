@@ -339,6 +339,20 @@ option{
 
 /**/
 
+
+.cajaContenedor{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.contenedorRespuestas{
+    padding: 10px;
+    width: 40%;
+    margin: 5px;
+}
+
 /**/
 
 .cajaSolaFile{
@@ -346,6 +360,17 @@ option{
     display: block;
     margin: auto;
 }
+
+/**/
+
+/*Mejorando los css*/
+
+.estructuradoble{
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
 
 /**/
 

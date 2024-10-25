@@ -669,145 +669,161 @@
         <div class="contenedorReclamo" id="datosReclamos">
 
             <!--- FACTURACION Y COBRO 1--->
-            <div class="contenedorOpciones" id="contenedorFacturacionCobro">
+            <div class="cajasCentradas" id="contenedorFacturacionCobro">
 
-                <div class="respuestasfc" id="contenidoBase" style="display: none;">
+                <div class="estructuradoble" id="contenidoBase" style="display: none;">
 
-                    <div class="columnTwo">
+                    <div class="contenedorRespuestas" id="nReciboBase">
+                        <label for="">Número de recibo:</label>
+                        <input type="text">
+                    </div>
 
-                        <div class="cajaContenedorApelacionCtwo" id="nReciboBase">
-                            <label for="">Número de recibo:</label>
-                            <input type="text">
-                        </div>
-
-                        <div class="cajaContenedorApelacionCtwo" id="numDocCobroSeis">
-                            <label for="">Número del documento de cobro:</label>
-                            <input type="text">
-                        </div>
+                    <div class="contenedorRespuestas" id="numDocCobroSeis">
+                        <label for="">Número del documento de cobro:</label>
+                        <input type="text">
+                    </div>
                 
-                        <div class="cajaContenedorApelacionCtwo" id="">
-                            <label for="">Fecha de emisión:</label>
-                            <input type="date">
-                        </div>
+                    <div class="contenedorRespuestas" id="">
+                        <label for="">Fecha de emisión:</label>
+                        <input type="date">
+                    </div>
             
-                        <div class="cajaContenedorApelacionCtwo" id="">
-                            <label for="">Fecha de vencimiento:</label>
-                            <input type="date">
-                        </div>
+                    <div class="contenedorRespuestas" id="">
+                        <label for="">Fecha de vencimiento:</label>
+                        <input type="date">
+                    </div>
                 
-                        <div class="cajaContenedorApelacionCtwo" id="">
-                            <label for="">Monto reclamado:*</label>
-                            <input type="text" required>
-                        </div>
+                    <div class="contenedorRespuestas" id="">
+                        <label for="">Monto reclamado:*</label>
+                        <input type="text" required>
+                    </div>
     
-                        <div class="cajaContenedorApelacionCtwo" id="cfCondicion">
+                    <div class="contenedorRespuestas" id="cfCondicion">
                             <label for="">Concepto facturado cuestionado:</label>
                             <input type="text">
-                        </div>
+                    </div>
 
-                        <div class="cajaContenedorApelacionCtwo" id="cfCondicionDos">
+                    <div class="contenedorRespuestas" id="cfCondicionDos">
                             <label for="">Tarifa que el usuario indica debió aplicarse:</label>
                             <input type="text">
-                        </div>
-
                     </div>
 
-                    <div class="columnTwo" id="cfCondicionCinco">
+                    <div class="cajaContenedor" id="cfCondicionCinco">
 
-                        <div class="cajaContenedorApelacionCtwo">
-                            <label for="">Fecha estimada en la que se efectuó el pago:</label>
-                            <input type="date">
-                        </div>
-    
-                        <div class="cajaContenedorApelacionCtwo">
-        
-                            <div>
-                                <label for="">Modalidad de Pago</label>
-                            </div>
-    
-                            <select name="" id="mPago" onchange="mdPagoFacturacion()">
-                                <option value="" selected>Seleccionar Opción</option>
-                                <option value="Oficina del Operador">Oficina del Operador</option>
-                                <option value="Oficina del Banco">Oficina del Banco</option>
-                                <option value="Agente de Banco">Agente de Banco</option>
-                                <option value="Aplicativo del Operador">Aplicativo del Operador</option>
-                                <option value="Pagina Web del Banco">Pagina Web del Banco</option>
-                                <option value="otro">Otros</option>
-                            </select>
-    
-                        </div>
-    
-    
-                        <div class="cajaContenedorApelacionCtwo" id="especificarMPfacturacion" style="display: none;">
-                            <label for="">Especificar: </label>
-                            <input type="text">
-                        </div>
-    
-
-                    </div>
-
-                    <div class="columnTwo" id="cfCondicionSeis">
-
-                        <div class="cajaContenedorApelacionCtwo" id="">
-                            <label for="">Adjunta Hoja de Pago</label>
-                            <select name="" id="hpfacturado" onchange="hojaFacturado()">
-                                <option value="" selected>Seleccione una Opción</option>
-                                <option value="si">Si</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-
-                        <div class="cajaContenedorApelacionCtwo" id="fhpf" style="display: none;">
-                            <label for="">Adjuntar Solicitud: </label>
-                            <input type="file" name="" id="">
-                        </div>
+                                <div class="contenedorRespuestas">
+                                    <label for="">Fecha estimada en la que se efectuó el pago:</label>
+                                    <input type="date">
+                                </div>
+            
+                                <div class="contenedorRespuestas">
+                
+                                    <div>
+                                        <label for="">Modalidad de Pago</label>
+                                    </div>
+            
+                                    <select name="" id="mPago" onchange="mdPagoFacturacion()">
+                                        <option value="" selected>Seleccionar Opción</option>
+                                        <option value="Oficina del Operador">Oficina del Operador</option>
+                                        <option value="Oficina del Banco">Oficina del Banco</option>
+                                        <option value="Agente de Banco">Agente de Banco</option>
+                                        <option value="Aplicativo del Operador">Aplicativo del Operador</option>
+                                        <option value="Pagina Web del Banco">Pagina Web del Banco</option>
+                                        <option value="otro">Otros</option>
+                                    </select>
+            
+                                </div>
+            
+            
+                                <div class="contenedorRespuestas" id="especificarMPfacturacion" style="display: none;">
+                                    <label for="">Especificar: </label>
+                                    <input type="text">
+                                </div>
+            
 
                     </div>
+                    
+                    <div class="cajaContenedor" id="cfCondicionSeis">
 
+                                <div class="cajaContenedorApelacionCtwo" id="">
+                                    <label for="">Adjunta Hoja de Pago</label>
+                                    <select name="" id="hpfacturado" onchange="hojaFacturado()">
+                                        <option value="" selected>Seleccione una Opción</option>
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
 
+                                <div class="cajaContenedorApelacionCtwo" id="fhpf" style="display: none;">
+                                    <label for="">Adjuntar Solicitud: </label>
+                                    <input type="file" name="" id="">
+                                </div>
+
+                    </div>  
+                
                 </div>
 
             </div>
             <!--- FIN FACTURACION Y COBRO--->
 
             <!--- CALIDAD E IDONEIDAD 2 --->
-            <div class="contenedorOpciones" id="calidadReclamableOpcion">
+            <div class="respuestaOpciones" id="calidadReclamableOpcion">
 
-                <div class="respuestasCalidad" id="contenidocaliad" style="display: none;">
+                <div class="cajasCentradas" id="contenidocaliad" style="display: none;">
 
-                    <div class="cajaRespuesta" id="">
-                        <label>Fecha de Inicio del Problema: </label>
-                        <input type="date">
-                    </div>
-    
-                    <div class="cajaRespuesta" id="">
-                        <label>Dirección: </label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="cajaRespuesta" id="">
-                        <label>Departamento: </label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="cajaRespuesta" id="">
-                        <label>Provincia: </label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="cajaRespuesta" id="">
-                        <label>Distrito: </label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="cajaRespuesta" id="">
-                        <label>Calle / Jr / Avenida: </label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="cajaRespuesta" id="">
-                        <label>Código de reporte previo: </label>
-                        <input type="text">
+                    <div class="cajaContenedor">
+
+                        <div class="contenedorRespuestas" id="">
+                            <label>Fecha de Inicio del Problema: </label>
+                            <input type="date">
+                        </div>
+        
+                        <div class="contenedorRespuestas" id="">
+                            <label>Dirección: </label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="contenedorRespuestas" id="">
+                            <label>Departamento: </label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="contenedorRespuestas" id="">
+                            <label>Provincia: </label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="contenedorRespuestas">
+                            <label for="">Distritos</label>
+                            <select name="" id="" onchange="">
+                                <option value="">Seleccionar Opción</option>
+                                <option value="Ate">Ate</option>
+                                <option value="Ancón">Ancón</option>
+                                <option value="Carabayllo">Carabayllo</option>
+                                <option value="Chaclacayo">Chaclacayo</option>
+                                <option value="Comas">Comas</option>
+                                <option value="El Agustino">El Agustino</option>
+                                <option value="Ica">Ica</option>
+                                <option value="Independencia">Independencia</option>
+                                <option value="La Victoria">La Victoria</option>
+                                <option value="Los Olivos">Los Olivos</option>
+                                <option value="Puente Piedra">Puente Piedra</option>
+                                <option value="Rimac">Rimac</option>
+                                <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+                                <option value="San Martín de Porres">San Martín de Porres</option>
+                                <option value="Santa Rosa">Santa Rosa</option>
+                            </select>
+                        </div>
+        
+                        <div class="contenedorRespuestas" id="">
+                            <label>Calle / Jr / Avenida: </label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="contenedorRespuestas" id="">
+                            <label>Código de reporte previo: </label>
+                            <input type="text">
+                        </div>
+
                     </div>
 
                 </div>

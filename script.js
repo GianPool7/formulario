@@ -398,49 +398,49 @@ function facturado() {
 
         case "calculo":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             conceptoFacturado.style.display="block";
             break;
         
         case "tarifa":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             tarifaUsuario.style.display="block"
             conceptoFacturado.style.display="block";
             break;
 
         case "reconexion":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             conceptoFacturado.style.display="none";
             break;
 
         case "dmonto":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             conceptoFacturado.style.display="block";
             break;
         
         case "noprocesado":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             medioPagoFacturacion.style.display="flex";
             break;
 
         case "nfacturados":
             numDocCobro.style.display="block"
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             adHojaPagoFacturacion.style.display="flex";
             break;
 
         case "cequipos":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             break;
         
         case "incremento":
             nRecibo.style.display="block";
-            contenidoFacturacion.style.display="block";
+            contenidoFacturacion.style.display="flex";
             break;
     
         default:
@@ -484,8 +484,6 @@ function mdPagoFacturacion() {
 
 }
 
-
-
 /* Fin de facturacion */
 
 /* calidad */
@@ -495,7 +493,7 @@ function calidad() {
     const oCalidad=document.getElementById("calidadidoneidad");
     const contenidoci=document.getElementById("contenidocaliad");
     //calidad
-    contenidoci.style.display="none"
+    contenidoci.style.display="none";
 
     switch (oCalidad.value) {
 
