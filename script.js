@@ -1,24 +1,23 @@
 // para los primeros botones
 const formularioPersonal=document.getElementById('formulario_personal');
 const formularioUsuario=document.getElementById('extra_usuario');
-const formularioRepresentante=document.getElementById('representanteDatos');
+const formularioRepresentante=document.getElementById('extra_representante');
+
+formularioPersonal.style.display="none";
+formularioUsuario.style.display="none";
+formularioRepresentante.style.display="none";
 
 function personales() {
     formularioPersonal.style.display="block";
-    formularioUsuario.style.display="none";
-    formularioRepresentante.style.display="none";
-    const inputs = document.querySelectorAll('.dato');
 }
 
 function usuario() {
     formularioPersonal.style.display="block";
     formularioUsuario.style.display="block";
-    formularioRepresentante.style.display="none";
 }
 
 function representante() {
     formularioPersonal.style.display="block";
-    formularioUsuario.style.display="none";
     formularioRepresentante.style.display="flex";
 }
 
