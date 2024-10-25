@@ -149,12 +149,8 @@ function selecion() {
     //Opcion
 
     // facturacion
-    const contenidoTarifario=document.getElementById("contenidoBase");
-    const contenidoNoProcesados=document.getElementById("contenidoNoProcesado");
-    const contenidoNoFacturados=document.getElementById("contenidoNoFacturado");
-    contenidoTarifario.style.display="none";
-    contenidoNoProcesados.style.display="none";
-    contenidoNoFacturados.style.display="none";
+    const contenidoFacturacion=document.getElementById("contenidoBase");
+    contenidoFacturacion.style.display="none";
     //
 
     //calidad
@@ -381,52 +377,70 @@ function selecion() {
 
 function facturado() {
 
-    const oFacturado=document.getElementById("facturados");
-    const contenidoTarifario=document.getElementById("contenidoBase");
-    const contenidoNoProcesados=document.getElementById("contenidoNoProcesado");
-    const contenidoNoFacturados=document.getElementById("contenidoNoFacturado");
-    const opcionDos=document.getElementById("contenidoTarifaodos");
-    
-    contenidoTarifario.style.display="none";
-    contenidoNoProcesados.style.display="none";
-    contenidoNoFacturados.style.display="none";
-    opcionDos.style.display="none";
+    const oFacturado=document.getElementById("facturados").value;
+    const nRecibo=document.getElementById("nReciboBase");
+    const contenidoFacturacion=document.getElementById("contenidoBase");
+    const conceptoFacturado=document.getElementById("cfCondicion");
+    const tarifaUsuario=document.getElementById("cfCondicionDos");
+    const medioPagoFacturacion=document.getElementById("cfCondicionCinco");
+    const adHojaPagoFacturacion=document.getElementById("cfCondicionSeis");
+    const numDocCobro=document.getElementById("numDocCobroSeis");
+    //
+    nRecibo.style.display="none";
+    contenidoFacturacion.style.display="none";
+    tarifaUsuario.style.display="none";
+    conceptoFacturado.style.display="none";
+    medioPagoFacturacion.style.display="none";
+    adHojaPagoFacturacion.style.display="none";
+    numDocCobro.style.display="none";
 
-    switch (oFacturado.value) {
+    switch (oFacturado) {
 
         case "calculo":
-            contenidoTarifario.style.display="block";
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
+            conceptoFacturado.style.display="block";
             break;
         
         case "tarifa":
-            contenidoTarifario.style.display="block";
-            opcionDos.style.display="block"
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
+            tarifaUsuario.style.display="block"
+            conceptoFacturado.style.display="block";
             break;
 
         case "reconexion":
-            contenidoTarifario.style.display="block";
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
+            conceptoFacturado.style.display="none";
             break;
 
         case "dmonto":
-            contenidoTarifario.style.display="block";
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
+            conceptoFacturado.style.display="block";
             break;
         
         case "noprocesado":
-            contenidoTarifario.style.display="block";
-            contenidoNoProcesados.style.display="block";
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
+            medioPagoFacturacion.style.display="flex";
             break;
 
         case "nfacturados":
-            contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="block";
+            numDocCobro.style.display="block"
+            contenidoFacturacion.style.display="block";
+            adHojaPagoFacturacion.style.display="flex";
             break;
 
         case "cequipos":
-            contenidoTarifario.style.display="block";
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
             break;
         
         case "incremento":
-            contenidoTarifario.style.display="block";
+            nRecibo.style.display="block";
+            contenidoFacturacion.style.display="block";
             break;
     
         default:
@@ -447,6 +461,24 @@ function hojaFacturado(){
     
         default:
             fileFacturacion.style.display="none";
+            break;
+    }
+
+}
+
+function mdPagoFacturacion() {
+    
+    const xMedioPago=document.getElementById("mPago").value;
+    const especificarMedioPagoFacturacion=document.getElementById("especificarMPfacturacion");
+
+    especificarMedioPagoFacturacion.style.display="none";
+
+    switch (xMedioPago) {
+        case "otro":
+            especificarMedioPagoFacturacion.style.display="block";
+            break;
+    
+        default:
             break;
     }
 

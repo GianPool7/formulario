@@ -74,7 +74,10 @@
     justify-content: space-around;
 }
 
+/**/
 
+
+/**/
 
 /**/
 
@@ -196,6 +199,7 @@ input[type=text]:hover{
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
+
 }
 
 .materiaReclamableUnica{
@@ -300,6 +304,14 @@ option{
 .activo{
     background-color: #aed6f1;
 }
+
+/**/
+
+.seleccionMultipleReclamo{
+    display: flex;
+    justify-content: center;
+}
+
 
 /**/
 
