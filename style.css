@@ -2,38 +2,70 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
 }
+
+/**/
+
+
+/**/
 
 .quien{
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    gap: 20px;
 }
 
 .btn{
-    background-color: green;
     padding: 10px;
     border-radius: 20px;
-    color: whitesmoke;
+    background-color: whitesmoke;
+    width: 10%;
+    cursor: pointer;
 }
 
+.btn img{
+    width: 40%;
+    display: block;
+    margin: auto;
+}
+
+.btn label{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+/**/
+
 .datosPersonales{
-    background-color: red;
+    padding: 10px;
 }
 
 .nombres{
+    width: 50%;
+    display: block;
+    margin: auto;
+    padding: 20px;
+}
+
+.contenedorDatosPersonales{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .datos{
-    background-color: green;
     margin: 5px;
     padding: 15px;
-    width: 33%;
-    justify-content: space-between;
+    width: 40%;
 }
+
+
 
 .documento{
     display: flex;
@@ -60,6 +92,9 @@
     background-color: green;
 }
 
+
+/**/
+
 select{
     padding: 20px;
     outline: none;
@@ -67,10 +102,12 @@ select{
     border-radius: 10px;
     width: 100%;
     margin-top: 10px;
+    background-color: aliceblue;
 }
 
 .num{
-    background-color: green;
+    background-color: purple;
+    padding: 10px;
 }
 
 input{
@@ -80,31 +117,335 @@ input{
     border-radius: 10px;
     width: 100%;
     margin-top: 10px;
+    background-color: aliceblue;
 }
 
 input[type=text]:hover{
     box-shadow: 5px 5px 5px black;
 }
 
-.opcion{
-    padding: 5px;
-}
-
-.opcion label{
+.archivo{
+    width: 81%;
     display: block;
     margin: auto;
 }
 
 
+.autoriza{
+    padding: 10px;
+}
+
+.opcion{
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.textolabel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opcionCorreo{
+    display: flex;
+    justify-content: space-around;
+}
+
+/**/
+
+.respuestasfcnoprocesado{
+    padding: 10px;
+}
+
+.radiocheck{
+    padding: 20px;
+}
+
+.contenidoradio{
+    padding: 20px;
+    gap: 20px;
+    text-align: center;
+    width: 80%;
+    background-color: blue;
+}
+
+.cajaradio{
+    background-color: green;
+    padding: 10px;
+    border-radius: 20px;
+    width: 30%;
+}
+
+/* 2da parte*/
+
+.seleccionarOpcciones{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.materiaReclamableUnica{
+    padding: 10px;
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+
+.materiaReclamable{
+    padding: 10px;
+    width: 30%;
+}
+
+.fc{
+    padding: 10px;
+    width: 30%;
+}
+
+option{
+    width: 30%;
+}
+
+/*contenedor de respuestas*/
+
+.contenedorApelacion{
+    padding: 20px;
+}
+
+.contenedorQueja{
+    padding: 20px;
+}
+
+.contenedorReclamo{
+    padding: 20px;
+}
+
+.contenedorOpciones{
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+
+.respuestasfc{
+    display: block;
+    margin: auto;
+    width: 90%;
+}
+
+.cajaRespuesta{
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.cajas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+/* quejas  - reclamos - apelaciones*/
+
+.cajasopciones{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.contenedor{
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 15%;
+    margin: 10px;
+}
+
+.contenedor:hover{
+    background-color: gainsboro;
+}
+
+.contenedor img{
+    width: 40%;
+    display: block;
+    margin: auto;
+    padding: 20px;
+}
+
+.contenedor p{
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.respuestasCalidad{
+    display: flex;
+    justify-content: center;
+}
+
+/**/
+
+.cajaContenedor{
+    width: 68%;
+    display: block;
+    margin: auto;
+}
+
+.cajaColumnTwo{
+    margin-top: 20px;
+}
+
+.columnTwo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cajaContenedorApelacionCtwo{
+    margin: 10px;
+    width: 33%;
+    padding: 10px;
+}
+
+/**/
+
+/**/
+
+.cajaSolaFile{
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+/**/
+
+/*fin 2da parte*/
+
+
+/**/
+
+.cajaBotones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.btnPre{
+    padding: 5px;
+}
+
+button{
+    padding: 20px;
+    outline: none;
+    border-style: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button:hover{
+    background-color: rgb(0, 0, 129);
+}
+
+
+/**/
+
+.datosCompletos{
+    padding: 10px;
+}
+
+.respuestasUsuario{
+    display: block;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    background-color: green;
+}
+
+.tituloDatos{
+    padding: 10px;
+}
+
+/**/
+
+.tituloContenido{
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+
+/**/
+
 @media only screen and (max-width: 768px) {
 
+    .btn{
+        width: 100%;
+    }
+
     .datos{
-        background-color: green;
         margin: 5px;
         padding: 15px;
         width: 100%;
         justify-content: space-between;
     }
+
+    .materiaReclamable{
+        padding: 10px;
+        width: 100%;
+    }
     
+    .fc{
+        padding: 10px;
+        width: 100%;
+    }
+    
+    .cajaRespuesta{
+        width: 100%;
+    }
+
+    .contenedor img{
+        width: 40%;
+        display: block;
+        margin: auto;
+    }
+
+    .contenedor{
+        width: 100%;
+    }
+
+    .contenedor p{
+        text-align: center;
+        padding: 20px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .cajaRespuesta{
+        width: 100%;
+    }
+
+    .cajaContenedorApelacionCtwo{
+        width: 100%;
+    }
+
+    .cajaContenedor{
+        width: 100%;
+    }
+
+    .cajaSolaFile{
+        width: 100%;
+    }
 
 }

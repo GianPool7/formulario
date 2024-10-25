@@ -8,412 +8,1845 @@
 </head>
 <body>
     
-    <form action="" method="post">
+    <form action="" method="post" class="contendioFormulario">
 
-        <div class="quien">
+        <div class="cajasopciones">
 
-            <div class="btn">
-                <label for="Abonado">Abonado</label>
-                <input type="radio" name="rol" id="Abonado" onclick="personales()"> 
+            <div class="contenedor _reclamo" onclick="cajaContenedor('reclamo');">
+                <img src="/imagenes/reclamo" alt="">
+                <p>Reclamos</p>
             </div>
 
-            <div class="btn">
-                <label for="Usuario">Usuario</label>
-                <input type="radio" name="rol" id="Usuario" onclick="usuario()"> 
+            <div class="contenedor _queja" onclick="cajaContenedor('queja');">
+                <img src="/imagenes/queja" alt="">
+                <p>Quejas</p>
             </div>
 
-            <div class="btn">
-                <label for="Representante">Representante</label>
-                <input type="radio" name="rol" id="Representante" onclick="representante()"> 
+            <div class="contenedor _apelacion" onclick="cajaContenedor('apelacion');">
+                <img src="/imagenes/apelacion" alt="">
+                <p>Apelación</p>
             </div>
 
         </div>
+
+        <div class="quien" id="datosPersonales">
+
+            <div class="btn" onclick="personales()">
+                <img src="/imagenes/abonado.png" alt="">
+                <label for="Abonado">Abonado</label>
+            </div>
+
+            <div class="btn" onclick="usuario()">
+                <img src="/imagenes/usuario.png" alt="">
+                <label for="Usuario">Usuario</label>
+            </div>
+
+            <div class="btn" onclick="representante()">
+                <img src="/imagenes/representante" alt="">
+                <label for="Representante">Representante</label>
+            </div>
+
+        </div>
+
 
         <div class="datosPersonales" id="formulario_personal" style="display: none;">
 
             <div class="nombres">
 
-                <div class="datos">
-                    <label>Nombres y Apellidos del Reclamantes</label>
-                    <input type="text" name="" placeholder="Nombre del Reclamante">
-                </div>
+                <div class="contenedorDatosPersonales">
+
+                    <div class="datos">
+                        <label>Nombres del reclamante</label>
+                        <input type="text" name="dato" placeholder="Nombre del Reclamante">
+                    </div>
     
-                <div class="datos">
-                    <label>Numero de contacto</label>
-                    <input type="text" name="" placeholder="Numero de contacto">
+                    <div class="datos">
+                        <label>Apellido paterno del reclamante</label>
+                        <input type="text" name="dato" placeholder="Nombre del Reclamante">
+                    </div>
+    
+                    <div class="datos">
+                        <label>Apellido materno del reclamante</label>
+                        <input type="text" name="dato" placeholder="Nombre del Reclamante">
+                    </div>
+        
+                    <div class="datos" id="extra_usuario" style="display: none;">
+                        <label>Especifique su relación con el cliente</label>
+                        <input type="text" name="dato" placeholder="Madre, Padre, Hijo, etc.">
+                    </div>
+        
+                    <div class="datos">
+                        <label>Numero de contacto</label>
+                        <input type="text" name="dato" placeholder="Numero de contacto" maxlength="9">
+                    </div>
+    
+                    <div class="datos">
+    
+                        <label for="tipodedocumento">Tipo de Documento:</label>
+                        <select name="" id="tipodedocumento" onchange="tipoDocumento()">
+                            <option value="">Selecciona un documento</option>
+                            <option value="dni">Documento de Identidad (DNI)</option>
+                            <option value="ruc">Registro Único de Contribuyentes (RUC)</option>
+                            <option value="pas">Pasaporte</option>
+                            <option value="ce">Carnet de Extranjería(CE)</option>
+                            <option value="xdoc">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                        </select>
+    
+                    </div>
+    
+                    <div class="datos">
+                        <label for="numDoc">Numero de Documento</label>
+                        <input type="text" id="numDoc" placeholder="Digite el numero de identidad">
+                    </div>
+    
+                    <div class="datos">
+                        <label>Razón Social</label>
+                        <input type="text" name="" placeholder="Razón social">
+                    </div>
+    
+                    <div class="datos">
+                        <label for="datos">Adjuntar Carta de Poder</label>
+                        <input type="file" name="" id="datos">
+                    </div>
+    
+                    <div class="datos">
+                        <label for="">Distritos</label>
+                        <select name="" id="" onchange="">
+                            <option value="">Seleccionar Opción</option>
+                            <option value="Ate">Ate</option>
+                            <option value="Ancón">Ancón</option>
+                            <option value="Carabayllo">Carabayllo</option>
+                            <option value="Chaclacayo">Chaclacayo</option>
+                            <option value="Comas">Comas</option>
+                            <option value="El Agustino">El Agustino</option>
+                            <option value="Ica">Ica</option>
+                            <option value="Independencia">Independencia</option>
+                            <option value="La Victoria">La Victoria</option>
+                            <option value="Los Olivos">Los Olivos</option>
+                            <option value="Puente Piedra">Puente Piedra</option>
+                            <option value="Rimac">Rimac</option>
+                            <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+                            <option value="San Martín de Porres">San Martín de Porres</option>
+                            <option value="Santa Rosa">Santa Rosa</option>
+                        </select>
+                    </div>
+    
+                    <div class="datos">
+                        <label>Dirección</label>
+                        <input type="text" name="" id="" placeholder="Dirección">
+                    </div>
+    
+                    <div class="datos">
+                        <label>Correo electrónico</label>
+                        <input type="email" name="" id="" placeholder="prueba@gmail.com">
+                    </div>
+    
+                    <div class="datos">
+    
+                        <div class="textolabel">
+                            <label for="">
+                                Autorizo ser notificado por el correo electrónico registrado
+                                (opcional)
+                            </label>
+                        </div>
+    
+                        <div class="opcionCorreo">
+    
+                            <div class="opcion">
+                                <label for="autorizaSI">Si</label>
+                                <input type="radio" name="autoPersonal" id="autorizaSI">
+                            </div>
+    
+                            <div class="opcion">
+                                <label for="autorizaNO">No</label>
+                                <input type="radio" name="autoPersonal" id="autorizaNO">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                    
                 </div>
 
             </div>
 
-            <div class="documento">
 
-                <div class="datos">
+        </div>
 
-                    <label for="">Tipo de Documento</label>
-                    <select name="" id="">
-                        <option value="">Dni</option>
-                        <option value="">Ruc</option>
-                        <option value="">Pasaporte</option>
-                        <option value="">CE</option>
-                        <option value="">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
-                    </select>
 
+
+
+
+
+
+
+
+
+        <div class="seleccionarOpcciones" id="seleccionarApelacion">
+
+            <div class="tituloContenido">
+                <h1 class="tituloContenido" id="txtQueja">Ingrese su Apelación</h1>
+            </div>
+            
+            <div class="materiaReclamableUnica">
+                <label for="">Apelación Especifica</label>
+                <select name="" id="apelacionOpciones" onchange="apelaciones()">
+                    <option value="" selected>Seleccionar Opción</option>
+                    <option value="apelacionOne">No se analizaron pruebas presentadas por el usuario</option>
+                    <option value="apelacionTwo">La carta no motiva o sustenta la decisión de la empresa sobre el reclamo</option>
+                    <option value="apelacionThree">Empresa operadora emitió pronunciamiento por materia distinta a la reclamada</option>
+                    <option value="apelacionFour">Empresa omitió pronunciarse por un extremo del reclamo o un recibo reclamado</option>
+                    <option value="apelacionFive">La empresa operadora no acogió toda su pretensión</option>
+                    <option value="apelacionSix">Otros</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="seleccionarOpcciones" id="seleccionarQueja">
+
+            <div class="tituloContenido">
+                <h1 class="tituloContenido" id="txtQueja">Ingrese su Queja</h1>
+            </div>
+
+
+            <div class="materiaReclamableUnica">
+                <label for="">Objeto de la queja:</label>
+                <select name="" id="quejasOpciones" onchange="queja()">
+                    <option value="" selected>Seleccionar Opción</option>
+                    <option value="quejaUno">Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)</option>
+                    <option value="quejaDos">No se permitió la presentación de reclamo, recurso de apelación o queja o no se otorgó el código respectivo</option>
+                    <option value="quejaTres">Suspensión del servicio pese a reclamo en trámite</option>
+                    <option value="quejaCuatro">Requerimiento de pago del monto reclamado</option>
+                    <option value="quejaCinco">No se permitió el pago a cuenta del monto no reclamado</option>
+                    <option value="quejaSeis">Otros defectos de tramitación</option>
+                </select>
+            </div>
+
+        </div>
+        
+        <div class="seleccionarOpcciones" id="seleccionarReclamo">
+
+            <!-- <div class="tituloContenido">
+                <h1 class="tituloContenido" id="txtReclamo">Ingrese su Reclamo</h1>
+            </div> -->
+
+            <div class="materiaReclamable">
+                <label for="">Materias Reclamables</label>
+                <select name="defecto" id="materias" onchange="selecion()">
+                    <option value="" selected>Seleccionar Opción</option>
+                    <option id="mUno" value="fcs">Facturación y cobro</option>
+                    <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
+                    <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y promociones</option>
+                    <option id="mCuatro" value="falta">Falta de servicio</option>
+                    <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio</option>
+                    <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio</option>
+                    <option id="mSiete" value="contratacion">Contratación no solicitada</option>
+                    <option id="mOcho" value="migracion">Migración</option>
+                    <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
+                </select>
+            </div>
+            
+            <div class="fc" id="fc" style="display: none;">
+
+                <label for="">Problema Especifico</label>
+                <select name="" id="facturados" onchange="facturado()">
+                    <option value="" selected>Selecciona la Opción</option>
+                    <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados</option>
+                    <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales facturados</option>
+                    <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
+                    <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier concepto facturado en el recibo cuyo consumo se desconoce</option>
+                    <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
+                    <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o realizados por documentos distinto al recibo</option>
+                    <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado</option>
+                    <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento</option>
+                </select>
+    
+            </div>
+
+            <div class="fc" id="cs" style="display: none;">
+                <label for="calidad">Problema Especifico</label>
+                <select name="" id="calidadidoneidad" onchange="calidad()">
+                    <option value="" selected>Selecciona la Opción</option>
+                    <option id="cuno" value="calidaduno">Problemas con la prestación del servicio, tales como intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
+                </select>
+            </div>
+            
+            <div class="fc" id="op" style="display: none;">
+                <label for="ofertas">Problema Especifico</label>
+                <select name="" id="ofertas" onchange="incumpliento()">
+                    <option value="" selected>Seleccionar Opción</option>
+                    <option value="incumplimientoUNO">Incumplimiento de la aplicación de condiciones y tarifas del plan contratado distintas a las pactadas en el contrato</option>
+                    <option value="incumplimientoDOS">Incumplimiento de ofertas o promociones ofrecidas y/o contratadas</option>
+                    <option value="incumplimientoTRES">Descuentos no reconocidos de los atributos y/o beneficios del plan contratado, oferta y/o promoción</option>
+                    <option value="incumplimientoCUATRO">Omisión de información o información inexacta sobre cobertura u otras características o limitaciones del servicio</option>
+                </select>
+            </div>
+
+            <div class="fc" id="fs" style="display: none;">
+                <label for="fservicio">Problema Especifico</label>
+                <select name="serivio" id="fservicio" onchange="faltaServicios()">
+                    <option value="" selected>Seleccionar Opción</option>
+                    <option value="servicioone">Interrupción, suspensión, corte o baja injustificada del servicio o sin observar el procedimiento establecido en la normativa vigente</option>
+                    <option value="serviciotwo">Suspensión del servicio por uso prohibido en establecimientos penitenciarios</option>
+                    <option value="serviciothree">Falta de reactivación del servicio pese al pago del recibo</option>
+                    <option value="serviciofour"> Cambio de titularidad del servicio o reposición de SIM Card sin consentimiento del abonado</option>
+                </select>
+            </div>
+
+            <div class="fc" id="ia" style="display: none;">
+                <label for="instalacion">Problema Especifico</label>
+                <select name="" id="instalacion" onchange="instalaciones();">
+                    <option value="" selected>Seleccionar Opción </option>
+                    <option value="instalacionesUno">Falta de instalación del servicio fijo</option>
+                    <option value="instalacionesDos">Falta de activación del servicio móvil</option>
+                    <option value="instalacionesTres">Falta de traslado del servicio</option>
+                    <option value="instalacionesCuatro">Falta de respuesta a la solicitud de trasladado o negativa a la misma</option>
+                    <option value="instalacionesCinco">Falta de devolución de los montos cobrados por instalación, activación o traslado no ejecutados</option>
+                </select>
+            </div>
+
+            <div class="fc" id="sus" style="display: none;">
+                <label for="sb">Problema Especifico</label>
+                <select name="" id="sb" onchange="baja()">
+                    <option value="" selected>Seleccionar Opción </option>
+                    <option value="bajaUno">Falta de ejecución de la baja</option>
+                    <option value="bajaDos">Falta de ejecución de la suspensión temporal del servicio</option>
+                    <option value="bajaTres">Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla</option>
+                    <option value="bajaCuatro">Montos cobrados posteriores a la fecha en que se efectuó la suspensión temporal o correspondía efectuarla</option>
+                </select>
+            </div>
+
+            <div class="fc" id="ct" style="display: none;">
+                <label for="con">Problema Especifico</label>
+                <select name="" id="con" onchange="contratos();">
+                    <option value="">Seleccionar Opción</option>
+                    <option value="conuno">Desconoce contratación del servicio principal (*telefonía fija, acceso a internet, servicio móvil, televisión de paga)</option>
+                    <option value="condos">Desconoce contratación o afiliación a servicios adicionales o suplementarios</option>
+                    <option value="contres">Desconoce adquisición de paquetes de tráfico o señales de programación (*datos, minutos, canales, otros)</option>
+                    <option value="concuatro">Desconoce contrato de adquisición o financiamiento de equipo terminal cuyo pago es incluido en el recibo como concepto facturable</option>
+                </select>
+            </div>
+
+            <div class="fc" id="mi" style="display: none;">
+                <label for="mig">Problema Especifico</label>
+                <select name="" id="mig" onchange="migracionReclamable()">
+                    <option value="">Seleccione Opción</option>
+                    <option value="migracionOne">Condicionamiento, negativa o falta de respuesta de la solicitud de migración</option>
+                    <option value="migracionTwo">Falta de ejecución de la migración dentro del plazo establecido</option>
+                    <option value="migracionThree">Facturación corresponde al plan anterior</option>
+                    <option value="migracionFour">Migración no solicitada</option>
+                </select>
+            </div>
+
+            <div class="fc" id="xma" style="display: none;">
+                <label for="x">Problema Especifico</label>
+                <select name="" id="x" onchange="xMaterias()">
+                    <option value="">Seleccione opción</option>
+                    <option value="xMateriasROne">Negativa a contratar el servicio</option>
+                    <option value="xMateriasRTwo">Falta de entrega de recibos</option>
+                    <option value="xMateriasRThree">Negativa a brindar la facturación detallada o llamadas entrantes</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="contenedorApelacion" id="datosApelacion">
+
+
+            <div class="contenedorOpciones" id="apelacionUno" style="display: none;">
+
+                <div class="cajaRespuesta">
+                    <label for="">Detalle de pruebas presentadas y no analizadas por la empresa operadora: </label>
+                    <input type="text">
                 </div>
 
-                <div class="datos">
-                    <label for="">Numero de Documento</label>
+
+            </div>
+
+            <div class="contenedorOpciones" id="apelacionDos" style="display: none;">
+
+                <div class="cajaRespuesta">
+                    <label for="">Detalle la falta de sustento o motivación de la carta de la empresa: </label>
                     <input type="text">
                 </div>
 
             </div>
 
-            <div class="direccion">
+            <div class="contenedorOpciones" id="apelacionTres" style="display: none;">
 
-                <div class="datos">
-                    <label>Dirección</label>
-                    <input type="text" name="" id="" placeholder="Dirección">
-                </div>
-
-                <div class="datos">
-                    <label>Correo electrónico</label>
-                    <input type="email" name="" id="" placeholder="Correo Electrónico">
-                </div>
-
-            </div>
-
-            <div class="autoriza">
-
-                <div class="opcion">
-                    <label for="autorizaSI">Si</label>
-                    <input type="radio" name="autoPersonal" id="autorizaSI">
-                </div>
-
-                <div class="opcion">
-                    <label for="autorizaNO">No</label>
-                    <input type="radio" name="autoPersonal" id="autorizaNO">
-                </div>
-    
-            </div>
-
-        </div>
-
-        <div class="usuario" id="formulario_usuario" style="display: none;">
-
-            <div class="nombres">
-
-                <div class="datos">
-                    <label>Nombres del Reclamantes</label>
-                    <input type="text" name="" placeholder="Nombre del Reclamante">
-                </div>
-    
-                <div class="datos">
-                    <label>Nombres del Reclamantes</label>
-                    <input type="text" name="" placeholder="Nombre del Reclamante">
-                </div>
-    
-                <div class="datos">
-                    <label>Numero de contacto</label>
-                    <input type="text" name="" placeholder="Numero de contacto">
-                </div>
-
-                <div class="datos" id="extra_usuario">
-                    <label>Especifique su relación con el cliente</label>
-                    <input type="text" name="" placeholder="Madre, Padre, Hijo, etc.">
-                </div>
-
-            </div>
-
-            <div class="documento">
-
-                <div class="datos">
-
-                    <label for="">Tipo de Documento</label>
-                    <select name="" id="">
-                        <option value="">Dni</option>
-                        <option value="">Ruc</option>
-                        <option value="">Pasaporte</option>
-                        <option value="">CE</option>
-                        <option value="">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
-                    </select>
-
-                </div>
-
-                <div class="datos">
-                    <label for="">Numero de Documento</label>
+                <div class="cajaRespuesta">
+                    <label for="">Materia por la cual la empresa debió emitir pronunciamento: </label>
                     <input type="text">
                 </div>
 
             </div>
 
+            <div class="contenedorOpciones" id="apelacionCuatro" style="display: none;">
 
-            <div class="direccion">
+                <div class="cajaContenedor">
 
-                <div class="datos">
-                    <label>Dirección</label>
-                    <input type="text" name="" placeholder="Dirección">
-                </div>
-
-                <div class="datos">
-                    <label>Correo electrónico</label>
-                    <input type="email" name="" id="">
-                </div>
-
-            </div>
-
-            <div class="autoriza">
-
-                <label for="autorizaSIU">Si</label>
-                <input type="radio" name="autoUsuario" id="autorizaSIU">
-    
-                <label for="autorizaNOU">No</label>
-                <input type="radio" name="autoUsuario" id="autorizaNOU">
-    
-            </div>
-
-        </div>
-
-        <div class="datosRepresentantes" id="formulario_representante" style="display: none;">
-
-            <div class="nombres">
-
-                <div class="datos">
-                    <label>Nombres del Representante</label>
-                    <input type="text" name="" placeholder="Nombre del Representante">
-                </div>
-    
-                <div class="datos">
-                    <label>Apellidos del Representante</label>
-                    <input type="text" name="" placeholder="Apellidos del Representante">
-                </div>
-    
-                <div class="datos">
-                    <label>Numero de contacto</label>
-                    <input type="text" name="" placeholder="Numero de contacto">
-                </div>
-
-            </div>
-
-            <div class="documento">
-
-                <div class="datos">
-
-                    <label for="">Tipo de Documento</label>
-                    <select name="" id="">
-                        <option value="">Dni</option>
-                        <option value="">Ruc</option>
-                        <option value="">Pasaporte</option>
-                        <option value="">CE</option>
-                        <option value="">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                    <label for="">Empresa operadora omitió pronunciamiento sobre un recibo reclamado: </label>
+                    <select name="" id="apelacionopcioncuatro" onchange="apelacionCuatro()">
+                        <option value="" selected>Seleccione una Opción</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
                     </select>
 
                 </div>
 
-                <div class="datos">
-                    <label for="">Numero de Documento</label>
-                    <input type="text">
-                </div>
+                <div class="cajaColumnTwo" id="apelacionCuatroSi" style="display: none;">
 
-            </div>
+                    <div class="columnTwo">
 
-            <div class="archivo">
-                <label for="datos">Adjuntar Carta de Poder</label>
-                <input type="file" name="" id="datos">
-            </div>
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Numero de recibo: </label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Fecha de vencimiento: </label>
+                            <input type="date">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Monto reclamado: (S/) </label>
+                            <input type="number">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Detalle del extremo del reclamo por el cual la empresa omitió pronunciamiento: </label>
+                            <input type="text">
+                        </div>
 
-            <div class="direccion">
-
-                <div class="datos">
-                    <label>Dirección</label>
-                    <input type="text" name="" placeholder="Dirección">
-                </div>
-
-                <div class="datos">
-                    <label>Correo electrónico</label>
-                    <input type="email" name="" id="">
-                </div>
-
-            </div>
-
-            <div class="autoriza">
-
-                <label for="autorizaSIR">Si</label>
-                <input type="radio" name="autoR" id="autorizaSIR">
+                    </div>
     
-                <label for="autorizaNOR">No</label>
-                <input type="radio" name="autoR" id="autorizaNOR">
+                </div>
+
+            </div>
+
+            <div class="contenedorOpciones" id="apelacionCinco" style="display: none;">
+
+                <div class="cajaContenedor">
+                    <label for="">Falta acoger todo o parte del monto reclamado: </label>
+                    <select name="" id="apelacionOpcioncinco" onchange="apelacionCinco();">
+                        <option value="" selected>Seleccione Opción</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+
+                <div class="cajaColumnTwo" id="apelacionCincoSi" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Numero de recibo: (S/)</label>
+                            <input type="number">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Monto total que corresponde ajustar: (S/)</label>
+                            <input type="number">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Detalle del extremo del reclamo que no fue acogido: </label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="contenedorOpciones" id="apelacionSeis" style="display: none;">
+
+                <label for="">Materia por la cual la empresa debió emitir pronunciamento: </label>
+                <input type="text">
+
+            </div>
+
+        </div>
+
+        <div class="contenedorQueja" id="datosQueja">
+
+
+            <div class="contenedorOpciones" id="quejaPreguntaUno" style="display: none;">
+                <label for="">Fecha de presentación del reclamo</label>
+                <input type="date">
+            </div>
+
+            <div class="contenedorOpciones" id="quejaPreguntaDos" style="display: none;">
+
+                <div class="cajaColumnTwo" id="apelacionCuatroSi">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Negativa Relacionada a:</label>
+                            <select name="" id="">
+                                <option value="">Seleccionar Opción</option>
+                                <option value="Presentación del reclamo">Presentación del reclamo</option>
+                                <option value="Presentación del recurso de apelacion">Presentación del recurso de apelacion</option>
+                                <option value="Presentación de la queja">Presentación de la queja</option>
+                                <option value="Brindar código de reclamo">Brindar código de reclamo</option>
+                                <option value="Brindar código de recursos de apelacion">Brindar código de recursos de apelacion</option>
+                                <option value="Brindar código de queja">Brindar código de queja</option>
+                            </select>
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Fecha de la Negativa</label>
+                            <input type="date">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Canal donde se intento presentar el reclamo, apelacion o queja:</label>
+                            <select name="" id="canalPresentacion" onchange="canal()">
+                                <option value="">Seleccionar Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otro">Otro(especificar)</option>
+                            </select>
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo" id="canalQueja" style="display: none;">
+                            <label for="">Especificar canal:</label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo">
+                            <label for="">Se adjunta medios probatorios (pantalla u otra prueba) :</label>
+                            <select name="" id="adjuntaPrueba" onchange="adjuntaPruebaQueja()">
+                                <option value="">Seleccionar Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+        
+                        <div class="cajaContenedorApelacionCtwo" id="pruebaQuejas" style="display: none;">
+                            <label for="">Se adjunta medio probatorio</label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="contenedorOpciones" id="quejaPreguntaTres" style="display: none;">
+                <label for="">Fecha en la cual se habría suspendido el servicio:</label>
+                <input type="date">
+            </div>
+
+            <div class="contenedorOpciones" id="quejaPreguntaCuatro" style="display: none;">
+
+                <div class="columnTwo">
+
+                    <div class="cajaContenedorApelacionCtwo">
+                        <label for="">Fecha en la cual se habría requerido el pago:Medio de cobranza </label>
+                        <select name="" id="">
+                            <option value="" selected>Seleccionar Opción</option>
+                            <option value="Carta">Carta</option>
+                            <option value="Recibo">Recibo</option>
+                            <option value="Telefónico">Telefónico</option>
+                        </select>
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo">
+                        <label for="">Se adjunta documento donde conste el requerimiento de pago: </label>
+                        <select name="" id="constanciaPagoQueja" onchange="constanciaPago()">
+                            <option value="" selected>Seleccionar Opción</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="cajaSolaFile" id="constanciaPago" style="display: none;">
+                    <label for="">Se adjunta constancia de pago</label>
+                    <input type="file" name="" id="">
+                </div>
+
+            </div>
+
+            <div class="contenedorOpciones" id="quejaPreguntaCinco" style="display: none;">
+
+                <div class="columnTwo">
+
+                    <div class="cajaContenedorApelacionCtwo">
+                        <label for="">Lugar donde no se permitió el pago a cuenta: </label>
+                        <select name="" id="pagoCuentaQueja" onchange="pagoCuenta()">
+                            <option value="">Seleccionar Opción</option>
+                            <option value="Oficina del banco">Oficina del banco</option>
+                            <option value="Agente de Banco">Agente de Banco</option>
+                            <option value="Aplicativo del Operador">Aplicativo del Operador</option>
+                            <option value="Pagina Web del Banco">Pagina Web del Banco</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo" id="dpagocuenta" style="display: none;">
+                        <label for="">Especificar: </label>
+                        <input type="text" name="" id="">
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo">
+                        <label for="">Se adjunta captura de pantalla u otra prueba: </label>
+                        <select name="" id="capturaQuejaCinco" onchange="capturaQueja()">
+                            <option value="">Seleccionar Opción</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo" id="mpQueja" style="display: none;">
+                        <label for="">Medio probatorio: </label>
+                        <input type="file" name="" id="">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="contenedorOpciones" id="quejaPreguntaSeis" style="display: none;">
+
+                <div class="columnTwo">
+
+                    <div class="cajaContenedorApelacionCtwo">
+                        <label for="">Se adjunta documentos de prueba: </label>
+                        <select name="" id="dtramitacion" onchange="defectos()">
+                            <option value="">Seleccionar Opción</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo" id="dptramitacion" style="display: none;">
+                        <label for="">Medio probatorio: </label>
+                        <input type="file" name="" id="">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="contenedorReclamo" id="datosReclamos">
+
+            <!--- FACTURACION Y COBRO 1--->
+            <div class="contenedorOpciones" id="contenedorFacturacionCobro">
+
+                <div class="respuestasfc" id="contenidoBase" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de Recibo</label>
+                            <input type="text">
+                        </div>
+                
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de Emision</label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de Vencimiento</label>
+                            <input type="date">
+                        </div>
+                
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Monto Reclamado</label>
+                            <input type="text">
+                        </div>
     
+                        <div class="cajaContenedorApelacionCtwo" id="rconexion">
+                            <label for="">Concepto Facturado</label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="respuestasfctarifa" id="contenidoTarifaodos" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Tarifa que el usuario indica debió aplicarse</label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+        
+                </div>
+
+                <div class="respuestasfctarifa" id="contenidoTarifa" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaRespuesta" id="">
+                            <label for="">Concepto Facturado</label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="respuestasfcnoprocesado" id="contenidoNoProcesado" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha en la que se efectuó el pago</label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo">
+
+                            <div>
+                                <label for="">Modalidad de Pago</label>
+                            </div>
+
+                            <select name="" id="">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="Oficina del Operador">Oficina del Operador</option>
+                                <option value="Oficina del Banco">Oficina del Banco</option>
+                                <option value="Agente de Banco">Agente de Banco</option>
+                                <option value="Aplicativo del Operador">Aplicativo del Operador</option>
+                                <option value="Pagina Web del Banco">Pagina Web del Banco</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+        
+                <div class="respuestasfcnfacturados" id="contenidoNoFacturado" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Adjunta Hoja de Pago</label>
+                            <select name="" id="hpfacturado" onchange="hojaFacturado()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+
+                        <div class="cajaContenedorApelacionCtwo" id="fhpf" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+        
+                </div>
+
+            </div>
+            <!--- FIN FACTURACION Y COBRO--->
+
+            <!--- CALIDAD E IDONEIDAD 2 --->
+            <div class="contenedorOpciones" id="calidadReclamableOpcion">
+
+                <div class="respuestasCalidad" id="contenidocaliad" style="display: none;">
+
+                    <div class="cajaRespuesta" id="">
+                        <label>Fecha de Inicio del Problema: </label>
+                        <input type="date">
+                    </div>
+    
+                    <div class="cajaRespuesta" id="">
+                        <label>Dirección: </label>
+                        <input type="text">
+                    </div>
+    
+                    <div class="cajaRespuesta" id="">
+                        <label>Departamento: </label>
+                        <input type="text">
+                    </div>
+    
+                    <div class="cajaRespuesta" id="">
+                        <label>Provincia: </label>
+                        <input type="text">
+                    </div>
+    
+                    <div class="cajaRespuesta" id="">
+                        <label>Distrito: </label>
+                        <input type="text">
+                    </div>
+    
+                    <div class="cajaRespuesta" id="">
+                        <label>Calle / Jr / Avenida: </label>
+                        <input type="text">
+                    </div>
+    
+                    <div class="cajaRespuesta" id="">
+                        <label>Código de reporte previo: </label>
+                        <input type="text">
+                    </div>
+
+                </div>
+
+            </div>
+            <!--- FIN CALIDAD E IDONEIDAD--->
+
+            <!--- INCUMPLIMIENTO DE CONDICIONES 3 --->
+            <div class="contenedorOpciones" id="incumplimentoReclamble">
+                
+                <div class="respuestaincumplimiento" id="contenidoincumplimientoone" style="display: none;">
+
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Detalle de la condición o tarifa del plan que se estaría incumpliendo: </label>
+                        <input type="text">
+                    </div>
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">fecha desde la cual se presento el incumplimiento: </label>
+                        <input type="text">
+                    </div>
+        
+                </div>
+        
+                <div class="respuestaincumplimiento" id="contenidoincumplimientotwo" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Detalle de la oferta que se estaría incumpliendo: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Oportunidad en el cual se brindo la oferta o promoción: </label>
+                            
+                            <select name="" id="">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="Al momento de contratar">Al momento de contratar</option>
+                                <option value="Posterior a la fecha de contratación">Posterior a la fecha de contratación</option>
+                            </select>
+
+            
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha aproximada: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Canal a traves del cual se brindo la oferta o promoción:</label>
+            
+                            <select name="" id="cbpromocion" onchange="canalPromocion();">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otro">otro</option>
+                            </select>
+
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="txtcpromocion" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Código de otorgamiento de la oferta o promoción: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">fecha desde la cual se presento el incumplimiento: </label>
+                            <input type="date">
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="respuestaincumplimiento" id="contenidoincumplimientothree" style="display: none;">
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Detalle de los atributos y/o beneficios que son descontados por la empresa: </label>
+                        <input type="text">
+                    </div>
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Recibo correspondiente al periodo que se realizo el descuento de atributos y/o beneficios: </label>
+                        <input type="text">
+                    </div>
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Fecha de emision del recibo: </label>
+                        <input type="date">
+                    </div>
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Numero de recibo: </label>
+                        <input type="text">
+                    </div>
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Fecha de vencimiento: </label>
+                        <input type="date">
+                    </div>
+        
+                </div>
+        
+                <div class="respuestaincumplimiento" id="contenidoincumplimientofour" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Detalle de la información omitida o inexacta: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Oportunidad en el cual se brindo la oferta o promoción: </label>
+                            
+                            <select name="" id="">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="Al momento de contratar">Al momento de contratar</option>
+                                <option value="Posterior a la fecha de contratación">Posterior a la fecha de contratación</option>
+                            </select>
+
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha aproximada: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Canal a traves del cual se brindo la oferta o promoción:</label>
+            
+                            <select name="" id="cnPromocionCuatro" onchange="canalPromocionCuatro();">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otro">otro</option>
+                            </select>
+
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="txtcpromocioC" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+        
+                </div>
+
+            </div>
+            <!--- FIN INCUMPLIMIENTO DE CONDICIONES--->
+
+            <!--- FALTA SERVICIO 4 -->
+            <div class="contenedorOpciones" id="servicioReclamable">
+
+                <div class="respuestafservicio" id="contenidofservicioone" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de inicio del problema: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Dirección en el cual se presenta el problema: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Departamento: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Provincia: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Distrito: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Calle / Jr / Av: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero: </label>
+                            <input type="text">
+                        </div>
+        
+                    </div>
+
+                </div>
+        
+                <div class="respuestafservicio" id="contenidofserviciotwo" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de inicio del problema: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Dirección en la cual reside o labora, cercana a un centro penitenciario: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Departamento: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Provincia: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Distrito: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Calle / Jr / Av: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Se adjunta recibo de servicios: </label>
+                            
+                            <select name="" id="adrecibos" onchange="fsrecibo()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="adRecibofs" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="respuestafservicio" id="contenidofsthree" style="display: none;">
+
+                    <div class="columnTwo">
+        
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha que correspondía reactivar el servicio: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha del pago pendiente: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">Lugares o medio del pago pendiente: </label>
+
+                            <select name="" id="mpagos" onchange="mpagosfs()">
+                                <option value="Débito automático">Débito automático</option>
+                                <option value="Oficina del operador">Oficina del operador</option>
+                                <option value="Oficina del banco">Oficina del banco</option>
+                                <option value="Agente de Banco">Agente de Banco</option>
+                                <option value="Aplicativo del Operador">Aplicativo del Operador</option>
+                                <option value="Pagina web del Banco">Pagina web del Banco</option>
+                                <option value="otros">Otros</option>
+                            </select>
+            
+                        </div>
+
+                                        
+                        <div class="cajaContenedorApelacionCtwo" id="txtmpagos" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+
+
+            
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">Se adjunta recibo de pago pendiente: </label>
+                            
+                            <select name="" id="adrecibosPendiente" onchange="fsreciboPendiente()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+            
+
+                        <div class="cajaContenedorApelacionCtwo" id="adReciboPendientefs" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+
+                </div>
+        
+                <div class="respuestafservicio" id="contenidofsfour" style="display: none;">
+        
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Fecha en que se efectuó el cambio de SIM Card que desconoce: </label>
+                        <input type="date">
+                    </div>
+        
+                </div>
+
+            </div>
+            <!---FIN FALTA DE SERVICIO-->
+
+            <!--- INSTALACION ACTIVACION 5 -->
+            <div class="contenedorOpciones" id="instalacionReclamable">
+
+
+                <div class="respuestainstalacion" id="contenidoinstalacionuno" style="display: none;">
+
+                    <div class="cajaRespuesta" id="">
+                        <label for="">Fecha de contratación del servicio: </label>
+                        <input type="date">
+                    </div>
+            
+                </div>
+            
+                <div class="respuestainstalacion" id="contenidoinstalaciontres" style="display: none;">
+            
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                                <label for="">fecha de la solicitud de traslado: </label>
+                                <input type="date">
+                        </div>
+                
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                
+                                <label for="">canal de presentación de la solicitud de traslado: </label>
+                                
+                                <select name="" id="strasladoe" onchange="soltrasladoe()">
+                                    <option value="" selected>Seleccione una Opción</option>
+                                    <option value="Telefónico">Telefónico</option>
+                                    <option value="Oficina">Oficina</option>
+                                    <option value="Web">Web</option>
+                                    <option value="Aplicativo">Aplicativo</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                
+                        </div>
+                
+                        <div class="cajaContenedorApelacionCtwo" id="estraslado" style="display: none;">
+                                <label for="">Especificar: </label>
+                                <input type="text">
+                        </div>
+
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                                <label for="">Código de pedido: </label>
+                                <input type="text">
+                        </div>
+                
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                
+                                <label for="">Se adjunto la solicitud: </label>
+                                
+                                <select name="" id="adsOpcionTraslado" onchange="adsTraslado()">
+                                    <option value="" selected>Seleccione una Opción</option>
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                                </select>
+                
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="adsot" style="display: none;">
+                                <label for="">Adjuntar Solicitud: </label>
+                                <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+            
+                </div>
+            
+            
+                <div class="respuestainstalacion" id="contenidoinstalacioncinco" style="display: none;">
+            
+                    <div class="columnTwo">
+
+
+                    <div class="cajaContenedorApelacionCtwo" id="">
+                        <label for="">Fecha de la contratación o solicitud de traslado: </label>
+                        <input type="date">
+                    </div>
+            
+                    <div class="cajaContenedorApelacionCtwo" id="">
+            
+                        <label for="">canal de presentación de la solicitud de traslado: </label>
+                            
+                        <select name="" id="ctopcionCinco" onchange="canalTrasladoCinco()">
+                            <option value="" selected>Seleccione una Opción</option>
+                            <option value="Telefónico">Telefónico</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Web">Web</option>
+                            <option value="Aplicativo">Aplicativo</option>
+                            <option value="otros">Otros</option>
+                        </select>
+            
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo" id="txtCincoTraslado" style="display: none;">
+                        <label for="">Especificar: </label>
+                        <input type="text">
+                    </div>
+            
+                    <div class="cajaContenedorApelacionCtwo" id="">
+                        <label for="">Código de Pedido: </label>
+                        <input type="text">
+                    </div>
+            
+                    <div class="cajaContenedorApelacionCtwo" id="">
+            
+                        <label for="">Se adjunto la solicitud: </label>
+                        
+                        <select name="" id="opcionCuatroTraslado" onchange="opcionTrasladoCuatro()">
+                            <option value="" selected>Seleccione una Opción</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+            
+                    </div>
+
+                    <div class="cajaContenedorApelacionCtwo" id="asbaja" style="display: none;">
+                        <label for="">Adjuntar Solicitud: </label>
+                        <input type="file" name="" id="">
+                    </div>
+            
+                    <div class="cajaContenedorApelacionCtwo" id="">
+                        <label for="">Monto pendiente de devolución:</label>
+                        <input type="text">
+                    </div>
+
+                    </div>
+            
+                </div>
+
+            </div>
+            <!--- FIN INSTALACION ACTIVACION -->
+
+            <!--- BAJA 6-->
+            <div class="contenedorOpciones" id="bajaReclamables">
+
+                <div class="respuestabaja" id="respuestabajauno" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de la solicitud de baja: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">canal de presentación de la solicitud de traslado: </label>
+                            
+                            <select name="" id="cbaja" onchange="canaldBaja()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otros">Otros</option>
+                            </select>
+            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="txtcanalbaja" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Código de Pedido: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">Se adjunto la solicitud: </label>
+                            
+                            <select name="" id="asb" onchange="adjuntarBaja()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="asbaja" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+        
+                </div>
+
+                <div class="respuestabaja" id="respuestabajados" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de la solicitud de suspension: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">canal de presentación de la solicitud de traslado: </label>
+                            
+                            <select name="" id="ctraslado" onchange="canalTraslado()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otros">Otros</option>
+                            </select>
+            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="txtcanalTraslado" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Código de Pedido: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">Se adjunto la solicitud: </label>
+                            
+                            <select name="" id="asT" onchange="adjuntarTraslado()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="asTraslado" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+
+        
+                </div>
+        
+                <div class="respuestabaja" id="respuestastrescuatro" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Datos de los recibos cuestionado: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de recibo: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de emision: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de vencimiento: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Monto reclamado: </label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+            <!--- FIN BAJA -->
+
+            <!--- CONTRATACION 7 -->
+            <div class="contenedorOpciones" id="contratosReclamable">
+                
+                <div class="respuestascontratos" id="respuestascontratosdos" style="display: none;">
+
+                    <div class="cajaSolaFile" id="">
+                        <label for="">Detalle del serivicio adicional: </label>
+                        <input type="text">
+                    </div>
+        
+                </div>
+        
+                <div class="respuestascontratos" id="respuestascontratostres" style="display: none;">
+        
+                    <div class="cajaSolaFile" id="">
+                        <label for="">Detalle del paquete que se desconoce: </label>
+                        <input type="text">
+                    </div>
+        
+                </div>
+        
+                <div class="respuestascontratos" id="respuestascontratoscuatros" style="display: none;">
+        
+                    <div class="cajaContenedorApelacionCtwo" id="">
+                        <label for="">Datos del recibo que incluye el monto reclamado: </label>
+                        <input type="text">
+                    </div>
+        
+                </div>
+        
+                <div class="respuestacontratos" id="respuestascontratosbase" style="display: none;">
+        
+                    <div class="cajaRespuesta" id="">
+                        <h2 for="" class="tituloContenido">Datos del recibo que incluye el monto reclamado</h2>
+                    </div>
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de recibo: </label>
+                            <input type="number">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de vencimiento: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Monto reclamado: </label>
+                            <input type="number">
+                        </div>
+
+                    </div>
+
+
+        
+                </div>
+        
+            </div>
+            <!--- FIN CONTRATACION -->
+
+            <!--- MIGRACION 8-->
+            <div class="contenedorOpciones" id="migracionReclamable">
+
+                <div class="respuestasmigracion" id="respuestasMigracionBase" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de la solicitud de migración: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+            
+                            <label for="">Canal de presentación de la solicitud de migración: </label>
+                            
+                            <select name="" id="cmigracion" onchange="canalMigracion()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otros">Otros</option>
+                            </select>
+            
+                        </div>
+    
+                        <div class="cajaContenedorApelacionCtwo" id="canaldmigracion" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Código de pedido: </label>
+                            <input type="text">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Plan tarifario al que se solicito migrar: </label>
+                            <input type="text">
+                        </div>
+    
+                        <div class="cajaContenedorApelacionCtwo" id="adsdos">
+            
+                            <label for="">Se adjunto la solicitud: </label>
+                            
+                            <select name="" id="asm" onchange="asolicitud()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+            
+                        </div>
+    
+                        <div class="cajaContenedorApelacionCtwo" id="asmf" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="respuestramigraciobn" id="respuestaMigracionUno" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Motivo de la negativa: </label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+                    
+                </div>
+        
+                <div class="respuestasmigracion" id="respuestasMigracionDos" style="display: none;">
+        
+                    <h2 class="tituloContenido">Datos de los Recibos Cuestionado</h2>
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de recibo: </label>
+                            <input type="number">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de movimiento: </label>
+                            <input type="date">
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="respuestamigracion" id="respuestaMigracionTres" style="display: none;">
+
+                    <h2 class="tituloContenido">Datos de los Recibos Cuestionado</h2>
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de recibo: </label>
+                            <input type="number">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de vencimiento: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Monto reclamado: </label>
+                            <input type="number">
+                        </div>
+
+                    </div>
+        
+                </div>
+        
+                <div class="respuestamigracion" id="respuestaMigracionesCuatro" style="display: none;">
+        
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de recibo: </label>
+                            <input type="number">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de vencimiento: </label>
+                            <input type="date">
+                        </div>
+            
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Monto reclamado: </label>
+                            <input type="number">
+                        </div>
+
+                    </div>
+        
+        
+                </div>
+
+            </div>
+            <!--- FIN MIGRACION -->
+
+            <!--- x OTROS 9 -->
+            <div class="contenedorOpciones" id="xmaterias">
+
+                <div class="respuestaxmaterias" id="xmateriasOne" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de la solicitud de contratación: </label>
+                            <input type="date">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+
+                            <label for="">Canal de la solicitud de contratación: </label>
+
+                            <select name="" id="ccontratacion" onchange="canalContratacion()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="txtcontratacion" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Servicio que desea contratar: </label>
+                            <input type="text">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Plan tarifario que desea contratar: </label>
+                            <input type="text">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="respuestaxmaterias" id="xmateriasTwo" style="display: none;">
+
+                    <div class="columnTwo">
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Numero de recibo: </label>
+                            <input type="number">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de emision: </label>
+                            <input type="date">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de vencimiento: </label>
+                            <input type="date">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Mes del recibo pendiente de entrega: </label>
+                            <input type="text">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Direccion fisica o electronica a la cual correspondia ser notificado:</label>
+                            <input type="text">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="respuestaxmaterias" id="xmateriasThree" style="display: none;">
+
+                    <div class="columnTwo">
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Fecha de la solicitud de la facturacion detallada o llamadas entrantes: </label>
+                            <input type="date">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+
+                            <label for="">Canal de presentacion de la solicitud de la facturacion detallada o llamadas entrantes: </label>
+
+                            <select name="" id="cpresentacion" onchange="cPresentacionFLL()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="Telefónico">Telefónico</option>
+                                <option value="Oficina">Oficina</option>
+                                <option value="Web">Web</option>
+                                <option value="Aplicativo">Aplicativo</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="cpresentacionf" style="display: none;">
+                            <label for="">Especificar: </label>
+                            <input type="text">
+                        </div>
+
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+                            <label for="">Codigo de pedido (opcional): </label>
+                            <input type="text">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+
+                            <label for="">Se adjunta de la solicitud: </label>
+                            
+                            <select name="" id="sasfll" onchange="solicitudfll()">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
+                            </select>
+
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="asfll" style="display: none;">
+                            <label for="">Adjuntar Solicitud: </label>
+                            <input type="file" name="" id="">
+                        </div>
+
+                        <div class="cajaContenedorApelacionCtwo" id="">
+
+                            <label for="">Detalle del pedido: </label>
+
+                            <select name="" id="">
+                                <option value="" selected>Seleccione una Opción</option>
+                                <option value="Facturacion detallada">Facturacion detallada</option>
+                                <option value="lamadas entrantes">lamadas entrantes</option>
+                            </select>
+                            
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!--- OTROS -->
+
+        </div>
+
+
+        <!-- <div class="cajaBotones">
+
+            <div class="btnPre">
+                <button>Cancelar</button>
             </div>
 
-
-        </div>
-
-
-
-        <div class="materiaReclamable">
-            <label for="">Materias Reclamables</label>
-            <select name="" id="materias" onchange="selecion()">
-                <option id="mUno" value="fcs">Facturación y cobro</option>
-                <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
-                <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y promociones</option>
-                <option id="mCuatro" value="falta">Falta de servicio</option>
-                <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio</option>
-                <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio</option>
-                <option id="mSiete" value="contratacion">Contratación no solicitada</option>
-                <option id="mOcho" value="migracion">Migración</option>
-                <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
-            </select>
-        </div>
-
-        <div class="fc" id="fc" style="display: none;">
-
-            <label for="">Problema Especifico</label>
-            <select name="" id="facturados" onchange="facturado()">
-                <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados</option>
-                <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales facturados</option>
-                <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
-                <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier concepto facturado en el recibo cuyo consumo se desconoce</option>
-                <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
-                <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o realizados por documentos distinto al recibo</option>
-                <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado</option>
-                <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento</option>
-            </select>
-
-        </div>
-
-
-        <div class="respuestasfc" id="contenido" style="display: none;">
-
-            <div class="cajaRespuesta" id="a">
-                <label for="">Numero de Recibo</label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Fecha de Emision</label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Fecha de Vencimiento</label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Monto Reclamado</label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Concepto Facturado</label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Tarifa que debió aplicarse </label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Fecha en la que se efectuó el pago</label>
-                <input type="text">
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Modalidad de Pago</label>
-                <input type="radio" name="modalidadp" id="">Oficina del Operador
-                <input type="radio" name="modalidadp" id="">Oficina del Banco
-                <input type="radio" name="modalidadp" id="">Agente del Banco
-            </div>
-
-            <div class="cajaRespuesta" id="">
-                <label for="">Adjunta Hoja de Pago</label>
-                <input type="radio" name="Hpago" id="">Si
-                <input type="radio" name="Hpago" id="">No
+            <div class="btnPre">
+                <button>Finalizar</button>
             </div>
 
         </div>
 
+        <div class="datosCompletos" id="contenedorDatos" style="display: none;">
+            
+            <div class="respuestasUsuario">
 
-        <div class="fc" id="cs" style="display: none;">
-            <label for="calidad">Problema Especifico</label>
-            <select name="" id="calidad">
-                <option value="">Problemas con la prestación del servicio, tales como intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
-            </select>
-        </div>
+                <div class="tituloDatos">
+                    <h3>Datos Completados:</h3>
+                </div>
 
-        <div class="fc" id="op" style="display: none;">
-            <label for="ofertas">Problema Especifico</label>
-            <select name="" id="ofertas">
-                <option value="">Incumplimiento de la aplicación de condiciones y tarifas del plan contratado distintas a las pactadas en el contrato</option>
-                <option value="">Incumplimiento de ofertas o promociones ofrecidas y/o contratadas</option>
-                <option value="">Descuentos no reconocidos de los atributos y/o beneficios del plan contratado, oferta y/o promoción</option>
-                <option value="">Omisión de información o información inexacta sobre cobertura u otras características o limitaciones del servicio</option>
-            </select>
-        </div>
+                <div class="datosContenedorUsuario">
 
-        <div class="fc" id="fs" style="display: none;">
-            <label for="fservicio">Problema Especifico</label>
-            <select name="serivio" id="fservicio">
-                <option value="">Interrupción, suspensión, corte o baja injustificada del servicio o sin observar el procedimiento establecido en la normativa vigente</option>
-                <option value="">Suspensión del servicio por uso prohibido en establecimientos penitenciarios</option>
-                <option value="">Falta de reactivación del servicio pese al pago del recibo</option>
-                <option value=""> Cambio de titularidad del servicio o reposición de SIM Card sin consentimiento del abonado</option>
-            </select>
-        </div>
+                </div>
 
-        <div class="fc" id="ia" style="display: none;">
-            <label for="instalacion">Problema Especifico</label>
-            <select name="" id="instalacion">
-                <option value="">Falta de instalación del servicio fijo</option>
-                <option value="">Falta de activación del servicio móvil</option>
-                <option value="">Falta de traslado del servicio</option>
-                <option value="">Falta de respuesta a la solicitud de trasladado o negativa a la misma</option>
-                <option value="">Falta de devolución de los montos cobrados por instalación, activación o traslado no ejecutados</option>
-            </select>
-        </div>
+            </div>
 
-        <div class="fc" id="sus" style="display: none;">
-            <label for="sb">Problema Especifico</label>
-            <select name="" id="sb">
-                <option value="">Falta de ejecución de la baja</option>
-                <option value="">Falta de ejecución de la suspensión temporal del servicio</option>
-                <option value="">Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla</option>
-                <option value="">Montos cobrados posteriores a la fecha en que se efectuó la suspensión temporal o correspondía efectuarla</option>
-            </select>
-        </div>
+        </div> -->
 
-        <div class="fc" id="ct" style="display: none;">
-            <label for="con">Problema Especifico</label>
-            <select name="" id="con">
-                <option value="">Desconoce contratación del servicio principal (*telefonía fija, acceso a internet, servicio móvil, televisión de paga)</option>
-                <option value="">Desconoce contratación o afiliación a servicios adicionales o suplementarios</option>
-                <option value="">Desconoce adquisición de paquetes de tráfico o señales de programación (*datos, minutos, canales, otros)</option>
-                <option value="">Desconoce contrato de adquisición o financiamiento de equipo terminal cuyo pago es incluido en el recibo como concepto facturable</option>
-            </select>
-        </div>
-
-        <div class="fc" id="mi" style="display: none;">
-            <label for="mig">Problema Especifico</label>
-            <select name="" id="mig">
-                <option value="">Condicionamiento, negativa o falta de respuesta de la solicitud de migración</option>
-                <option value="">Falta de ejecución de la migración dentro del plazo establecido</option>
-                <option value="">Facturación corresponde al plan anterior</option>
-                <option value="">Migración no solicitada</option>
-            </select>
-        </div>
-
-        <div class="fc" id="xma" style="display: none;">
-            <label for="x">Problema Especifico</label>
-            <select name="" id="x">
-                <option value="">Negativa a contratar el servicio</option>
-                <option value="">Falta de entrega de recibos</option>
-                <option value="">Negativa a brindar la facturación detallada o llamadas entrantes</option>
-            </select>
-        </div>
 
     </form>
 
-
-    <script src="condiciones.js"></script>
+<!--<script src="condiciones.js"></script> -->
+    <script src="script.js"></script>
 </body>
 </html>

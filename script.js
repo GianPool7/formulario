@@ -1,5 +1,4 @@
 // para los primeros botones
-
 const formularioPersonal=document.getElementById('formulario_personal');
 const formularioUsuario=document.getElementById('extra_usuario');
 const formularioRepresentante=document.getElementById('representanteDatos');
@@ -8,6 +7,7 @@ function personales() {
     formularioPersonal.style.display="block";
     formularioUsuario.style.display="none";
     formularioRepresentante.style.display="none";
+    const inputs = document.querySelectorAll('.dato');
 }
 
 function usuario() {
@@ -22,17 +22,73 @@ function representante() {
     formularioRepresentante.style.display="flex";
 }
 
-// Tipo de documento
+/* */
 
-/* aasdasdasd*/
+    const dPersonales=document.getElementById("datosPersonales");
+    dPersonales.style.display="none"
+
+/* */
+
+
+/* caja de contenido con las opciones */
+
+function cajaContenedor(opcion){
+
+    const formularioApelacion=document.getElementById("seleccionarApelacion")
+    const formularioQueja=document.getElementById("seleccionarQueja")
+    const formularioReclamo=document.getElementById("seleccionarReclamo")
+    formularioApelacion.style.display="none";
+    formularioQueja.style.display="none";
+    formularioReclamo.style.display="none";
+
+    //
+    const contenedorCajaApelacion=document.getElementById("datosApelacion");
+    const contenedorCajaQueja=document.getElementById("datosQueja");
+    const contenedorCajaReclamo=document.getElementById("datosReclamos");
+    contenedorCajaApelacion.style.display="none";
+    contenedorCajaQueja.style.display="none";
+    contenedorCajaReclamo.style.display="none";
+
+    //
+    dPersonales.style.display="flex"
+    //
+
+    //
+    //
 
 
 
+    
+    switch (opcion) {
+        case "reclamo":
+            formularioReclamo.style.display="flex"
+            //contenedor
+            contenedorCajaApelacion.style.display="none";
+            contenedorCajaQueja.style.display="none";
+            contenedorCajaReclamo.style.display="block";
+            break;
+        case "queja":
+            formularioQueja.style.display="block"
+            //contenedor
+            contenedorCajaApelacion.style.display="none";
+            contenedorCajaQueja.style.display="block";
+            contenedorCajaReclamo.style.display="none";
+            break;
+        case "apelacion":
+            formularioApelacion.style.display="block"
+            //contenedor
+            contenedorCajaApelacion.style.display="block";
+            contenedorCajaQueja.style.display="none";
+            contenedorCajaReclamo.style.display="none";
+            break;
+        default:
+            break;
 
-/* aasdasdasd*/
+    }
 
-// materias reclamables
+}
 
+/* despues 2 selecciones */
 
 function selecion() {
 
@@ -47,11 +103,95 @@ function selecion() {
     const materiasMigracion=document.getElementById("mi");
     const materiasXmaterias=document.getElementById("xma");
     //Opcion
-    const nada=document.get
+
+    // facturacion
+    const contenidoTarifario=document.getElementById("contenidoBase");
+    const contenidoNoProcesados=document.getElementById("contenidoNoProcesado");
+    const contenidoNoFacturados=document.getElementById("contenidoNoFacturado");
+    contenidoTarifario.style.display="none";
+    contenidoNoProcesados.style.display="none";
+    contenidoNoFacturados.style.display="none";
+    //
+
+    //calidad
+    const contenidoci=document.getElementById("contenidocaliad");
+    contenidoci.style.display="none"
+    //
+
+    //incumplimiento
+    const incumplimientoO=document.getElementById("contenidoincumplimientoone");
+    const incumplimientoT=document.getElementById("contenidoincumplimientotwo");
+    const incumplimientoTr=document.getElementById("contenidoincumplimientothree");
+    const incumplimientoF=document.getElementById("contenidoincumplimientofour");
+    incumplimientoO.style.display="none";
+    incumplimientoT.style.display="none";
+    incumplimientoTr.style.display="none";
+    incumplimientoF.style.display="none";
+    //
+
+    //servicio
+    const cfsOne=document.getElementById("contenidofservicioone");
+    const cfsTwo=document.getElementById("contenidofserviciotwo");
+    const cfsThree=document.getElementById("contenidofsthree");
+    const cfsFour=document.getElementById("contenidofsfour");
+    cfsOne.style.display="none";
+    cfsTwo.style.display="none";
+    cfsThree.style.display="none";
+    cfsFour.style.display="none";
+    //
+
+    //activacion
+    const instalacionUnoDos=document.getElementById("contenidoinstalacionuno")
+    const intalacionTresCuatro=document.getElementById("contenidoinstalaciontres")
+    const instalacionCinco=document.getElementById("contenidoinstalacioncinco")
+    instalacionUnoDos.style.display="none";
+    intalacionTresCuatro.style.display="none";
+    instalacionCinco.style.display="none";
+    //
+
+    //baja
+    const bajaOne=document.getElementById("respuestabajauno");
+    const bajaDos=document.getElementById("respuestabajados");
+    const bajaTres=document.getElementById("respuestastrescuatro");
+    bajaOne.style.display="none";
+    bajaDos.style.display="none";
+    bajaTres.style.display="none";
+    //
+
+    // contratacion
+    const contratosUno=document.getElementById("respuestascontratosbase");
+    const contratoDos=document.getElementById("respuestascontratosdos");
+    const contratosTres=document.getElementById("respuestascontratostres");
+    const contratoCuatro=document.getElementById("respuestascontratoscuatros");
+    contratosUno.style.display="none";
+    contratoDos.style.display="none";
+    contratosTres.style.display="none";
+    contratoCuatro.style.display="none";
+    //
+
+    //migracion
+    const migracionUno=document.getElementById("respuestasMigracionBase");
+    const migracionDos=document.getElementById("respuestasMigracionDos");
+    const migracionTres=document.getElementById("respuestaMigracionTres");
+    const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
+    const datoExtraUno=document.getElementById("respuestaMigracionUno");
+    migracionUno.style.display="none";
+    migracionDos.style.display="none";
+    migracionTres.style.display="none";
+    migracionCuatro.style.display="none";
+    datoExtraUno.style.display="none";
+    //
+
+    // otros
+    const xReclamablesUno=document.getElementById("xmateriasOne");
+    const xReclamablesDos=document.getElementById("xmateriasTwo");
+    const xReclamablesTres=document.getElementById("xmateriasThree");
+    xReclamablesUno.style.display="none";
+    xReclamablesDos.style.display="none";
+    xReclamablesTres.style.display="none";
+    //
 
 
-
-    
     switch (materiaR.value) {
 
         case "fcs":
@@ -65,9 +205,6 @@ function selecion() {
             materiasContratacion.style.display = 'none';
             materiasMigracion.style.display = 'none';
             materiasXmaterias.style.display = 'none';
-            //
-
-            
             break;
 
         case "calidad":
@@ -194,9 +331,9 @@ function selecion() {
             //
             break;
     }
-
-
 }
+
+/* facturacion */
 
 function facturado() {
 
@@ -204,203 +341,102 @@ function facturado() {
     const contenidoTarifario=document.getElementById("contenidoBase");
     const contenidoNoProcesados=document.getElementById("contenidoNoProcesado");
     const contenidoNoFacturados=document.getElementById("contenidoNoFacturado");
-    //opciones
-    //const cajaReclamoenFacturacion=document.getElementById("datosReclamos");
-    // const cajaQuejaenFacturacion=document.getElementById("datosQueja");
-    // const cajaApelacionenFacturacion=document.getElementById("datosApelacion");
-    //para la condicion
-    const limpiarPrimeraOpcion=document.getElementById("contenedorFacturacionCobro");
-    const limpiarSegundaOpcion=document.getElementById("calidadReclamableOpcion");
-    const limpiarTerceraOpcion=document.getElementById("incumplimentoReclamble");
-    const limpiarCuartaOpcion=document.getElementById("servicioReclamable");
-    const limpiarQuintaOpcion=document.getElementById("instalacionReclamable");
-    const limpiarSextaOpcion=document.getElementById("bajaReclamables");
-    const limpiarSeptimaOpcion=document.getElementById("contratosReclamable");
-    const limpiarOctavaOpcion=document.getElementById("migracionReclamable");
-    const limpiarNovenaOpcion=document.getElementById("xmaterias");
-
-
+    const opcionDos=document.getElementById("contenidoTarifaodos");
+    
+    contenidoTarifario.style.display="none";
+    contenidoNoProcesados.style.display="none";
+    contenidoNoFacturados.style.display="none";
+    opcionDos.style.display="none";
 
     switch (oFacturado.value) {
 
         case "calculo":
             contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            //contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
         
         case "tarifa":
             contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
+            opcionDos.style.display="block"
             break;
 
         case "reconexion":
             contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
 
         case "dmonto":
             contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
         
         case "noprocesado":
             contenidoTarifario.style.display="block";
             contenidoNoProcesados.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
 
         case "nfacturados":
-            contenidoNoProcesados.style.display="none";
             contenidoTarifario.style.display="block";
             contenidoNoFacturados.style.display="block";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
 
         case "cequipos":
             contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
         
         case "incremento":
             contenidoTarifario.style.display="block";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            contenidoci.style.display="none";
-            //
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
     
         default:
-            contenidoTarifario.style.display="none";
-            contenidoNoFacturados.style.display="none";
-            contenidoNoProcesados.style.display="none";
-            //
-            limpiarPrimeraOpcion.style.display="none"
-            limpiarSegundaOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
     }
 
 }
+
+function hojaFacturado(){
+    const hoja=document.getElementById("hpfacturado").value;
+    const fileFacturacion=document.getElementById("fhpf");
+    fileFacturacion.style.display="none";
+
+    switch (hoja) {
+        case "si":
+            fileFacturacion.style.display="block"
+            break;
+    
+        default:
+            fileFacturacion.style.display="none";
+            break;
+    }
+
+}
+
+
+
+/* Fin de facturacion */
+
+/* calidad */
 
 function calidad() {
 
     const oCalidad=document.getElementById("calidadidoneidad");
     const contenidoci=document.getElementById("contenidocaliad");
-    const contenidoTarifario=document.getElementById("contenidoBase");
     //calidad
+    contenidoci.style.display="none"
 
     switch (oCalidad.value) {
 
         case "calidaduno":
-            contenidoTarifario.style.display="none";
             contenidoci.style.display="block"
-            //
-            limpiarPrimeraOpcion.style.display="none"
-            limpiarTerceraOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
     
         default:
-            contenidoTarifario.style.display="none";
-            contenidoci.style.display="none"
-            //
             break;
     }
 
+
 }
+
+/* Fin de calidad */
+
+/* incumplimiento */
 
 function incumpliento() {
     
@@ -409,73 +445,75 @@ function incumpliento() {
     const incumplimientoT=document.getElementById("contenidoincumplimientotwo");
     const incumplimientoTr=document.getElementById("contenidoincumplimientothree");
     const incumplimientoF=document.getElementById("contenidoincumplimientofour");
-    // incumplimiento    
-    //para la condicion
-    const limpiarPrimeraOpcion=document.getElementById("contenedorFacturacionCobro");
-    const limpiarSegundaOpcion=document.getElementById("calidadReclamableOpcion");
-    const limpiarCuartaOpcion=document.getElementById("servicioReclamable");
-    const limpiarQuintaOpcion=document.getElementById("instalacionReclamable");
-    const limpiarSextaOpcion=document.getElementById("bajaReclamables");
-    const limpiarSeptimaOpcion=document.getElementById("contratosReclamable");
-    const limpiarOctavaOpcion=document.getElementById("migracionReclamable");
-    const limpiarNovenaOpcion=document.getElementById("xmaterias");
-
+    incumplimientoO.style.display="none";
+    incumplimientoT.style.display="none";
+    incumplimientoTr.style.display="none";
+    incumplimientoF.style.display="none";
 
     switch (oincumplimiento.value) {
 
         case "incumplimientoUNO":
             incumplimientoO.style.display="block"
-            incumplimientoT.style.display="none"
-            incumplimientoTr.style.display="none"
-            incumplimientoF.style.display="none"
-            //
-            limpiarPrimeraOpcion.style.display="none"
-            limpiarSegundaOpcion.style.display="none"
-            limpiarCuartaOpcion.style.display="none"
-            limpiarQuintaOpcion.style.display="none"
-            limpiarSextaOpcion.style.display="none"
-            limpiarSeptimaOpcion.style.display="none"
-            limpiarOctavaOpcion.style.display="none"
-            limpiarNovenaOpcion.style.display="none"
             break;
     
         case "incumplimientoDOS":
             incumplimientoT.style.display="block"
-            incumplimientoO.style.display="none"
-            incumplimientoTr.style.display="none"
-            incumplimientoF.style.display="none"
             //
             break;
 
         case "incumplimientoTRES":
             incumplimientoTr.style.display="block"
-            incumplimientoO.style.display="none"
-            incumplimientoT.style.display="none"
-            incumplimientoF.style.display="none"
             //
             break;
     
         case "incumplimientoCUATRO":
             incumplimientoF.style.display="block"
-            incumplimientoO.style.display="none"
-            incumplimientoT.style.display="none"
-            incumplimientoTr.style.display="none"
             //
             break;
         
-
-
         default:
-            incumplimientoF.style.display="none"
-            incumplimientoO.style.display="none"
-            incumplimientoT.style.display="none"
-            incumplimientoTr.style.display="none"
             //
             break;
     }
 
 
 }
+
+function canalPromocion() {
+    const canalPromocion=document.getElementById("cbpromocion").value;
+    const txtPromocion=document.getElementById("txtcpromocion");
+
+    switch (canalPromocion) {
+        case "otro":
+            txtPromocion.style.display="block";
+            break;
+    
+        default:
+            txtPromocion.style.display="none";
+            break;
+    }
+
+}
+
+function canalPromocionCuatro() {
+    const cPromocionC=document.getElementById("cnPromocionCuatro").value;
+    const txtPromocionC=document.getElementById("txtcpromocioC");
+
+    switch (cPromocionC) {
+        case "otro":
+            txtPromocionC.style.display="block";
+            break;
+    
+        default:
+            txtPromocionC.style.display="none";
+            break;
+    }
+}
+
+/* Fin de incumplimiento */
+
+
+/* falta de servicio */
 
 function faltaServicios() {
 
@@ -484,131 +522,288 @@ function faltaServicios() {
     const cfsTwo=document.getElementById("contenidofserviciotwo");
     const cfsThree=document.getElementById("contenidofsthree");
     const cfsFour=document.getElementById("contenidofsfour");
+    cfsOne.style.display="none";
+    cfsTwo.style.display="none";
+    cfsThree.style.display="none";
+    cfsFour.style.display="none";
     
     switch (fServicio.value) {
 
         case "servicioone":
             cfsOne.style.display="block";
-            cfsTwo.style.display="none";
-            cfsThree.style.display="none";
-            cfsFour.style.display="none";
             break;
 
         case "serviciotwo":
             cfsTwo.style.display="block";
-            cfsOne.style.display="none";
-            cfsThree.style.display="none";
-            cfsFour.style.display="none";
             break;
 
         case "serviciothree":
             cfsThree.style.display="block";
-            cfsTwo.style.display="none";
-            cfsOne.style.display="none";
-            cfsFour.style.display="none";
             break;
 
         case "serviciofour":
             cfsFour.style.display="block";
-            cfsTwo.style.display="none";
-            cfsOne.style.display="none";
-            cfsThree.style.display="none";
             break;
     
         default:
-            cfsOne.style.display="none";
-            cfsTwo.style.display="none";
-            cfsThree.style.display="none";
-            cfsFour.style.display="none";
             break;
     }
 }
+
+function fsrecibo(){
+    const adjuntaRecibo=document.getElementById("adrecibos").value;
+    const adjuntarElRecibo=document.getElementById("adRecibofs");
+
+    switch (adjuntaRecibo) {
+        case "si":
+            adjuntarElRecibo.style.display="block";
+            break;
+    
+        default:
+            adjuntarElRecibo.style.display="none";
+            break;
+    }
+
+}
+
+function mpagosfs() {
+    const mediosPagos=document.getElementById("mpagos").value;
+    const medioPagoEspecifique=document.getElementById("txtmpagos");
+
+    switch (mediosPagos) {
+        case "otros": 
+            medioPagoEspecifique.style.display="block";
+            break;
+    
+        default:
+            medioPagoEspecifique.style.display="none";
+            break;
+    }
+}
+
+function fsreciboPendiente() {
+    const recibosPendientes=document.getElementById("adrecibosPendiente").value;
+    const fileRPendiente=document.getElementById("adReciboPendientefs");
+
+    switch (recibosPendientes) {
+        case "si":
+            fileRPendiente.style.display="block";
+            break;
+    
+        default:
+            fileRPendiente.style.display="none";
+            break;
+    }
+}
+
+/* fin de falta de servicio */
+
+/* activaciones */
 
 function instalaciones() {
     const instalacionOpcion=document.getElementById("instalacion")
     const instalacionUnoDos=document.getElementById("contenidoinstalacionuno")
     const intalacionTresCuatro=document.getElementById("contenidoinstalaciontres")
     const instalacionCinco=document.getElementById("contenidoinstalacioncinco")
+    instalacionUnoDos.style.display="none";
+    intalacionTresCuatro.style.display="none";
+    instalacionCinco.style.display="none";
 
     switch (instalacionOpcion.value) {
         case "instalacionesUno":
             instalacionUnoDos.style.display="block";
-            intalacionTresCuatro.style.display="none"
-            instalacionCinco.style.display="none"
             break;
 
         case "instalacionesDos":
             instalacionUnoDos.style.display="block";
-            intalacionTresCuatro.style.display="none"
-            instalacionCinco.style.display="none"
             break;
 
         case "instalacionesTres":
             intalacionTresCuatro.style.display="block";
-            instalacionUnoDos.style.display="none"
-            instalacionCinco.style.display="none"
             break;
             
         case "instalacionesCuatro":
             intalacionTresCuatro.style.display="block";
-            instalacionUnoDos.style.display="none"
-            instalacionCinco.style.display="none"
             break;
     
         case "instalacionesCinco":
             instalacionCinco.style.display="block";
-            intalacionTresCuatro.style.display="none";
-            instalacionUnoDos.style.display="none"
             break;
 
         default:
-            instalacionCinco.style.display="none";
-            intalacionTresCuatro.style.display="none";
-            instalacionUnoDos.style.display="none"
-            instalacionCinco.style.display="none"
             break;
     }
 }
+
+function soltrasladoe() {
+    const opTraslado=document.getElementById("strasladoe").value;
+    const espTraslado=document.getElementById("estraslado");
+
+    switch (opTraslado) {
+        case "otros":
+            espTraslado.style.display="block"
+            break;
+    
+        default:
+            espTraslado.style.display="none";
+            break;
+    }
+}
+
+function adsTraslado() {
+    const adsopcion=document.getElementById("adsOpcionTraslado").value;
+    const adjuntarSolicitud=document.getElementById("adsot");
+
+    switch (adsopcion) {
+        case "si":
+            adjuntarSolicitud.style.display="block";
+            break;
+    
+        default:
+            adjuntarSolicitud.style.display="none";
+            break;
+    }
+
+}
+
+function canalTrasladoCinco() {
+    const opcionCtraslado=document.getElementById("ctopcionCinco").value;
+    const textoTraslado=document.getElementById("txtCincoTraslado");
+
+    switch (opcionCtraslado) {
+        case "otros":
+            textoTraslado.style.display="block";
+            break;
+    
+        default:
+            textoTraslado.style.display="none"
+            break;
+    }
+
+}
+
+function opcionTrasladoCuatro() {
+    const opcionS=document.getElementById("opcionCuatroTraslado").value;
+    const fileCuatro=document.getElementById("asbaja")
+
+    switch (opcionS) {
+        case "si":
+            fileCuatro.style.display="block";
+            break;
+    
+        default:
+            fileCuatro.style.display="none";
+            break;
+    }
+
+}
+
+
+/* fin de activaciones */
+
+/* baja */
 
 function baja() {
     const opcionBaja=document.getElementById("sb");
     const bajaOne=document.getElementById("respuestabajauno");
     const bajaDos=document.getElementById("respuestabajados");
     const bajaTres=document.getElementById("respuestastrescuatro");
+    bajaOne.style.display="none";
+    bajaDos.style.display="none";
+    bajaTres.style.display="none";
 
     switch (opcionBaja.value) {
         case "bajaUno":
             bajaOne.style.display="block";
-            bajaDos.style.display="none";
-            bajaTres.style.display="none";
             break;
 
         case "bajaDos":
-            bajaOne.style.display="none";
             bajaDos.style.display="block";
-            bajaTres.style.display="none";
             break;
 
         case "bajaTres":
             bajaOne.style.display="block";
-            bajaDos.style.display="none";
             bajaTres.style.display="block";   
             break;
 
         case "bajaCuatro":
                 
-            bajaOne.style.display="none";
             bajaDos.style.display="block";
             bajaTres.style.display="block";   
             break;
     
-        default:
-            bajaOne.style.display="none";
-            bajaDos.style.display="none";
-            bajaTres.style.display="none";   
+        default:  
             break;
     }
 }
+
+
+function canaldBaja() {
+    const canalBaja=document.getElementById("cbaja").value;
+    const especificarBaja=document.getElementById("txtcanalbaja")
+
+    switch (canalBaja) {
+        case "otros":
+            especificarBaja.style.display="block";
+            break;
+    
+        default:
+            especificarBaja.style.display="none";
+            break;
+    }
+}
+
+function adjuntarBaja() {
+    const opcionBaja=document.getElementById("asb").value;
+    const adjuntoBaja=document.getElementById("asbaja")
+
+
+    switch (opcionBaja) {
+        case "si":
+            adjuntoBaja.style.display="block";
+            break;
+    
+        default:
+            adjuntoBaja.style.display="none";
+            break;
+    }
+
+}
+
+function canalTraslado() {
+    const sTraslado=document.getElementById("ctraslado").value;
+    const txtTraslado=document.getElementById("txtcanalTraslado");
+
+    switch (sTraslado) {
+        case "otros":
+            txtTraslado.style.display="block";
+            break;
+    
+        default:
+            txtTraslado.style.display="none";
+            break;
+    }
+}
+
+function adjuntarTraslado() {
+    const asTraslado=document.getElementById("asT").value;
+    const fileTraslado=document.getElementById("asTraslado");
+
+    switch (asTraslado) {
+        case "si":
+            fileTraslado.style.display="block";
+            break;
+    
+        default:
+            fileTraslado.style.display="none";
+            break;
+    }
+
+}
+
+/* fin de baja */
+
+/* contratacion */
 
 function contratos() {
 
@@ -617,48 +812,41 @@ function contratos() {
     const contratoDos=document.getElementById("respuestascontratosdos");
     const contratosTres=document.getElementById("respuestascontratostres");
     const contratoCuatro=document.getElementById("respuestascontratoscuatros");
-
+    contratosUno.style.display="none";
+    contratoDos.style.display="none";
+    contratosTres.style.display="none";
+    contratoCuatro.style.display="none";
 
     switch (contratoOpcion.value) {
         case "conuno":
             contratosUno.style.display="block";
-            contratoDos.style.display="none";
-            contratosTres.style.display="none";
-            contratoCuatro.style.display="none";
             
             break;
         
         case "condos":
             contratosUno.style.display="block";
             contratoDos.style.display="block";
-            contratosTres.style.display="none";
-            contratoCuatro.style.display="none";
             break;
 
         case "contres":
             contratosUno.style.display="block";
-            contratoDos.style.display="none";
             contratosTres.style.display="block";
-            contratoCuatro.style.display="none";
             break;
         
         case "concuatro":
             contratosUno.style.display="block";
-            contratoDos.style.display="none";
-            contratosTres.style.display="none";
-            contratoCuatro.style.display="none";
             break;
     
         default:
-            contratosUno.style.display="none";
-            contratoDos.style.display="none";
-            contratosTres.style.display="none";
-            contratoCuatro.style.display="none";
             break;
     }
 
 
 }
+
+/* fin de contratacion */
+
+/* Migracion */
 
 function migracionReclamable() {
 
@@ -668,50 +856,79 @@ function migracionReclamable() {
     const migracionTres=document.getElementById("respuestaMigracionTres");
     const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
     const datoExtraUno=document.getElementById("respuestaMigracionUno");
+    migracionUno.style.display="none";
+    migracionDos.style.display="none";
+    migracionTres.style.display="none";
+    migracionCuatro.style.display="none";
+    datoExtraUno.style.display="none";
+    const aDatos=document.getElementById("adsdos");
+    aDatos.style.display="none"
     
     switch (opcionMigracion.value) {
         case "migracionOne":
             migracionUno.style.display="block";
             datoExtraUno.style.display="block";
-            migracionDos.style.display="none";
-            migracionTres.style.display="none";
-            migracionCuatro.style.display="none";
+            aDatos.style.display="block";
+
             break;
 
         case "migracionTwo":
             migracionUno.style.display="block";
             migracionDos.style.display="block";
-            migracionTres.style.display="none";
-            migracionCuatro.style.display="none";
-            datoExtraUno.style.display="none"
+            aDatos.style.display="block";
             break;
 
         case "migracionThree":
             migracionUno.style.display="block";
-            migracionDos.style.display="none";
             migracionTres.style.display="block";
-            migracionCuatro.style.display="none";
-            datoExtraUno.style.display="none"
+            aDatos.style.display="none";
             break;
 
         case "migracionFour":
-            migracionUno.style.display="none";
-            migracionDos.style.display="none";
-            migracionTres.style.display="none";
             migracionCuatro.style.display="block";
-            datoExtraUno.style.display="none"
+            aDatos.style.display="none";
             break;
     
         default:
-            migracionUno.style.display="none";
-            migracionDos.style.display="none";
-            migracionTres.style.display="none";
-            migracionCuatro.style.display="none";
-            datoExtraUno.style.display="none"
             break;
     }
 
 }
+
+function canalMigracion() {
+    const canalMigracion=document.getElementById("cmigracion").value;
+    const eMigracion=document.getElementById("canaldmigracion");
+
+    switch (canalMigracion) {
+        case "otros":
+            eMigracion.style.display="block";
+            break;
+    
+        default:
+            eMigracion.style.display="none";
+            break;
+    }
+}
+
+function asolicitud() {
+    const docM=document.getElementById("asm").value;
+    const docF=document.getElementById("asmf");
+
+    switch (docM) {
+        case "si":
+            docF.style.display="block";        
+            break;
+    
+        default:
+            docF.style.display="none";       
+            break;
+    }
+}
+
+
+/* fin de migraciones */
+
+/* OTROS */
 
 function xMaterias() {
 
@@ -719,86 +936,85 @@ function xMaterias() {
     const xReclamablesUno=document.getElementById("xmateriasOne");
     const xReclamablesDos=document.getElementById("xmateriasTwo");
     const xReclamablesTres=document.getElementById("xmateriasThree");
-    //opcion
-    //const cFacturacion=document.getElementById("contenedorFacturacionCobro");
-    const cCalidad=document.getElementById("contenidocaliad");
-    const cIncumplimiento=document.getElementById("incumplimentoReclamble");
-    const cServicio=document.getElementById("servicioReclamable");
-    const cInstalaciones=document.getElementById("instalacionReclamable");
-    const cBaja=document.getElementById("bajaReclamables");
-    const cContratos=document.getElementById("contratosReclamable");
-    const cMigracion=document.getElementById("migracionReclamable");
+    xReclamablesUno.style.display="none";
+    xReclamablesDos.style.display="none";
+    xReclamablesTres.style.display="none";
+
 
     
     switch (xMateriasReclamables.value) {
 
         case "xMateriasROne":
             xReclamablesUno.style.display="block";
-            xReclamablesDos.style.display="none";
-            xReclamablesTres.style.display="none";
-            //
-            cCalidad.style.display="none";
-            cIncumplimiento.style.display="none";
-            //cFacturacion.style.display="none";
-            cServicio.style.display="none";
-            cInstalaciones.style.display="none";
-            cBaja.style.display="none";
-            cContratos.style.display="none";
-            cMigracion.style.display="none";
-
             break;
 
         case "xMateriasRTwo":
-            xReclamablesUno.style.display="none";
             xReclamablesDos.style.display="block";
-            xReclamablesTres.style.display="none";
-            //
-            cCalidad.style.display="none";
-            cIncumplimiento.style.display="none";
-            //cFacturacion.style.display="none";
-            cServicio.style.display="none";
-            cInstalaciones.style.display="none";
-            cBaja.style.display="none";
-            cContratos.style.display="none";
-            cMigracion.style.display="none";
-
             break;
 
         case "xMateriasRThree":
-            xReclamablesUno.style.display="none";
-            xReclamablesDos.style.display="none";
             xReclamablesTres.style.display="block";
-            //
-            cCalidad.style.display="none";
-            cIncumplimiento.style.display="none";
-            //cFacturacion.style.display="none";
-            cServicio.style.display="none";
-            cInstalaciones.style.display="none";
-            cBaja.style.display="none";
-            cContratos.style.display="none";
-            cMigracion.style.display="none";
-
             break;
     
         default:
-            xReclamablesUno.style.display="none";
-            xReclamablesDos.style.display="none";
-            xReclamablesTres.style.display="none";
-            //
-            cCalidad.style.display="none";
-            cIncumplimiento.style.display="none";
-            //cFacturacion.style.display="none";
-            cServicio.style.display="none";
-            cInstalaciones.style.display="none";
-            cBaja.style.display="none";
-            cContratos.style.display="none";
-            cMigracion.style.display="none";
-
             break;
     }
 
 
 }
+
+function canalContratacion() {
+    const contratacion=document.getElementById("ccontratacion").value;
+    const especificar=document.getElementById("txtcontratacion");
+
+    switch (contratacion) {
+        case "otros":
+            especificar.style.display="block";
+            break;
+    
+        default:
+            especificar.style.display="none";
+            break;
+    }
+
+}
+
+function cPresentacionFLL() {
+    const cpfll=document.getElementById("cpresentacion").value;
+    const presentacionfll=document.getElementById("cpresentacionf");
+
+    switch (cpfll) {
+        case "otros":
+            presentacionfll.style.display="block";
+            break;
+    
+        default:
+            presentacionfll.style.display="none";
+            break;
+    }
+
+}
+
+function solicitudfll() {
+    const solicitdu=document.getElementById("sasfll").value;
+    const dfll=document.getElementById("asfll");
+
+    switch (solicitdu) {
+        case "si":
+            dfll.style.display="block";
+            break;
+    
+        default:
+            dfll.style.display="none";
+            break;
+    }
+
+}
+
+/* FIN DE OTROS */
+
+
+/* Fin de reclamo */
 
 /* queja */
 
@@ -907,6 +1123,102 @@ function queja() {
 
 }
 
+function canal() {
+    const cPresentacion=document.getElementById("canalPresentacion").value;
+    const cQueja = document.getElementById("canalQueja");
+
+
+    switch (cPresentacion) {
+        case "otro":
+            cQueja.style.display="block"
+            break;
+    
+        default:
+            cQueja.style.display="none"
+            break;
+    }
+
+}
+
+function adjuntaPruebaQueja() {
+    const aPrueba=document.getElementById("adjuntaPrueba").value;
+    const pQueja=document.getElementById("pruebaQuejas")
+
+    switch (aPrueba) {
+        case "si":
+            pQueja.style.display="block"
+            break;
+    
+        default:
+            pQueja.style.display="none"
+            break;
+    }
+
+}
+
+function constanciaPago() {
+    const cPagoQueja=document.getElementById("constanciaPagoQueja").value;
+    const cpago=document.getElementById("constanciaPago");
+
+    switch (cPagoQueja) {
+        case "si":
+            cpago.style.display="block";
+            break;
+    
+        default:
+            cpago.style.display="none";
+            break;
+    }
+}
+
+function pagoCuenta() {
+    
+    const pcQueja=document.getElementById("pagoCuentaQueja").value;
+    const dpQueja=document.getElementById("dpagocuenta");
+
+    switch (pcQueja) {
+        case "otros":
+            dpQueja.style.display="block"
+            break;
+    
+        default:
+            dpQueja.style.display="none"
+            break;
+    }
+
+}
+
+function capturaQueja() {
+    const cQueja=document.getElementById("capturaQuejaCinco").value;
+    const mprobatorio=document.getElementById("mpQueja");
+
+    switch (cQueja) {
+        case "si":
+            mprobatorio.style.display="block";
+            break;
+    
+        default:
+            mprobatorio.style.display="none";
+            break;
+    }
+}
+
+function defectos() {
+    const dPruebaTramitacion=document.getElementById("dtramitacion").value;
+    const dptramitacion=document.getElementById("dptramitacion")
+
+    switch (dPruebaTramitacion) {
+        case "si":
+            dptramitacion.style.display="block"
+            break;
+    
+        default:
+            dptramitacion.style.display="none"
+            break;
+    }
+}
+
+/* Fin de queja */
 
 /* Apelacion */
 
@@ -972,6 +1284,7 @@ function apelaciones() {
             //
             cajaQuejaenApelacion.style.display="none";
             cajaReclamoenApelacion.style.display="none";
+            //
             break;
         case "apelacionFive":
             apelacionoOne.style.display="none"
@@ -1013,77 +1326,82 @@ function apelaciones() {
     
 }
 
-/* caja de contenido con las opciones */
+function apelacionCuatro() {
+    const aCuatro=document.getElementById("apelacionopcioncuatro").value;
+    const cCuatro=document.getElementById("apelacionCuatroSi");
 
-function cajaContenedor(opcion){
+    cCuatro.style.display="none";
 
-    const formularioApelacion=document.getElementById("seleccionarApelacion")
-    const formularioQueja=document.getElementById("seleccionarQueja")
-    const formularioReclamo=document.getElementById("seleccionarReclamo")
-
-    formularioApelacion.style.display="none";
-    formularioQueja.style.display="none";
-    formularioReclamo.style.display="none";
-
-    //
-
-    const contenedorCajaApelacion=document.getElementById("datosApelacion");
-    const contenedorCajaQueja=document.getElementById("datosQueja");
-    const contenedorCajaReclamo=document.getElementById("datosReclamos");
-
-    contenedorCajaApelacion.style.display="none";
-    contenedorCajaQueja.style.display="none";
-    contenedorCajaReclamo.style.display="none";
-
+    switch (aCuatro) {
+        case "si":
+            cCuatro.style.display="block"
+            break;
     
-    switch (opcion) {
-        case "reclamo":
-            formularioReclamo.style.display="flex"
-            //contenedor
-            contenedorCajaApelacion.style.display="none";
-            contenedorCajaQueja.style.display="none";
-            contenedorCajaReclamo.style.display="block";
-            break;
-        case "queja":
-            formularioQueja.style.display="block"
-            //contenedor
-            contenedorCajaApelacion.style.display="none";
-            contenedorCajaQueja.style.display="block";
-            contenedorCajaReclamo.style.display="none";
-            break;
-        case "apelacion":
-            formularioApelacion.style.display="block"
-            //contenedor
-            contenedorCajaApelacion.style.display="block";
-            contenedorCajaQueja.style.display="none";
-            contenedorCajaReclamo.style.display="none";
-            break;
         default:
             break;
+    }
 
+}
+
+function apelacionCinco() {
+    const aCinco=document.getElementById("apelacionOpcioncinco").value;
+    const cCinco=document.getElementById("apelacionCincoSi");
+
+    cCinco.style.display="none";
+
+    switch (aCinco) {
+        case "si":
+            cCinco.style.display="block"
+            break;
+    
+        default:
+            break;
     }
 
 }
 
 
+/* Fin de apelacion */
 
-/* funcion para mostrar la tarjeta */
+/* CONDICION DE NUMERO DE DNI */
+
+function tipoDocumento() {
+
+    const tDocumento=document.getElementById("tipodedocumento").value;
+    const nDocumento=document.getElementById("numDoc");
+
+    let cantidadMaxima;
+
+    switch (tDocumento) {
+        case "dni":
+            cantidadMaxima = 8;
+            break;
+        case "ruc":
+            cantidadMaxima = 11;
+            break;
+        case "pas":
+            cantidadMaxima = 12;
+            break;
+        case "ce":
+            cantidadMaxima = 20;
+            break;
+        case "xdoc":
+            cantidadMaxima = 20;
+            break;
+        default:
+            cantidadMaxima = 0; // Sin límite
+            break;
+    }
+
+    nDocumento.maxLength=cantidadMaxima;
+    nDocumento.value="";
+
+
+}
+
+
+/*  */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*  */
