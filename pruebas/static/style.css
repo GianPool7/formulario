@@ -1,542 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* font-family: "Montserrat"; */
-    font-family: "Exo 2";
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-/**/
-
-
-/**/
-
-.quien{
-    padding: 20px;
-    gap: 20px;
-}
-
-.back{
-    background-color: red;
+/*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
+.contenedorRQA{
     padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-}
-
-/* titulo de contenido*/
-.titulosContenido{
-    padding: 10px;
-}
-
-.contenidoQRA{
     display: flex;
     justify-content: center;
-    padding: 10px;
 }
 
-.selecionQRA{
+.cajaContenedor{
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    width: 40%;
-}
-
-.dtp{
-    text-align: center;
-    padding: 20px;
-}
-
-/**/
-
-/* glosarios si funciona xd*/
-.contenedorGlosario{
-    padding: 20px;
-}
-.glosario{
-    background-color: #aed6f1;
-    border-radius: 15px;
-    display: block;
-    margin: auto;
-    width: 40%;
-    padding: 10px;
-    line-height: 30px;
-}
-
-
-
-/**/
-
-.datoServicio{
-    background-color: red;
-    display: flex;
-    
-}
-
-/**/
-
-
-.documento{
-    display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: space-around;
-    width: auto;
-}
-
-.direccion{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: auto;
-}
-
-.autoriza{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.tipo{
-    background-color: green;
-}
-
-
-/**/
-
-select{
-    padding: 20px;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 10px;
-    background-color: aliceblue;
-}
-
-.num{
-    background-color: purple;
+    width: 80%;
     padding: 10px;
-}
-
-input{
-    padding: 20px;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 10px;
-    background-color: aliceblue;
-}
-
-input[type=text]:hover{
-    box-shadow: 5px 5px 5px black;
-}
-
-.archivo{
-    width: 81%;
-    display: block;
-    margin: auto;
-}
-
-
-.autoriza{
-    padding: 10px;
-}
-
-.opcion{
-    padding: 10px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.textolabel{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.opcionCorreo{
-    display: flex;
-    justify-content: space-around;
-}
-
-/**/
-
-.respuestasfcnoprocesado{
-    padding: 10px;
-}
-
-.radiocheck{
-    padding: 20px;
-}
-
-.contenidoradio{
-    padding: 20px;
     gap: 20px;
-    text-align: center;
-    width: 80%;
-    background-color: blue;
-}
-
-.cajaradio{
-    background-color: green;
-    padding: 10px;
-    border-radius: 20px;
-    width: 30%;
-}
-
-/* 2da parte*/
-
-.seleccionarOpcciones{
-    display: none;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
-
-}
-
-.materiaReclamableUnica{
-    padding: 10px;
-    width: 80%;
-    display: block;
-    margin: auto;
-}
-
-.materiaReclamable{
-    padding: 10px;
-    width: 30%;
-}
-
-.fc{
-    padding: 10px;
-    width: 30%;
-}
-
-option{
-    width: 30%;
-}
-
-/*contenedor de respuestas*/
-
-.contenedorApelacion{
-    padding: 20px;
-}
-
-.contenedorQueja{
-    padding: 20px;
-}
-
-.contenedorReclamo{
-    background-color: green;
-    padding: 20px;
 }
 
 .contenedorOpciones{
-    width: 38%;
-    display: block;
-    margin: auto;
-}
-
-.respuestasfc{
-    display: block;
-    margin: auto;
-    width: 90%;
-}
-
-.cajaRespuesta{
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.cajas{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px;
-}
-
-/* quejas  - reclamos - apelaciones*/
-
-.cajasopciones{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px;
-}
-
-.contenedor{
-    background-color: whitesmoke;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
+    background-color: #5B7A94;
     width: 20%;
-    margin: 10px;
-}
-
-.contenedor img{
-    width: 50%;
-    display: block;
-    margin: auto;
-    padding: 20px;
-}
-
-.contenedor p{
-    text-align: center;
-    padding: 20px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.respuestasCalidad{
+    padding: 15px;
     display: flex;
-    justify-content: center;
-}
-
-
-/* no me recuerdo xd xd xd xd xd*/
-
-.seleccionMultipleReclamo{
-    display: flex;
-    justify-content: center;
-}
-
-
-/**/
-
-.cajaContenedor{
-    width: 68%;
-    display: block;
-    margin: auto;
-}
-
-.cajaColumnTwo{
-    margin-top: 20px;
-}
-
-.columnTwo{
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-}
-
-.cajaContenedorApelacionCtwo{
-    margin: 10px;
-    width: 45%;
-}
-
-/**/
-
-
-.cajaContenedor{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.contenedorRespuestas{
-    padding: 10px;
-    width: 40%;
-    margin: 5px;
-}
-
-.Sola{
-    width: 90%;
-    display: block;
-    margin: auto;
-    padding: 5px;
-}
-
-/**/
-
-.cajaSolaFile{
-    width: 50%;
-    display: block;
-    margin: auto;
-}
-
-/**/
-
-/*Mejorando los css*/
-
-.estructuradoble{
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-
-
-/**/
-
-/*fin 2da parte*/
-
-
-/**/
-
-.cajaBotones{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px;
-}
-
-.btnPre{
-    padding: 5px;
-}
-
-button{
-    padding: 20px;
-    outline: none;
-    border-style: none;
     border-radius: 20px;
-    cursor: pointer;
-    background-color: blue;
     color: white;
-    font-weight: bold;
+    cursor: pointer;
+}
+
+.contenedorOpciones label{
     font-size: 20px;
-}
-
-button:hover{
-    background-color: rgb(0, 0, 129);
-}
-
-
-/**/
-
-.datosCompletos{
-    padding: 10px;
-}
-
-.respuestasUsuario{
-    display: block;
-    margin: auto;
-    width: 80%;
-    text-align: center;
-    padding: 10px;
-    background-color: green;
-}
-
-.tituloDatos{
-    padding: 10px;
-}
-
-/**/
-
-.tituloContenido{
-    color: #e74c3c;
-    text-align: center;
-    padding: 20px;
-}
-
-/* cambiando el diseño general*/
-
-
-
-/* los radios optimizando*/
-
-.contenedorRadiosRQA{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.radios{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 50%;
-    padding: 20px;
-    color: white;
     font-weight: bold;
 }
 
-.radioRQA{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: gray;
-    width: 20%;
-    border-radius: 20px;
+/*Titulo*/
+
+.tituloOpciones{
     padding: 20px;
-    cursor: pointer;
-}
-
-/* glosarios si funciona xd*/
-.contenedorGlosario{
-    padding: 20px;
-}
-.glosario{
-    background-color: whitesmoke;
-    border-radius: 15px;
-    display: block;
-    margin: auto;
-    width: 42%;
-    padding: 10px;
-    line-height: 30px;
-}
-
-/* titulo de contenido*/
-.titulosContenido{
-    padding: 10px;
-}
-
-.contenidoQRA{
     display: flex;
     justify-content: center;
-    padding: 10px;
 }
 
-.selecionQRA{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    width: 40%;
-}
-
-.dtp{
-    text-align: center;
-    padding: 20px;
-}
-
-/*contenidos*/
-.contenidodpvdos{
-    padding: 20px;
-}
-.contenidoTpUsuario{
+.contenedorTitulo{
     width: 50%;
-    display: block;
-    margin: auto;
-    padding: 20px;
-    border-bottom: 1px solid black;
-    cursor: pointer;
+    display: flex;
 }
-
-/**/
-
-.datosPersonales{
+.btnTitulo{
+    width: 10%;
     padding: 10px;
 }
+input[type="button"]{
+    /* outline: none; */
+    /* width: 100%; */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+}
+.tituloOpcion{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tituloOpcion h3{
+    color: orangered;
+    font-size: 30px;
+}
 
-.cajasCentradas{
-    width: 100%;
-    display: block;
-    margin: auto;
+#tituloOpcionesQRA{
+    display: none;
+}
+
+/* GLOSARIO */
+
+.glosario{
     padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedorGlosario{
+    background-color: #5B7A94;
+    padding: 10px;
+    width: 50%;
+    border-radius: 20px;
+}
+
+#glosarioQRA{
+    display: none;
+}
+
+/* Contenedor de preguntas: Usuarios - Abonado - Representante */
+
+.contenedorPreguntas{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+details{
+    width: 50%;
+    padding: 10px;
 }
 
 .contenedorDatosPersonales{
+    padding: 10px;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: space-around;
+    /*margin-top: 20px;*/
 }
 
 .datos{
@@ -546,127 +125,172 @@ button:hover{
 }
 
 .representantecss{
-    justify-content: space-around;
-}
-
-.contenedor{
-    background-color: whitesmoke;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    width: 15%;
-    margin: 10px;
-}
-
-/* cuando selecciona un dato correcto xd*/
-
-.activo{
-    background-color: #aed6f1;
-}
-/**/
-
-
-
-/* Las selecciones multiples*/
-
-.seleccionarOpcciones{
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+input[type="text"],input[type="email"],input[type="date"]{
+    background-color: aliceblue;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    margin-top: 10px;
     padding: 20px;
 }
 
-.seleccionMultipleReclamo{
-    display: flex;
-    justify-content: space-around;
-    width: 50%;
+label{
+    width: 100%;
 }
 
-.materiaReclamableUnica{
-    padding: 10px;
-    width: 40%;
-    display: block;
-    margin: auto;
+select{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    background-color: aliceblue;
 }
 
-.materiaReclamable{
-    padding: 10px;
-    width: 40%;
-}
-
-.fc{
-    padding: 10px;
-    width: 40%;
-}
-
-option{
-    width: 30%;
-}
-
-/* continuar */
+/* continuar , despues de los datos personales*/
 
 .btnContinuar{
     display: flex;
     justify-content: center;
+    padding: 10px;
+}
+
+/* Seleccionables */
+
+.seleccionarOpcciones{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.cajasCentradas{
+    width: 50%;
+    padding: 10px;
+}
+
+.seleccionMultipleReclamo{
+    width: 42%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.materiaReclamable{
+    width: 42%;
+    padding: 10px;
+}
+
+.fc{
+    width: 50%;
+    padding: 10px;
+}
+
+/* caja grande xd*/
+
+.contenedorPadre{
+    padding: 5px;
+}
+
+.contenedorHijo{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* contenedor de respuestas en las opciones seleccionados*/
+
+.cajaRespuesta{
+    padding: 20px;
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+.columnTwo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 
+
+
+/*BOTON DE ENVIAR EL FORMULARIO*/
+
+.contenedorBtn{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
 /**/
+
+details{
+    cursor: pointer;
+}
+
+
+
+/**/
+
+.alert{
+    color: red;
+    padding: 10px;
+}
 
 /**/
 
 @media only screen and (max-width: 768px) {
-
-    .cajasCentradas{
+    .contenedorOpciones {
         width: 100%;
     }
-    
-    .contenedor{
-        width: 80%;
+    .contenedorTitulo{
+        width: 70%;
     }
-
-    .radioRQA{
-        width: 100%;
+    .contenedorGlosario{
+        width: 70%;
     }
-
-    .glosario{
-        width: 100%;
+    details{
+        width: 70%;
     }
-
-    .seleccionMultipleReclamo{
-        display: block;
-        margin: auto;
-        width: 100%;
-    }
-
-    .materiaReclamable{
-        padding: 10px;
-        width: 100%;
-    }
-    
-    .fc{
-        padding: 10px;
-        width: 100%;
-    }
-
-    .materiaReclamableUnica{
-        width: 100%;
-    }
-    
-    .contenedorOpciones{
-        width: 85%;
-    }
-
-    .cajaContenedorApelacionCtwo{
-        width: 100%;
-    }
-
-    .contenidoTpUsuario{
-        width: 100%;
-    }
-
     .datos{
         width: 100%;
     }
+    .cajasCentradas{
+        width: 70%;
+    }
+    .seleccionMultipleReclamo{
+        width: 80%;
+        justify-content: center;
+    }
+    .materiaReclamable{
+        width: 80%;
+    }
+    .fc{
+        width: 80%;
+    }
+    
 
 }
