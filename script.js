@@ -1,141 +1,287 @@
-// para los primeros botones
-const formularioPersonal=document.getElementById('formulario_personal');
-const formularioUsuario=document.getElementById('extra_usuario');
-const formularioRepresentante=document.getElementById('extra_representante');
-
-formularioPersonal.style.display="none";
-formularioUsuario.style.display="none";
-formularioRepresentante.style.display="none";
+const opcionReclamo=document.getElementById("reclamo");
+const opcionQueja=document.getElementById("queja");
+const opcionApelacion=document.getElementById("apelacion");
+// los inputs de los datos
 
 //
+// boton para enviar el todo formulario
+const enviar=document.getElementById("btnEnviarFormulario");
+enviar.style.display="none";
 
-const datosPersonal=document.getElementById("dPersonales")
-const datosUsario=document.getElementById("dUsuarios")
-const datosRepresentante=document.getElementById("dRepresentantes")
+// funcion ids
 
-// datosPersonal.classList.add("activo");
-// datosUsario.classList.add("activo");
-// datosRepresentante.classList.add("activo");
-
-//
-
-function personales() {
-    formularioPersonal.style.display="block";
-    formularioRepresentante.style.display="none";
-    formularioUsuario.style.display="none";
-    //
-    datosPersonal.classList.add("activo");
-    datosUsario.classList.remove("activo");
-    datosRepresentante.classList.remove("activo");
-}
-
-function usuario() {
-    formularioPersonal.style.display="block";
-    formularioUsuario.style.display="block";
-    formularioRepresentante.style.display="none";
-    //
-    datosPersonal.classList.remove("activo");
-    datosUsario.classList.add("activo");
-    datosRepresentante.classList.remove("activo");
-}
-
-function representante() {
-    formularioPersonal.style.display="block";
-    formularioRepresentante.style.display="flex";
-    //
-    datosPersonal.classList.remove("activo");
-    datosUsario.classList.remove("activo");
-    datosRepresentante.classList.add("activo");
-}
-
-/* */
-
-    const dPersonales=document.getElementById("datosPersonales");
-    dPersonales.style.display="none"
-
-/* */
-
-/* */
-
-
-
-/* */
-
-/* caja de contenido con las opciones */
-
-
-
-function cajaContenedor(opcion){
-
-    const formularioApelacion=document.getElementById("seleccionarApelacion")
-    const formularioQueja=document.getElementById("seleccionarQueja")
-    const formularioReclamo=document.getElementById("seleccionarReclamo")
-    formularioApelacion.style.display="none";
-    formularioQueja.style.display="none";
-    formularioReclamo.style.display="none";
-
-    //
-    const contenedorCajaApelacion=document.getElementById("datosApelacion");
-    const contenedorCajaQueja=document.getElementById("datosQueja");
-    const contenedorCajaReclamo=document.getElementById("datosReclamos");
-    contenedorCajaApelacion.style.display="none";
-    contenedorCajaQueja.style.display="none";
-    contenedorCajaReclamo.style.display="none";
-
-    //
-    dPersonales.style.display="flex"
-    //
-
-    //
-    const cContenidoReclamos=document.getElementById("Ccreclamos")
-    const cContenidoQuejas=document.getElementById("Ccquejas")
-    const cContenidoApelacion=document.getElementById("Ccapelacion")
-
-    cContenidoApelacion.classList.remove("activo");
-    cContenidoQuejas.classList.remove("activo");
-    cContenidoReclamos.classList.remove("activo");
-    //
+function reclamos() {
+    // Obtener el valor actual del input
+    const inputTicket = document.getElementById('tipoticket');
+    const inputDiagnostico = document.getElementById('diagnostico');
     
-    switch (opcion) {
-        case "reclamo":
-            formularioReclamo.style.display="flex"
-            //contenedor
-            contenedorCajaApelacion.style.display="none";
-            contenedorCajaQueja.style.display="none";
-            contenedorCajaReclamo.style.display="block";
-            //
-            cContenidoReclamos.classList.add("activo");
-            //
+    // El número que deseas agregar, por ejemplo, 12345
+    const numT = 3;
+    const numD = 34;
+        
+    // Asignar ese número al valor del input
+    inputTicket.value = numT;
+    inputDiagnostico.value = numD;
+}
+
+function quejass() {
+    // Obtener el valor actual del input
+    const inputTicket = document.getElementById('tipoticket');
+    const inputDiagnostico = document.getElementById('diagnostico');
+    
+    // El número que deseas agregar, por ejemplo, 12345
+    const numT = 6;
+    const numD = 82;
+        
+    // Asignar ese número al valor del input
+    inputTicket.value = numT;
+    inputDiagnostico.value = numD;
+}
+
+function apelacionesS() {
+    // Obtener el valor actual del input
+    const inputTicket = document.getElementById('tipoticket');
+    const inputDiagnostico = document.getElementById('diagnostico');
+    
+    // El número que deseas agregar, por ejemplo, 12345
+    const numT = 7;
+    const numD = 81;
+        
+    // Asignar ese número al valor del input
+    inputTicket.value = numT;
+    inputDiagnostico.value = numD;
+}
+
+// funciona los que estan en la siguiente linea
+const opcionEscojidaQRA=document.getElementById("tituloOpcionesQRA");
+const tituloQRA=document.getElementById("opcionEscojida");
+const contenedor=document.getElementById("contenedorOpcionesQRA");
+// abonado usuario representante
+const glosariosAUR=document.getElementById("glosarioQRA");
+const contenedorAUR=document.getElementById("contenedorOpcionesAUR");
+const tituloAUR=document.getElementById("tituloOpcionesAUR");
+// propiedades
+contenedorAUR.style.display="none";
+tituloAUR.style.display="none";
+// contenedor de datos personales
+const contenedorDatosPersonales=document.getElementById("contenidoDatos")
+contenedorDatosPersonales.style.display="none";
+
+
+function manejarSeleccion() {
+    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
+    if (seleccion) {
+        //console.log(`Seleccionaste: ${seleccion.id}`);
+        tituloQRA.innerHTML=`${seleccion.id}`;
+        opcionEscojidaQRA.style.display="flex";
+        contenedor.style.display="none";
+        glosariosAUR.style.display="flex";
+        contenedorAUR.style.display="flex";
+        tituloAUR.style.display="flex";
+    }
+}
+
+// Agregar el evento de clic a los radio buttons
+document.querySelectorAll('input[name="opcionesPrimero"]').forEach((input) => {
+    input.addEventListener('click', manejarSeleccion);
+});
+
+function volverRQA() {
+    contenedor.style.display="flex";
+    opcionEscojidaQRA.style.display="none";
+    glosariosAUR.style.display="none";
+    contenedorAUR.style.display="none";
+    tituloAUR.style.display="none";
+    contenedorDatosPersonales.style.display="none";
+    apelacion.style.display="none";
+    queja.style.display="none";
+    reclamo.style.display="none";
+    //
+    enviar.style.display="none";
+    //
+    cApelacion.style.display="none"
+    cQueja.style.display="none"
+    cReclamo.style.display="none"
+}
+
+
+//  ABONADO - USUARIO - REPRESENTANTE
+const textUsuario=document.getElementById("tituloAUR")
+
+function manejarSelecciones() {
+    const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
+    if (seleccion) {
+        //console.log(`Seleccionaste: ${seleccion.id}`);
+        textUsuario.innerHTML=`${seleccion.id}`;
+        tituloAUR.style.display="flex"
+        glosariosAUR.style.display="none";
+        contenedorAUR.style.display="none";
+        contenedorDatosPersonales.style.display="flex"
+    }
+}
+
+document.querySelectorAll('input[name="tipoUsuario"]').forEach((input) => {
+    input.addEventListener('click', manejarSelecciones);
+});
+
+function volverUsuario() {
+    tituloAUR.style.display="none"
+    contenedorAUR.style.display="flex"
+    contenedorDatosPersonales.style.display="none";
+    apelacion.style.display="none";
+    queja.style.display="none";
+    reclamo.style.display="none";
+    //
+    cApelacion.style.display="none"
+    cQueja.style.display="none"
+    cReclamo.style.display="none"
+    //
+    enviar.style.display="none";
+}
+
+
+// datos personales
+const drepresentante=document.getElementById("extra_representante");
+drepresentante.style.display="none"
+const dusuario=document.getElementById("extra_usuario");
+dusuario.style.display="none"
+
+
+// Función para manejar la selección del radio button
+function manejarSeleccionAUR() {
+    const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
+
+    switch (seleccion && seleccion.id) {
+        case "abonado":
+            drepresentante.style.display="none";
+            dusuario.style.display="none";
             break;
-        case "queja":
-            formularioQueja.style.display="block"
-            //contenedor
-            contenedorCajaApelacion.style.display="none";
-            contenedorCajaQueja.style.display="block";
-            contenedorCajaReclamo.style.display="none";
-            //
-            cContenidoQuejas.classList.add("activo");
+        case "usuario":
+            drepresentante.style.display="none";
+            dusuario.style.display="BLOCK";
             break;
-        case "apelacion":
-            formularioApelacion.style.display="block"
-            //contenedor
-            contenedorCajaApelacion.style.display="block";
-            contenedorCajaQueja.style.display="none";
-            contenedorCajaReclamo.style.display="none";
-            //
-            cContenidoApelacion.classList.add("activo");
+
+        case "representante":
+            drepresentante.style.display="flex";
+            dusuario.style.display="none";
             break;
+    
         default:
             break;
-
     }
+
 
 }
 
-/* despues 2 selecciones */
+// Agregar el evento de clic a los radio buttons
+document.querySelectorAll('input[name="tipoUsuario"]').forEach((input) => {
+    input.addEventListener('click', manejarSeleccionAUR);
+});
+
+// continuar con el formulario
+
+const apelacion=document.getElementById("seleccionarApelacion");
+const queja=document.getElementById("seleccionarQueja");
+const reclamo=document.getElementById("seleccionarReclamo");
+
+apelacion.style.display="none";
+queja.style.display="none";
+reclamo.style.display="none";
+
+
+function continuar() {
+    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
+    apelacion.style.display="none";
+    queja.style.display="none";
+    reclamo.style.display="none";
+    enviar.style.display="flex";
+
+    switch (seleccion && seleccion.id) {
+        case "reclamo":
+            apelacion.style.display="none";
+            queja.style.display="none";
+            reclamo.style.display="flex";
+            break;
+        case "queja":
+            apelacion.style.display="none";
+            queja.style.display="flex";
+            reclamo.style.display="none";
+            break;
+
+        case "apelacion":
+            apelacion.style.display="flex";
+            queja.style.display="none";
+            reclamo.style.display="none";
+            break;
+    
+        default:
+            break;
+    }
+
+    // Obtenemos el valor del campo de texto - los datos
+    // const nombre = document.getElementById('name').value;
+    // const ape = documento.getElementById('apellidos').value;
+    // //const relacion=documento.getElementById("relacion").value;
+    // //const rs=documento.getElementById("razonSocial").value;
+    // //const link=documento.getElementById("link").value;
+    // const numeroContacto=documento.getElementById("numeroContacto").value;
+    // //const tdoc=documento.getElementById("tipoDoc").value;
+    // const ndoc=documento.getElementById("numDoc").value;
+    // const direccion=documento.getElementById("direccion").value;
+    // const correo=documento.getElementById("correo").value;
+    // para alertar datos
+    // const alertaNombre=document.getElementById("alertNombre");
+
+    // Validar los campos
+    // if (nombre === '') {
+    //     alertaNombre.innerHTML = "Rellene los campos de Nombre!";
+    // } else if (ape === '') {
+    //     alertaNombre.innerHTML = "Rellene los campos de Apellidos!";
+    // } else {
+    //     // Si todo está bien, limpiar cualquier mensaje previo
+    //     alert("ok!")
+    // }
+    // if (numeroContacto==='') {
+    //     alertaNombre.innerHTML="Rellene los campos!"
+    // }
+    // // if (tdoc==='') {
+    // //     alertaNombre.innerHTML="Rellene los campos!"
+    // // }
+    // if (ndoc==='') {
+    //     alertaNombre.innerHTML="Rellene los campos!"
+    // }
+    // if (direccion==='') {
+    //     alertaNombre.innerHTML="Rellene los campos!"
+    // }
+    // if (correo==='') {
+    //     alertaNombre.innerHTML="Rellene los campos!"
+    // }
+
+}
+
+
+// Función para manejar la selección del radio button
+// 
+// las preguntas  de responder
+
+const cApelacion=document.getElementById("datosApelacion");
+const cQueja=document.getElementById("datosQueja");
+const cReclamo=document.getElementById("datosReclamos");
+
+cApelacion.style.display="none"
+cQueja.style.display="none"
+cReclamo.style.display="none"
+
+/* Facturacion */
+
 
 function selecion() {
 
+    //
+    cReclamo.style.display="block";
+
+
+    //
     const materiaR=document.getElementById("materias");
     const materiasFacturacion=document.getElementById("fc");
     const materiasCalidad=document.getElementById("cs");
@@ -211,15 +357,15 @@ function selecion() {
 
     //migracion
     const migracionUno=document.getElementById("respuestasMigracionBase");
-    const migracionDos=document.getElementById("respuestasMigracionDos");
-    const migracionTres=document.getElementById("respuestaMigracionTres");
-    const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
-    const datoExtraUno=document.getElementById("respuestaMigracionUno");
+    // const migracionDos=document.getElementById("respuestasMigracionDos");
+    // const migracionTres=document.getElementById("respuestaMigracionTres");
+    // const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
+    // const datoExtraUno=document.getElementById("respuestaMigracionUno");
     migracionUno.style.display="none";
-    migracionDos.style.display="none";
-    migracionTres.style.display="none";
-    migracionCuatro.style.display="none";
-    datoExtraUno.style.display="none";
+    // migracionDos.style.display="none";
+    // migracionTres.style.display="none";
+    // migracionCuatro.style.display="none";
+    // datoExtraUno.style.display="none";
     //
 
     // otros
@@ -371,11 +517,13 @@ function selecion() {
             //
             break;
     }
+
+
 }
 
 /* facturacion */
 
-function facturado() {
+function facturado() {  
 
     const oFacturado=document.getElementById("facturados").value;
     const nRecibo=document.getElementById("nReciboBase");
@@ -386,6 +534,8 @@ function facturado() {
     const adHojaPagoFacturacion=document.getElementById("cfCondicionSeis");
     const numDocCobro=document.getElementById("numDocCobroSeis");
     //
+    const selectElement = document.getElementById('facturados');
+    //
     nRecibo.style.display="none";
     contenidoFacturacion.style.display="none";
     tarifaUsuario.style.display="none";
@@ -393,6 +543,9 @@ function facturado() {
     medioPagoFacturacion.style.display="none";
     adHojaPagoFacturacion.style.display="none";
     numDocCobro.style.display="none";
+    //
+    //selectElement.value = ""; 
+    //
 
     switch (oFacturado) {
 
@@ -447,6 +600,9 @@ function facturado() {
             break;
     }
 
+
+    //limpiarInputs();
+
 }
 
 function hojaFacturado(){
@@ -498,7 +654,7 @@ function calidad() {
     switch (oCalidad.value) {
 
         case "calidaduno":
-            contenidoci.style.display="block"
+            contenidoci.style.display="flex"
             break;
     
         default:
@@ -811,7 +967,6 @@ function baja() {
     }
 }
 
-
 function canaldBaja() {
     const canalBaja=document.getElementById("cbaja").value;
     const especificarBaja=document.getElementById("txtcanalbaja")
@@ -924,43 +1079,37 @@ function contratos() {
 
 function migracionReclamable() {
 
-    const opcionMigracion=document.getElementById("mig");
+    const opcionMigracion=document.getElementById("mig").value;
     const migracionUno=document.getElementById("respuestasMigracionBase");
     const migracionDos=document.getElementById("respuestasMigracionDos");
-    const migracionTres=document.getElementById("respuestaMigracionTres");
+    const migracionTres=document.getElementById("montoReclamadoStres");
     const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
     const datoExtraUno=document.getElementById("respuestaMigracionUno");
+    //
     migracionUno.style.display="none";
     migracionDos.style.display="none";
-    migracionTres.style.display="none";
+    // migracionTres.style.display="none";
     migracionCuatro.style.display="none";
-    datoExtraUno.style.display="none";
-    const aDatos=document.getElementById("adsdos");
-    aDatos.style.display="none"
+    // datoExtraUno.style.display="none";
+    // const aDatos=document.getElementById("adsdos");
+    // aDatos.style.display="none"
     
-    switch (opcionMigracion.value) {
+    switch (opcionMigracion) {
         case "migracionOne":
             migracionUno.style.display="block";
-            datoExtraUno.style.display="block";
-            aDatos.style.display="block";
-
             break;
 
         case "migracionTwo":
             migracionUno.style.display="block";
             migracionDos.style.display="block";
-            aDatos.style.display="block";
             break;
 
         case "migracionThree":
             migracionUno.style.display="block";
-            migracionTres.style.display="block";
-            aDatos.style.display="none";
             break;
 
         case "migracionFour":
             migracionCuatro.style.display="block";
-            aDatos.style.display="none";
             break;
     
         default:
@@ -1087,13 +1236,12 @@ function solicitudfll() {
 
 /* FIN DE OTROS */
 
+/* EMPIEZA LAS QUEJAS */
 
-/* Fin de reclamo */
+function quejas() {
 
-/* queja */
-
-function queja() {
-
+    cQueja.style.display="block"
+    
     const opcionQueja=document.getElementById("quejasOpciones");
     const quejaRespuestaUno=document.getElementById("quejaPreguntaUno");
     const quejaRespuestaDos=document.getElementById("quejaPreguntaDos");
@@ -1103,7 +1251,6 @@ function queja() {
     const quejaRespuestaSeis=document.getElementById("quejaPreguntaSeis");
     //la condicion
     const cajaReclamoenQueja=document.getElementById("datosReclamos");
-    //const cajaQuejaenQueja=document.getElementById("datosQueja");
     const cajaApelacionenQueja=document.getElementById("datosApelacion");
 
 
@@ -1122,7 +1269,7 @@ function queja() {
 
         case "quejaDos":
             quejaRespuestaUno.style.display="none";
-            quejaRespuestaDos.style.display="block";
+            quejaRespuestaDos.style.display="flex";
             quejaRespuestaTres.style.display="none";
             quejaRespuestaCuatro.style.display="none";
             quejaRespuestaCinco.style.display="none";
@@ -1298,6 +1445,9 @@ function defectos() {
 
 function apelaciones() {
 
+
+    cApelacion.style.display="block"
+
     const apelacion=document.getElementById("apelacionOpciones")
     const apelacionoOne=document.getElementById("apelacionUno")
     const apelacionoTwo=document.getElementById("apelacionDos")
@@ -1309,6 +1459,9 @@ function apelaciones() {
     const cajaReclamoenApelacion=document.getElementById("datosReclamos");
     const cajaQuejaenApelacion=document.getElementById("datosQueja");
     //const cajaApelacionenApelacion=document.getElementById("datosApelacion");
+    //limpiarInputsApelacion();
+    //limpiarInputs();
+    //
 
     switch (apelacion.value) {
 
@@ -1322,6 +1475,9 @@ function apelaciones() {
             //
             cajaQuejaenApelacion.style.display="none";
             cajaReclamoenApelacion.style.display="none";
+            //
+            //limpiarInputs();
+            //
             break;
 
         case "apelacionTwo":
@@ -1356,6 +1512,8 @@ function apelaciones() {
             apelacionoFive.style.display="none"
             apelacionoSix.style.display="none"
             //
+            //resetSelect();
+            //
             cajaQuejaenApelacion.style.display="none";
             cajaReclamoenApelacion.style.display="none";
             //
@@ -1367,6 +1525,8 @@ function apelaciones() {
             apelacionoFour.style.display="none"
             apelacionoFive.style.display="block"
             apelacionoSix.style.display="none"
+            //
+            //resetSelect();
             //
             cajaQuejaenApelacion.style.display="none";
             cajaReclamoenApelacion.style.display="none";
@@ -1435,46 +1595,7 @@ function apelacionCinco() {
 }
 
 
-/* Fin de apelacion */
-
-/* CONDICION DE NUMERO DE DNI */
-
-function tipoDocumento() {
-
-    const tDocumento=document.getElementById("tipodedocumento").value;
-    const nDocumento=document.getElementById("numDoc");
-
-    let cantidadMaxima;
-
-    switch (tDocumento) {
-        case "dni":
-            cantidadMaxima = 8;
-            break;
-        case "ruc":
-            cantidadMaxima = 11;
-            break;
-        case "pas":
-            cantidadMaxima = 12;
-            break;
-        case "ce":
-            cantidadMaxima = 20;
-            break;
-        case "xdoc":
-            cantidadMaxima = 20;
-            break;
-        default:
-            cantidadMaxima = 0; // Sin límite
-            break;
-    }
-
-    nDocumento.maxLength=cantidadMaxima;
-    nDocumento.value="";
 
 
-}
 
 
-/*  */
-
-
-/*  */

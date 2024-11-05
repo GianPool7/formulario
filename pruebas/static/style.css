@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: "Montserrat"; */
+    font-family: "Exo 2";
 }
 
 /**/
@@ -15,69 +19,62 @@
     gap: 20px;
 }
 
-.contenedorCajasTpersonas{
+.back{
     background-color: red;
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-
-.btn{
     padding: 10px;
-    border-radius: 20px;
-    background-color: whitesmoke;
-    width: 20%;
+    border-radius: 10px;
     cursor: pointer;
+    color: white;
 }
 
-.btn img{
-    width: 40%;
-    display: block;
-    margin: auto;
+/* titulo de contenido*/
+.titulosContenido{
+    padding: 10px;
 }
 
-.btn label{
+.contenidoQRA{
     display: flex;
     justify-content: center;
-    padding: 20px;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-}
-/**/
-
-.datosPersonales{
     padding: 10px;
 }
 
-.cajasCentradas{
-    width: 50%;
-    display: block;
-    margin: auto;
-    padding: 20px;
-}
-
-.contenedorDatosPersonales{
+.selecionQRA{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.datos{
-    margin: 5px;
-    padding: 15px;
+    justify-content: space-between;
+    padding: 20px;
     width: 40%;
 }
 
-.representantecss{
-    justify-content: space-around;
+.dtp{
+    text-align: center;
+    padding: 20px;
 }
 
 /**/
 
+/* glosarios si funciona xd*/
+.contenedorGlosario{
+    padding: 20px;
+}
+.glosario{
+    background-color: #aed6f1;
+    border-radius: 15px;
+    display: block;
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+    line-height: 30px;
+}
+
+
 
 /**/
+
+.datoServicio{
+    background-color: red;
+    display: flex;
+    
+}
 
 /**/
 
@@ -234,11 +231,12 @@ option{
 }
 
 .contenedorReclamo{
+    background-color: green;
     padding: 20px;
 }
 
 .contenedorOpciones{
-    width: 80%;
+    width: 38%;
     display: block;
     margin: auto;
 }
@@ -299,13 +297,8 @@ option{
     justify-content: center;
 }
 
-/**/
 
-.activo{
-    background-color: #aed6f1;
-}
-
-/**/
+/* no me recuerdo xd xd xd xd xd*/
 
 .seleccionMultipleReclamo{
     display: flex;
@@ -329,12 +322,12 @@ option{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
 }
 
 .cajaContenedorApelacionCtwo{
     margin: 10px;
-    width: 33%;
-    padding: 10px;
+    width: 45%;
 }
 
 /**/
@@ -351,6 +344,13 @@ option{
     padding: 10px;
     width: 40%;
     margin: 5px;
+}
+
+.Sola{
+    width: 90%;
+    display: block;
+    margin: auto;
+    padding: 5px;
 }
 
 /**/
@@ -434,22 +434,209 @@ button:hover{
     padding: 20px;
 }
 
+/* cambiando el diseño general*/
 
 
+
+/* los radios optimizando*/
+
+.contenedorRadiosRQA{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.radios{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 50%;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.radioRQA{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: gray;
+    width: 20%;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+/* glosarios si funciona xd*/
+.contenedorGlosario{
+    padding: 20px;
+}
+.glosario{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    display: block;
+    margin: auto;
+    width: 42%;
+    padding: 10px;
+    line-height: 30px;
+}
+
+/* titulo de contenido*/
+.titulosContenido{
+    padding: 10px;
+}
+
+.contenidoQRA{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.selecionQRA{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 40%;
+}
+
+.dtp{
+    text-align: center;
+    padding: 20px;
+}
+
+/*contenidos*/
+.contenidodpvdos{
+    padding: 20px;
+}
+.contenidoTpUsuario{
+    width: 50%;
+    display: block;
+    margin: auto;
+    padding: 20px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+/**/
+
+.datosPersonales{
+    padding: 10px;
+}
+
+.cajasCentradas{
+    width: 100%;
+    display: block;
+    margin: auto;
+    padding: 20px;
+}
+
+.contenedorDatosPersonales{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.datos{
+    margin: 5px;
+    padding: 15px;
+    width: 40%;
+}
+
+.representantecss{
+    justify-content: space-around;
+}
+
+.contenedor{
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 15%;
+    margin: 10px;
+}
+
+/* cuando selecciona un dato correcto xd*/
+
+.activo{
+    background-color: #aed6f1;
+}
+/**/
+
+
+
+/* Las selecciones multiples*/
+
+.seleccionarOpcciones{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.seleccionMultipleReclamo{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.materiaReclamableUnica{
+    padding: 10px;
+    width: 40%;
+    display: block;
+    margin: auto;
+}
+
+.materiaReclamable{
+    padding: 10px;
+    width: 40%;
+}
+
+.fc{
+    padding: 10px;
+    width: 40%;
+}
+
+option{
+    width: 30%;
+}
+
+/* continuar */
+
+.btnContinuar{
+    display: flex;
+    justify-content: center;
+}
+
+
+/**/
 
 /**/
 
 @media only screen and (max-width: 768px) {
 
-    .btn{
+    .cajasCentradas{
+        width: 100%;
+    }
+    
+    .contenedor{
+        width: 80%;
+    }
+
+    .radioRQA{
         width: 100%;
     }
 
-    .datos{
-        margin: 5px;
-        padding: 15px;
+    .glosario{
         width: 100%;
-        justify-content: space-between;
+    }
+
+    .seleccionMultipleReclamo{
+        display: block;
+        margin: auto;
+        width: 100%;
     }
 
     .materiaReclamable{
@@ -461,41 +648,24 @@ button:hover{
         padding: 10px;
         width: 100%;
     }
+
+    .materiaReclamableUnica{
+        width: 100%;
+    }
     
-    .cajaRespuesta{
-        width: 100%;
-    }
-
-    .contenedor img{
-        width: 40%;
-        display: block;
-        margin: auto;
-    }
-
-    .contenedor{
-        width: 100%;
-    }
-
-    .contenedor p{
-        text-align: center;
-        padding: 20px;
-        font-size: 30px;
-        font-weight: bold;
-    }
-
-    .cajaRespuesta{
-        width: 100%;
+    .contenedorOpciones{
+        width: 85%;
     }
 
     .cajaContenedorApelacionCtwo{
         width: 100%;
     }
 
-    .cajaContenedor{
+    .contenidoTpUsuario{
         width: 100%;
     }
 
-    .cajaSolaFile{
+    .datos{
         width: 100%;
     }
 
