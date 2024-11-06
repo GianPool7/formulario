@@ -374,7 +374,7 @@
         
                             <div class="datos">
                                 <label for="">Empresa Operadora</label>
-                                <select name="" id="">
+                                <select name="" id="empresaOperadoraApelacion">
                                     <option value="">Seleccionar Opción</option>
                                     <option value="BEST CABLE - Best Cable Perú S.A.C.">BEST CABLE - Best Cable Perú S.A.C.</option>
                                     <option value="BITEL - Viettel Perú S.A.C.">BITEL - Viettel Perú S.A.C.</option>
@@ -397,7 +397,7 @@
         
                             <div class="datos">
                                 <label for="">Servicio materia de apelación: </label>
-                                <select name="" id="">
+                                <select name="" id="servicioMateriaApelacion">
                                     <option value="">Seleccionar Opción</option>
                                     <option value="Materia de apelacion">Materia de apelacion</option>
                                     <option value="Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)">Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)</option>
@@ -424,27 +424,27 @@
         
                             <div class="datos">
                                 <label for="">Especificar: </label>
-                                <input type="text">
+                                <input type="text" id="especificarApelacionOne">
                             </div>
         
                             <div class="datos">
                                 <label for="">Número del servicio reclamado o del contratado del abonado: </label>
-                                <input type="text">
+                                <input type="text" id="numeroServicioApelacion">
                             </div>
         
                             <div class="datos">
-                                <label for="">Código o Num de reclamo: </label>
-                                <input type="text">
+                                <label for="">Código o número de reclamo: </label>
+                                <input type="text" id="codigoNumeroApelacion">
                             </div>
         
                             <div class="datos">
                                 <label for="">Número de la carta que resuelve el reclamo: </label>
-                                <input type="text">
+                                <input type="text" id="numeroCartaApelacion">
                             </div>
         
                             <div class="datos">
                                 <label for="">Fecha de emisión de la cara que resuelve el reclamo:   </label>
-                                <input type="text">
+                                <input type="date" id="fechaEmisionCartaApelacion">
                             </div>
         
                         </div>
@@ -583,8 +583,6 @@
 
             </div>
 
-
-
         </div>
 
         <div class="contenedorPadre" id="datosQueja">
@@ -599,7 +597,7 @@
     
                         <div class="datos">
                             <label for="">Empresa Operadora</label>
-                            <select name="" id="">
+                            <select name="" id="empresaOperadoraQueja">
                                 <option value="">Seleccionar Opción</option>
                                 <option value="BEST CABLE - Best Cable Perú S.A.C.">BEST CABLE - Best Cable Perú S.A.C.</option>
                                 <option value="BITEL - Viettel Perú S.A.C.">BITEL - Viettel Perú S.A.C.</option>
@@ -621,23 +619,23 @@
                         </div>
     
                         <div class="datos">
-                            <label for="">Especificar: </label>
-                            <input type="text">
+                            <label for="" >Especificar: </label>
+                            <input type="text" id="especificarQueja">
                         </div>
     
                         <div class="datos">
-                            <label for="">Servicio objeto de la queja: </label>
-                            <input type="text">
+                            <label for="" >Servicio objeto de la queja: </label>
+                            <input type="text" id="servicioObjetoQueja">
                         </div>
     
                         <div class="datos">
-                            <label for="">Número del servicio reclamado o del contratado del abonado: </label>
-                            <input type="text">
+                            <label for="" >Número del servicio reclamado o del contratado del abonado: </label>
+                            <input type="text" id="numServicioQueja">
                         </div>
     
                         <div class="datos">
-                            <label for="">Código o Num de reclamo: </label>
-                            <input type="text">
+                            <label for="" >Código o número de reclamo: </label>
+                            <input type="text" id="codigoNumeroQueja">
                         </div>
     
                     </div>
@@ -828,8 +826,8 @@
 
                         <div class="datos">
                             <label for="">Empresa Operadora</label>
-                            <select name="" id="">
-                                <option value="">Seleccionar Opción</option>
+                            <select name="" id="empresaOperadorReclamo">
+                                <option value="" selected>Seleccionar Opción</option>
                                 <option value="BEST CABLE - Best Cable Perú S.A.C.">BEST CABLE - Best Cable Perú S.A.C.</option>
                                 <option value="BITEL - Viettel Perú S.A.C.">BITEL - Viettel Perú S.A.C.</option>
                                 <option value="CLARO -América Móvil Perú S.A.C.">CLARO -América Móvil Perú S.A.C.</option>
@@ -851,8 +849,8 @@
 
                         <div class="datos">
                             <label for="">Servicio Contratado</label>
-                            <select name="" id="">
-                                <option value="">Seleccionar Opción</option>
+                            <select name="" id="servicioContratadoReclamo">
+                                <option value="" selected>Seleccionar Opción</option>
                                 <option value="Servicio contratado*">Servicio contratado*</option>
                                 <option value="Telefonía fija">Telefonía fija</option>
                                 <option value="Servicio móvil prepago">Servicio móvil prepago</option>
@@ -875,8 +873,8 @@
                         </div>
 
                         <div class="datos">
-                            <label for="">Servicio Contratado</label>
-                            <select name="" id="">
+                            <label for="">Servicio Materia reclamo</label>
+                            <select name="" id="servicioMateriaReclamo">
                                 <option value="">Seleccionar Opción</option>
                                 <option value="Telefonía fija">Telefonía fija</option>
                                 <option value="Servicio móvil prepago">Servicio móvil prepago</option>
@@ -892,19 +890,19 @@
                             </select>
                         </div>
 
-                        <div class="datos">
-                            <label for="">Especificar: </label>
+                        <!-- <div class="datos">
+                            <label for="especificarReclamoOne">Especificar: </label>
                             <input type="text">
+                        </div> -->
+
+                        <div class="datos">
+                            <label for>Número o código del servicio o del contrato de abonado: </label>
+                            <input type="text" id="numeroServicioContratadoReclamo">
                         </div>
 
                         <div class="datos">
-                            <label for="">Número o código del servicio o del contrato de abonado: </label>
-                            <input type="text">
-                        </div>
-
-                        <div class="datos">
-                            <label for="">Especificar: </label>
-                            <input type="text">
+                            <label for>Especificar: </label>
+                            <input type="text" id="especificarReclamoTwo">
                         </div>
 
                     </div>
@@ -1910,7 +1908,8 @@
                     </div>
                     <!--- FIN MIGRACION -->
 
-                    <!--- x OTROS 9 -->
+                    <!--- x OTROS 9 -*---->
+
                     <div class="contenedorDatosPersonales" id="xmaterias">
 
                         <div class="columnTwo" id="xmateriasOne" style="display: none;">
@@ -2010,7 +2009,6 @@
                                         <option value="Aplicativo">Aplicativo</option>
                                         <option value="otros">Otros</option>
                                     </select>
-
                                 </div>
 
                                 <div class="datos" id="cpresentacionf" style="display: none;">
@@ -2292,6 +2290,29 @@
                 mediosProbatoriosQuejas: document.getElementById('mediosProbatoriosQuejas').value,
                 dtramitacion: document.getElementById('dtramitacion').value,
                 mediosProbatiosQuejaSeis: document.getElementById('mediosProbatiosQuejaSeis').value,
+
+                //datos servicio reclamo
+                empresaOperadorReclamo: document.getElementById('empresaOperadorReclamo').value,
+                servicioContratadoReclamo: document.getElementById('servicioContratadoReclamo').value,
+                numeroServicioContratadoReclamo: document.getElementById('numeroServicioContratadoReclamo').value,
+                servicioMateriaReclamo: document.getElementById('servicioMateriaReclamo').value,
+                especificarReclamoTwo: document.getElementById('especificarReclamoTwo').value,
+
+                // servicios
+                empresaOperadoraQueja: document.getElementById('empresaOperadoraQueja').value,
+                servicioObjetoQueja: document.getElementById('servicioObjetoQueja').value,
+                especificarQueja: document.getElementById('especificarQueja').value,
+                numServicioQueja: document.getElementById('numServicioQueja').value,
+                codigoNumeroQueja: document.getElementById('codigoNumeroQueja').value,
+
+                //apelacion
+                empresaOperadoraApelacion: document.getElementById('empresaOperadoraApelacion').value,
+                servicioMateriaApelacion: document.getElementById('servicioMateriaApelacion').value,
+                especificarApelacionOne: document.getElementById('especificarApelacionOne').value,
+                numeroServicioApelacion: document.getElementById('numeroServicioApelacion').value,
+                codigoNumeroApelacion: document.getElementById('codigoNumeroApelacion').value,
+                numeroCartaApelacion: document.getElementById('numeroCartaApelacion').value,
+                fechaEmisionCartaApelacion: document.getElementById('fechaEmisionCartaApelacion').value,
 
                 }
 

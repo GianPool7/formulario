@@ -262,6 +262,29 @@ def add_claim():
             'x_studio_monto_total_corresponde_cinco': claim.get('montoTotalApelacionSiCinco', ''),
             'x_studio_detalle_extremo_apelacion_cinco': claim.get('detalleReclamoApelacionSiCinco', ''),
             'x_studio_materia_cual_empresa_ape_seis': claim.get('materiaEmpresaEmitirApelacionSeis', ''),
+
+            # datos del servicio reclamo
+            'x_studio_empresa_operadora_dsr': claim.get('empresaOperadorReclamo', ''),
+            'x_studio_servicio_contratado_dsr': claim.get('servicioContratadoReclamo', ''),
+            'x_studio_nmero_cdigo_servicio_contrato_dsr': claim.get('numeroServicioContratadoReclamo', ''),
+            'x_studio_servicio_materia_de_reclamo': claim.get('servicioMateriaReclamo', ''),
+            'x_studio_especificar_dsr': claim.get('especificarReclamoTwo', ''),
+
+            #datos del servicio queja
+            'x_studio_empresa_operadora_ds1': claim.get('empresaOperadoraQueja', ''),
+            'x_studio_servicio_objeto_queja_dsq': claim.get('servicioObjetoQueja', ''),
+            'x_studio_especificar_dsq': claim.get('especificarQueja', ''),
+            'x_studio_nmero_servicio_reclamado_dsq': claim.get('numServicioQueja', ''),
+            'x_studio_cdigo_nmero_reclamo_dsq': claim.get('codigoNumeroQueja', ''),
+
+            #datos del servicio apelacion
+            'x_studio_empresa_operadora_ds': claim.get('empresaOperadoraApelacion', ''),
+            'x_studio_servicio_materia_de_apelacin_ds': claim.get('servicioMateriaApelacion', ''),
+            'x_studio_especificar_ds': claim.get('especificarApelacionOne', ''),
+            'x_studio_nmero_servicio_reclamado_ds': claim.get('numeroServicioApelacion', ''),
+            'x_studio_cdigo_nmero_reclamo_ds': claim.get('codigoNumeroApelacion', ''),
+            'x_studio_nmero_carta_resuelve_reclamo_ds': claim.get('numeroCartaApelacion', ''),
+            'x_studio_fecha_emisin_carta_ds': claim.get('fechaEmisionCartaApelacion', ''),
         }
 
         new_claim = models.execute_kw(db, uid, password, 'helpdesk.ticket', 'create', [body])
