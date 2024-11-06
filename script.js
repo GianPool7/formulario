@@ -199,6 +199,7 @@ function continuar() {
     queja.style.display="none";
     reclamo.style.display="none";
     enviar.style.display="flex";
+    contenedorDatosPersonales.style.display="none";
 
     switch (seleccion && seleccion.id) {
         case "reclamo":
