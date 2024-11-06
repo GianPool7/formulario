@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-transform: capitalize;
 }
 /*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
 .contenedorRQA{
@@ -24,7 +23,7 @@
 .contenedorOpciones{
     background-color: #5B7A94;
     width: 20%;
-    padding: 15px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     gap: 20px;
