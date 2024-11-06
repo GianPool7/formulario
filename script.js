@@ -188,8 +188,12 @@ apelacion.style.display="none";
 queja.style.display="none";
 reclamo.style.display="none";
 
+// Selecciona todos los campos de entrada con la clase .campo-reclamo
+//const inputs = document.querySelectorAll('.datosPersonales');
+//
 
 function continuar() {
+
     const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
     apelacion.style.display="none";
     queja.style.display="none";
@@ -218,46 +222,67 @@ function continuar() {
             break;
     }
 
-    // Obtenemos el valor del campo de texto - los datos
-    // const nombre = document.getElementById('name').value;
-    // const ape = documento.getElementById('apellidos').value;
-    // //const relacion=documento.getElementById("relacion").value;
-    // //const rs=documento.getElementById("razonSocial").value;
-    // //const link=documento.getElementById("link").value;
-    // const numeroContacto=documento.getElementById("numeroContacto").value;
-    // //const tdoc=documento.getElementById("tipoDoc").value;
-    // const ndoc=documento.getElementById("numDoc").value;
-    // const direccion=documento.getElementById("direccion").value;
-    // const correo=documento.getElementById("correo").value;
-    // para alertar datos
-    // const alertaNombre=document.getElementById("alertNombre");
 
-    // Validar los campos
-    // if (nombre === '') {
-    //     alertaNombre.innerHTML = "Rellene los campos de Nombre!";
-    // } else if (ape === '') {
-    //     alertaNombre.innerHTML = "Rellene los campos de Apellidos!";
-    // } else {
-    //     // Si todo está bien, limpiar cualquier mensaje previo
-    //     alert("ok!")
-    // }
-    // if (numeroContacto==='') {
-    //     alertaNombre.innerHTML="Rellene los campos!"
-    // }
-    // // if (tdoc==='') {
-    // //     alertaNombre.innerHTML="Rellene los campos!"
-    // // }
-    // if (ndoc==='') {
-    //     alertaNombre.innerHTML="Rellene los campos!"
-    // }
-    // if (direccion==='') {
-    //     alertaNombre.innerHTML="Rellene los campos!"
-    // }
-    // if (correo==='') {
-    //     alertaNombre.innerHTML="Rellene los campos!"
+    //const txtDatos=document.querySelectorAll('.datosPersonales');
+    //const txtDatos=document.getElementsByName('input[name="datosPersonales"].value')
+
+    //texto
+    //const alert=document.createElement("<p class='alert'> Completar datos</p>");
+    //const alert=document.createElement("span");
+    // const element = document.createElement("span");
+    // element.textContent = "completa datos";
+    // // B) Inserta después de .container
+
+    // //const txtDatos=""
+    // const nombre=document.getElementById("name").value;
+
+    // if (nombre==='') {
+    //     nombre.after(element);
+    //     //txtDatos.insertAdjacentHTML("afterend","input")
+    //     //alert("chau")
+    // }else{
+    //     alert("hola")
     // }
 
 }
+
+//
+
+function tipoDocumento() {
+    const option=document.getElementById("tipoDoc").value;
+
+    // entrada de numero de dni
+    const txtNum=document.getElementById("numDoc")
+
+    switch (option) {
+
+        case "dni":
+            txtNum.setAttribute('maxlength', '8');
+            break;
+
+        case "ruc":
+            txtNum.setAttribute('maxlength', '11');
+            break;
+
+        case "pas":
+            txtNum.setAttribute('maxlength', '20');
+            break;
+
+        case "ce":
+            txtNum.setAttribute('maxlength', '20');
+            break;
+
+        case "xdoc":
+            txtNum.setAttribute('maxlength', '20');
+            break;
+    
+        default:
+            txtNum.setAttribute('maxlength', '0');
+            break;
+    }
+
+}
+
 
 
 // Función para manejar la selección del radio button
