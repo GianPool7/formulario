@@ -132,6 +132,8 @@ function volverUsuario() {
     queja.style.display="none";
     reclamo.style.display="none";
     //
+    glosariosAUR.style.display="flex"
+    //
     cApelacion.style.display="none"
     cQueja.style.display="none"
     cReclamo.style.display="none"
