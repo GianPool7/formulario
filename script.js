@@ -72,7 +72,8 @@ function manejarSeleccion() {
     const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
     if (seleccion) {
         //console.log(`Seleccionaste: ${seleccion.id}`);
-        tituloQRA.innerHTML=`${seleccion.id}`;
+        //tituloQRA.innerHTML=`${seleccion.id}`;
+        tituloQRA.innerHTML = `${seleccion.id.charAt(0).toUpperCase()}${seleccion.id.slice(1)}`;
         opcionEscojidaQRA.style.display="flex";
         contenedor.style.display="none";
         glosariosAUR.style.display="flex";
@@ -112,7 +113,8 @@ function manejarSelecciones() {
     const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
     if (seleccion) {
         //console.log(`Seleccionaste: ${seleccion.id}`);
-        textUsuario.innerHTML=`${seleccion.id}`;
+        //textUsuario.innerHTML=`${seleccion.id}`;
+        textUsuario.innerHTML = `${seleccion.id.charAt(0).toUpperCase()}${seleccion.id.slice(1)}`;
         tituloAUR.style.display="flex"
         glosariosAUR.style.display="none";
         contenedorAUR.style.display="none";
@@ -157,15 +159,18 @@ function manejarSeleccionAUR() {
         case "abonado":
             drepresentante.style.display="none";
             dusuario.style.display="none";
+            document.getElementById('contenedorDatosPersonalesDetails').open = true;
             break;
         case "usuario":
             drepresentante.style.display="none";
             dusuario.style.display="BLOCK";
+            document.getElementById('contenedorDatosPersonalesDetails').open = true;
             break;
 
         case "representante":
             drepresentante.style.display="flex";
             dusuario.style.display="none";
+            document.getElementById('contenedorDatosPersonalesDetails').open = true;
             break;
     
         default:
@@ -224,28 +229,6 @@ function continuar() {
         default:
             break;
     }
-
-
-    //const txtDatos=document.querySelectorAll('.datosPersonales');
-    //const txtDatos=document.getElementsByName('input[name="datosPersonales"].value')
-
-    //texto
-    //const alert=document.createElement("<p class='alert'> Completar datos</p>");
-    //const alert=document.createElement("span");
-    // const element = document.createElement("span");
-    // element.textContent = "completa datos";
-    // // B) Inserta después de .container
-
-    // //const txtDatos=""
-    // const nombre=document.getElementById("name").value;
-
-    // if (nombre==='') {
-    //     nombre.after(element);
-    //     //txtDatos.insertAdjacentHTML("afterend","input")
-    //     //alert("chau")
-    // }else{
-    //     alert("hola")
-    // }
 
 }
 
@@ -574,6 +557,7 @@ function facturado() {
     //
     //selectElement.value = ""; 
     //
+    document.getElementById('detailsReclamoDs').open = true;
 
     switch (oFacturado) {
 
@@ -1280,6 +1264,8 @@ function quejas() {
     //la condicion
     const cajaReclamoenQueja=document.getElementById("datosReclamos");
     const cajaApelacionenQueja=document.getElementById("datosApelacion");
+    //
+    document.getElementById('detailsQuejaDs').open = true;
 
 
     switch (opcionQueja.value) {
@@ -1490,6 +1476,8 @@ function apelaciones() {
     //limpiarInputsApelacion();
     //limpiarInputs();
     //
+
+    document.getElementById('detailsApelacionDs').open = true;
 
     switch (apelacion.value) {
 
