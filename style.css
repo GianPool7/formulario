@@ -28,7 +28,7 @@
     justify-content: center;
     gap: 20px;
     border-radius: 20px;
-    color: white;
+    color: #F2F2F2;
     cursor: pointer;
 }
 
@@ -64,8 +64,8 @@ input[type="button"]{
     border: none;
     padding: 10px;
     cursor: pointer;
-    background-color: red;
-    color: white;
+    background-color: #ff5100;
+    color: #F2F2F2;
     border-radius: 20px;
 }
 .tituloOpcion{
@@ -93,11 +93,11 @@ input[type="button"]{
 }
 
 .contenedorGlosario{
-    background-color: #002ccc;
+    background-color:#002ccc ;
     padding: 10px;
     width: 80%;
     border-radius: 10px;
-    color: white;
+    color: #F2F2F2;
 }
 
 #glosarioQRA{
@@ -129,6 +129,12 @@ details{
     margin: 5px;
     padding: 15px;
     width: 40%;
+}
+
+.opcionCorreo{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .representantecss{

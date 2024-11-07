@@ -273,7 +273,7 @@ def add_claim():
             #datos del servicio queja
             'x_studio_empresa_operadora_ds1': claim.get('empresaOperadoraQueja', ''),
             'x_studio_servicio_objeto_queja_dsq': claim.get('servicioObjetoQueja', ''),
-            'x_studio_especificar_dsq': claim.get('especificarQueja', ''),
+            #'x_studio_especificar_dsq': claim.get('especificarQueja', ''),
             'x_studio_nmero_servicio_reclamado_dsq': claim.get('numServicioQueja', ''),
             'x_studio_cdigo_nmero_reclamo_dsq': claim.get('codigoNumeroQueja', ''),
 

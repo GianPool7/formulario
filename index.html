@@ -181,7 +181,15 @@
                                     </label>
                                 </div>
                                 <div class="opcionCorreo">
-                                    <input type="checkbox" name="autoriza" id="autoriza" value="true">
+                                    <!-- <input type="checkbox" name="autoriza" id="autoriza" value="true"> -->
+                                    <div class="oCorreo">
+                                        <label for="">Si</label>
+                                        <input type="radio" name="autorizacion" id="autoriza" value="True">
+                                    </div>
+                                    <div class="oCorreo">
+                                        <label for="">No</label>
+                                        <input type="radio" name="autorizacion" id="autoriza" value="False">
+                                    </div>
                                 </div>
                             </div>
 
@@ -2228,7 +2236,7 @@
                 // servicios
                 empresaOperadoraQueja: document.getElementById('empresaOperadoraQueja').value,
                 servicioObjetoQueja: document.getElementById('servicioObjetoQueja').value,
-                especificarQueja: document.getElementById('especificarQueja').value,
+                //especificarQueja: document.getElementById('especificarQueja').value,
                 numServicioQueja: document.getElementById('numServicioQueja').value,
                 codigoNumeroQueja: document.getElementById('codigoNumeroQueja').value,
 
