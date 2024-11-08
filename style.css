@@ -183,7 +183,7 @@ select{
     justify-content: space-around;
     gap: 10px;
     padding: 20px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .cajasCentradas{
@@ -209,10 +209,15 @@ select{
     padding: 10px;
 }
 
+.materiaReclamableUnica{
+    padding: 20px;
+}
+
 /* caja grande xd*/
 
 .contenedorPadre{
     padding: 5px;
+    margin: 5px;
 }
 
 .contenedorHijo{

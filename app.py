@@ -268,7 +268,7 @@ def add_claim():
             'x_studio_servicio_contratado_dsr': claim.get('servicioContratadoReclamo', ''),
             'x_studio_nmero_cdigo_servicio_contrato_dsr': claim.get('numeroServicioContratadoReclamo', ''),
             'x_studio_servicio_materia_de_reclamo': claim.get('servicioMateriaReclamo', ''),
-            'x_studio_especificar_dsr': claim.get('especificarReclamoTwo', ''),
+            #'x_studio_especificar_dsr': claim.get('especificarReclamoTwo', ''),
 
             #datos del servicio queja
             'x_studio_empresa_operadora_ds1': claim.get('empresaOperadoraQueja', ''),

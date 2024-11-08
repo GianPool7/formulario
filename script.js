@@ -201,29 +201,43 @@ reclamo.style.display="none";
 
 function continuar() {
 
+    //const campos = document.querySelectorAll('.datosPersonales');
+
+    //const nombres=document.getElementById("name").value;
+
+    //
     const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
     apelacion.style.display="none";
     queja.style.display="none";
     reclamo.style.display="none";
     enviar.style.display="flex";
-    contenedorDatosPersonales.style.display="none";
+    document.getElementById('contenedorDatosPersonalesDetails').open = false;
+
 
     switch (seleccion && seleccion.id) {
+
         case "reclamo":
             apelacion.style.display="none";
             queja.style.display="none";
             reclamo.style.display="flex";
+            document.getElementById('contenedorDatosPersonalesDetails').open = false;
+            document.getElementById('seleccionMultipleReclamo').open = true;
+
             break;
         case "queja":
             apelacion.style.display="none";
             queja.style.display="flex";
             reclamo.style.display="none";
+            document.getElementById('contenedorDatosPersonalesDetails').open = false;
+            document.getElementById('seleccionUnicoQueja').open = true;
             break;
 
         case "apelacion":
             apelacion.style.display="flex";
             queja.style.display="none";
             reclamo.style.display="none";
+            document.getElementById('contenedorDatosPersonalesDetails').open = false;
+            document.getElementById('seleccionUnicaApelacion').open = true;
             break;
     
         default:
@@ -231,6 +245,10 @@ function continuar() {
     }
 
 }
+
+//
+
+
 
 //
 
@@ -290,8 +308,6 @@ function selecion() {
 
     //
     cReclamo.style.display="block";
-
-
     //
     const materiaR=document.getElementById("materias");
     const materiasFacturacion=document.getElementById("fc");
@@ -388,6 +404,8 @@ function selecion() {
     xReclamablesTres.style.display="none";
     //
 
+    //details
+    document.getElementById('seleccionMultipleReclamo').open = true;
 
     switch (materiaR.value) {
 
@@ -511,7 +529,7 @@ function selecion() {
             materiasContratacion.style.display = 'none';
             materiasMigracion.style.display="none";
             materiasXmaterias.style.display = 'block';
-            cCalidad.style.display="none"
+            //cCalidad.style.display="none"
 
             break;
     
@@ -526,6 +544,7 @@ function selecion() {
             materiasMigracion.style.display="none";
             materiasXmaterias.style.display = 'none';
             //
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -545,7 +564,7 @@ function facturado() {
     const adHojaPagoFacturacion=document.getElementById("cfCondicionSeis");
     const numDocCobro=document.getElementById("numDocCobroSeis");
     //
-    const selectElement = document.getElementById('facturados');
+    //const selectElement = document.getElementById('facturados');
     //
     nRecibo.style.display="none";
     contenidoFacturacion.style.display="none";
@@ -609,6 +628,7 @@ function facturado() {
             break;
     
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -621,7 +641,7 @@ function hojaFacturado(){
     const hoja=document.getElementById("hpfacturado").value;
     const fileFacturacion=document.getElementById("fhpf");
     fileFacturacion.style.display="none";
-
+    
     switch (hoja) {
         case "si":
             fileFacturacion.style.display="block"
@@ -660,6 +680,7 @@ function calidad() {
 
     const oCalidad=document.getElementById("calidadidoneidad");
     const contenidoci=document.getElementById("contenidocaliad");
+    document.getElementById('detailsReclamoDs').open = true;
     //calidad
     contenidoci.style.display="none";
 
@@ -670,6 +691,7 @@ function calidad() {
             break;
     
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -691,6 +713,8 @@ function incumpliento() {
     incumplimientoT.style.display="none";
     incumplimientoTr.style.display="none";
     incumplimientoF.style.display="none";
+    //
+    document.getElementById('detailsReclamoDs').open = true;
 
     switch (oincumplimiento.value) {
 
@@ -715,6 +739,7 @@ function incumpliento() {
         
         default:
             //
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -740,6 +765,7 @@ function canalPromocion() {
 function canalPromocionCuatro() {
     const cPromocionC=document.getElementById("cnPromocionCuatro").value;
     const txtPromocionC=document.getElementById("txtcpromocioC");
+
 
     switch (cPromocionC) {
         case "otro":
@@ -768,6 +794,8 @@ function faltaServicios() {
     cfsTwo.style.display="none";
     cfsThree.style.display="none";
     cfsFour.style.display="none";
+    //
+    document.getElementById('detailsReclamoDs').open = true;
     
     switch (fServicio.value) {
 
@@ -788,6 +816,7 @@ function faltaServicios() {
             break;
     
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 }
@@ -795,6 +824,7 @@ function faltaServicios() {
 function fsrecibo(){
     const adjuntaRecibo=document.getElementById("adrecibos").value;
     const adjuntarElRecibo=document.getElementById("adRecibofs");
+    //
 
     switch (adjuntaRecibo) {
         case "si":
@@ -827,6 +857,7 @@ function fsreciboPendiente() {
     const recibosPendientes=document.getElementById("adrecibosPendiente").value;
     const fileRPendiente=document.getElementById("adReciboPendientefs");
 
+
     switch (recibosPendientes) {
         case "si":
             fileRPendiente.style.display="block";
@@ -850,6 +881,8 @@ function instalaciones() {
     instalacionUnoDos.style.display="none";
     intalacionTresCuatro.style.display="none";
     instalacionCinco.style.display="none";
+    //
+    document.getElementById('detailsReclamoDs').open = true;
 
     switch (instalacionOpcion.value) {
         case "instalacionesUno":
@@ -873,6 +906,7 @@ function instalaciones() {
             break;
 
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 }
@@ -954,6 +988,8 @@ function baja() {
     bajaDos.style.display="none";
     bajaTres.style.display="none";
 
+    document.getElementById('detailsReclamoDs').open = true;
+
     switch (opcionBaja.value) {
         case "bajaUno":
             bajaOne.style.display="block";
@@ -975,6 +1011,7 @@ function baja() {
             break;
     
         default:  
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 }
@@ -1057,6 +1094,7 @@ function contratos() {
     contratoDos.style.display="none";
     contratosTres.style.display="none";
     contratoCuatro.style.display="none";
+    document.getElementById('detailsReclamoDs').open = true;
 
     switch (contratoOpcion.value) {
         case "conuno":
@@ -1079,6 +1117,7 @@ function contratos() {
             break;
     
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -1105,6 +1144,8 @@ function migracionReclamable() {
     // datoExtraUno.style.display="none";
     // const aDatos=document.getElementById("adsdos");
     // aDatos.style.display="none"
+
+    document.getElementById('detailsReclamoDs').open = true;
     
     switch (opcionMigracion) {
         case "migracionOne":
@@ -1125,6 +1166,7 @@ function migracionReclamable() {
             break;
     
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -1160,7 +1202,6 @@ function asolicitud() {
     }
 }
 
-
 /* fin de migraciones */
 
 /* OTROS */
@@ -1175,6 +1216,7 @@ function xMaterias() {
     xReclamablesDos.style.display="none";
     xReclamablesTres.style.display="none";
 
+    document.getElementById('detailsReclamoDs').open = true;
 
     
     switch (xMateriasReclamables.value) {
@@ -1192,6 +1234,7 @@ function xMaterias() {
             break;
     
         default:
+            document.getElementById('detailsReclamoDs').open = false;
             break;
     }
 
@@ -1246,7 +1289,14 @@ function solicitudfll() {
 
 }
 
+function pestañaReclamo() {
+    document.getElementById('detailsReclamoDs').open=false;
+    document.getElementById('reclamoRespuestasSelecciones').open = true;
+}
+
 /* FIN DE OTROS */
+/* FIN DE RECLAMOS */
+
 
 /* EMPIEZA LAS QUEJAS */
 
@@ -1264,8 +1314,9 @@ function quejas() {
     //la condicion
     const cajaReclamoenQueja=document.getElementById("datosReclamos");
     const cajaApelacionenQueja=document.getElementById("datosApelacion");
-    //
+    // los details
     document.getElementById('detailsQuejaDs').open = true;
+    document.getElementById('seleccionUnicoQueja').open=false;
 
 
     switch (opcionQueja.value) {
@@ -1352,6 +1403,8 @@ function quejas() {
             cajaReclamoenQueja.style.display="none"
             //cajaQuejaenQueja.style.display="none"
             cajaApelacionenQueja.style.display="none"
+            //
+            document.getElementById('detailsQuejaDs').open=false;
             break;
     }
 
@@ -1453,6 +1506,11 @@ function defectos() {
     }
 }
 
+function pestañaQueja() {
+    document.getElementById('detailsQuejaDs').open=false;
+    document.getElementById('quejaRespuestasSelecciones').open = true;
+}
+
 /* Fin de queja */
 
 /* Apelacion */
@@ -1478,6 +1536,7 @@ function apelaciones() {
     //
 
     document.getElementById('detailsApelacionDs').open = true;
+    document.getElementById('seleccionUnicaApelacion').open=false;
 
     switch (apelacion.value) {
 
@@ -1491,9 +1550,7 @@ function apelaciones() {
             //
             cajaQuejaenApelacion.style.display="none";
             cajaReclamoenApelacion.style.display="none";
-            //
-            //limpiarInputs();
-            //
+
             break;
 
         case "apelacionTwo":
@@ -1570,6 +1627,8 @@ function apelaciones() {
             //
             cajaQuejaenApelacion.style.display="none";
             cajaReclamoenApelacion.style.display="none";
+            //
+            document.getElementById('detailsApelacionDs').open = false;
             break;
     }
 
@@ -1610,7 +1669,10 @@ function apelacionCinco() {
 
 }
 
-
+function pestañaApelacion() {
+    document.getElementById('detailsApelacionDs').open=false;
+    document.getElementById('apelacionRespuestasSelecciones').open = true;
+}
 
 
 
