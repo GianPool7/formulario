@@ -577,6 +577,7 @@ function facturado() {
     //selectElement.value = ""; 
     //
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     switch (oFacturado) {
 
@@ -683,6 +684,8 @@ function calidad() {
     document.getElementById('detailsReclamoDs').open = true;
     //calidad
     contenidoci.style.display="none";
+    document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     switch (oCalidad.value) {
 
@@ -715,6 +718,7 @@ function incumpliento() {
     incumplimientoF.style.display="none";
     //
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     switch (oincumplimiento.value) {
 
@@ -796,6 +800,7 @@ function faltaServicios() {
     cfsFour.style.display="none";
     //
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
     
     switch (fServicio.value) {
 
@@ -883,6 +888,7 @@ function instalaciones() {
     instalacionCinco.style.display="none";
     //
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     switch (instalacionOpcion.value) {
         case "instalacionesUno":
@@ -989,6 +995,7 @@ function baja() {
     bajaTres.style.display="none";
 
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     switch (opcionBaja.value) {
         case "bajaUno":
@@ -1094,7 +1101,9 @@ function contratos() {
     contratoDos.style.display="none";
     contratosTres.style.display="none";
     contratoCuatro.style.display="none";
+    ///
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     switch (contratoOpcion.value) {
         case "conuno":
@@ -1146,6 +1155,7 @@ function migracionReclamable() {
     // aDatos.style.display="none"
 
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
     
     switch (opcionMigracion) {
         case "migracionOne":
@@ -1217,6 +1227,7 @@ function xMaterias() {
     xReclamablesTres.style.display="none";
 
     document.getElementById('detailsReclamoDs').open = true;
+    document.getElementById('seleccionMultipleReclamo').open = false;
 
     
     switch (xMateriasReclamables.value) {
