@@ -275,14 +275,43 @@ details{
     cursor: pointer;
 }
 
-
-
 /**/
 
 .alert{
     color: red;
     padding: 10px;
 }
+
+/**/
+
+.contenedorTicket{
+    padding: 10px;
+    display: block;
+    margin: auto;
+    width: 50%;
+    border: solid 1px black;
+}
+
+.tituloTicket{
+    background-color: #002ccc;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 12px;
+    color: #F2F2F2;
+    border-bottom: 1px solid white;
+}
+
+.ticket{
+    background-color: #002ccc;
+    color: #F2F2F2;
+    padding: 12px;
+    line-height: 30px;
+}
+/**/
+
+
+
 
 /**/
 

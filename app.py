@@ -280,7 +280,7 @@ def add_claim():
             #datos del servicio apelacion
             'x_studio_empresa_operadora_ds': claim.get('empresaOperadoraApelacion', ''),
             'x_studio_servicio_materia_de_apelacin_ds': claim.get('servicioMateriaApelacion', ''),
-            'x_studio_especificar_ds': claim.get('especificarApelacionOne', ''),
+            #'x_studio_especificar_ds': claim.get('especificarApelacionOne', ''),
             'x_studio_nmero_servicio_reclamado_ds': claim.get('numeroServicioApelacion', ''),
             'x_studio_cdigo_nmero_reclamo_ds': claim.get('codigoNumeroApelacion', ''),
             'x_studio_nmero_carta_resuelve_reclamo_ds': claim.get('numeroCartaApelacion', ''),

@@ -1,6 +1,10 @@
 const opcionReclamo=document.getElementById("reclamo");
 const opcionQueja=document.getElementById("queja");
 const opcionApelacion=document.getElementById("apelacion");
+
+const cajaTotal=document.getElementById("cajaPadre")
+
+
 // los inputs de los datos
 
 //
@@ -1685,6 +1689,60 @@ function pestañaApelacion() {
     document.getElementById('apelacionRespuestasSelecciones').open = true;
 }
 
+/* */
+
+const ticketLegal=document.getElementById("cajaContenedorTicket");
+ticketLegal.style.display="none"
 
 
+/* mostrando el detalle */
+
+
+
+const botonMostrarDatos = document.getElementById('mostrarDatos');
+
+// Evento para cuando el usuario haga click en el botón
+botonMostrarDatos.addEventListener('click', function() {
+    ticketLegal.style.display="block";
+    cajaTotal.style.display="none";
+    // Seleccionamos todos los inputs de tipo texto dentro del formulario
+    const inputs = document.querySelectorAll('input[type="text"],input[type="date"],select');
+
+    // Creamos una variable para almacenar los resultados
+    let datosRellenados = '';
+
+    // Recorremos todos los inputs de tipo texto
+    inputs.forEach(input => {
+        const valor = input.value.trim(); // Obtenemos el valor del campo
+        
+        // Si el campo tiene valor (no está vacío)
+        if (valor) {
+            // Intentamos encontrar el label asociado
+            const label = document.querySelector(`label[for="${input.id}"]`);
+            
+            // Verificamos si encontramos el label
+            if (label) {
+                // Extraemos el texto del label
+                const labelText = label.innerText || label.textContent;
+                // Agregamos el nombre del campo y su valor
+                datosRellenados += `<p><strong>${labelText}:</strong> ${valor}</p>`;
+            }
+        }
+    });
+
+    // Mostrar los resultados
+    const resultados = document.getElementById('resultados');
+    if (datosRellenados) {
+        // Si hay datos, los mostramos
+        resultados.innerHTML = datosRellenados;
+    } else {
+        // Si no hay datos, mostramos un mensaje
+        resultados.innerHTML = '<p>No se han rellenado datos.</p>';
+    }
+});
+
+function editarDatos() {
+    ticketLegal.style.display="none"
+    cajaTotal.style.display="block";
+}
 
