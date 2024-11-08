@@ -269,6 +269,11 @@ button{
     cursor: pointer;
 }
 
+button:hover{
+    background-color: #001d86;
+    outline: none;
+}
+
 /**/
 
 details{
