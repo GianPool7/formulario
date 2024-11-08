@@ -199,6 +199,12 @@ select{
     justify-content: space-between;
 }
 
+.cajasContenedorSeleccionesMultiples{
+    display: flex;
+    justify-content: center;
+}
+
+
 .materiaReclamable{
     width: 42%;
     padding: 10px;
