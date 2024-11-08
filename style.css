@@ -289,7 +289,7 @@ details{
     display: block;
     margin: auto;
     width: 50%;
-    border: solid 1px black;
+    background-color: #ff4c00;
 }
 
 .tituloTicket{

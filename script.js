@@ -1711,6 +1711,18 @@ botonMostrarDatos.addEventListener('click', function() {
     // Creamos una variable para almacenar los resultados
     let datosRellenados = '';
 
+    // Primero, capturamos el valor del radio seleccionado (Reclamo, Queja o Apelación)
+    const radioSeleccionado = document.querySelector('input[name="opcionesPrimero"]:checked');
+    if (radioSeleccionado) {
+        const valorRadio = radioSeleccionado.nextElementSibling.innerText; // Obtenemos el texto del label asociado
+        // Mostramos el valor del radio seleccionado de forma destacada
+        datosRellenados =valorRadio;
+
+        // Actualizamos el contenido del elemento con id "tituloTicketFinal"
+        const tituloTickets = document.getElementById("tituloTicketFinal");
+        tituloTickets.innerHTML = datosRellenados;
+    }
+
     // Recorremos todos los inputs de tipo texto
     inputs.forEach(input => {
         const valor = input.value.trim(); // Obtenemos el valor del campo
