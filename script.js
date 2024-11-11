@@ -1,7 +1,12 @@
 const opcionReclamo=document.getElementById("reclamo");
 const opcionQueja=document.getElementById("queja");
 const opcionApelacion=document.getElementById("apelacion");
+//poniendo nombre a la caja de details de datos personales
 
+
+const datosPersonalesDetailsContenedor=document.getElementById('contenedorDatosPersonalesDetails');
+
+//
 const cajaTotal=document.getElementById("cajaPadre")
 
 
@@ -145,6 +150,13 @@ function volverUsuario() {
     cReclamo.style.display="none"
     //
     enviar.style.display="none";
+    //
+    const inputsTextoDatosPersonales = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
+    // Recorremos todos los inputs y les asignamos un valor vacío
+    inputsTextoDatosPersonales.forEach(input => {
+        input.value = "";  // Establecemos el valor de cada input a ""
+    });
+
 }
 
 
@@ -178,6 +190,7 @@ function manejarSeleccionAUR() {
             break;
     
         default:
+            document.getElementById('contenedorDatosPersonalesDetails').open = false;
             break;
     }
 
@@ -204,83 +217,96 @@ reclamo.style.display="none";
 //
 
 function continuar() {
+    // Verificar si al menos uno de los radios está seleccionado
+    const radiosAutorizacion = document.querySelectorAll('input[name="autorizacion"]');
+    let autorizacionSeleccionada = false;
 
-    //const campos = document.querySelectorAll('.datosPersonales');
+    radiosAutorizacion.forEach(radio => {
+        if (radio.checked) {
+            autorizacionSeleccionada = true;
+        }
+    });
 
-    //const nombres=document.getElementById("name").value;
+    // Si no hay radio seleccionado, mostrar el mensaje de error y detener la ejecución
+    if (!autorizacionSeleccionada) {
+        const alertaAutorizacion = document.createElement("p");
+        alertaAutorizacion.textContent = "Debe seleccionar una opción (Si o No) para la autorización";
+        alertaAutorizacion.classList.add('alert'); // Estilo para el mensaje
+        const opcionCorreo = document.querySelector('.opcionCorreo');
+        
+        // Si ya existe un mensaje de error, no agregar otro
+        if (!document.querySelector('.alert')) {
+            opcionCorreo.insertAdjacentElement("afterend",alertaAutorizacion); // Insertar el mensaje de error debajo de los radios
+        }
+        return; // Detener la ejecución si no se seleccionó un radio
+    }
 
-    //
-    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
-    apelacion.style.display="none";
-    queja.style.display="none";
-    reclamo.style.display="none";
-    enviar.style.display="flex";
+    // Si la validación pasa, ocultar el bloque de datos personales y mostrar el siguiente contenido
     document.getElementById('contenedorDatosPersonalesDetails').open = false;
 
+    // Obtener la opción seleccionada en el campo 'opcionesPrimero'
+    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
+    if (!seleccion) return; // Si no hay opción seleccionada, salir
 
-    switch (seleccion && seleccion.id) {
-
+    // Mostrar y ocultar secciones según la selección
+    switch (seleccion.id) {
         case "reclamo":
-            apelacion.style.display="none";
-            queja.style.display="none";
-            reclamo.style.display="flex";
-            document.getElementById('contenedorDatosPersonalesDetails').open = false;
+            // Ocultar y mostrar las secciones correspondientes
+            apelacion.style.display = "none";
+            queja.style.display = "none";
+            reclamo.style.display = "flex";
+            // Abrir el contenedor correspondiente
             document.getElementById('seleccionMultipleReclamo').open = true;
-
             break;
         case "queja":
-            apelacion.style.display="none";
-            queja.style.display="flex";
-            reclamo.style.display="none";
-            document.getElementById('contenedorDatosPersonalesDetails').open = false;
+            apelacion.style.display = "none";
+            queja.style.display = "flex";
+            reclamo.style.display = "none";
             document.getElementById('seleccionUnicoQueja').open = true;
             break;
-
         case "apelacion":
-            apelacion.style.display="flex";
-            queja.style.display="none";
-            reclamo.style.display="none";
-            document.getElementById('contenedorDatosPersonalesDetails').open = false;
+            apelacion.style.display = "flex";
+            queja.style.display = "none";
+            reclamo.style.display = "none";
             document.getElementById('seleccionUnicaApelacion').open = true;
             break;
-    
         default:
             break;
     }
-
 }
 
-//
-
-
 
 //
+
+
+
+//
+
+// Datos personales
+const txtNum=document.getElementById("numDoc")
+txtNum.setAttribute('maxlength', '0');
 
 function tipoDocumento() {
     const option=document.getElementById("tipoDoc").value;
 
-    // entrada de numero de dni
-    const txtNum=document.getElementById("numDoc")
-
     switch (option) {
-
-        case "dni":
+        case "DNI":
             txtNum.setAttribute('maxlength', '8');
             break;
 
-        case "ruc":
+        case "RUC":
             txtNum.setAttribute('maxlength', '11');
             break;
 
-        case "pas":
+        case "Pasaporte":
             txtNum.setAttribute('maxlength', '20');
             break;
 
-        case "ce":
+        case "CE":
             txtNum.setAttribute('maxlength', '20');
             break;
 
-        case "xdoc":
+        case "Otro_Documento":
             txtNum.setAttribute('maxlength', '20');
             break;
     
@@ -310,6 +336,7 @@ cReclamo.style.display="none"
 
 function selecion() {
 
+    //
     //
     cReclamo.style.display="block";
     //
@@ -1307,6 +1334,7 @@ function solicitudfll() {
 function pestañaReclamo() {
     document.getElementById('detailsReclamoDs').open=false;
     document.getElementById('reclamoRespuestasSelecciones').open = true;
+    enviar.style.display="flex";
 }
 
 /* FIN DE OTROS */
@@ -1524,6 +1552,7 @@ function defectos() {
 function pestañaQueja() {
     document.getElementById('detailsQuejaDs').open=false;
     document.getElementById('quejaRespuestasSelecciones').open = true;
+    enviar.style.display="flex";
 }
 
 /* Fin de queja */
@@ -1687,6 +1716,7 @@ function apelacionCinco() {
 function pestañaApelacion() {
     document.getElementById('detailsApelacionDs').open=false;
     document.getElementById('apelacionRespuestasSelecciones').open = true;
+    enviar.style.display="flex";
 }
 
 /* */
@@ -1701,10 +1731,14 @@ ticketLegal.style.display="none"
 
 const botonMostrarDatos = document.getElementById('mostrarDatos');
 
+//botonMostrarDatos.style.display="flex";
+
+
 // Evento para cuando el usuario haga click en el botón
 botonMostrarDatos.addEventListener('click', function() {
     ticketLegal.style.display="block";
     cajaTotal.style.display="none";
+
     // Seleccionamos todos los inputs de tipo texto dentro del formulario
     const inputs = document.querySelectorAll('input[type="text"],input[type="date"],select');
 
@@ -1752,6 +1786,8 @@ botonMostrarDatos.addEventListener('click', function() {
         resultados.innerHTML = '<p>No se han rellenado datos.</p>';
     }
 });
+
+
 
 function editarDatos() {
     ticketLegal.style.display="none"

@@ -64,7 +64,7 @@ input[type="button"]{
     border: none;
     padding: 10px;
     cursor: pointer;
-    background-color: #ff5100;
+    background-color: #ff4c00;
     color: #F2F2F2;
     border-radius: 20px;
 }
@@ -75,7 +75,7 @@ input[type="button"]{
     align-items: center;
 }
 .tituloOpcion h3{
-    color: orangered;
+    color: #002ccc;
     font-size: 30px;
 }
 
@@ -93,11 +93,11 @@ input[type="button"]{
 }
 
 .contenedorGlosario{
-    background-color:#002ccc ;
+    background-color:#11f5f7 ;
     padding: 10px;
     width: 80%;
-    border-radius: 10px;
-    color: #F2F2F2;
+    border-radius: 5px;
+    color: black;
 }
 
 #glosarioQRA{
@@ -143,22 +143,29 @@ details{
     justify-content: space-around;
 }
 
-input[type="text"],input[type="email"],input[type="date"]{
+input[type="text"],input[type="email"],input[type="date"],input[type="number"],select{
     background-color: aliceblue;
     width: 100%;
+    /* border: 1px solid #ff4c00; */
     border: none;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
     outline: none;
     margin-top: 10px;
     padding: 20px;
+    box-shadow: 5px 5px 10px black;
 }
+
+.error{
+    border: 1px solid #ff4c00;
+}
+
 
 label{
     width: 100%;
 }
 
-select{
+/* select{
     width: 100%;
     margin-top: 10px;
     border-radius: 10px;
@@ -166,7 +173,7 @@ select{
     border: none;
     outline: none;
     background-color: aliceblue;
-}
+} */
 
 /* continuar , despues de los datos personales*/
 
@@ -291,10 +298,20 @@ details{
 
 .contenedorTicket{
     padding: 10px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cajaContenedorTickets{
+    background-color: #ff4c00;
+    padding: 10px;
     display: block;
     margin: auto;
-    width: 50%;
-    background-color: #ff4c00;
+    border-radius: 4px;
+    width: 40%;
 }
 
 .tituloTicket{
@@ -368,5 +385,12 @@ details{
     .glosario{
         width: 100%;
     }
+
+    /**/
+
+    .cajaContenedorTickets{
+        width: 80%;
+    }
+    
 
 }

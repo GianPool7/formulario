@@ -7,6 +7,394 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+        }
+        /*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
+        .contenedorRQA{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cajaContenedor{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 10px;
+            gap: 20px;
+        }
+
+        .contenedorOpciones{
+            background-color: #002ccc;
+            width: 20%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            border-radius: 20px;
+            color: #F2F2F2;
+            cursor: pointer;
+        }
+
+        .contenedorOpciones label{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /*Titulo*/
+
+        .tituloOpciones{
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contenedorTitulo{
+            width: 100%;
+            display: flex;
+        }
+        .btnTitulo{
+            width: 10%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input[type="button"]{
+            /* outline: none; */
+            /* width: 100%; */
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #ff4c00;
+            color: #F2F2F2;
+            border-radius: 20px;
+        }
+        .tituloOpcion{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tituloOpcion h3{
+            color: #002ccc;
+            font-size: 30px;
+        }
+
+        #tituloOpcionesQRA{
+            display: none;
+        }
+
+        /* GLOSARIO */
+
+        .glosario{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            width: 50%;
+        }
+
+        .contenedorGlosario{
+            background-color: white;
+            border: 1px solid #002ccc;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            color: #002ccc;
+        }
+
+        #glosarioQRA{
+            display: none;
+        }
+
+        /* Contenedor de preguntas: Usuarios - Abonado - Representante */
+
+        .contenedorPreguntas{
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        details{
+            width: 90%;
+            padding: 10px;
+        }
+
+        .contenedorDatosPersonales{
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*margin-top: 20px;*/
+        }
+
+        .datos{
+            margin: 5px;
+            padding: 15px;
+            width: 40%;
+        }
+
+        .opcionCorreo{
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .representantecss{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        input[type="text"],input[type="email"],input[type="date"],input[type="number"],select{
+            background-color: aliceblue;
+            width: 100%;
+            /* border: 1px solid #ff4c00; */
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            outline: none;
+            margin-top: 10px;
+            padding: 20px;
+            box-shadow: 5px 5px 10px black;
+        }
+
+        .error{
+            border: 1px solid #ff4c00;
+        }
+
+
+        label{
+            width: 100%;
+        }
+        /* continuar , despues de los datos personales*/
+
+        .btnContinuar{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        /* Seleccionables */
+
+        .seleccionarOpcciones{
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            padding: 20px;
+            /* margin-bottom: 10px; */
+        }
+
+        .cajasCentradas{
+            width: 50%;
+            padding: 10px;
+        }
+
+        .seleccionMultipleReclamo{
+            width: 42%;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cajasContenedorSeleccionesMultiples{
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .materiaReclamable{
+            width: 42%;
+            padding: 10px;
+        }
+
+        .fc{
+            width: 50%;
+            padding: 10px;
+        }
+
+        .materiaReclamableUnica{
+            padding: 20px;
+        }
+
+        /* caja grande xd*/
+
+        .contenedorPadre{
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .contenedorHijo{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* contenedor de respuestas en las opciones seleccionados*/
+
+        .cajaRespuesta{
+            padding: 20px;
+            width: 90%;
+            display: block;
+            margin: auto;
+        }
+
+        .columnTwo{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+
+
+
+        /*BOTON DE ENVIAR EL FORMULARIO*/
+
+        .contenedorBtn{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        button{
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #001d86;
+            outline: none;
+        }
+
+        /**/
+
+        details{
+            cursor: pointer;
+        }
+
+        /**/
+
+        .alert{
+            color: red;
+            padding: 10px;
+        }
+
+        /**/
+
+        .contenedorTicket{
+            padding: 10px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajaContenedorTickets{
+            background-color: #ff4c00;
+            padding: 10px;
+            display: block;
+            margin: auto;
+            border-radius: 4px;
+            width: 80%;
+        }
+
+        .tituloTicket{
+            background-color: #002ccc;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 12px;
+            color: #F2F2F2;
+            border-bottom: 1px solid white;
+        }
+
+        .ticket{
+            background-color: #002ccc;
+            color: #F2F2F2;
+            padding: 12px;
+            line-height: 30px;
+        }
+        /**/
+
+        /**/
+
+        @media only screen and (max-width: 768px) {
+            .contenedorOpciones {
+                width: 100%;
+            }
+            .contenedorTitulo{
+                width: 100%;
+            }
+            .contenedorGlosario{
+                width: 100%;
+            }
+            details{
+                width: 100%;
+            }
+            .datos{
+                width: 100%;
+            }
+            .cajasCentradas{
+                width: 100%;
+            }
+            .seleccionMultipleReclamo{
+                width: 100%;
+                justify-content: center;
+            }
+            .materiaReclamable{
+                width: 100%;
+            }
+            .fc{
+                width: 100%;
+            }
+
+            /**/
+
+            .contenedorTitulo{
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .btnTitulo{
+                width: 100%;
+            }
+
+            .tituloOpcion{
+                width: 100%;
+            }
+
+            .glosario{
+                width: 100%;
+            }
+
+            /**/
+
+            .cajaContenedorTickets{
+                width: 100%;
+            }
+            
+
+        }
+
+    </style>
     
     <form action="" method="post" class="contendioFormulario" id="claimForm" enctype="multipart/form-data">
 
@@ -52,6 +440,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tituloOpciones" id="tituloOpcionesAUR">
+                <div class="contenedorTitulo">
+                    <div class="btnTitulo">
+                        <input type="button" onclick="volverUsuario()" value="Atrás">
+                    </div>
+                    <div class="tituloOpcion">
+                        <h3 id="tituloAUR">Usted es : </h3>
+                    </div>
+                    <div class="glosario" id="glosarioQRA">
+                        <div class="contenedorGlosario">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
     
             <div class="contenedorRQA" id="contenedorOpcionesAUR">
                 <div class="cajaContenedor">
@@ -70,22 +474,6 @@
                 </div>
             </div>
     
-            <div class="tituloOpciones" id="tituloOpcionesAUR">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" onclick="volverUsuario()" value="Atrás">
-                    </div>
-                    <div class="tituloOpcion">
-                        <h3 id="tituloAUR">Usted es</h3>
-                    </div>
-                    <div class="glosario" id="glosarioQRA">
-                        <div class="contenedorGlosario">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
             <!-- contenedor de datos personales -->
     
             <div class="contenedorPreguntas" id="contenidoDatos">
@@ -98,51 +486,46 @@
     
                                 <div class="datos">
                                     <label for="name">Nombres</label>
-                                    <input type="text" class="datosPersonales" id="name" placeholder="Nombre del reclamante">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
+                                    <input type="text" id="name" placeholder="Nombre del reclamante">
                                 </div>
                                 <div class="datos">
                                     <label for="apellidos">Apellidos</label>
-                                    <input type="text" class="datosPersonales" id="apellidos" placeholder="Apellidos del reclamante">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
+                                    <input type="text" id="apellidos" placeholder="Apellidos del reclamante">
                                 </div>
                                 <div class="datos" id="extra_usuario">
                                     <label for="relacion">Especifique su relación con el cliente</label>
-                                    <input type="text" name="datosPersonales" id="relacion" placeholder="Madre, Padre, Hijo, etc.">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
+                                    <input type="text" id="relacion" placeholder="Madre, Padre, Hijo, etc.">
                                 </div>
                                 <div class="contenedorDatosPersonales" id="extra_representante">
                                     <div class="datos">
                                         <label for="razonsocial">Razón Social</label>
-                                        <input type="text" id="razonsocial" name="datosPersonales" placeholder="Razón social">
-                                        <!-- <p class="alert" id="alertNombre"></p> -->
+                                        <input type="text" id="razonsocial" placeholder="Razón social">
+
                                     </div>
                                     <div class="datos">
                                         <label for="datos">Adjuntar link de Carta Poder</label>
                                         <input type="text" id="link" name="link" placeholder="Vinculo (Google drive OneDrive)">
-                                        <!-- <p class="alert" id="alertNombre"></p> -->
+
                                     </div>
                                 </div>
                                 <div class="datos">
                                     <label for="numeroContacto">Número de contacto</label>
                                     <input type="text" name="datosPersonales" id="numeroContacto" placeholder="Número de contacto" maxlength="9">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
                                 </div>
                                 <div class="datos">
                                     <label for="tipoDoc">Tipo de Documento</label>
                                     <select name="tipoDoc" id="tipoDoc" onchange="tipoDocumento()">
                                         <option value="">Selecciona un tipo de documento</option>
-                                        <option value="Documento de Identidad (DNI)">Documento de Identidad (DNI)</option>
-                                        <option value="Registro Único de Contribuyentes (RUC)">Registro Único de Contribuyentes (RUC)</option>
+                                        <option value="DNI">Documento de Identidad (DNI)</option>
+                                        <option value="RUC">Registro Único de Contribuyentes (RUC)</option>
                                         <option value="Pasaporte">Pasaporte</option>
-                                        <option value="Carnet de Extranjería(CE)">Carnet de Extranjería(CE)</option>
-                                        <option value="Otro Documento">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                                        <option value="CE">Carnet de Extranjería(CE)</option>
+                                        <option value="Otro_Documento">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
                                     </select>
                                 </div>
                                 <div class="datos">
                                     <label for="numDoc">Número de Documento</label>
-                                    <input type="text" id="numDoc" placeholder="Número de identidad">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
+                                    <input type="text" class="" id="numDoc" placeholder="Número de identidad">
                                 </div>
                                 <div class="datos">
                                     <label for="distritos">Distritos</label>
@@ -167,13 +550,11 @@
                                 </div>
                                 <div class="datos">
                                     <label for="direccion">Dirección</label>
-                                    <input type="text" name="datosPersonales" id="direccion" placeholder="Dirección">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
+                                    <input type="text" class="" name="datosPersonales" id="direccion" placeholder="Dirección">
                                 </div>
                                 <div class="datos">
                                     <label for="correo">Correo electrónico</label>
-                                    <input type="email" name="datosPersonales" id="correo" placeholder="ejemplo@gmail.com">
-                                    <!-- <p class="alert" id="alertNombre"></p> -->
+                                    <input type="email" class="" name="datosPersonales" id="correo" placeholder="ejemplo@gmail.com">
                                 </div>
                                 <div class="datos">
                                     <div class="textolabel">
@@ -2010,39 +2391,1832 @@
     
 
             <div class="contenedorBtn" id="btnEnviarFormulario">
-                <input type="button" value="finalizar" onclick="mostrarDetalles()" id="mostrarDatos"/>
+                <input type="button" value="finalizar" id="mostrarDatos"/>
             </div>
 
-
         </div>
-        
-
-
-
 
         <div class="contenedorTicket" id="cajaContenedorTicket">
 
-            <div class="tituloTicket">
-                <h1 id="tituloTicketFinal"></h1>
-                <input type="button" value="Editar" onclick="editarDatos()">
-            </div>
+            <div class="cajaContenedorTickets">
 
-            <div class="ticket" id="resultados">
-                <div class="datospersonalespruebas">
+                <div class="tituloTicket">
+                    <h2 id="tituloTicketFinal"></h2>
+                    <input type="button" value="Editar" onclick="editarDatos()">
                 </div>
-            </div>
+    
+                <div class="ticket" id="resultados">
+                    <div class="datospersonalespruebas">
+                    </div>
+                </div>
+    
+                <div class="contenedorBtn" id="btnEnviarFormulario">
+                    <button type="submit">Enviar</button>
+                </div>
 
-            <div class="contenedorBtn" id="btnEnviarFormulario">
-                <button type="submit">Enviar</button>
+
             </div>
 
         </div>
 
+        <div id="response"></div>
 
     </form>
 
-
     <script>
+        // const opcionReclamo=document.getElementById("reclamo");
+        // const opcionQueja=document.getElementById("queja");
+        // const opcionApelacion=document.getElementById("apelacion");
+        // //poniendo nombre a la caja de details de datos personales
+        // const datosPersonalesDetailsContenedor=document.getElementById('contenedorDatosPersonalesDetails');
+        // //
+        // const cajaTotal=document.getElementById("cajaPadre")
+        // //
+        // // boton para enviar el todo formulario
+        // const enviar=document.getElementById("btnEnviarFormulario");
+        // enviar.style.display="none";
+
+        // // funcion ids
+
+        // function reclamos() {
+        //     // Obtener el valor actual del input
+        //     const inputTicket = document.getElementById('tipoticket');
+        //     const inputDiagnostico = document.getElementById('diagnostico');
+            
+        //     // El número que deseas agregar, por ejemplo, 12345
+        //     const numT = 3;
+        //     const numD = 34;
+                
+        //     // Asignar ese número al valor del input
+        //     inputTicket.value = numT;
+        //     inputDiagnostico.value = numD;
+        // }
+
+        // function quejass() {
+        //     // Obtener el valor actual del input
+        //     const inputTicket = document.getElementById('tipoticket');
+        //     const inputDiagnostico = document.getElementById('diagnostico');
+            
+        //     // El número que deseas agregar, por ejemplo, 12345
+        //     const numT = 6;
+        //     const numD = 82;
+                
+        //     // Asignar ese número al valor del input
+        //     inputTicket.value = numT;
+        //     inputDiagnostico.value = numD;
+        // }
+
+        // function apelacionesS() {
+        //     // Obtener el valor actual del input
+        //     const inputTicket = document.getElementById('tipoticket');
+        //     const inputDiagnostico = document.getElementById('diagnostico');
+            
+        //     // El número que deseas agregar, por ejemplo, 12345
+        //     const numT = 7;
+        //     const numD = 81;
+                
+        //     // Asignar ese número al valor del input
+        //     inputTicket.value = numT;
+        //     inputDiagnostico.value = numD;
+        // }
+
+        // // funciona los que estan en la siguiente linea
+        // const opcionEscojidaQRA=document.getElementById("tituloOpcionesQRA");
+        // const tituloQRA=document.getElementById("opcionEscojida");
+        // const contenedor=document.getElementById("contenedorOpcionesQRA");
+        // // abonado usuario representante
+        // const glosariosAUR=document.getElementById("glosarioQRA");
+        // const contenedorAUR=document.getElementById("contenedorOpcionesAUR");
+        // const tituloAUR=document.getElementById("tituloOpcionesAUR");
+        // // propiedades
+        // contenedorAUR.style.display="none";
+        // tituloAUR.style.display="none";
+        // // contenedor de datos personales
+        // const contenedorDatosPersonales=document.getElementById("contenidoDatos")
+        // contenedorDatosPersonales.style.display="none";
+
+
+        // function manejarSeleccion() {
+        //     const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
+        //     if (seleccion) {
+        //         //console.log(`Seleccionaste: ${seleccion.id}`);
+        //         //tituloQRA.innerHTML=`${seleccion.id}`;
+        //         tituloQRA.innerHTML = `${seleccion.id.charAt(0).toUpperCase()}${seleccion.id.slice(1)}`;
+        //         opcionEscojidaQRA.style.display="flex";
+        //         contenedor.style.display="none";
+        //         glosariosAUR.style.display="flex";
+        //         contenedorAUR.style.display="flex";
+        //         tituloAUR.style.display="flex";
+        //     }
+        // }
+
+        // // Agregar el evento de clic a los radio buttons
+        // document.querySelectorAll('input[name="opcionesPrimero"]').forEach((input) => {
+        //     input.addEventListener('click', manejarSeleccion);
+        // });
+
+        // function volverRQA() {
+        //     contenedor.style.display="flex";
+        //     opcionEscojidaQRA.style.display="none";
+        //     glosariosAUR.style.display="none";
+        //     contenedorAUR.style.display="none";
+        //     tituloAUR.style.display="none";
+        //     contenedorDatosPersonales.style.display="none";
+        //     apelacion.style.display="none";
+        //     queja.style.display="none";
+        //     reclamo.style.display="none";
+        //     //
+        //     enviar.style.display="none";
+        //     //
+        //     cApelacion.style.display="none"
+        //     cQueja.style.display="none"
+        //     cReclamo.style.display="none"
+        // }
+
+
+        // //  ABONADO - USUARIO - REPRESENTANTE
+        // const textUsuario=document.getElementById("tituloAUR")
+
+        // function manejarSelecciones() {
+        //     const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
+        //     if (seleccion) {
+        //         //console.log(`Seleccionaste: ${seleccion.id}`);
+        //         //textUsuario.innerHTML=`${seleccion.id}`;
+        //         textUsuario.innerHTML = `${seleccion.id.charAt(0).toUpperCase()}${seleccion.id.slice(1)}`;
+        //         tituloAUR.style.display="flex"
+        //         glosariosAUR.style.display="none";
+        //         contenedorAUR.style.display="none";
+        //         contenedorDatosPersonales.style.display="flex"
+        //     }
+        // }
+
+        // document.querySelectorAll('input[name="tipoUsuario"]').forEach((input) => {
+        //     input.addEventListener('click', manejarSelecciones);
+        // });
+
+        // function volverUsuario() {
+        //     tituloAUR.style.display="none"
+        //     contenedorAUR.style.display="flex"
+        //     contenedorDatosPersonales.style.display="none";
+        //     apelacion.style.display="none";
+        //     queja.style.display="none";
+        //     reclamo.style.display="none";
+        //     //
+        //     glosariosAUR.style.display="flex"
+        //     //
+        //     cApelacion.style.display="none"
+        //     cQueja.style.display="none"
+        //     cReclamo.style.display="none"
+        //     //
+        //     enviar.style.display="none";
+        //     //
+        //     const inputsTextoDatosPersonales = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
+        //     // Recorremos todos los inputs y les asignamos un valor vacío
+        //     inputsTextoDatosPersonales.forEach(input => {
+        //         input.value = "";  // Establecemos el valor de cada input a ""
+        //     });
+
+        // }
+
+
+        // // datos personales
+        // const drepresentante=document.getElementById("extra_representante");
+        // drepresentante.style.display="none"
+        // const dusuario=document.getElementById("extra_usuario");
+        // dusuario.style.display="none"
+
+
+        // // Función para manejar la selección del radio button
+        // function manejarSeleccionAUR() {
+        //     const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
+
+        //     switch (seleccion && seleccion.id) {
+        //         case "abonado":
+        //             drepresentante.style.display="none";
+        //             dusuario.style.display="none";
+        //             document.getElementById('contenedorDatosPersonalesDetails').open = true;
+        //             break;
+        //         case "usuario":
+        //             drepresentante.style.display="none";
+        //             dusuario.style.display="BLOCK";
+        //             document.getElementById('contenedorDatosPersonalesDetails').open = true;
+        //             break;
+
+        //         case "representante":
+        //             drepresentante.style.display="flex";
+        //             dusuario.style.display="none";
+        //             document.getElementById('contenedorDatosPersonalesDetails').open = true;
+        //             break;
+            
+        //         default:
+        //             document.getElementById('contenedorDatosPersonalesDetails').open = false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // // Agregar el evento de clic a los radio buttons
+        // document.querySelectorAll('input[name="tipoUsuario"]').forEach((input) => {
+        //     input.addEventListener('click', manejarSeleccionAUR);
+        // });
+
+        // // continuar con el formulario
+
+        // const apelacion=document.getElementById("seleccionarApelacion");
+        // const queja=document.getElementById("seleccionarQueja");
+        // const reclamo=document.getElementById("seleccionarReclamo");
+
+        // apelacion.style.display="none";
+        // queja.style.display="none";
+        // reclamo.style.display="none";
+
+        // // Selecciona todos los campos de entrada con la clase .campo-reclamo
+        // //const inputs = document.querySelectorAll('.datosPersonales');
+        // //
+
+        // function continuar() {
+        //     // Verificar si al menos uno de los radios está seleccionado
+        //     const radiosAutorizacion = document.querySelectorAll('input[name="autorizacion"]');
+        //     let autorizacionSeleccionada = false;
+
+        //     radiosAutorizacion.forEach(radio => {
+        //         if (radio.checked) {
+        //             autorizacionSeleccionada = true;
+        //         }
+        //     });
+
+        //     // Si no hay radio seleccionado, mostrar el mensaje de error y detener la ejecución
+        //     if (!autorizacionSeleccionada) {
+        //         const alertaAutorizacion = document.createElement("p");
+        //         alertaAutorizacion.textContent = "Debe seleccionar una opción (Si o No) para la autorización";
+        //         alertaAutorizacion.classList.add('alert'); // Estilo para el mensaje
+        //         const opcionCorreo = document.querySelector('.opcionCorreo');
+                
+        //         // Si ya existe un mensaje de error, no agregar otro
+        //         if (!document.querySelector('.alert')) {
+        //             opcionCorreo.insertAdjacentElement("afterend",alertaAutorizacion); // Insertar el mensaje de error debajo de los radios
+        //         }
+        //         return; // Detener la ejecución si no se seleccionó un radio
+        //     }
+
+        //     // Si la validación pasa, ocultar el bloque de datos personales y mostrar el siguiente contenido
+        //     document.getElementById('contenedorDatosPersonalesDetails').open = false;
+
+        //     // Obtener la opción seleccionada en el campo 'opcionesPrimero'
+        //     const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
+        //     if (!seleccion) return; // Si no hay opción seleccionada, salir
+
+        //     // Mostrar y ocultar secciones según la selección
+        //     switch (seleccion.id) {
+        //         case "reclamo":
+        //             // Ocultar y mostrar las secciones correspondientes
+        //             apelacion.style.display = "none";
+        //             queja.style.display = "none";
+        //             reclamo.style.display = "flex";
+        //             // Abrir el contenedor correspondiente
+        //             document.getElementById('seleccionMultipleReclamo').open = true;
+        //             break;
+        //         case "queja":
+        //             apelacion.style.display = "none";
+        //             queja.style.display = "flex";
+        //             reclamo.style.display = "none";
+        //             document.getElementById('seleccionUnicoQueja').open = true;
+        //             break;
+        //         case "apelacion":
+        //             apelacion.style.display = "flex";
+        //             queja.style.display = "none";
+        //             reclamo.style.display = "none";
+        //             document.getElementById('seleccionUnicaApelacion').open = true;
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // }
+
+
+        // //
+
+
+
+        // //
+
+        // // Datos personales
+        // const txtNum=document.getElementById("numDoc")
+        // txtNum.setAttribute('maxlength', '0');
+
+        // function tipoDocumento() {
+        //     const option=document.getElementById("tipoDoc").value;
+
+        //     switch (option) {
+        //         case "DNI":
+        //             txtNum.setAttribute('maxlength', '8');
+        //             break;
+
+        //         case "RUC":
+        //             txtNum.setAttribute('maxlength', '11');
+        //             break;
+
+        //         case "Pasaporte":
+        //             txtNum.setAttribute('maxlength', '20');
+        //             break;
+
+        //         case "CE":
+        //             txtNum.setAttribute('maxlength', '20');
+        //             break;
+
+        //         case "Otro_Documento":
+        //             txtNum.setAttribute('maxlength', '20');
+        //             break;
+            
+        //         default:
+        //             txtNum.setAttribute('maxlength', '0');
+        //             break;
+        //     }
+
+        // }
+
+
+
+        // // Función para manejar la selección del radio button
+        // // 
+        // // las preguntas  de responder
+
+        // const cApelacion=document.getElementById("datosApelacion");
+        // const cQueja=document.getElementById("datosQueja");
+        // const cReclamo=document.getElementById("datosReclamos");
+
+        // cApelacion.style.display="none"
+        // cQueja.style.display="none"
+        // cReclamo.style.display="none"
+
+        // /* Facturacion */
+
+
+        // function selecion() {
+
+        //     //
+        //     //
+        //     cReclamo.style.display="block";
+        //     //
+        //     const materiaR=document.getElementById("materias");
+        //     const materiasFacturacion=document.getElementById("fc");
+        //     const materiasCalidad=document.getElementById("cs");
+        //     const materiasOfertas=document.getElementById("op");
+        //     const materiasFaltaServicio=document.getElementById("fs");
+        //     const materiasInstalacion=document.getElementById("ia");
+        //     const materiasBaja=document.getElementById("sus");
+        //     const materiasContratacion=document.getElementById("ct");
+        //     const materiasMigracion=document.getElementById("mi");
+        //     const materiasXmaterias=document.getElementById("xma");
+        //     //Opcion
+
+        //     // facturacion
+        //     const contenidoFacturacion=document.getElementById("contenidoBase");
+        //     contenidoFacturacion.style.display="none";
+        //     //
+
+        //     //calidad
+        //     const contenidoci=document.getElementById("contenidocaliad");
+        //     contenidoci.style.display="none"
+        //     //
+
+        //     //incumplimiento
+        //     const incumplimientoO=document.getElementById("contenidoincumplimientoone");
+        //     const incumplimientoT=document.getElementById("contenidoincumplimientotwo");
+        //     const incumplimientoTr=document.getElementById("contenidoincumplimientothree");
+        //     const incumplimientoF=document.getElementById("contenidoincumplimientofour");
+        //     incumplimientoO.style.display="none";
+        //     incumplimientoT.style.display="none";
+        //     incumplimientoTr.style.display="none";
+        //     incumplimientoF.style.display="none";
+        //     //
+
+        //     //servicio
+        //     const cfsOne=document.getElementById("contenidofservicioone");
+        //     const cfsTwo=document.getElementById("contenidofserviciotwo");
+        //     const cfsThree=document.getElementById("contenidofsthree");
+        //     const cfsFour=document.getElementById("contenidofsfour");
+        //     cfsOne.style.display="none";
+        //     cfsTwo.style.display="none";
+        //     cfsThree.style.display="none";
+        //     cfsFour.style.display="none";
+        //     //
+
+        //     //activacion
+        //     const instalacionUnoDos=document.getElementById("contenidoinstalacionuno")
+        //     const intalacionTresCuatro=document.getElementById("contenidoinstalaciontres")
+        //     const instalacionCinco=document.getElementById("contenidoinstalacioncinco")
+        //     instalacionUnoDos.style.display="none";
+        //     intalacionTresCuatro.style.display="none";
+        //     instalacionCinco.style.display="none";
+        //     //
+
+        //     //baja
+        //     const bajaOne=document.getElementById("respuestabajauno");
+        //     const bajaDos=document.getElementById("respuestabajados");
+        //     const bajaTres=document.getElementById("respuestastrescuatro");
+        //     bajaOne.style.display="none";
+        //     bajaDos.style.display="none";
+        //     bajaTres.style.display="none";
+        //     //
+
+        //     // contratacion
+        //     const contratosUno=document.getElementById("respuestascontratosbase");
+        //     const contratoDos=document.getElementById("respuestascontratosdos");
+        //     const contratosTres=document.getElementById("respuestascontratostres");
+        //     const contratoCuatro=document.getElementById("respuestascontratoscuatros");
+        //     contratosUno.style.display="none";
+        //     contratoDos.style.display="none";
+        //     contratosTres.style.display="none";
+        //     contratoCuatro.style.display="none";
+        //     //
+
+        //     //migracion
+        //     const migracionUno=document.getElementById("respuestasMigracionBase");
+        //     // const migracionDos=document.getElementById("respuestasMigracionDos");
+        //     // const migracionTres=document.getElementById("respuestaMigracionTres");
+        //     // const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
+        //     // const datoExtraUno=document.getElementById("respuestaMigracionUno");
+        //     migracionUno.style.display="none";
+        //     // migracionDos.style.display="none";
+        //     // migracionTres.style.display="none";
+        //     // migracionCuatro.style.display="none";
+        //     // datoExtraUno.style.display="none";
+        //     //
+
+        //     // otros
+        //     const xReclamablesUno=document.getElementById("xmateriasOne");
+        //     const xReclamablesDos=document.getElementById("xmateriasTwo");
+        //     const xReclamablesTres=document.getElementById("xmateriasThree");
+        //     xReclamablesUno.style.display="none";
+        //     xReclamablesDos.style.display="none";
+        //     xReclamablesTres.style.display="none";
+        //     //
+
+        //     //details
+        //     document.getElementById('seleccionMultipleReclamo').open = true;
+
+        //     switch (materiaR.value) {
+
+        //         case "fcs":
+                    
+        //             materiasFacturacion.style.display = 'block';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+        //             break;
+
+        //         case "calidad":
+
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'block';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+        //             break;
+
+        //         case "oferta":
+
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'block';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+        //             break;
+                    
+        //         case "falta":
+                
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'block';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+
+        //             break;
+
+        //         case "instalacion":
+
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'block';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+
+        //             break;
+                    
+        //         case "baja":
+                    
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'block';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+
+        //             break;
+
+        //         case "contratacion":
+                    
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'block';
+        //             materiasMigracion.style.display = 'none';
+        //             materiasXmaterias.style.display = 'none';
+
+        //             break;
+
+        //         case "migracion":
+
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display = 'block';
+        //             materiasXmaterias.style.display = 'none';
+
+        //             break;
+                    
+        //         case "xmaterias":
+                    
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display="none";
+        //             materiasXmaterias.style.display = 'block';
+        //             //cCalidad.style.display="none"
+
+        //             break;
+            
+        //         default:
+        //             materiasFacturacion.style.display = 'none';
+        //             materiasCalidad.style.display = 'none';
+        //             materiasOfertas.style.display = 'none';
+        //             materiasFaltaServicio.style.display = 'none';
+        //             materiasInstalacion.style.display = 'none';
+        //             materiasBaja.style.display = 'none';
+        //             materiasContratacion.style.display = 'none';
+        //             materiasMigracion.style.display="none";
+        //             materiasXmaterias.style.display = 'none';
+        //             //
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // /* facturacion */
+
+        // function facturado() {  
+
+        //     const oFacturado=document.getElementById("facturados").value;
+        //     const nRecibo=document.getElementById("nReciboBase");
+        //     const contenidoFacturacion=document.getElementById("contenidoBase");
+        //     const conceptoFacturado=document.getElementById("cfCondicion");
+        //     const tarifaUsuario=document.getElementById("cfCondicionDos");
+        //     const medioPagoFacturacion=document.getElementById("cfCondicionCinco");
+        //     const adHojaPagoFacturacion=document.getElementById("cfCondicionSeis");
+        //     const numDocCobro=document.getElementById("numDocCobroSeis");
+        //     //
+        //     //const selectElement = document.getElementById('facturados');
+        //     //
+        //     nRecibo.style.display="none";
+        //     contenidoFacturacion.style.display="none";
+        //     tarifaUsuario.style.display="none";
+        //     conceptoFacturado.style.display="none";
+        //     medioPagoFacturacion.style.display="none";
+        //     adHojaPagoFacturacion.style.display="none";
+        //     numDocCobro.style.display="none";
+        //     //
+        //     //selectElement.value = ""; 
+        //     //
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+        //     switch (oFacturado) {
+
+        //         case "calculo":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             conceptoFacturado.style.display="block";
+        //             break;
+                
+        //         case "tarifa":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             tarifaUsuario.style.display="block"
+        //             conceptoFacturado.style.display="block";
+        //             break;
+
+        //         case "reconexion":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             conceptoFacturado.style.display="none";
+        //             break;
+
+        //         case "dmonto":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             conceptoFacturado.style.display="block";
+        //             break;
+                
+        //         case "noprocesado":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             medioPagoFacturacion.style.display="flex";
+        //             break;
+
+        //         case "nfacturados":
+        //             numDocCobro.style.display="block"
+        //             contenidoFacturacion.style.display="flex";
+        //             adHojaPagoFacturacion.style.display="flex";
+        //             break;
+
+        //         case "cequipos":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             break;
+                
+        //         case "incremento":
+        //             nRecibo.style.display="block";
+        //             contenidoFacturacion.style.display="flex";
+        //             break;
+            
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+
+        //     //limpiarInputs();
+
+        // }
+
+        // function hojaFacturado(){
+        //     const hoja=document.getElementById("hpfacturado").value;
+        //     const fileFacturacion=document.getElementById("fhpf");
+        //     fileFacturacion.style.display="none";
+            
+        //     switch (hoja) {
+        //         case "si":
+        //             fileFacturacion.style.display="block"
+        //             break;
+            
+        //         default:
+        //             fileFacturacion.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function mdPagoFacturacion() {
+            
+        //     const xMedioPago=document.getElementById("mPago").value;
+        //     const especificarMedioPagoFacturacion=document.getElementById("especificarMPfacturacion");
+
+        //     especificarMedioPagoFacturacion.style.display="none";
+
+        //     switch (xMedioPago) {
+        //         case "otro":
+        //             especificarMedioPagoFacturacion.style.display="block";
+        //             break;
+            
+        //         default:
+        //             break;
+        //     }
+
+        // }
+
+        // /* Fin de facturacion */
+
+        // /* calidad */
+
+        // function calidad() {
+
+        //     const oCalidad=document.getElementById("calidadidoneidad");
+        //     const contenidoci=document.getElementById("contenidocaliad");
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     //calidad
+        //     contenidoci.style.display="none";
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+        //     switch (oCalidad.value) {
+
+        //         case "calidaduno":
+        //             contenidoci.style.display="flex"
+        //             break;
+            
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // /* Fin de calidad */
+
+        // /* incumplimiento */
+
+        // function incumpliento() {
+            
+        //     const oincumplimiento=document.getElementById("ofertas");
+        //     const incumplimientoO=document.getElementById("contenidoincumplimientoone");
+        //     const incumplimientoT=document.getElementById("contenidoincumplimientotwo");
+        //     const incumplimientoTr=document.getElementById("contenidoincumplimientothree");
+        //     const incumplimientoF=document.getElementById("contenidoincumplimientofour");
+        //     incumplimientoO.style.display="none";
+        //     incumplimientoT.style.display="none";
+        //     incumplimientoTr.style.display="none";
+        //     incumplimientoF.style.display="none";
+        //     //
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+        //     switch (oincumplimiento.value) {
+
+        //         case "incumplimientoUNO":
+        //             incumplimientoO.style.display="block"
+        //             break;
+            
+        //         case "incumplimientoDOS":
+        //             incumplimientoT.style.display="block"
+        //             //
+        //             break;
+
+        //         case "incumplimientoTRES":
+        //             incumplimientoTr.style.display="block"
+        //             //
+        //             break;
+            
+        //         case "incumplimientoCUATRO":
+        //             incumplimientoF.style.display="block"
+        //             //
+        //             break;
+                
+        //         default:
+        //             //
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // function canalPromocion() {
+        //     const canalPromocion=document.getElementById("cbpromocion").value;
+        //     const txtPromocion=document.getElementById("txtcpromocion");
+
+        //     switch (canalPromocion) {
+        //         case "otro":
+        //             txtPromocion.style.display="block";
+        //             break;
+            
+        //         default:
+        //             txtPromocion.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function canalPromocionCuatro() {
+        //     const cPromocionC=document.getElementById("cnPromocionCuatro").value;
+        //     const txtPromocionC=document.getElementById("txtcpromocioC");
+
+
+        //     switch (cPromocionC) {
+        //         case "otro":
+        //             txtPromocionC.style.display="block";
+        //             break;
+            
+        //         default:
+        //             txtPromocionC.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // /* Fin de incumplimiento */
+
+
+        // /* falta de servicio */
+
+        // function faltaServicios() {
+
+        //     const fServicio=document.getElementById("fservicio")
+        //     const cfsOne=document.getElementById("contenidofservicioone");
+        //     const cfsTwo=document.getElementById("contenidofserviciotwo");
+        //     const cfsThree=document.getElementById("contenidofsthree");
+        //     const cfsFour=document.getElementById("contenidofsfour");
+        //     cfsOne.style.display="none";
+        //     cfsTwo.style.display="none";
+        //     cfsThree.style.display="none";
+        //     cfsFour.style.display="none";
+        //     //
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+            
+        //     switch (fServicio.value) {
+
+        //         case "servicioone":
+        //             cfsOne.style.display="block";
+        //             break;
+
+        //         case "serviciotwo":
+        //             cfsTwo.style.display="block";
+        //             break;
+
+        //         case "serviciothree":
+        //             cfsThree.style.display="block";
+        //             break;
+
+        //         case "serviciofour":
+        //             cfsFour.style.display="block";
+        //             break;
+            
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+        // }
+
+        // function fsrecibo(){
+        //     const adjuntaRecibo=document.getElementById("adrecibos").value;
+        //     const adjuntarElRecibo=document.getElementById("adRecibofs");
+        //     //
+
+        //     switch (adjuntaRecibo) {
+        //         case "si":
+        //             adjuntarElRecibo.style.display="block";
+        //             break;
+            
+        //         default:
+        //             adjuntarElRecibo.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function mpagosfs() {
+        //     const mediosPagos=document.getElementById("mpagos").value;
+        //     const medioPagoEspecifique=document.getElementById("txtmpagos");
+
+        //     switch (mediosPagos) {
+        //         case "otros": 
+        //             medioPagoEspecifique.style.display="block";
+        //             break;
+            
+        //         default:
+        //             medioPagoEspecifique.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function fsreciboPendiente() {
+        //     const recibosPendientes=document.getElementById("adrecibosPendiente").value;
+        //     const fileRPendiente=document.getElementById("adReciboPendientefs");
+
+
+        //     switch (recibosPendientes) {
+        //         case "si":
+        //             fileRPendiente.style.display="block";
+        //             break;
+            
+        //         default:
+        //             fileRPendiente.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // /* fin de falta de servicio */
+
+        // /* activaciones */
+
+        // function instalaciones() {
+        //     const instalacionOpcion=document.getElementById("instalacion")
+        //     const instalacionUnoDos=document.getElementById("contenidoinstalacionuno")
+        //     const intalacionTresCuatro=document.getElementById("contenidoinstalaciontres")
+        //     const instalacionCinco=document.getElementById("contenidoinstalacioncinco")
+        //     instalacionUnoDos.style.display="none";
+        //     intalacionTresCuatro.style.display="none";
+        //     instalacionCinco.style.display="none";
+        //     //
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+        //     switch (instalacionOpcion.value) {
+        //         case "instalacionesUno":
+        //             instalacionUnoDos.style.display="block";
+        //             break;
+
+        //         case "instalacionesDos":
+        //             instalacionUnoDos.style.display="block";
+        //             break;
+
+        //         case "instalacionesTres":
+        //             intalacionTresCuatro.style.display="block";
+        //             break;
+                    
+        //         case "instalacionesCuatro":
+        //             intalacionTresCuatro.style.display="block";
+        //             break;
+            
+        //         case "instalacionesCinco":
+        //             instalacionCinco.style.display="block";
+        //             break;
+
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+        // }
+
+        // function soltrasladoe() {
+        //     const opTraslado=document.getElementById("strasladoe").value;
+        //     const espTraslado=document.getElementById("estraslado");
+
+        //     switch (opTraslado) {
+        //         case "otros":
+        //             espTraslado.style.display="block"
+        //             break;
+            
+        //         default:
+        //             espTraslado.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function adsTraslado() {
+        //     const adsopcion=document.getElementById("adsOpcionTraslado").value;
+        //     const adjuntarSolicitud=document.getElementById("adsot");
+
+        //     switch (adsopcion) {
+        //         case "si":
+        //             adjuntarSolicitud.style.display="block";
+        //             break;
+            
+        //         default:
+        //             adjuntarSolicitud.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function canalTrasladoCinco() {
+        //     const opcionCtraslado=document.getElementById("ctopcionCinco").value;
+        //     const textoTraslado=document.getElementById("txtCincoTraslado");
+
+        //     switch (opcionCtraslado) {
+        //         case "otros":
+        //             textoTraslado.style.display="block";
+        //             break;
+            
+        //         default:
+        //             textoTraslado.style.display="none"
+        //             break;
+        //     }
+
+        // }
+
+        // function opcionTrasladoCuatro() {
+        //     const opcionS=document.getElementById("opcionCuatroTraslado").value;
+        //     const fileCuatro=document.getElementById("asbaja")
+
+        //     switch (opcionS) {
+        //         case "si":
+        //             fileCuatro.style.display="block";
+        //             break;
+            
+        //         default:
+        //             fileCuatro.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+
+        // /* fin de activaciones */
+
+        // /* baja */
+
+        // function baja() {
+        //     const opcionBaja=document.getElementById("sb");
+        //     const bajaOne=document.getElementById("respuestabajauno");
+        //     const bajaDos=document.getElementById("respuestabajados");
+        //     const bajaTres=document.getElementById("respuestastrescuatro");
+        //     bajaOne.style.display="none";
+        //     bajaDos.style.display="none";
+        //     bajaTres.style.display="none";
+
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+        //     switch (opcionBaja.value) {
+        //         case "bajaUno":
+        //             bajaOne.style.display="block";
+        //             break;
+
+        //         case "bajaDos":
+        //             bajaDos.style.display="block";
+        //             break;
+
+        //         case "bajaTres":
+        //             bajaOne.style.display="block";
+        //             bajaTres.style.display="block";   
+        //             break;
+
+        //         case "bajaCuatro":
+                        
+        //             bajaDos.style.display="block";
+        //             bajaTres.style.display="block";   
+        //             break;
+            
+        //         default:  
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+        // }
+
+        // function canaldBaja() {
+        //     const canalBaja=document.getElementById("cbaja").value;
+        //     const especificarBaja=document.getElementById("txtcanalbaja")
+
+        //     switch (canalBaja) {
+        //         case "otros":
+        //             especificarBaja.style.display="block";
+        //             break;
+            
+        //         default:
+        //             especificarBaja.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function adjuntarBaja() {
+        //     const opcionBaja=document.getElementById("asb").value;
+        //     const adjuntoBaja=document.getElementById("asbaja")
+
+
+        //     switch (opcionBaja) {
+        //         case "si":
+        //             adjuntoBaja.style.display="block";
+        //             break;
+            
+        //         default:
+        //             adjuntoBaja.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function canalTraslado() {
+        //     const sTraslado=document.getElementById("ctraslado").value;
+        //     const txtTraslado=document.getElementById("txtcanalTraslado");
+
+        //     switch (sTraslado) {
+        //         case "otros":
+        //             txtTraslado.style.display="block";
+        //             break;
+            
+        //         default:
+        //             txtTraslado.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function adjuntarTraslado() {
+        //     const asTraslado=document.getElementById("asT").value;
+        //     const fileTraslado=document.getElementById("asTraslado");
+
+        //     switch (asTraslado) {
+        //         case "si":
+        //             fileTraslado.style.display="block";
+        //             break;
+            
+        //         default:
+        //             fileTraslado.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // /* fin de baja */
+
+        // /* contratacion */
+
+        // function contratos() {
+
+        //     const contratoOpcion=document.getElementById("con");
+        //     const contratosUno=document.getElementById("respuestascontratosbase");
+        //     const contratoDos=document.getElementById("respuestascontratosdos");
+        //     const contratosTres=document.getElementById("respuestascontratostres");
+        //     const contratoCuatro=document.getElementById("respuestascontratoscuatros");
+        //     contratosUno.style.display="none";
+        //     contratoDos.style.display="none";
+        //     contratosTres.style.display="none";
+        //     contratoCuatro.style.display="none";
+        //     ///
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+        //     switch (contratoOpcion.value) {
+        //         case "conuno":
+        //             contratosUno.style.display="block";
+                    
+        //             break;
+                
+        //         case "condos":
+        //             contratosUno.style.display="block";
+        //             contratoDos.style.display="block";
+        //             break;
+
+        //         case "contres":
+        //             contratosUno.style.display="block";
+        //             contratosTres.style.display="block";
+        //             break;
+                
+        //         case "concuatro":
+        //             contratosUno.style.display="block";
+        //             break;
+            
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // /* fin de contratacion */
+
+        // /* Migracion */
+
+        // function migracionReclamable() {
+
+        //     const opcionMigracion=document.getElementById("mig").value;
+        //     const migracionUno=document.getElementById("respuestasMigracionBase");
+        //     const migracionDos=document.getElementById("respuestasMigracionDos");
+        //     const migracionTres=document.getElementById("montoReclamadoStres");
+        //     const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
+        //     const datoExtraUno=document.getElementById("respuestaMigracionUno");
+        //     //
+        //     migracionUno.style.display="none";
+        //     migracionDos.style.display="none";
+        //     // migracionTres.style.display="none";
+        //     migracionCuatro.style.display="none";
+        //     // datoExtraUno.style.display="none";
+        //     // const aDatos=document.getElementById("adsdos");
+        //     // aDatos.style.display="none"
+
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+            
+        //     switch (opcionMigracion) {
+        //         case "migracionOne":
+        //             migracionUno.style.display="block";
+        //             break;
+
+        //         case "migracionTwo":
+        //             migracionUno.style.display="block";
+        //             migracionDos.style.display="block";
+        //             break;
+
+        //         case "migracionThree":
+        //             migracionUno.style.display="block";
+        //             break;
+
+        //         case "migracionFour":
+        //             migracionCuatro.style.display="block";
+        //             break;
+            
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+        // }
+
+        // function canalMigracion() {
+        //     const canalMigracion=document.getElementById("cmigracion").value;
+        //     const eMigracion=document.getElementById("canaldmigracion");
+
+        //     switch (canalMigracion) {
+        //         case "otros":
+        //             eMigracion.style.display="block";
+        //             break;
+            
+        //         default:
+        //             eMigracion.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function asolicitud() {
+        //     const docM=document.getElementById("asm").value;
+        //     const docF=document.getElementById("asmf");
+
+        //     switch (docM) {
+        //         case "si":
+        //             docF.style.display="block";        
+        //             break;
+            
+        //         default:
+        //             docF.style.display="none";       
+        //             break;
+        //     }
+        // }
+
+        // /* fin de migraciones */
+
+        // /* OTROS */
+
+        // function xMaterias() {
+
+        //     const xMateriasReclamables=document.getElementById("x");
+        //     const xReclamablesUno=document.getElementById("xmateriasOne");
+        //     const xReclamablesDos=document.getElementById("xmateriasTwo");
+        //     const xReclamablesTres=document.getElementById("xmateriasThree");
+        //     xReclamablesUno.style.display="none";
+        //     xReclamablesDos.style.display="none";
+        //     xReclamablesTres.style.display="none";
+
+        //     document.getElementById('detailsReclamoDs').open = true;
+        //     document.getElementById('seleccionMultipleReclamo').open = false;
+
+            
+        //     switch (xMateriasReclamables.value) {
+
+        //         case "xMateriasROne":
+        //             xReclamablesUno.style.display="block";
+        //             break;
+
+        //         case "xMateriasRTwo":
+        //             xReclamablesDos.style.display="block";
+        //             break;
+
+        //         case "xMateriasRThree":
+        //             xReclamablesTres.style.display="block";
+        //             break;
+            
+        //         default:
+        //             document.getElementById('detailsReclamoDs').open = false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // function canalContratacion() {
+        //     const contratacion=document.getElementById("ccontratacion").value;
+        //     const especificar=document.getElementById("txtcontratacion");
+
+        //     switch (contratacion) {
+        //         case "otros":
+        //             especificar.style.display="block";
+        //             break;
+            
+        //         default:
+        //             especificar.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function cPresentacionFLL() {
+        //     const cpfll=document.getElementById("cpresentacion").value;
+        //     const presentacionfll=document.getElementById("cpresentacionf");
+
+        //     switch (cpfll) {
+        //         case "otros":
+        //             presentacionfll.style.display="block";
+        //             break;
+            
+        //         default:
+        //             presentacionfll.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function solicitudfll() {
+        //     const solicitdu=document.getElementById("sasfll").value;
+        //     const dfll=document.getElementById("asfll");
+
+        //     switch (solicitdu) {
+        //         case "si":
+        //             dfll.style.display="block";
+        //             break;
+            
+        //         default:
+        //             dfll.style.display="none";
+        //             break;
+        //     }
+
+        // }
+
+        // function pestañaReclamo() {
+        //     document.getElementById('detailsReclamoDs').open=false;
+        //     document.getElementById('reclamoRespuestasSelecciones').open = true;
+        //     enviar.style.display="flex";
+        // }
+
+        // /* FIN DE OTROS */
+        // /* FIN DE RECLAMOS */
+
+
+        // /* EMPIEZA LAS QUEJAS */
+
+        // function quejas() {
+
+        //     cQueja.style.display="block"
+            
+        //     const opcionQueja=document.getElementById("quejasOpciones");
+        //     const quejaRespuestaUno=document.getElementById("quejaPreguntaUno");
+        //     const quejaRespuestaDos=document.getElementById("quejaPreguntaDos");
+        //     const quejaRespuestaTres=document.getElementById("quejaPreguntaTres");
+        //     const quejaRespuestaCuatro=document.getElementById("quejaPreguntaCuatro");
+        //     const quejaRespuestaCinco=document.getElementById("quejaPreguntaCinco");
+        //     const quejaRespuestaSeis=document.getElementById("quejaPreguntaSeis");
+        //     //la condicion
+        //     const cajaReclamoenQueja=document.getElementById("datosReclamos");
+        //     const cajaApelacionenQueja=document.getElementById("datosApelacion");
+        //     // los details
+        //     document.getElementById('detailsQuejaDs').open = true;
+        //     document.getElementById('seleccionUnicoQueja').open=false;
+
+
+        //     switch (opcionQueja.value) {
+        //         case "quejaUno":
+        //             quejaRespuestaUno.style.display="block";
+        //             quejaRespuestaDos.style.display="none";
+        //             quejaRespuestaTres.style.display="none";
+        //             quejaRespuestaCuatro.style.display="none";
+        //             quejaRespuestaCinco.style.display="none";
+        //             quejaRespuestaSeis.style.display="none";
+        //             //condicion
+        //             cajaReclamoenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             break;
+
+        //         case "quejaDos":
+        //             quejaRespuestaUno.style.display="none";
+        //             quejaRespuestaDos.style.display="flex";
+        //             quejaRespuestaTres.style.display="none";
+        //             quejaRespuestaCuatro.style.display="none";
+        //             quejaRespuestaCinco.style.display="none";
+        //             quejaRespuestaSeis.style.display="none";
+        //             //condicion
+        //             cajaReclamoenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             break;
+
+        //         case "quejaTres":
+        //             quejaRespuestaUno.style.display="none";
+        //             quejaRespuestaDos.style.display="none";
+        //             quejaRespuestaTres.style.display="block";
+        //             quejaRespuestaCuatro.style.display="none";
+        //             quejaRespuestaCinco.style.display="none";
+        //             quejaRespuestaSeis.style.display="none";
+        //             //condicion
+        //             cajaReclamoenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             break;
+                    
+        //         case "quejaCuatro":
+        //             quejaRespuestaUno.style.display="none";
+        //             quejaRespuestaDos.style.display="none";
+        //             quejaRespuestaTres.style.display="none";
+        //             quejaRespuestaCuatro.style.display="block";
+        //             quejaRespuestaCinco.style.display="none";
+        //             quejaRespuestaSeis.style.display="none";
+        //             //condicion
+        //             cajaReclamoenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             break;
+
+        //         case "quejaCinco":
+        //             quejaRespuestaUno.style.display="none";
+        //             quejaRespuestaDos.style.display="none";
+        //             quejaRespuestaTres.style.display="none";
+        //             quejaRespuestaCuatro.style.display="none";
+        //             quejaRespuestaCinco.style.display="block";
+        //             quejaRespuestaSeis.style.display="none";
+        //             //condicion
+        //             cajaReclamoenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             break;
+
+        //         case "quejaSeis":
+        //             quejaRespuestaUno.style.display="none";
+        //             quejaRespuestaDos.style.display="none";
+        //             quejaRespuestaTres.style.display="none";
+        //             quejaRespuestaCuatro.style.display="none";
+        //             quejaRespuestaCinco.style.display="none";
+        //             quejaRespuestaSeis.style.display="block";
+        //             //condicion
+        //             cajaReclamoenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             break;
+                    
+            
+        //         default:
+        //             quejaRespuestaUno.style.display="none";
+        //             quejaRespuestaDos.style.display="none";
+        //             quejaRespuestaTres.style.display="none";
+        //             quejaRespuestaCuatro.style.display="none";
+        //             quejaRespuestaCinco.style.display="none";
+        //             quejaRespuestaSeis.style.display="none";
+        //             cajaReclamoenQueja.style.display="none"
+        //             //cajaQuejaenQueja.style.display="none"
+        //             cajaApelacionenQueja.style.display="none"
+        //             //
+        //             document.getElementById('detailsQuejaDs').open=false;
+        //             break;
+        //     }
+
+
+        // }
+
+        // function canal() {
+        //     const cPresentacion=document.getElementById("canalPresentacion").value;
+        //     const cQueja = document.getElementById("canalQueja");
+
+
+        //     switch (cPresentacion) {
+        //         case "otro":
+        //             cQueja.style.display="block"
+        //             break;
+            
+        //         default:
+        //             cQueja.style.display="none"
+        //             break;
+        //     }
+
+        // }
+
+        // function adjuntaPruebaQueja() {
+        //     const aPrueba=document.getElementById("adjuntaPrueba").value;
+        //     const pQueja=document.getElementById("pruebaQuejas")
+
+        //     switch (aPrueba) {
+        //         case "si":
+        //             pQueja.style.display="block"
+        //             break;
+            
+        //         default:
+        //             pQueja.style.display="none"
+        //             break;
+        //     }
+
+        // }
+
+        // function constanciaPago() {
+        //     const cPagoQueja=document.getElementById("constanciaPagoQueja").value;
+        //     const cpago=document.getElementById("constanciaPago");
+
+        //     switch (cPagoQueja) {
+        //         case "si":
+        //             cpago.style.display="block";
+        //             break;
+            
+        //         default:
+        //             cpago.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function pagoCuenta() {
+            
+        //     const pcQueja=document.getElementById("pagoCuentaQueja").value;
+        //     const dpQueja=document.getElementById("dpagocuenta");
+
+        //     switch (pcQueja) {
+        //         case "otros":
+        //             dpQueja.style.display="block"
+        //             break;
+            
+        //         default:
+        //             dpQueja.style.display="none"
+        //             break;
+        //     }
+
+        // }
+
+        // function capturaQueja() {
+        //     const cQueja=document.getElementById("capturaQuejaCinco").value;
+        //     const mprobatorio=document.getElementById("mpQueja");
+
+        //     switch (cQueja) {
+        //         case "si":
+        //             mprobatorio.style.display="block";
+        //             break;
+            
+        //         default:
+        //             mprobatorio.style.display="none";
+        //             break;
+        //     }
+        // }
+
+        // function defectos() {
+        //     const dPruebaTramitacion=document.getElementById("dtramitacion").value;
+        //     const dptramitacion=document.getElementById("dptramitacion")
+
+        //     switch (dPruebaTramitacion) {
+        //         case "si":
+        //             dptramitacion.style.display="block"
+        //             break;
+            
+        //         default:
+        //             dptramitacion.style.display="none"
+        //             break;
+        //     }
+        // }
+
+        // function pestañaQueja() {
+        //     document.getElementById('detailsQuejaDs').open=false;
+        //     document.getElementById('quejaRespuestasSelecciones').open = true;
+        //     enviar.style.display="flex";
+        // }
+
+        // /* Fin de queja */
+
+        // /* Apelacion */
+
+        // function apelaciones() {
+
+
+        //     cApelacion.style.display="block"
+
+        //     const apelacion=document.getElementById("apelacionOpciones")
+        //     const apelacionoOne=document.getElementById("apelacionUno")
+        //     const apelacionoTwo=document.getElementById("apelacionDos")
+        //     const apelacionoThree=document.getElementById("apelacionTres")
+        //     const apelacionoFour=document.getElementById("apelacionCuatro")
+        //     const apelacionoFive=document.getElementById("apelacionCinco")
+        //     const apelacionoSix=document.getElementById("apelacionSeis")
+        //     //condiciones
+        //     const cajaReclamoenApelacion=document.getElementById("datosReclamos");
+        //     const cajaQuejaenApelacion=document.getElementById("datosQueja");
+        //     //const cajaApelacionenApelacion=document.getElementById("datosApelacion");
+        //     //limpiarInputsApelacion();
+        //     //limpiarInputs();
+        //     //
+
+        //     document.getElementById('detailsApelacionDs').open = true;
+        //     document.getElementById('seleccionUnicaApelacion').open=false;
+
+        //     switch (apelacion.value) {
+
+        //         case "apelacionOne":
+        //             apelacionoOne.style.display="block"
+        //             apelacionoTwo.style.display="none"
+        //             apelacionoThree.style.display="none"
+        //             apelacionoFour.style.display="none"
+        //             apelacionoFive.style.display="none"
+        //             apelacionoSix.style.display="none"
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+
+        //             break;
+
+        //         case "apelacionTwo":
+        //             apelacionoOne.style.display="none"
+        //             apelacionoTwo.style.display="block"
+        //             apelacionoThree.style.display="none"
+        //             apelacionoFour.style.display="none"
+        //             apelacionoFive.style.display="none"
+        //             apelacionoSix.style.display="none"
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+        //             break;
+
+        //         case "apelacionThree":
+        //             apelacionoOne.style.display="none"
+        //             apelacionoTwo.style.display="none"
+        //             apelacionoThree.style.display="block"
+        //             apelacionoFour.style.display="none"
+        //             apelacionoFive.style.display="none"
+        //             apelacionoSix.style.display="none"
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+        //             break;
+
+        //         case "apelacionFour":
+        //             apelacionoOne.style.display="none"
+        //             apelacionoTwo.style.display="none"
+        //             apelacionoThree.style.display="none"
+        //             apelacionoFour.style.display="block"
+        //             apelacionoFive.style.display="none"
+        //             apelacionoSix.style.display="none"
+        //             //
+        //             //resetSelect();
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+        //             //
+        //             break;
+        //         case "apelacionFive":
+        //             apelacionoOne.style.display="none"
+        //             apelacionoTwo.style.display="none"
+        //             apelacionoThree.style.display="none"
+        //             apelacionoFour.style.display="none"
+        //             apelacionoFive.style.display="block"
+        //             apelacionoSix.style.display="none"
+        //             //
+        //             //resetSelect();
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+        //             break;
+
+        //         case "apelacionSix":
+        //             apelacionoOne.style.display="none"
+        //             apelacionoTwo.style.display="none"
+        //             apelacionoThree.style.display="none"
+        //             apelacionoFour.style.display="none"
+        //             apelacionoFive.style.display="none"
+        //             apelacionoSix.style.display="block"
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+        //             break;
+            
+        //         default:
+        //             apelacionoOne.style.display="none"
+        //             apelacionoTwo.style.display="none"
+        //             apelacionoThree.style.display="none"
+        //             apelacionoFour.style.display="none"
+        //             apelacionoFive.style.display="none"
+        //             apelacionoSix.style.display="none"
+        //             //
+        //             cajaQuejaenApelacion.style.display="none";
+        //             cajaReclamoenApelacion.style.display="none";
+        //             //
+        //             document.getElementById('detailsApelacionDs').open = false;
+        //             break;
+        //     }
+
+            
+        // }
+
+        // function apelacionCuatro() {
+        //     const aCuatro=document.getElementById("apelacionopcioncuatro").value;
+        //     const cCuatro=document.getElementById("apelacionCuatroSi");
+
+        //     cCuatro.style.display="none";
+
+        //     switch (aCuatro) {
+        //         case "si":
+        //             cCuatro.style.display="block"
+        //             break;
+            
+        //         default:
+        //             break;
+        //     }
+
+        // }
+
+        // function apelacionCinco() {
+        //     const aCinco=document.getElementById("apelacionOpcioncinco").value;
+        //     const cCinco=document.getElementById("apelacionCincoSi");
+
+        //     cCinco.style.display="none";
+
+        //     switch (aCinco) {
+        //         case "si":
+        //             cCinco.style.display="block"
+        //             break;
+            
+        //         default:
+        //             break;
+        //     }
+
+        // }
+
+        // function pestañaApelacion() {
+        //     document.getElementById('detailsApelacionDs').open=false;
+        //     document.getElementById('apelacionRespuestasSelecciones').open = true;
+        //     enviar.style.display="flex";
+        // }
+
+        // /* */
+
+        // const ticketLegal=document.getElementById("cajaContenedorTicket");
+        // ticketLegal.style.display="none"
+
+
+        // /* mostrando el detalle */
+
+
+
+        // const botonMostrarDatos = document.getElementById('mostrarDatos');
+
+        // //botonMostrarDatos.style.display="flex";
+
+
+        // // Evento para cuando el usuario haga click en el botón
+        // botonMostrarDatos.addEventListener('click', function() {
+        //     ticketLegal.style.display="block";
+        //     cajaTotal.style.display="none";
+
+        //     // Seleccionamos todos los inputs de tipo texto dentro del formulario
+        //     const inputs = document.querySelectorAll('input[type="text"],input[type="date"],select');
+
+        //     // Creamos una variable para almacenar los resultados
+        //     let datosRellenados = '';
+
+        //     // Primero, capturamos el valor del radio seleccionado (Reclamo, Queja o Apelación)
+        //     const radioSeleccionado = document.querySelector('input[name="opcionesPrimero"]:checked');
+        //     if (radioSeleccionado) {
+        //         const valorRadio = radioSeleccionado.nextElementSibling.innerText; // Obtenemos el texto del label asociado
+        //         // Mostramos el valor del radio seleccionado de forma destacada
+        //         datosRellenados =valorRadio;
+
+        //         // Actualizamos el contenido del elemento con id "tituloTicketFinal"
+        //         const tituloTickets = document.getElementById("tituloTicketFinal");
+        //         tituloTickets.innerHTML = datosRellenados;
+        //     }
+
+        //     // Recorremos todos los inputs de tipo texto
+        //     inputs.forEach(input => {
+        //         const valor = input.value.trim(); // Obtenemos el valor del campo
+                
+        //         // Si el campo tiene valor (no está vacío)
+        //         if (valor) {
+        //             // Intentamos encontrar el label asociado
+        //             const label = document.querySelector(`label[for="${input.id}"]`);
+                    
+        //             // Verificamos si encontramos el label
+        //             if (label) {
+        //                 // Extraemos el texto del label
+        //                 const labelText = label.innerText || label.textContent;
+        //                 // Agregamos el nombre del campo y su valor
+        //                 datosRellenados += `<p><strong>${labelText}:</strong> ${valor}</p>`;
+        //             }
+        //         }
+        //     });
+
+        //     // Mostrar los resultados
+        //     const resultados = document.getElementById('resultados');
+        //     if (datosRellenados) {
+        //         // Si hay datos, los mostramos
+        //         resultados.innerHTML = datosRellenados;
+        //     } else {
+        //         // Si no hay datos, mostramos un mensaje
+        //         resultados.innerHTML = '<p>No se han rellenado datos.</p>';
+        //     }
+        // });
+
+
+
+        // function editarDatos() {
+        //     ticketLegal.style.display="none"
+        //     cajaTotal.style.display="block";
+        // }
+
+
+
+
+        // //
 
         function formatDateToYYMMDD(date) {
             if (!date) return ""; // Retorna una cadena vacía si no hay fecha
@@ -2080,10 +4254,6 @@
                 direccion: document.getElementById('direccion').value,
                 correo: document.getElementById('correo').value,
                 autoriza: document.getElementById('autoriza').checked,
-
-                //probando archivo o captura
-                //file:document.getElementById("fileInput").value,
-                //fin de prueba
 
                 //Reclamo
                 //problemaEspecifico: document.getElementById('problemaEspecifico').value,
@@ -2187,25 +4357,25 @@
                 fechaVencimientoContratacion:formatDateToYYMMDD(document.getElementById('fechaVencimientoContratacion').value),
                 montoReclamadoContratacion: document.getElementById('montoReclamadoContratacion').value,
                 // // //migracion
-                // fechaSolicitudMigracionX:formatDateToYYMMDD(document.getElementById('fechaSolicitudMigracionX').value),
-                // cmigracion: document.getElementById('cmigracion').value,
-                // especificarCanalMigracion: document.getElementById('especificarCanalMigracion').value,
-                // codigoPedidoMigracion: document.getElementById('codigoPedidoMigracion').value,
-                // planTarifarioMigracion: document.getElementById('planTarifarioMigracion').value,
-                // motivoNegativaMigracion: document.getElementById('motivoNegativaMigracion').value,
-                // asm: document.getElementById('asm').value,
-                // vinculoSolicitudMigracion: document.getElementById('vinculoSolicitudMigracion').value,
-                // numeroReciboMigracionII: document.getElementById('numeroReciboMigracionII').value,
-                // fechaEmisionMigracionIII:formatDateToYYMMDD(document.getElementById('fechaEmisionMigracionIII').value),
-                // fechaMovimientoMigracion:formatDateToYYMMDD(document.getElementById('fechaMovimientoMigracion').value),
-                // montoReclamadoMigracion: document.getElementById('montoReclamadoMigracion').value,
-                // numeroReciboII: document.getElementById('numeroReciboII').value,
-                // fechaEmisionII:formatDateToYYMMDD(document.getElementById('fechaEmisionII').value),
-                // fechaVencimientoMigracionII:formatDateToYYMMDD(document.getElementById('fechaVencimientoMigracionII').value),
-                // numeroReciboMigracion: document.getElementById('numeroReciboMigracion').value,
-                // fechaEmisionMigracion:formatDateToYYMMDD(document.getElementById('fechaEmisionMigracion').value),
-                // fechaVencimientoMigracion:formatDateToYYMMDD(document.getElementById('fechaVencimientoMigracion').value),
-                // montoReclamadoMigracion: document.getElementById('montoReclamadoMigracion').value,
+                fechaSolicitudMigracionX:formatDateToYYMMDD(document.getElementById('fechaSolicitudMigracionX').value),
+                cmigracion: document.getElementById('cmigracion').value,
+                especificarCanalMigracion: document.getElementById('especificarCanalMigracion').value,
+                codigoPedidoMigracion: document.getElementById('codigoPedidoMigracion').value,
+                planTarifarioMigracion: document.getElementById('planTarifarioMigracion').value,
+                motivoNegativaMigracion: document.getElementById('motivoNegativaMigracion').value,
+                asm: document.getElementById('asm').value,
+                vinculoSolicitudMigracion: document.getElementById('vinculoSolicitudMigracion').value,
+                numeroReciboMigracionII: document.getElementById('numeroReciboMigracionII').value,
+                fechaEmisionMigracionIII:formatDateToYYMMDD(document.getElementById('fechaEmisionMigracionIII').value),
+                fechaMovimientoMigracion:formatDateToYYMMDD(document.getElementById('fechaMovimientoMigracion').value),
+                montoReclamadoMigracionMigracion: document.getElementById('montoReclamadoMigracionMigracion').value,
+                numeroReciboII: document.getElementById('numeroReciboII').value,
+                fechaEmisionII:formatDateToYYMMDD(document.getElementById('fechaEmisionII').value),
+                fechaVencimientoMigracionII:formatDateToYYMMDD(document.getElementById('fechaVencimientoMigracionII').value),
+                numeroReciboMigracion: document.getElementById('numeroReciboMigracion').value,
+                fechaEmisionMigracion:formatDateToYYMMDD(document.getElementById('fechaEmisionMigracion').value),
+                fechaVencimientoMigracion:formatDateToYYMMDD(document.getElementById('fechaVencimientoMigracion').value),
+                montoReclamadoMigracion: document.getElementById('montoReclamadoMigracion').value,
                 // // //otros
                 fechaSolicitudX:formatDateToYYMMDD(document.getElementById('fechaSolicitudX').value),
                 ccontratacion: document.getElementById('ccontratacion').value,
@@ -2288,15 +4458,6 @@
 
                 }
 
-                //Codigo de prueba
-                // Verifica si hay un archivo seleccionado
-
-                // if (fileInput.files.length > 0) {
-                //     formData.append('file', fileInput.files[0]);
-                // }
-
-                // fin de la subida de documento
-
                 fetch('http://127.0.0.1:5000/api/reclamos', {
                     method: 'POST',
                     headers: {
@@ -2322,7 +4483,7 @@
 
     </script>
 
-
     <script src="script.js"></script>
+
 </body>
 </html>

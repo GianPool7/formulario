@@ -7,9 +7,6 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)  # Habilita CORS para todas las rutas
 
-# UPLOAD_FOLDER = 'uploads'
-# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-# os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Conexión XML-RPC con Odoo
 url = 'http://localhost:8069'
@@ -184,25 +181,25 @@ def add_claim():
             'x_studio_fecha_de_vencimiento_5': recibir_fecha(claim.get('fechaVencimientoContratacion', '')),
             'x_studio_monto_reclamado_no_solicitud': claim.get('montoReclamadoContratacion', ''),
             # # Migracion
-            # 'x_studio_fecha_de_solicitud_de_migracin_1': recibir_fecha(claim.get('fechaSolicitudMigracionX', '')),
-            # 'x_studio_canal_solicitud_de_migracin': claim.get('cmigracion', ''),
-            # 'x_studio_especificar_canal_de_solicitud': claim.get('especificarCanalMigracion', ''),
-            # 'x_studio_codigo_pedido_migracion': claim.get('codigoPedidoMigracion', ''),
-            # 'x_studio_plan_tarifario_solicita_migrar': claim.get('planTarifarioMigracion', ''),
-            # 'x_studio_motivo_de_la_negativa': claim.get('motivoNegativaMigracion', ''),
-            # 'x_studio_adjunta_solicitud_de_migracins': claim.get('asm', ''),
-            # 'x_studio_vinculo_de_la_solicitud_de_migracin': claim.get('vinculoSolicitudMigracion', ''),
-            # 'x_studio_numero_recibo': claim.get('numeroReciboMigracionII', ''),
-            # 'x_studio_fecha_de_emisin_2': recibir_fecha(claim.get('fechaEmisionMigracionIII', '')),
-            # 'x_studio_fecha_de_movimiento': recibir_fecha(claim.get('fechaMovimientoMigracion', '')),
-            # 'x_studio_monto_reclamado_1': claim.get('montoReclamadoMigracionMigracion', ''),
-            # 'x_studio_numero_de_recibo_migracion': claim.get('numeroReciboII', ''),
-            # 'x_studio_fecha_emisin': recibir_fecha(claim.get('fechaEmisionII', '')),
-            # 'x_studio_fecha_de_vencimiento_2': recibir_fecha(claim.get('fechaVencimientoMigracionII', '')),
-            # 'x_studio_numero_de_recibo_migracion': claim.get('numeroReciboMigracion', ''),
-            # 'x_studio_fecha_de_vencimiento_migracin_1': recibir_fecha(claim.get('fechaEmisionMigracion', '')),
-            # 'x_studio_fecha_de_vencimiento_migracin': recibir_fecha(claim.get('fechaVencimientoMigracion', '')),
-            # 'x_studio_monto_reclamado_migracion': claim.get('montoReclamadoMigracion', ''),
+            'x_studio_fecha_de_solicitud_de_migracin_1': recibir_fecha(claim.get('fechaSolicitudMigracionX', '')),
+            'x_studio_canal_solicitud_de_migracin': claim.get('cmigracion', ''),
+            'x_studio_especificar_canal_de_solicitud': claim.get('especificarCanalMigracion', ''),
+            'x_studio_codigo_pedido_migracion': claim.get('codigoPedidoMigracion', ''),
+            'x_studio_plan_tarifario_solicita_migrar': claim.get('planTarifarioMigracion', ''),
+            'x_studio_motivo_de_la_negativa': claim.get('motivoNegativaMigracion', ''),
+            'x_studio_adjunta_solicitud_de_migracins': claim.get('asm', ''),
+            'x_studio_vinculo_de_la_solicitud_de_migracin': claim.get('vinculoSolicitudMigracion', ''),
+            'x_studio_numero_recibo': claim.get('numeroReciboMigracionII', ''),
+            'x_studio_fecha_de_emisin_2': recibir_fecha(claim.get('fechaEmisionMigracionIII', '')),
+            'x_studio_fecha_de_movimiento': recibir_fecha(claim.get('fechaMovimientoMigracion', '')),
+            'x_studio_monto_reclamado_1': claim.get('montoReclamadoMigracionMigracion', ''),
+            'x_studio_numero_de_recibo_migracion': claim.get('numeroReciboII', ''),
+            'x_studio_fecha_emisin': recibir_fecha(claim.get('fechaEmisionII', '')),
+            'x_studio_fecha_de_vencimiento_2': recibir_fecha(claim.get('fechaVencimientoMigracionII', '')),
+            'x_studio_numero_recibo_migracin': claim.get('numeroReciboMigracion', ''),
+            'x_studio_fecha_de_emisin_migracin_1': recibir_fecha(claim.get('fechaEmisionMigracion', '')),
+            'x_studio_fecha_de_vencimiento_migracin_1': recibir_fecha(claim.get('fechaVencimientoMigracion', '')),
+            'x_studio_monto_reclamado_migracion': claim.get('montoReclamadoMigracion', ''),
             # # Otros
             'x_studio_fecha_de_la_solicitud_de_contratacion': recibir_fecha(claim.get('fechaSolicitudX', '')),
             'x_studio_canal_solicitud_de_contratacion': claim.get('ccontratacion', ''),
@@ -221,9 +218,6 @@ def add_claim():
             'x_studio_se_adjunta_la_solicitud_x': claim.get('sasfll', ''),
             'x_studio_detalle_condicin_': claim.get('vinculoSolicitudSX', ''),
             'x_studio_detalle_pedido_x': claim.get('detallePedidoX', ''),
-
-
-
             # Queja
             'x_studio_detalle_de_la_queja':claim.get('quejasOpciones',''),
             'x_studio_fecha_presentacin_reclamo_queja_uno':recibir_fecha(claim.get('fechaPresentacionQueja','')),
@@ -243,8 +237,6 @@ def add_claim():
             'x_studio_medios_probatorios_1':claim.get('mediosProbatoriosQuejas',''),
             'x_studio_adjunta_medios_probatorios_x_seis':claim.get('dtramitacion',''),
             'x_studio_vinculo_de_medios_probatorios':claim.get('mediosProbatiosQuejaSeis',''),
-
-
             # Apelacion
             'x_studio_detalle_de_la_apelacin': claim.get('apelacionOpciones', ''),
             'x_studio_detalle_pruebas_apelacion_uno': claim.get('detallePruebaApelacionUno', ''),
@@ -276,8 +268,8 @@ def add_claim():
             #'x_studio_especificar_dsq': claim.get('especificarQueja', ''),
             'x_studio_nmero_servicio_reclamado_dsq': claim.get('numServicioQueja', ''),
             'x_studio_cdigo_nmero_reclamo_dsq': claim.get('codigoNumeroQueja', ''),
-
             #datos del servicio apelacion
+
             'x_studio_empresa_operadora_ds': claim.get('empresaOperadoraApelacion', ''),
             'x_studio_servicio_materia_de_apelacin_ds': claim.get('servicioMateriaApelacion', ''),
             #'x_studio_especificar_ds': claim.get('especificarApelacionOne', ''),
