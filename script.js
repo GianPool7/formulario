@@ -112,6 +112,12 @@ function volverRQA() {
     cApelacion.style.display="none"
     cQueja.style.display="none"
     cReclamo.style.display="none"
+    //
+    const inputsTextoDatosPersonales = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
+    // Recorremos todos los inputs y les asignamos un valor vacío
+    inputsTextoDatosPersonales.forEach(input => {
+        input.value = "";  // Establecemos el valor de cada input a ""
+    });
 }
 
 
@@ -275,9 +281,7 @@ function continuar() {
     }
 }
 
-
 //
-
 
 
 //
@@ -316,8 +320,6 @@ function tipoDocumento() {
     }
 
 }
-
-
 
 // Función para manejar la selección del radio button
 // 
@@ -1346,7 +1348,7 @@ function pestañaReclamo() {
 function quejas() {
 
     cQueja.style.display="block"
-    
+    //
     const opcionQueja=document.getElementById("quejasOpciones");
     const quejaRespuestaUno=document.getElementById("quejaPreguntaUno");
     const quejaRespuestaDos=document.getElementById("quejaPreguntaDos");
@@ -1560,8 +1562,6 @@ function pestañaQueja() {
 /* Apelacion */
 
 function apelaciones() {
-
-
     cApelacion.style.display="block"
 
     const apelacion=document.getElementById("apelacionOpciones")

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <style>
+    <!-- <style>
 
         *{
             padding: 0;
@@ -394,7 +394,7 @@
 
         }
 
-    </style>
+    </style> -->
     
     <form action="" method="post" class="contendioFormulario" id="claimForm" enctype="multipart/form-data">
 
@@ -402,19 +402,47 @@
 
             <div class="contenedorRQA" id="contenedorOpcionesQRA">
                 <div class="cajaContenedor">
-                    <div class="contenedorOpciones">
-                        <input type="radio" name="opcionesPrimero" value="3" id="reclamo" onclick="reclamos()">
-                        <!-- <p for="">Reclamo</p> -->
-                        <label for="reclamo">Reclamo</label>
+
+                    <div class="contenedorTituloDescripcion">
+                        <div class="contenedorOpciones">
+                            <input type="radio" name="opcionesPrimero" value="3" id="reclamo" onclick="reclamos()">
+                            <label for="reclamo">Reclamo</label>
+                        </div>
+
+                        <div class="descripcionCajas">
+                            <p>
+                                Es el inconveniente comunicado por el usuario a la empresa operador que corresponde a una materia considerada como tal y en virtud del cual se da inicio a un procedimiento de reclamo.
+                            </p>
+                        </div>
                     </div>
-                    <div class="contenedorOpciones">
-                        <input type="radio" name="opcionesPrimero" value="6" id="queja" onclick="quejass()">
-                        <label for="queja">Queja</label>
+
+
+                    <div class="contenedorTituloDescripcion">
+                        <div class="contenedorOpciones">
+                            <input type="radio" name="opcionesPrimero" value="6" id="queja" onclick="quejass()">
+                            <label for="queja">Queja</label>
+                        </div>
+
+                        <div class="descripcionCajas">
+                            <p>
+                                El usuario puede presentar una queja cuando surjan problemas o inconveniente en el trámite de su reclamo.
+                            </p>
+                        </div>
                     </div>
-                    <div class="contenedorOpciones">
-                        <input type="radio" name="opcionesPrimero" value="7" id="apelacion" onclick="apelacionesS()">
-                        <label for="apelacion">Apelación</label>
+
+                    <div class="contenedorTituloDescripcion">
+                        <div class="contenedorOpciones">
+                            <input type="radio" name="opcionesPrimero" value="7" id="apelacion" onclick="apelacionesS()">
+                            <label for="apelacion">Apelación</label>
+                        </div>
+
+                        <div class="descripcionCajas">
+                            <p>
+                                El recurso de apelación es el mecanismo que tiene el usuario para que el tribunal Administrativo de Solución de Reclamos de Usuarios del OSIPTEL (TRASU) revise su reclamo, en caso no se encuentre de acuerdo con la respuesta en Primera Instancia de la empresa operadora.
+                            </p>
+                        </div>
                     </div>
+
                 </div>
             </div>
     
@@ -433,9 +461,6 @@
                     </div>
                     <div class="glosario" id="glosarioQRA">
                         <div class="contenedorGlosario">
-                            <p><b>- Abonado .-</b> Las personas que contratan el servicio, Titulares del servicio.</p>
-                            <p><b>- Usuario .-</b> Las personas que utilizan el servicio.</p>
-                            <p><b>- Representante .-</b> El Usuario podrá designar un representante para iniciar el procedimiento de reclamo, a través de una carta poder simple firmada por el usuario.</p>
                         </div>
                     </div>
                 </div>
@@ -459,18 +484,51 @@
     
             <div class="contenedorRQA" id="contenedorOpcionesAUR">
                 <div class="cajaContenedor">
-                    <div class="contenedorOpciones">
-                        <input type="radio" name="tipoUsuario" value="abonado" id="abonado">
-                        <label for="abonado">Abonado</label>
+
+                    <div class="contenedorTituloDescripcion">
+
+                        <div class="contenedorOpciones">
+                            <input type="radio" name="tipoUsuario" value="abonado" id="abonado">
+                            <label for="abonado">Abonado</label>
+                        </div>
+
+                        <div class="descripcionCajas">
+                            <p>
+                                Las personas que contratan el servicio, Titulares del servicio.
+                            </p>
+                        </div>
+
                     </div>
-                    <div class="contenedorOpciones">
-                        <input type="radio" name="tipoUsuario" value="usuario" id="usuario">
-                        <label for="usuario">Usuario</label>
+
+                    <div class="contenedorTituloDescripcion">
+
+                        <div class="contenedorOpciones">
+                            <input type="radio" name="tipoUsuario" value="usuario" id="usuario">
+                            <label for="usuario">Usuario</label>
+                        </div>
+
+                        <div class="descripcionCajas">
+                            <p>
+                                Las personas que utilizan el servicio.
+                            </p>
+                        </div>
+
                     </div>
-                    <div class="contenedorOpciones">
-                        <input type="radio" name="tipoUsuario" value="representante" id="representante">
-                        <label for="representante">Representante</label>
+
+                    <div class="contenedorTituloDescripcion">
+
+                        <div class="contenedorOpciones">
+                            <input type="radio" name="tipoUsuario" value="representante" id="representante">
+                            <label for="representante">Representante</label>
+                        </div>
+                        <div class="descripcionCajas">
+                            <p>
+                                El Usuario podrá designar un representante para iniciar el procedimiento de reclamo, a través de una carta poder simple firmada por el usuario.
+                            </p>
+                        </div>
+
                     </div>
+
                 </div>
             </div>
     

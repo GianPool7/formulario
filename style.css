@@ -4,6 +4,8 @@
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
 /*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
 .contenedorRQA{
     padding: 10px;
@@ -15,14 +17,13 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    width: 80%;
+    width: 100%;
     padding: 10px;
     gap: 20px;
 }
 
-.contenedorOpciones{
+/* .contenedorOpciones{
     background-color: #002ccc;
-    width: 20%;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -30,12 +31,35 @@
     border-radius: 20px;
     color: #F2F2F2;
     cursor: pointer;
-}
+} */
 
 .contenedorOpciones label{
     font-size: 20px;
     font-weight: bold;
 }
+
+.contenedorOpciones{
+    padding: 10px;
+    text-align: center;
+}
+
+/**/
+
+.contenedorTituloDescripcion{
+    width: 20%;
+    border: 1px solid #002ccc;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.descripcionCajas{
+    padding: 10px;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+
 
 /*Titulo*/
 
@@ -226,19 +250,6 @@ label{
     padding: 20px;
 }
 
-/* caja grande xd*/
-
-.contenedorPadre{
-    padding: 5px;
-    margin: 5px;
-}
-
-.contenedorHijo{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
 
 /* contenedor de respuestas en las opciones seleccionados*/
 
@@ -392,5 +403,11 @@ details{
         width: 80%;
     }
     
+    /**/
+    .contenedorTituloDescripcion{
+        width: 100%;
+    }
+
+
 
 }
