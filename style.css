@@ -41,22 +41,33 @@
 .contenedorOpciones{
     padding: 10px;
     text-align: center;
+    background-color: #002ccc;
+    color: white;
+    border-radius: 10px;
 }
 
-/**/
 
 .contenedorTituloDescripcion{
-    width: 20%;
-    border: 1px solid #002ccc;
+    width: 16%;
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
+    /* box-shadow: 1px 1px 1px 1px black; */
+    background-color: #002ccc;
+    color: white;
+    transition: transform 0.3s ease-in-out; /* Transición suave para el cambio de tamaño */
 }
 
 .descripcionCajas{
     padding: 10px;
     margin-top: 10px;
     text-align: justify;
+    height: 80%;
+}
+
+.contenedorTituloDescripcion:hover{
+    transform: scale(1.05);
+    /* box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); */
 }
 
 
@@ -155,10 +166,19 @@ details{
     width: 40%;
 }
 
+.datos_solo{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .opcionCorreo{
     padding: 10px;
     display: flex;
     justify-content: space-around;
+    gap: 20px;
 }
 
 .representantecss{
@@ -177,7 +197,7 @@ input[type="text"],input[type="email"],input[type="date"],input[type="number"],s
     outline: none;
     margin-top: 10px;
     padding: 20px;
-    box-shadow: 5px 5px 10px black;
+    box-shadow: 3px 2px 1px black;
 }
 
 .error{

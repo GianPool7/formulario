@@ -403,10 +403,10 @@
             <div class="contenedorRQA" id="contenedorOpcionesQRA">
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion">
-                        <div class="contenedorOpciones">
-                            <input type="radio" name="opcionesPrimero" value="3" id="reclamo" onclick="reclamos()">
-                            <label for="reclamo">Reclamo</label>
+                    <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="reclamo">
+
+                        <div class="contenedorOpciones" value="3" >
+                            <label >Reclamo</label>
                         </div>
 
                         <div class="descripcionCajas">
@@ -414,12 +414,11 @@
                                 Es el inconveniente comunicado por el usuario a la empresa operador que corresponde a una materia considerada como tal y en virtud del cual se da inicio a un procedimiento de reclamo.
                             </p>
                         </div>
+
                     </div>
 
-
-                    <div class="contenedorTituloDescripcion">
-                        <div class="contenedorOpciones">
-                            <input type="radio" name="opcionesPrimero" value="6" id="queja" onclick="quejass()">
+                    <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="queja">
+                        <div class="contenedorOpciones" value="6" >
                             <label for="queja">Queja</label>
                         </div>
 
@@ -430,9 +429,8 @@
                         </div>
                     </div>
 
-                    <div class="contenedorTituloDescripcion">
-                        <div class="contenedorOpciones">
-                            <input type="radio" name="opcionesPrimero" value="7" id="apelacion" onclick="apelacionesS()">
+                    <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="apelacion">
+                        <div class="contenedorOpciones" value="7" >
                             <label for="apelacion">Apelación</label>
                         </div>
 
@@ -457,11 +455,7 @@
                         <input type="button" onclick="volverRQA()" value="Atrás">
                     </div>
                     <div class="tituloOpcion">
-                        <h3 id="opcionEscojida">Seleccionar Opcion :</h3>
-                    </div>
-                    <div class="glosario" id="glosarioQRA">
-                        <div class="contenedorGlosario">
-                        </div>
+                        <h3 id="opcionEscojida"></h3>
                     </div>
                 </div>
             </div>
@@ -472,7 +466,7 @@
                         <input type="button" onclick="volverUsuario()" value="Atrás">
                     </div>
                     <div class="tituloOpcion">
-                        <h3 id="tituloAUR">Usted es : </h3>
+                        <h3 id="tituloAUR"></h3>
                     </div>
                     <div class="glosario" id="glosarioQRA">
                         <div class="contenedorGlosario">
@@ -485,10 +479,10 @@
             <div class="contenedorRQA" id="contenedorOpcionesAUR">
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado">
 
                         <div class="contenedorOpciones">
-                            <input type="radio" name="tipoUsuario" value="abonado" id="abonado">
+                            <!-- <input type="radio" name="tipoUsuario" value="abonado" id="abonado"> -->
                             <label for="abonado">Abonado</label>
                         </div>
 
@@ -500,10 +494,10 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="usuario">
 
                         <div class="contenedorOpciones">
-                            <input type="radio" name="tipoUsuario" value="usuario" id="usuario">
+                            <!-- <input type="radio" name="tipoUsuario" value="usuario" id="usuario"> -->
                             <label for="usuario">Usuario</label>
                         </div>
 
@@ -515,10 +509,10 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="representante">
 
                         <div class="contenedorOpciones">
-                            <input type="radio" name="tipoUsuario" value="representante" id="representante">
+                            <!-- <input type="radio" name="tipoUsuario" value="representante" id="representante"> -->
                             <label for="representante">Representante</label>
                         </div>
                         <div class="descripcionCajas">
@@ -538,6 +532,7 @@
     
                 <details id="contenedorDatosPersonalesDetails">
                     <summary id="tipoUsers">Datos Personales</summary>
+
                         <div class="datosPersonales" id="formulario_personal">
     
                             <div class="contenedorDatosPersonales">
@@ -614,32 +609,35 @@
                                     <label for="correo">Correo electrónico</label>
                                     <input type="email" class="" name="datosPersonales" id="correo" placeholder="ejemplo@gmail.com">
                                 </div>
-                                <div class="datos">
-                                    <div class="textolabel">
-                                        <label for="">
-                                            Autorizo ser notificado por el correo electrónico registrado
-                                            (opcional)
-                                        </label>
+                                
+                            </div>
+                            <div class="datos_solo">
+                                <div class="textolabel">
+                                    <label for="">
+                                        Autorizo ser notificado por el correo electrónico registrado
+                                        (opcional)
+                                    </label>
+                                </div>
+                                <div class="opcionCorreo">
+                                    <!-- <input type="checkbox" name="autoriza" id="autoriza" value="true"> -->
+                                    <div class="oCorreo">
+                                        <label for="autoriza">Si</label>
+                                        <input type="radio" name="autorizacion" id="autoriza" value="True">
                                     </div>
-                                    <div class="opcionCorreo">
-                                        <!-- <input type="checkbox" name="autoriza" id="autoriza" value="true"> -->
-                                        <div class="oCorreo">
-                                            <label for="autoriza">Si</label>
-                                            <input type="radio" name="autorizacion" id="autoriza" value="True">
-                                        </div>
-                                        <div class="oCorreo">
-                                            <label for="autoriza">No</label>
-                                            <input type="radio" name="autorizacion" id="autoriza" value="False">
-                                        </div>
+                                    <div class="oCorreo">
+                                        <label for="autoriza">No</label>
+                                        <input type="radio" name="autorizacion" id="autoriza" value="False">
                                     </div>
                                 </div>
-    
                             </div>
+
     
                         </div>
+
                         <div class="btnContinuar">
                             <input onclick="continuar()" type="button" id="validarFormulario" value="Continuar">
                         </div>
+
                 </details>
     
             </div>

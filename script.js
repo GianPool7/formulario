@@ -1,25 +1,40 @@
-const opcionReclamo=document.getElementById("reclamo");
-const opcionQueja=document.getElementById("queja");
-const opcionApelacion=document.getElementById("apelacion");
+// const opcionReclamo=document.getElementById("reclamo");
+// const opcionQueja=document.getElementById("queja");
+// const opcionApelacion=document.getElementById("apelacion");
 //poniendo nombre a la caja de details de datos personales
 
 
 const datosPersonalesDetailsContenedor=document.getElementById('contenedorDatosPersonalesDetails');
-
 //
+
 const cajaTotal=document.getElementById("cajaPadre")
-
-
 // los inputs de los datos
 
-//
 // boton para enviar el todo formulario
 const enviar=document.getElementById("btnEnviarFormulario");
 enviar.style.display="none";
+//
+// inicio
+// caja de selecion de reclamo - queja - apelacion
+const contenedor=document.getElementById("contenedorOpcionesQRA");
+// titulo de opcion escojida
+const contenedorCajaTitulo=document.getElementById("tituloOpcionesQRA");
+const tituloOpcion=document.getElementById("opcionEscojida");
+//tituloOpcionEscojida.style.display="none"
 
-// funcion ids
+// contenedor de usuario - abonado - representante
+const contenedorAUR=document.getElementById("contenedorOpcionesAUR");
+contenedorAUR.style.display="none";
 
-function reclamos() {
+
+// funcion ids - para la seleccion de RECLAMO - QUEJA - APELACION
+const opcionSeleccionadaReclamos=document.getElementById("reclamo");
+const opcionSeleccionadaQueja=document.getElementById("queja");
+const opcionSeleccionadaApelacion=document.getElementById("apelacion");
+
+// Evento
+// Reclamos
+opcionSeleccionadaReclamos.addEventListener("click",function () {
     // Obtener el valor actual del input
     const inputTicket = document.getElementById('tipoticket');
     const inputDiagnostico = document.getElementById('diagnostico');
@@ -31,9 +46,19 @@ function reclamos() {
     // Asignar ese número al valor del input
     inputTicket.value = numT;
     inputDiagnostico.value = numD;
-}
 
-function quejass() {
+    // desaparecer las cajas de opciones
+    contenedor.style.display="none"
+    contenedorCajaTitulo.style.display="flex"
+    // Escribir la opcion escojida
+    tituloOpcion.innerHTML="Reclamo";
+    //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
+    contenedorAUR.style.display="flex";
+
+})
+
+//Quejas
+opcionSeleccionadaQueja.addEventListener("click",function () {
     // Obtener el valor actual del input
     const inputTicket = document.getElementById('tipoticket');
     const inputDiagnostico = document.getElementById('diagnostico');
@@ -45,9 +70,20 @@ function quejass() {
     // Asignar ese número al valor del input
     inputTicket.value = numT;
     inputDiagnostico.value = numD;
-}
 
-function apelacionesS() {
+    // desaparecer las cajas de opciones
+    contenedor.style.display="none"
+    contenedorCajaTitulo.style.display="flex"
+    // Escribir la opcion escojida
+    tituloOpcion.innerHTML="Queja";
+    //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
+    contenedorAUR.style.display="flex";
+
+
+})
+
+//Apelacion
+opcionSeleccionadaApelacion.addEventListener("click",function () {
     // Obtener el valor actual del input
     const inputTicket = document.getElementById('tipoticket');
     const inputDiagnostico = document.getElementById('diagnostico');
@@ -59,48 +95,31 @@ function apelacionesS() {
     // Asignar ese número al valor del input
     inputTicket.value = numT;
     inputDiagnostico.value = numD;
-}
+
+    // desaparecer las cajas de opciones
+    contenedor.style.display="none"
+    contenedorCajaTitulo.style.display="flex"
+    // Escribir la opcion escojida
+    tituloOpcion.innerHTML="Apelación";
+    //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
+    contenedorAUR.style.display="flex";
+
+})
+
 
 // funciona los que estan en la siguiente linea
-const opcionEscojidaQRA=document.getElementById("tituloOpcionesQRA");
-const tituloQRA=document.getElementById("opcionEscojida");
-const contenedor=document.getElementById("contenedorOpcionesQRA");
-// abonado usuario representante
-const glosariosAUR=document.getElementById("glosarioQRA");
-const contenedorAUR=document.getElementById("contenedorOpcionesAUR");
-const tituloAUR=document.getElementById("tituloOpcionesAUR");
-// propiedades
-contenedorAUR.style.display="none";
-tituloAUR.style.display="none";
 // contenedor de datos personales
 const contenedorDatosPersonales=document.getElementById("contenidoDatos")
 contenedorDatosPersonales.style.display="none";
 
 
-function manejarSeleccion() {
-    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
-    if (seleccion) {
-        //console.log(`Seleccionaste: ${seleccion.id}`);
-        //tituloQRA.innerHTML=`${seleccion.id}`;
-        tituloQRA.innerHTML = `${seleccion.id.charAt(0).toUpperCase()}${seleccion.id.slice(1)}`;
-        opcionEscojidaQRA.style.display="flex";
-        contenedor.style.display="none";
-        glosariosAUR.style.display="flex";
-        contenedorAUR.style.display="flex";
-        tituloAUR.style.display="flex";
-    }
-}
-
-// Agregar el evento de clic a los radio buttons
-document.querySelectorAll('input[name="opcionesPrimero"]').forEach((input) => {
-    input.addEventListener('click', manejarSeleccion);
-});
-
 function volverRQA() {
+    contenedorCajaTitulo.style.display="none"
+    contenedorAUR.style.display="none"
+    //
     contenedor.style.display="flex";
     opcionEscojidaQRA.style.display="none";
-    glosariosAUR.style.display="none";
-    contenedorAUR.style.display="none";
+    //glosariosAUR.style.display="none";
     tituloAUR.style.display="none";
     contenedorDatosPersonales.style.display="none";
     apelacion.style.display="none";
@@ -118,28 +137,65 @@ function volverRQA() {
     inputsTextoDatosPersonales.forEach(input => {
         input.value = "";  // Establecemos el valor de cada input a ""
     });
+
 }
 
 
-//  ABONADO - USUARIO - REPRESENTANTE
-const textUsuario=document.getElementById("tituloAUR")
+//usuarios
 
-function manejarSelecciones() {
-    const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
-    if (seleccion) {
-        //console.log(`Seleccionaste: ${seleccion.id}`);
-        //textUsuario.innerHTML=`${seleccion.id}`;
-        textUsuario.innerHTML = `${seleccion.id.charAt(0).toUpperCase()}${seleccion.id.slice(1)}`;
-        tituloAUR.style.display="flex"
-        glosariosAUR.style.display="none";
-        contenedorAUR.style.display="none";
-        contenedorDatosPersonales.style.display="flex"
-    }
-}
+const tituloAUR=document.getElementById("tituloOpcionesAUR");
+tituloAUR.style.display="none"
+const txtTituloAUR=document.getElementById("tituloAUR");
+//
+const tpAbonado=document.getElementById("abonado");
+const tpUsuario=document.getElementById("usuario");
+const tpRepresentante=document.getElementById("representante")
+//datos extras del respresentantes
+const dRepresentante=document.getElementById("extra_representante");
+// datos extras del usuario
+const dUsuarios=document.getElementById("extra_usuario")
 
-document.querySelectorAll('input[name="tipoUsuario"]').forEach((input) => {
-    input.addEventListener('click', manejarSelecciones);
-});
+// funcion para mostrar el formulario de los datos personales
+
+tpAbonado.addEventListener("click",function () {
+    contenedorDatosPersonales.style.display="flex";
+    datosPersonalesDetailsContenedor.open=true;
+    dRepresentante.style.display="none";
+    dUsuarios.style.display="none"
+    contenedorAUR.style.display="none";
+    //
+    tituloAUR.style.display="flex"
+    txtTituloAUR.innerHTML="Abonado";
+})
+
+tpUsuario.addEventListener("click",function(){
+    contenedorDatosPersonales.style.display="flex";
+    datosPersonalesDetailsContenedor.open=true;
+    dUsuarios.style.display="block";
+    dRepresentante.style.display="none";
+    contenedorAUR.style.display="none";
+    //
+    tituloAUR.style.display="flex"
+    txtTituloAUR.innerHTML="Usuario";
+})
+
+tpRepresentante.addEventListener("click",function(){
+    contenedorDatosPersonales.style.display="flex";
+    datosPersonalesDetailsContenedor.open=true;
+    dUsuarios.style.display="none";
+    dRepresentante.style.display="flex";
+    contenedorAUR.style.display="none";
+    //
+    tituloAUR.style.display="flex"
+    txtTituloAUR.innerHTML="Representante";
+})
+
+
+
+
+
+
+// funcion para volver cuando ya escojio al usuario
 
 function volverUsuario() {
     tituloAUR.style.display="none"
@@ -166,61 +222,7 @@ function volverUsuario() {
 }
 
 
-// datos personales
-const drepresentante=document.getElementById("extra_representante");
-drepresentante.style.display="none"
-const dusuario=document.getElementById("extra_usuario");
-dusuario.style.display="none"
 
-
-// Función para manejar la selección del radio button
-function manejarSeleccionAUR() {
-    const seleccion = document.querySelector('input[name="tipoUsuario"]:checked');
-
-    switch (seleccion && seleccion.id) {
-        case "abonado":
-            drepresentante.style.display="none";
-            dusuario.style.display="none";
-            document.getElementById('contenedorDatosPersonalesDetails').open = true;
-            break;
-        case "usuario":
-            drepresentante.style.display="none";
-            dusuario.style.display="BLOCK";
-            document.getElementById('contenedorDatosPersonalesDetails').open = true;
-            break;
-
-        case "representante":
-            drepresentante.style.display="flex";
-            dusuario.style.display="none";
-            document.getElementById('contenedorDatosPersonalesDetails').open = true;
-            break;
-    
-        default:
-            document.getElementById('contenedorDatosPersonalesDetails').open = false;
-            break;
-    }
-
-
-}
-
-// Agregar el evento de clic a los radio buttons
-document.querySelectorAll('input[name="tipoUsuario"]').forEach((input) => {
-    input.addEventListener('click', manejarSeleccionAUR);
-});
-
-// continuar con el formulario
-
-const apelacion=document.getElementById("seleccionarApelacion");
-const queja=document.getElementById("seleccionarQueja");
-const reclamo=document.getElementById("seleccionarReclamo");
-
-apelacion.style.display="none";
-queja.style.display="none";
-reclamo.style.display="none";
-
-// Selecciona todos los campos de entrada con la clase .campo-reclamo
-//const inputs = document.querySelectorAll('.datosPersonales');
-//
 
 function continuar() {
     // Verificar si al menos uno de los radios está seleccionado
