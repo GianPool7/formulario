@@ -8,399 +8,12 @@
 </head>
 <body>
 
-    <!-- <style>
-
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
-        }
-        /*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
-        .contenedorRQA{
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .cajaContenedor{
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            width: 100%;
-            padding: 10px;
-            gap: 20px;
-        }
-
-        .contenedorOpciones{
-            background-color: #002ccc;
-            width: 20%;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            border-radius: 20px;
-            color: #F2F2F2;
-            cursor: pointer;
-        }
-
-        .contenedorOpciones label{
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        /*Titulo*/
-
-        .tituloOpciones{
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contenedorTitulo{
-            width: 100%;
-            display: flex;
-        }
-        .btnTitulo{
-            width: 10%;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        input[type="button"]{
-            /* outline: none; */
-            /* width: 100%; */
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            background-color: #ff4c00;
-            color: #F2F2F2;
-            border-radius: 20px;
-        }
-        .tituloOpcion{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .tituloOpcion h3{
-            color: #002ccc;
-            font-size: 30px;
-        }
-
-        #tituloOpcionesQRA{
-            display: none;
-        }
-
-        /* GLOSARIO */
-
-        .glosario{
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            width: 50%;
-        }
-
-        .contenedorGlosario{
-            background-color: white;
-            border: 1px solid #002ccc;
-            padding: 10px;
-            width: 80%;
-            border-radius: 5px;
-            color: #002ccc;
-        }
-
-        #glosarioQRA{
-            display: none;
-        }
-
-        /* Contenedor de preguntas: Usuarios - Abonado - Representante */
-
-        .contenedorPreguntas{
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        details{
-            width: 90%;
-            padding: 10px;
-        }
-
-        .contenedorDatosPersonales{
-            padding: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            /*margin-top: 20px;*/
-        }
-
-        .datos{
-            margin: 5px;
-            padding: 15px;
-            width: 40%;
-        }
-
-        .opcionCorreo{
-            padding: 10px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .representantecss{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        input[type="text"],input[type="email"],input[type="date"],input[type="number"],select{
-            background-color: aliceblue;
-            width: 100%;
-            /* border: 1px solid #ff4c00; */
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            outline: none;
-            margin-top: 10px;
-            padding: 20px;
-            box-shadow: 5px 5px 10px black;
-        }
-
-        .error{
-            border: 1px solid #ff4c00;
-        }
-
-
-        label{
-            width: 100%;
-        }
-        /* continuar , despues de los datos personales*/
-
-        .btnContinuar{
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        /* Seleccionables */
-
-        .seleccionarOpcciones{
-            display: flex;
-            justify-content: space-around;
-            gap: 10px;
-            padding: 20px;
-            /* margin-bottom: 10px; */
-        }
-
-        .cajasCentradas{
-            width: 50%;
-            padding: 10px;
-        }
-
-        .seleccionMultipleReclamo{
-            width: 42%;
-            padding: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .cajasContenedorSeleccionesMultiples{
-            display: flex;
-            justify-content: center;
-        }
-
-
-        .materiaReclamable{
-            width: 42%;
-            padding: 10px;
-        }
-
-        .fc{
-            width: 50%;
-            padding: 10px;
-        }
-
-        .materiaReclamableUnica{
-            padding: 20px;
-        }
-
-        /* caja grande xd*/
-
-        .contenedorPadre{
-            padding: 5px;
-            margin: 5px;
-        }
-
-        .contenedorHijo{
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        /* contenedor de respuestas en las opciones seleccionados*/
-
-        .cajaRespuesta{
-            padding: 20px;
-            width: 90%;
-            display: block;
-            margin: auto;
-        }
-
-        .columnTwo{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
-
-
-
-
-        /*BOTON DE ENVIAR EL FORMULARIO*/
-
-        .contenedorBtn{
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        button{
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            background-color: blue;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        button:hover{
-            background-color: #001d86;
-            outline: none;
-        }
-
-        /**/
-
-        details{
-            cursor: pointer;
-        }
-
-        /**/
-
-        .alert{
-            color: red;
-            padding: 10px;
-        }
-
-        /**/
-
-        .contenedorTicket{
-            padding: 10px;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cajaContenedorTickets{
-            background-color: #ff4c00;
-            padding: 10px;
-            display: block;
-            margin: auto;
-            border-radius: 4px;
-            width: 80%;
-        }
-
-        .tituloTicket{
-            background-color: #002ccc;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 12px;
-            color: #F2F2F2;
-            border-bottom: 1px solid white;
-        }
-
-        .ticket{
-            background-color: #002ccc;
-            color: #F2F2F2;
-            padding: 12px;
-            line-height: 30px;
-        }
-        /**/
-
-        /**/
-
-        @media only screen and (max-width: 768px) {
-            .contenedorOpciones {
-                width: 100%;
-            }
-            .contenedorTitulo{
-                width: 100%;
-            }
-            .contenedorGlosario{
-                width: 100%;
-            }
-            details{
-                width: 100%;
-            }
-            .datos{
-                width: 100%;
-            }
-            .cajasCentradas{
-                width: 100%;
-            }
-            .seleccionMultipleReclamo{
-                width: 100%;
-                justify-content: center;
-            }
-            .materiaReclamable{
-                width: 100%;
-            }
-            .fc{
-                width: 100%;
-            }
-
-            /**/
-
-            .contenedorTitulo{
-                width: 100%;
-                flex-wrap: wrap;
-            }
-
-            .btnTitulo{
-                width: 100%;
-            }
-
-            .tituloOpcion{
-                width: 100%;
-            }
-
-            .glosario{
-                width: 100%;
-            }
-
-            /**/
-
-            .cajaContenedorTickets{
-                width: 100%;
-            }
-            
-
-        }
-
-    </style> -->
-    
     <form action="" method="post" class="contendioFormulario" id="claimForm" enctype="multipart/form-data">
 
         <div id="cajaPadre">
 
             <div class="contenedorRQA" id="contenedorOpcionesQRA">
+
                 <div class="cajaContenedor">
 
                     <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="reclamo">
@@ -442,6 +55,7 @@
                     </div>
 
                 </div>
+
             </div>
     
             <div class="serie">
@@ -477,6 +91,7 @@
             </div>
     
             <div class="contenedorRQA" id="contenedorOpcionesAUR">
+
                 <div class="cajaContenedor">
 
                     <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado">
@@ -524,6 +139,80 @@
                     </div>
 
                 </div>
+
+            </div>
+
+            <!-- datos de validación  -->
+
+            <div class="contenedorPreguntas" id="datosValidacionAbonado">
+
+                <details id="contenedorDatosValidacionAbonado">
+                    <summary>Datos de validación</summary>
+                        <div class="datosPersonales" id="formulario_personal">
+                            <div class="contenedorDatosPersonales">
+            
+                                <div class="datos">
+                                    <label for="name">Nombre del Padre</label>
+                                    <input type="text" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                                <div class="datos">
+                                    <label for="name">Nombre del Madre</label>
+                                    <input type="text" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                                <div class="datos">
+                                    <label for="name">Lugar de Nacimiento</label>
+                                    <input type="text" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                                <div class="datos">
+                                    <label for="name">Fecha de Nacimiento</label>
+                                    <input type="date" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                            </div>
+                        </div>
+            
+                        <div class="btnContinuar">
+                            <input onclick="validarAbonado()" type="button" id="validarFormularioAbonado" value="Validar">
+                        </div>
+            
+                </details>
+            
+            </div>
+            
+            <div class="contenedorPreguntas" id="datosValidacionUsuario">
+            
+                <details id="contenedorDatosValidacionUsuario">
+                    <summary>Datos de validación</summary>
+                        <div class="datosPersonales" id="formulario_personal">
+                            <div class="contenedorDatosPersonales">
+            
+                                <div class="datos">
+                                    <label for="name">Fecha de Vencimiento del Recibo</label>
+                                    <input type="date" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                                <div class="datos">
+                                    <label for="name">Monto del plan tarifario</label>
+                                    <input type="text" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                                <div class="datos">
+                                    <label for="name">Dirección de Facturación</label>
+                                    <input type="text" id="name" placeholder="Nombre del reclamante">
+                                </div>
+            
+                            </div>
+                        </div>
+            
+                        <div class="btnContinuar">
+                            <input onclick="validarUsuario()" type="button" id="validarFormularioUsuario" value="Validar">
+                        </div>
+            
+                </details>
+            
             </div>
     
             <!-- contenedor de datos personales -->
@@ -630,7 +319,6 @@
                                     </div>
                                 </div>
                             </div>
-
     
                         </div>
 
@@ -645,7 +333,6 @@
             <!-- para seleccionar las opciones --->
     
             <div class="cajasContenedorSeleccionesMultiples" id="seleccionarApelacion">
-    
     
                 <details class="seleccionarOpcciones" id="seleccionUnicaApelacion">
     

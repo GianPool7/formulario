@@ -114,39 +114,30 @@ contenedorDatosPersonales.style.display="none";
 
 
 function volverRQA() {
+    // para mostrar opciones de tipo de reclamo
+    contenedor.style.display="flex"
+    //para ocultar las cajas el titulo de opciones de reclamo 
     contenedorCajaTitulo.style.display="none"
-    contenedorAUR.style.display="none"
-    //
-    contenedor.style.display="flex";
-    opcionEscojidaQRA.style.display="none";
-    //glosariosAUR.style.display="none";
-    tituloAUR.style.display="none";
+    //para guardar el details
+    datosPersonalesDetailsContenedor.open=false;
+    //para ocultar opciones de tipo de personales
     contenedorDatosPersonales.style.display="none";
-    apelacion.style.display="none";
-    queja.style.display="none";
-    reclamo.style.display="none";
-    //
-    enviar.style.display="none";
-    //
-    cApelacion.style.display="none"
-    cQueja.style.display="none"
-    cReclamo.style.display="none"
-    //
-    const inputsTextoDatosPersonales = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
-    // Recorremos todos los inputs y les asignamos un valor vacío
-    inputsTextoDatosPersonales.forEach(input => {
-        input.value = "";  // Establecemos el valor de cada input a ""
-    });
-
+    //para ocultar el titulo de tipo de personales
+    tituloAUR.style.display="none";
+    // ocultar la opcion de tipo de personas
+    contenedorAUR.style.display="none";
+    //ocultar el details de validacion
+    cDatosValidacionAbonado.open=false;
+    cDatosValidacionUsuario.open=false;
 }
 
 
 //usuarios
-
+// titulo de usuario
 const tituloAUR=document.getElementById("tituloOpcionesAUR");
 tituloAUR.style.display="none"
 const txtTituloAUR=document.getElementById("tituloAUR");
-//
+// contenedores de tipos de usuarios
 const tpAbonado=document.getElementById("abonado");
 const tpUsuario=document.getElementById("usuario");
 const tpRepresentante=document.getElementById("representante")
@@ -154,42 +145,108 @@ const tpRepresentante=document.getElementById("representante")
 const dRepresentante=document.getElementById("extra_representante");
 // datos extras del usuario
 const dUsuarios=document.getElementById("extra_usuario")
+//para datos de la validacion abonado
+const dValidacionAbonado=document.getElementById("datosValidacionAbonado")
+dValidacionAbonado.style.display="none"
+const cDatosValidacionAbonado=document.getElementById("contenedorDatosValidacionAbonado")
+cDatosValidacionAbonado.open=false;
+//para datos de la validacion usuario
+const dValidacionUsuario=document.getElementById("datosValidacionUsuario")
+dValidacionUsuario.style.display="none"
+const cDatosValidacionUsuario=document.getElementById("contenedorDatosValidacionUsuario")
+cDatosValidacionUsuario.open=false;
+
 
 // funcion para mostrar el formulario de los datos personales
 
 tpAbonado.addEventListener("click",function () {
-    contenedorDatosPersonales.style.display="flex";
+    // para extender el details
     datosPersonalesDetailsContenedor.open=true;
-    dRepresentante.style.display="none";
-    dUsuarios.style.display="none"
+    // para mostrar los datos de validacion
+    dValidacionAbonado.style.display="flex"
+    cDatosValidacionAbonado.open=true;
+    //contenedor de las opciones
     contenedorAUR.style.display="none";
-    //
+    // el titulo del usuario
     tituloAUR.style.display="flex"
     txtTituloAUR.innerHTML="Abonado";
 })
 
 tpUsuario.addEventListener("click",function(){
-    contenedorDatosPersonales.style.display="flex";
+    // para extender el details
     datosPersonalesDetailsContenedor.open=true;
-    dUsuarios.style.display="block";
-    dRepresentante.style.display="none";
+    // para mostrar los datos de validacion
+    dValidacionAbonado.style.display="none"
+    dValidacionUsuario.style.display="flex"
+    cDatosValidacionUsuario.open=true;
+    //contenedor de las opciones
     contenedorAUR.style.display="none";
-    //
+    // el titulo del usuario
     tituloAUR.style.display="flex"
     txtTituloAUR.innerHTML="Usuario";
 })
 
 tpRepresentante.addEventListener("click",function(){
-    contenedorDatosPersonales.style.display="flex";
+    // para extender el details
     datosPersonalesDetailsContenedor.open=true;
+    // datos para mostrar formulario de datos personales
+    contenedorDatosPersonales.style.display="flex";
     dUsuarios.style.display="none";
     dRepresentante.style.display="flex";
+    //contenedor de las opciones
     contenedorAUR.style.display="none";
-    //
+    // el titulo del usuario
     tituloAUR.style.display="flex"
     txtTituloAUR.innerHTML="Representante";
+    // ocultar datos
+    dValidacionAbonado.style.display="none"
+    dValidacionUsuario.style.display="none"
 })
 
+// para validar los datos del abonado
+const vAbonado=document.getElementById("validarFormularioAbonado");
+
+vAbonado.addEventListener("click",function () {
+    // Aquí puedes poner lo que deseas hacer después de 3 segundos
+    alert("Validando datos Personales ...");
+
+    // Esperar 3 segundos (3000 ms) para ejecutar alguna acción adicional
+    setTimeout(function() {
+        // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
+            // datos para mostrar formulario de datos personales
+            contenedorDatosPersonales.style.display="flex";
+            dRepresentante.style.display="none";
+            dUsuarios.style.display="none"
+            // ocultar datos de validacion de abonado
+            cDatosValidacionAbonado.open=false;
+            dValidacionAbonado.style.display="none";
+    }, 3000); // 3000 ms = 3 segundos
+
+})
+
+// para validar los datos del usuario
+
+const vUsuario=document.getElementById("validarFormularioUsuario");
+
+vUsuario.addEventListener("click",function () {
+    // Aquí puedes poner lo que deseas hacer después de 3 segundos
+    alert("Validando datos Personales ...");
+
+    // Esperar 3 segundos (3000 ms) para ejecutar alguna acción adicional
+    setTimeout(function() {
+        // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
+        // datos para mostrar formulario de datos personales
+        contenedorDatosPersonales.style.display="flex";
+        dUsuarios.style.display="block";
+        dRepresentante.style.display="none";
+        // ocultar datos de validacion de usuario
+        cDatosValidacionUsuario.open=false;
+        dValidacionUsuario.style.display="none"
+
+
+    }, 3000); // 3000 ms = 3 segundos
+
+})
 
 
 
@@ -198,95 +255,17 @@ tpRepresentante.addEventListener("click",function(){
 // funcion para volver cuando ya escojio al usuario
 
 function volverUsuario() {
+    //para ocultar el titulo de tipos de usuarios
     tituloAUR.style.display="none"
-    contenedorAUR.style.display="flex"
+    // para mostrar las opciones de tipos de usuario
+    contenedorAUR.style.display="flex";
+    // para ocultar los details
+    dValidacionAbonado.style.display="none"
+    dValidacionUsuario.style.display="none"
+    // para ocultar las opciones de representante
     contenedorDatosPersonales.style.display="none";
-    apelacion.style.display="none";
-    queja.style.display="none";
-    reclamo.style.display="none";
-    //
-    glosariosAUR.style.display="flex"
-    //
-    cApelacion.style.display="none"
-    cQueja.style.display="none"
-    cReclamo.style.display="none"
-    //
-    enviar.style.display="none";
-    //
-    const inputsTextoDatosPersonales = document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]');
-    // Recorremos todos los inputs y les asignamos un valor vacío
-    inputsTextoDatosPersonales.forEach(input => {
-        input.value = "";  // Establecemos el valor de cada input a ""
-    });
 
 }
-
-
-
-
-function continuar() {
-    // Verificar si al menos uno de los radios está seleccionado
-    const radiosAutorizacion = document.querySelectorAll('input[name="autorizacion"]');
-    let autorizacionSeleccionada = false;
-
-    radiosAutorizacion.forEach(radio => {
-        if (radio.checked) {
-            autorizacionSeleccionada = true;
-        }
-    });
-
-    // Si no hay radio seleccionado, mostrar el mensaje de error y detener la ejecución
-    if (!autorizacionSeleccionada) {
-        const alertaAutorizacion = document.createElement("p");
-        alertaAutorizacion.textContent = "Debe seleccionar una opción (Si o No) para la autorización";
-        alertaAutorizacion.classList.add('alert'); // Estilo para el mensaje
-        const opcionCorreo = document.querySelector('.opcionCorreo');
-        
-        // Si ya existe un mensaje de error, no agregar otro
-        if (!document.querySelector('.alert')) {
-            opcionCorreo.insertAdjacentElement("afterend",alertaAutorizacion); // Insertar el mensaje de error debajo de los radios
-        }
-        return; // Detener la ejecución si no se seleccionó un radio
-    }
-
-    // Si la validación pasa, ocultar el bloque de datos personales y mostrar el siguiente contenido
-    document.getElementById('contenedorDatosPersonalesDetails').open = false;
-
-    // Obtener la opción seleccionada en el campo 'opcionesPrimero'
-    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
-    if (!seleccion) return; // Si no hay opción seleccionada, salir
-
-    // Mostrar y ocultar secciones según la selección
-    switch (seleccion.id) {
-        case "reclamo":
-            // Ocultar y mostrar las secciones correspondientes
-            apelacion.style.display = "none";
-            queja.style.display = "none";
-            reclamo.style.display = "flex";
-            // Abrir el contenedor correspondiente
-            document.getElementById('seleccionMultipleReclamo').open = true;
-            break;
-        case "queja":
-            apelacion.style.display = "none";
-            queja.style.display = "flex";
-            reclamo.style.display = "none";
-            document.getElementById('seleccionUnicoQueja').open = true;
-            break;
-        case "apelacion":
-            apelacion.style.display = "flex";
-            queja.style.display = "none";
-            reclamo.style.display = "none";
-            document.getElementById('seleccionUnicaApelacion').open = true;
-            break;
-        default:
-            break;
-    }
-}
-
-//
-
-
-//
 
 // Datos personales
 const txtNum=document.getElementById("numDoc")
@@ -323,10 +302,68 @@ function tipoDocumento() {
 
 }
 
-// Función para manejar la selección del radio button
-// 
-// las preguntas  de responder
 
+// para continuar con el formulario
+
+const sApelacion=document.getElementById("seleccionarApelacion");
+const sQueja=document.getElementById("seleccionarQueja");
+const sReclamo=document.getElementById("seleccionarReclamo");
+
+sApelacion.style.display="none";
+sQueja.style.display="none";
+sReclamo.style.display="none";
+
+
+// para continuar con el formulario
+
+function continuar() {
+    // Verificar si al menos uno de los radios está seleccionado
+    const radiosAutorizacion = document.querySelectorAll('input[name="autorizacion"]');
+    let autorizacionSeleccionada = false;
+
+    radiosAutorizacion.forEach(radio => {
+        if (radio.checked) {
+            autorizacionSeleccionada = true;
+        }
+    });
+
+    // Si no hay radio seleccionado, mostrar el mensaje de error y detener la ejecución
+    if (!autorizacionSeleccionada) {
+        const alertaAutorizacion = document.createElement("p");
+        alertaAutorizacion.textContent = "Debe seleccionar una opción (Si o No) para la autorización";
+        alertaAutorizacion.classList.add('alert'); // Estilo para el mensaje
+        const opcionCorreo = document.querySelector('.opcionCorreo');
+        
+        // Si ya existe un mensaje de error, no agregar otro
+        if (!document.querySelector('.alert')) {
+            opcionCorreo.insertAdjacentElement("afterend",alertaAutorizacion); // Insertar el mensaje de error debajo de los radios
+        }
+        return; // Detener la ejecución si no se seleccionó un radio
+    }
+
+    // Si la validación pasa, ocultar el bloque de datos personales y mostrar el siguiente contenido
+    document.getElementById('contenedorDatosPersonalesDetails').open = false;
+
+    // Obtener la opción seleccionada en el campo 'opcionesPrimero'
+    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
+    if (!seleccion) return; // Si no hay opción seleccionada, salir
+
+    // Mostrar y ocultar secciones según la selección
+
+    switch (txtTituloAUR.value) {
+        case "abonado":
+            alert("hola abonado")
+            break;
+    
+        default:
+            break;
+    }
+
+}
+
+//
+
+// 
 const cApelacion=document.getElementById("datosApelacion");
 const cQueja=document.getElementById("datosQueja");
 const cReclamo=document.getElementById("datosReclamos");
