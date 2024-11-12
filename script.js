@@ -127,6 +127,8 @@ function volverRQA() {
     // ocultar la opcion de tipo de personas
     contenedorAUR.style.display="none";
     //ocultar el details de validacion
+    dValidacionAbonado.style.display="none"
+    dValidacionUsuario.style.display="none"
     cDatosValidacionAbonado.open=false;
     cDatosValidacionUsuario.open=false;
 }
