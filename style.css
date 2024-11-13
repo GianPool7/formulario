@@ -202,6 +202,18 @@ input[type="text"],input[type="email"],input[type="date"],input[type="number"],s
     box-shadow: 3px 2px 1px black;
 }
 
+textarea{
+    background-color: aliceblue;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    margin-top: 10px;
+    padding: 20px;
+    box-shadow: 3px 2px 1px black;
+}
+
 .error{
     border: 1px solid #ff4c00;
 }
@@ -360,6 +372,13 @@ details{
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+/* Para el descargo del cliente */
+
+.detalleInformacionExtra{
+    display: flex;
+    justify-content: center;
 }
 
 

@@ -1,6 +1,12 @@
 // const opcionReclamo=document.getElementById("reclamo");
 // const opcionQueja=document.getElementById("queja");
 // const opcionApelacion=document.getElementById("apelacion");
+
+// details de reclamo
+const contenedorDetailsReclamo=document.getElementById("contenedorDatosPersonales");
+const contenedorDetailsQueja=document.getElementById("quejaRespuestasSelecciones");
+const contenedorDetailsApelacion=document.getElementById("apelacionRespuestasSelecciones");
+
 //poniendo nombre a la caja de details de datos personales
 
 
@@ -139,7 +145,17 @@ function volverRQA() {
     sApelacion.style.display="none";
     seleccionarApelacion.open=false;
     cApelacion.style.display="none"
-    //
+    // comentarios finales del reclamo
+    extraReclamo.style.display="none";
+    contenedorDetailsExtraReclamo.open=false;
+    // comentarios finales del queja
+    extraQueja.style.display="none";
+    contenedorDetailsExtraQueja.open=false;
+    // comentarios finales del apelacion
+    extraApelacion.style.display="none";
+    contenedorDetailsExtraApelacion.open=false;
+    //btn de finalizar
+    enviar.style.display="none";
 }
 
 
@@ -288,7 +304,17 @@ function volverUsuario() {
     sApelacion.style.display="none";
     seleccionarApelacion.open=false;
     cApelacion.style.display="none"
-    //
+    // comentarios finales del reclamo
+    extraReclamo.style.display="none";
+    contenedorDetailsExtraReclamo.open=false;
+    // comentarios finales del queja
+    extraQueja.style.display="none";
+    contenedorDetailsExtraQueja.open=false;
+    // comentarios finales del apelacion
+    extraApelacion.style.display="none";
+    contenedorDetailsExtraApelacion.open=false;
+    //btn de finalizar
+    enviar.style.display="none";
 
 }
 
@@ -1410,8 +1436,7 @@ function solicitudfll() {
 
 function pestañaReclamo() {
     document.getElementById('detailsReclamoDs').open=false;
-    document.getElementById('reclamoRespuestasSelecciones').open = true;
-    enviar.style.display="flex";
+    contenedorDetailsReclamo.open = true;
 }
 
 /* FIN DE OTROS */
@@ -1628,8 +1653,7 @@ function defectos() {
 
 function pestañaQueja() {
     document.getElementById('detailsQuejaDs').open=false;
-    document.getElementById('quejaRespuestasSelecciones').open = true;
-    enviar.style.display="flex";
+    contenedorDetailsQueja.open=false
 }
 
 /* Fin de queja */
@@ -1790,9 +1814,61 @@ function apelacionCinco() {
 
 function pestañaApelacion() {
     document.getElementById('detailsApelacionDs').open=false;
-    document.getElementById('apelacionRespuestasSelecciones').open = true;
-    enviar.style.display="flex";
+    contenedorDetailsApelacion.open=false
 }
+
+/* el descargo del cliente */
+
+const extraReclamo=document.getElementById("informacionExtraReclamo");
+const extraQueja=document.getElementById("informacionExtraQueja");
+const extraApelacion=document.getElementById("informacionExtraApelacion");
+
+
+extraReclamo.style.display="none";
+extraQueja.style.display="none";
+extraApelacion.style.display="none";
+
+// detail de la informacion extra
+const contenedorDetailsExtraReclamo=document.getElementById("detailsIExtraReclamo");
+const contenedorDetailsExtraQueja=document.getElementById("detailIExtraQueja");
+const contenedorDetailsExtraApelacion=document.getElementById("detailsIExtraApelacion");
+
+contenedorDetailsExtraReclamo.open=false;
+contenedorDetailsExtraQueja.open=false;
+contenedorDetailsExtraApelacion.open=false;
+
+
+/* despues de formulario  reclamo*/
+
+const validarFormularioReclamo=document.getElementById("continuarFormulario");
+
+validarFormularioReclamo.addEventListener("click",function () {
+    extraReclamo.style.display="block";
+    contenedorDetailsExtraReclamo.open=true;
+    contenedorDetailsReclamo.open = false;
+    enviar.style.display="flex";
+})
+
+/* Despues de formulario queja */
+
+const validarFormularioQueja=document.getElementById("continuarFormularioQueja");
+
+validarFormularioQueja.addEventListener("click",function () {
+    extraQueja.style.display="block"
+    contenedorDetailsExtraQueja.open=true;
+    contenedorDetailsQueja.open=false
+    enviar.style.display="flex";
+})
+
+const validarFormularioApelacion=document.getElementById("continuarFormularioApelacion");
+
+validarFormularioApelacion.addEventListener("click",function () {
+    extraApelacion.style.display="block"
+    contenedorDetailsExtraApelacion.open=true;
+    contenedorDetailsApelacion.open=false
+    enviar.style.display="flex";
+})
+
 
 /* */
 
@@ -1802,12 +1878,8 @@ ticketLegal.style.display="none"
 
 /* mostrando el detalle */
 
-
-
 const botonMostrarDatos = document.getElementById('mostrarDatos');
-
 //botonMostrarDatos.style.display="flex";
-
 
 // Evento para cuando el usuario haga click en el botón
 botonMostrarDatos.addEventListener('click', function() {
@@ -1862,10 +1934,12 @@ botonMostrarDatos.addEventListener('click', function() {
     }
 });
 
-
-
 function editarDatos() {
     ticketLegal.style.display="none"
     cajaTotal.style.display="block";
 }
+
+
+
+
 

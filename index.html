@@ -712,6 +712,10 @@
                             </div>
         
                     </details>
+
+                    <div class="contenedorDatosPersonales">
+                        <input type="button" value="Continuar" id="continuarFormularioApelacion">
+                    </div>
     
                 </div>
     
@@ -924,6 +928,10 @@
                             </div>
         
                     </details>
+
+                    <div class="contenedorDatosPersonales">
+                        <input type="button" value="Continuar" id="continuarFormularioQueja">
+                    </div>
     
                 </div>
     
@@ -975,7 +983,7 @@
     
                     </details>
     
-                    <details class="seleccionarOpcciones" id="reclamoRespuestasSelecciones">
+                    <details class="seleccionarOpcciones" id="contenedorDatosPersonales">
     
                         <summary id="tituloReclamos">Detalles adicionales:</summary>
     
@@ -2124,12 +2132,79 @@
                         </div>
                         <!--- OTROS -->
     
+                        <div class="contenedorDatosPersonales">
+                            <input type="button" value="Continuar" id="continuarFormulario">
+                        </div>
+
                     </details>
-    
+
                 </div>
+
     
             </div>
     
+            <!-- Descargo del cliente-->
+            <!-- reclamos -->
+            <div class="informacionExtra" id="informacionExtraReclamo">
+                <div class="detalleInformacionExtra">
+                    <details class="seleccionarOpcciones" id="detailsIExtraReclamo">
+                        <summary>Descargo de cliente</summary>
+
+                        <div class="contenedorDatosPersonales">
+                            <label for="">Información Necesaria</label>
+                            <textarea name="" id="" rows="10"></textarea>
+                        </div>
+                        
+                        <div class="contenedorDatosPersonales">
+                            <label for="">Descripción del problema y solicitud concreta *</label>
+                            <textarea name="" id="" rows="10"></textarea>
+                        </div>
+
+                    </details>
+                </div>
+            </div>
+
+            <!-- queja -->
+            <div class="informacionExtra" id="informacionExtraQueja">
+                <div class="detalleInformacionExtra">
+                    <details class="seleccionarOpcciones" id="detailIExtraQueja">
+                        <summary>Descargo de cliente</summary>
+
+                        <div class="contenedorDatosPersonales">
+                            <label for="">Información Necesaria</label>
+                            <textarea name="" id="" rows="10"></textarea>
+                        </div>
+                        
+                        <div class="contenedorDatosPersonales">
+                            <label for="">Descripción del problema *</label>
+                            <textarea name="" id="" rows="10"></textarea>
+                        </div>
+
+                    </details>
+                </div>
+            </div>
+
+            <!-- Apelacion -->
+
+            <div class="informacionExtra" id="informacionExtraApelacion">
+                <div class="detalleInformacionExtra">
+                    <details class="seleccionarOpcciones" id="detailsIExtraApelacion">
+                        <summary>Descargo de cliente</summary>
+
+                        <div class="contenedorDatosPersonales">
+                            <label for="">Información Necesaria *</label>
+                            <textarea name="" id="" rows="10"></textarea>
+                        </div>
+                        
+                        <div class="contenedorDatosPersonales">
+                            <label for="">Sustento de apelación</label>
+                            <textarea name="" id="" rows="10"></textarea>
+                        </div>
+
+                    </details>
+                </div>
+            </div>
+
 
             <div class="contenedorBtn" id="btnEnviarFormulario">
                 <input type="button" value="finalizar" id="mostrarDatos"/>
