@@ -1653,7 +1653,7 @@ function defectos() {
 
 function pestañaQueja() {
     document.getElementById('detailsQuejaDs').open=false;
-    contenedorDetailsQueja.open=false
+    contenedorDetailsQueja.open=true
 }
 
 /* Fin de queja */
@@ -1814,7 +1814,7 @@ function apelacionCinco() {
 
 function pestañaApelacion() {
     document.getElementById('detailsApelacionDs').open=false;
-    contenedorDetailsApelacion.open=false
+    contenedorDetailsApelacion.open=true
 }
 
 /* el descargo del cliente */
