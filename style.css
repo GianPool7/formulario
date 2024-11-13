@@ -214,10 +214,18 @@ textarea{
     box-shadow: 3px 2px 1px black;
 }
 
+/** errores **/
+
 .error{
     border: 1px solid #ff4c00;
 }
 
+.txtError{
+    padding: 10px;
+    color: red;
+}
+
+/**fin de errores**/
 
 label{
     width: 100%;

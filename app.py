@@ -69,6 +69,18 @@ def add_claim():
             'x_studio_notificacin_por_correo_electronico': claim.get('autoriza', False),
             'x_studio_canal_id': 48,
 
+            # Datos de validacion abonado
+            'x_studio_nombre_del_padre_abonado': claim.get('nombrePadre', ''),
+            'x_studio_nombre_de_la_madre_abonado': claim.get('nombrePadre', ''),
+            'x_studio_lugar_de_nacimiento_abonado': claim.get('lugarNacimiento', ''),
+            'x_studio_fecha_de_nacimiento_abonado': recibir_fecha(claim.get('fechaNacimiento', '')),
+
+            # Datos de validacion Usuario
+            'x_studio_fecha_vencimiento_del_recibo_usuario': recibir_fecha(claim.get('fechaVencimiento', '')),
+            'x_studio_monto_de_tarifa_usuario': claim.get('montoTarifa', ''),
+            'x_studio_direccin_de_facturacin_usuario': claim.get('direccionFacturacion', ''),
+
+
             # Reclamo
             #Reclamo
 

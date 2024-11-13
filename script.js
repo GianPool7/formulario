@@ -235,48 +235,114 @@ tpRepresentante.addEventListener("click",function(){
 })
 
 // para validar los datos del abonado
-const vAbonado=document.getElementById("validarFormularioAbonado");
+// Obtener el botón de validación
+const vAbonado = document.getElementById("validarFormularioAbonado");
 
-vAbonado.addEventListener("click",function () {
-    // Aquí puedes poner lo que deseas hacer después de 3 segundos
-    loading.style.display="flex"
-    // Esperar 3 segundos (3000 ms) para ejecutar alguna acción adicional
-    setTimeout(function() {
-        loading.style.display="none"
-        // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
-        // datos para mostrar formulario de datos personales
-        contenedorDatosPersonales.style.display="flex";
-        dRepresentante.style.display="none";
-        dUsuarios.style.display="none"
-        // ocultar datos de validacion de abonado
-        cDatosValidacionAbonado.open=false;
-        dValidacionAbonado.style.display="none";
-    }, 3000); // 3000 ms = 3 segundos
+vAbonado.addEventListener("click", function () {
+    // Obtener los campos de texto y fecha dentro del formulario de validación
+    const txtValidarAbonado = cDatosValidacionAbonado.querySelectorAll("input[type='text'], input[type='date']");
+    let validado = true; // Variable para comprobar si todos los campos están llenos
 
-})
+    // Limpiar cualquier mensaje de error previo
+    txtValidarAbonado.forEach(txtDatos => {
+        const errorMsg = txtDatos.parentElement.querySelector(".txtError");
+        if (errorMsg) {
+            errorMsg.remove(); // Eliminar el mensaje de error si ya existía
+        }
+    });
+
+    // Validación de los campos
+    txtValidarAbonado.forEach(txtDatos => {
+        // Si el campo está vacío
+        if (txtDatos.value.trim() === "") {
+            const alerta = document.createElement("p");
+            alerta.textContent = "Este campo es obligatorio";
+            alerta.classList.add("txtError"); // Añadir una clase de estilo
+
+            // Insertar el mensaje de error debajo del campo
+            txtDatos.insertAdjacentElement("afterend", alerta);
+
+            // Cambiar la variable de validación a false, ya que hay un campo vacío
+            validado = false;
+        }
+    });
+
+    // Si todos los campos están llenos (validado es true)
+    if (validado) {
+        // Mostrar el loading
+        loading.style.display = "flex";
+
+        // Esperar 3 segundos para simular un retraso y ocultar el loading
+        setTimeout(function () {
+            loading.style.display = "none"; // Ocultar el loading después de 3 segundos
+
+            // Si los datos son válidos, mostrar el siguiente formulario
+            contenedorDatosPersonales.style.display = "flex";
+            dRepresentante.style.display = "none";
+            dUsuarios.style.display = "none";
+
+            // Ocultar el formulario de validación de abonado
+            cDatosValidacionAbonado.open = false;
+            dValidacionAbonado.style.display = "none";
+        }, 3000); // 3000 ms = 3 segundos
+    }
+});
+
 
 // para validar los datos del usuario
 
 const vUsuario=document.getElementById("validarFormularioUsuario");
 
 vUsuario.addEventListener("click",function () {
-    // Aquí puedes poner lo que deseas hacer después de 3 segundos
-    loading.style.display="flex"
 
-    // Esperar 3 segundos (3000 ms) para ejecutar alguna acción adicional
-    setTimeout(function() {
-        loading.style.display="none"
-        // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
-        // datos para mostrar formulario de datos personales
-        contenedorDatosPersonales.style.display="flex";
-        dUsuarios.style.display="block";
-        dRepresentante.style.display="none";
-        // ocultar datos de validacion de usuario
-        cDatosValidacionUsuario.open=false;
-        dValidacionUsuario.style.display="none"
+    const txtValidarUsuario=cDatosValidacionUsuario.querySelectorAll("input[type='text'], input[type='date']");
+    let validadoUsuario = true; // Variable para comprobar si todos los campos están llenos
 
+    // Limpiar cualquier mensaje de error previo
+    txtValidarUsuario.forEach(txtDatosUsuario => {
+        const errorMsg = txtDatosUsuario.parentElement.querySelector(".txtError");
+        if (errorMsg) {
+            errorMsg.remove(); // Eliminar el mensaje de error si ya existía
+        }
+    });
 
-    }, 3000); // 3000 ms = 3 segundos
+    // Validación de los campos
+    txtValidarUsuario.forEach(txtDatosUsuario => {
+        // Si el campo está vacío
+        if (txtDatosUsuario.value.trim() === "") {
+            const alertaUsuario = document.createElement("p");
+            alertaUsuario.textContent = "Este campo es obligatorio";
+            alertaUsuario.classList.add("txtError"); // Añadir una clase de estilo
+
+            // Insertar el mensaje de error debajo del campo
+            txtDatosUsuario.insertAdjacentElement("afterend", alertaUsuario);
+
+            // Cambiar la variable de validación a false, ya que hay un campo vacío
+            validadoUsuario = false;
+        }
+    });
+
+    // Si todos los campos están llenos (validado es true)
+    if (validadoUsuario) {
+        // Mostrar el loading
+        loading.style.display = "flex";
+
+        // Esperar 3 segundos para simular un retraso y ocultar el loading
+        setTimeout(function () {
+            loading.style.display = "none"; // Ocultar el loading después de 3 segundos
+
+            // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
+            // datos para mostrar formulario de datos personales
+            contenedorDatosPersonales.style.display="flex";
+            dUsuarios.style.display="block";
+            dRepresentante.style.display="none";
+            // ocultar datos de validacion de usuario
+            cDatosValidacionUsuario.open=false;
+            dValidacionUsuario.style.display="none"
+
+        }, 3000); // 3000 ms = 3 segundos
+    }
+
 
 })
 
@@ -428,9 +494,6 @@ validadFormularioDatosPersonales.addEventListener("click",function () {
 
 //
 
-
-
-// 
 const cApelacion=document.getElementById("datosApelacion");
 const cQueja=document.getElementById("datosQueja");
 const cReclamo=document.getElementById("datosReclamos");
