@@ -10,6 +10,17 @@
 
     <form action="" method="post" class="contendioFormulario" id="claimForm" enctype="multipart/form-data">
 
+
+        <div class="contenedorLoading" id="validandoDatos">
+            <!-- <div class="texto">
+                <h3>Validando datos ...</h3>
+            </div> -->
+            <div class="contenedorLoader">
+                <div class="loader" id="pantallaCarga"></div>
+            </div>
+        </div>
+
+
         <div id="cajaPadre">
 
             <div class="contenedorRQA" id="contenedorOpcionesQRA">
@@ -2142,6 +2153,7 @@
 
     
             </div>
+
     
             <!-- Descargo del cliente-->
             <!-- reclamos -->
@@ -2152,12 +2164,12 @@
 
                         <div class="contenedorDatosPersonales">
                             <label for="informacionNecesariaReclamo">Información Necesaria</label>
-                            <textarea name="" id="informacionNecesariaReclamo" rows="10"></textarea>
+                            <textarea name="" id="informacionNecesariaReclamo" rows="10" maxlength="300"></textarea>
                         </div>
                         
                         <div class="contenedorDatosPersonales">
                             <label for="descripcionProblemaSolicitudReclamo">Descripción del problema y solicitud concreta *</label>
-                            <textarea name="" id="descripcionProblemaSolicitudReclamo" rows="10"></textarea>
+                            <textarea name="" id="descripcionProblemaSolicitudReclamo" rows="10" maxlength="300"></textarea>
                         </div>
 
                     </details>
@@ -2172,12 +2184,12 @@
 
                         <div class="contenedorDatosPersonales">
                             <label for="informacionNecesariaQueja">Información Necesaria</label>
-                            <textarea name="" id="informacionNecesariaQueja" rows="10" maxlength="280"></textarea>
+                            <textarea name="" id="informacionNecesariaQueja" rows="10" maxlength="300"></textarea>
                         </div>
                         
                         <div class="contenedorDatosPersonales">
                             <label for="descripcionProblemaQueja">Descripción del problema *</label>
-                            <textarea name="" id="descripcionProblemaQueja" rows="10" maxlength="280"></textarea>
+                            <textarea name="" id="descripcionProblemaQueja" rows="10" maxlength="300"></textarea>
                         </div>
 
                     </details>
@@ -2185,7 +2197,6 @@
             </div>
 
             <!-- Apelacion -->
-
             <div class="informacionExtra" id="informacionExtraApelacion">
                 <div class="detalleInformacionExtra">
                     <details class="seleccionarOpcciones" id="detailsIExtraApelacion">
@@ -2193,12 +2204,12 @@
 
                         <div class="contenedorDatosPersonales">
                             <label for="informacionNecesariaApelacion">Información Necesaria *</label>
-                            <textarea name="" id="informacionNecesariaApelacion" rows="10" maxlength="244"></textarea>
+                            <textarea name="" id="informacionNecesariaApelacion" rows="10" maxlength="300"></textarea>
                         </div>
                         
                         <div class="contenedorDatosPersonales">
                             <label for="sustentoApelacion">Sustento de apelación</label>
-                            <textarea name="" id="sustentoApelacion" rows="10" maxlength="244"></textarea>
+                            <textarea name="" id="sustentoApelacion" rows="10" maxlength="300"></textarea>
                         </div>
 
                     </details>

@@ -2,6 +2,10 @@
 // const opcionQueja=document.getElementById("queja");
 // const opcionApelacion=document.getElementById("apelacion");
 
+//pantalla de carga
+const loading=document.getElementById("validandoDatos");
+loading.style.display="none"
+
 // details de reclamo
 const contenedorDetailsReclamo=document.getElementById("contenedorDatosPersonales");
 const contenedorDetailsQueja=document.getElementById("quejaRespuestasSelecciones");
@@ -235,18 +239,18 @@ const vAbonado=document.getElementById("validarFormularioAbonado");
 
 vAbonado.addEventListener("click",function () {
     // Aquí puedes poner lo que deseas hacer después de 3 segundos
-    alert("Validando datos Personales ...");
-
+    loading.style.display="flex"
     // Esperar 3 segundos (3000 ms) para ejecutar alguna acción adicional
     setTimeout(function() {
+        loading.style.display="none"
         // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
-            // datos para mostrar formulario de datos personales
-            contenedorDatosPersonales.style.display="flex";
-            dRepresentante.style.display="none";
-            dUsuarios.style.display="none"
-            // ocultar datos de validacion de abonado
-            cDatosValidacionAbonado.open=false;
-            dValidacionAbonado.style.display="none";
+        // datos para mostrar formulario de datos personales
+        contenedorDatosPersonales.style.display="flex";
+        dRepresentante.style.display="none";
+        dUsuarios.style.display="none"
+        // ocultar datos de validacion de abonado
+        cDatosValidacionAbonado.open=false;
+        dValidacionAbonado.style.display="none";
     }, 3000); // 3000 ms = 3 segundos
 
 })
@@ -257,10 +261,11 @@ const vUsuario=document.getElementById("validarFormularioUsuario");
 
 vUsuario.addEventListener("click",function () {
     // Aquí puedes poner lo que deseas hacer después de 3 segundos
-    alert("Validando datos Personales ...");
+    loading.style.display="flex"
 
     // Esperar 3 segundos (3000 ms) para ejecutar alguna acción adicional
     setTimeout(function() {
+        loading.style.display="none"
         // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
         // datos para mostrar formulario de datos personales
         contenedorDatosPersonales.style.display="flex";
