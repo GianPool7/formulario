@@ -16,9 +16,8 @@
 
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="reclamo">
-
-                        <div class="contenedorOpciones" value="3" >
+                    <div class="contenedorTituloDescripcion" name="cajasValores" id="reclamo" data-value="3" >
+                        <div class="contenedorOpciones">
                             <label >Reclamo</label>
                         </div>
 
@@ -27,11 +26,10 @@
                                 Es el inconveniente comunicado por el usuario a la empresa operador que corresponde a una materia considerada como tal y en virtud del cual se da inicio a un procedimiento de reclamo.
                             </p>
                         </div>
-
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="queja">
-                        <div class="contenedorOpciones" value="6" >
+                    <div class="contenedorTituloDescripcion" name="cajasValores" id="queja" data-value="6">
+                        <div class="contenedorOpciones">
                             <label for="queja">Queja</label>
                         </div>
 
@@ -42,8 +40,8 @@
                         </div>
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="opcionesPrimero" id="apelacion">
-                        <div class="contenedorOpciones" value="7" >
+                    <div class="contenedorTituloDescripcion" name="cajasValores" id="apelacion" data-value="7">
+                        <div class="contenedorOpciones">
                             <label for="apelacion">Apelación</label>
                         </div>
 
@@ -59,8 +57,8 @@
             </div>
     
             <div class="serie">
-                <input type="hidden" value="" id="tipoticket">
-                <input type="hidden" value="" id="diagnostico">
+                <input type="hidden" value="" id="tipoticket" disabled>
+                <input type="hidden" value="" id="diagnostico" disabled>
             </div>
     
             <div class="tituloOpciones" id="tituloOpcionesQRA">
@@ -175,7 +173,7 @@
                         </div>
             
                         <div class="btnContinuar">
-                            <input onclick="validarAbonado()" type="button" id="validarFormularioAbonado" value="Validar">
+                            <input type="button" id="validarFormularioAbonado" value="Validar">
                         </div>
             
                 </details>
@@ -208,7 +206,7 @@
                         </div>
             
                         <div class="btnContinuar">
-                            <input onclick="validarUsuario()" type="button" id="validarFormularioUsuario" value="Validar">
+                            <input type="button" id="validarFormularioUsuario" value="Validar">
                         </div>
             
                 </details>
@@ -270,7 +268,7 @@
                                     <input type="text" class="" id="numDoc" placeholder="Número de identidad">
                                 </div>
                                 <div class="datos">
-                                    <label for="distritos">Distritos</label>
+                                    <label for="distritos">Distrito</label>
                                     <select name="distritos" id="distritos" onchange="">
                                         <option value="">Seleccionar Opción</option>
                                         <option value="Ate">Ate</option>
@@ -323,7 +321,7 @@
                         </div>
 
                         <div class="btnContinuar">
-                            <input onclick="continuar()" type="button" id="validarFormulario" value="Continuar">
+                            <input type="button" id="validarFormularioContinuar" value="Continuar">
                         </div>
 
                 </details>

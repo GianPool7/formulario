@@ -32,13 +32,16 @@ const opcionSeleccionadaReclamos=document.getElementById("reclamo");
 const opcionSeleccionadaQueja=document.getElementById("queja");
 const opcionSeleccionadaApelacion=document.getElementById("apelacion");
 
+//el valor actual del input
+const inputTicket = document.getElementById('tipoticket');
+const inputDiagnostico = document.getElementById('diagnostico');
+
+
+
+
 // Evento
 // Reclamos
 opcionSeleccionadaReclamos.addEventListener("click",function () {
-    // Obtener el valor actual del input
-    const inputTicket = document.getElementById('tipoticket');
-    const inputDiagnostico = document.getElementById('diagnostico');
-    
     // El número que deseas agregar, por ejemplo, 12345
     const numT = 3;
     const numD = 34;
@@ -54,15 +57,12 @@ opcionSeleccionadaReclamos.addEventListener("click",function () {
     tituloOpcion.innerHTML="Reclamo";
     //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
     contenedorAUR.style.display="flex";
+    // RECLAMOS
 
 })
 
 //Quejas
 opcionSeleccionadaQueja.addEventListener("click",function () {
-    // Obtener el valor actual del input
-    const inputTicket = document.getElementById('tipoticket');
-    const inputDiagnostico = document.getElementById('diagnostico');
-    
     // El número que deseas agregar, por ejemplo, 12345
     const numT = 6;
     const numD = 82;
@@ -78,16 +78,10 @@ opcionSeleccionadaQueja.addEventListener("click",function () {
     tituloOpcion.innerHTML="Queja";
     //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
     contenedorAUR.style.display="flex";
-
-
 })
 
 //Apelacion
 opcionSeleccionadaApelacion.addEventListener("click",function () {
-    // Obtener el valor actual del input
-    const inputTicket = document.getElementById('tipoticket');
-    const inputDiagnostico = document.getElementById('diagnostico');
-    
     // El número que deseas agregar, por ejemplo, 12345
     const numT = 7;
     const numD = 81;
@@ -103,8 +97,9 @@ opcionSeleccionadaApelacion.addEventListener("click",function () {
     tituloOpcion.innerHTML="Apelación";
     //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
     contenedorAUR.style.display="flex";
-
 })
+
+
 
 
 // funciona los que estan en la siguiente linea
@@ -131,6 +126,20 @@ function volverRQA() {
     dValidacionUsuario.style.display="none"
     cDatosValidacionAbonado.open=false;
     cDatosValidacionUsuario.open=false;
+    //oculta todo los datos del formulario
+    // reclamo
+    sReclamo.style.display="none";
+    seleccionarMultipleReclamo.open=false;
+    cReclamo.style.display="none"
+    //queja
+    sQueja.style.display="none";
+    seleccionarQueja.open=false;
+    cQueja.style.display="none"
+    //apelacion
+    sApelacion.style.display="none";
+    seleccionarApelacion.open=false;
+    cApelacion.style.display="none"
+    //
 }
 
 
@@ -266,6 +275,20 @@ function volverUsuario() {
     dValidacionUsuario.style.display="none"
     // para ocultar las opciones de representante
     contenedorDatosPersonales.style.display="none";
+    //oculta todo los datos del formulario
+    // reclamo
+    sReclamo.style.display="none";
+    seleccionarMultipleReclamo.open=false;
+    cReclamo.style.display="none"
+    //queja
+    sQueja.style.display="none";
+    seleccionarQueja.open=false;
+    cQueja.style.display="none"
+    //apelacion
+    sApelacion.style.display="none";
+    seleccionarApelacion.open=false;
+    cApelacion.style.display="none"
+    //
 
 }
 
@@ -307,6 +330,10 @@ function tipoDocumento() {
 
 // para continuar con el formulario
 
+
+// Selecciona todas las cajas con la clase 'opcionesPrimero'
+
+
 const sApelacion=document.getElementById("seleccionarApelacion");
 const sQueja=document.getElementById("seleccionarQueja");
 const sReclamo=document.getElementById("seleccionarReclamo");
@@ -315,55 +342,62 @@ sApelacion.style.display="none";
 sQueja.style.display="none";
 sReclamo.style.display="none";
 
+// Variable global donde se guardará el valor de 'data-value' del contenedor seleccionado
+let valorSeleccionado = null;
 
-// para continuar con el formulario
+// Seleccionamos todos los contenedores de las cajas con el nombre 'cajasValores'
+const cajas = document.querySelectorAll('[name="cajasValores"]');
 
-function continuar() {
-    // Verificar si al menos uno de los radios está seleccionado
-    const radiosAutorizacion = document.querySelectorAll('input[name="autorizacion"]');
-    let autorizacionSeleccionada = false;
+// Iteramos sobre cada uno de los elementos de las cajas
+cajas.forEach(function(caja) {
+    // Agregamos el evento de clic a cada caja
+    caja.addEventListener('click', function() {
+        // Obtenemos el valor de 'data-value' del contenedor que se ha clickeado
+        valorSeleccionado = caja.getAttribute('data-value');
 
-    radiosAutorizacion.forEach(radio => {
-        if (radio.checked) {
-            autorizacionSeleccionada = true;
-        }
+        // Mostramos el valor obtenido en la consola (solo como ejemplo)
+        console.log('Valor seleccionado:', valorSeleccionado);
+
+        // También puedes hacer algo con ese valor, como abrir un formulario o cambiar contenido
     });
+});
 
-    // Si no hay radio seleccionado, mostrar el mensaje de error y detener la ejecución
-    if (!autorizacionSeleccionada) {
-        const alertaAutorizacion = document.createElement("p");
-        alertaAutorizacion.textContent = "Debe seleccionar una opción (Si o No) para la autorización";
-        alertaAutorizacion.classList.add('alert'); // Estilo para el mensaje
-        const opcionCorreo = document.querySelector('.opcionCorreo');
-        
-        // Si ya existe un mensaje de error, no agregar otro
-        if (!document.querySelector('.alert')) {
-            opcionCorreo.insertAdjacentElement("afterend",alertaAutorizacion); // Insertar el mensaje de error debajo de los radios
-        }
-        return; // Detener la ejecución si no se seleccionó un radio
-    }
+console.log(valorSeleccionado);
 
-    // Si la validación pasa, ocultar el bloque de datos personales y mostrar el siguiente contenido
-    document.getElementById('contenedorDatosPersonalesDetails').open = false;
+const seleccionarMultipleReclamo=document.getElementById("seleccionMultipleReclamo");
+const seleccionarQueja=document.getElementById("seleccionUnicoQueja");
+const seleccionarApelacion=document.getElementById("seleccionUnicaApelacion");
 
-    // Obtener la opción seleccionada en el campo 'opcionesPrimero'
-    const seleccion = document.querySelector('input[name="opcionesPrimero"]:checked');
-    if (!seleccion) return; // Si no hay opción seleccionada, salir
 
-    // Mostrar y ocultar secciones según la selección
+const validadFormularioDatosPersonales=document.getElementById("validarFormularioContinuar");
+validadFormularioDatosPersonales.addEventListener("click",function () {
 
-    switch (txtTituloAUR.value) {
-        case "abonado":
-            alert("hola abonado")
+    switch (valorSeleccionado) {
+        case "3":
+            datosPersonalesDetailsContenedor.open=false;
+            sReclamo.style.display="flex";
+            seleccionarMultipleReclamo.open=true;
             break;
-    
+        case "6":
+            datosPersonalesDetailsContenedor.open=false;
+            sQueja.style.display="flex";
+            seleccionarQueja.open=true;
+            break;
+        case "7":
+            datosPersonalesDetailsContenedor.open=false;
+            sApelacion.style.display="flex";
+            seleccionarApelacion.open=true;
+            break;
         default:
             break;
     }
+    
+})
 
-}
 
 //
+
+
 
 // 
 const cApelacion=document.getElementById("datosApelacion");
