@@ -31,7 +31,12 @@
 
                         <div class="descripcionCajas">
                             <p>
-                                Es el inconveniente comunicado por el usuario a la empresa operador que corresponde a una materia considerada como tal y en virtud del cual se da inicio a un procedimiento de reclamo.
+                                Registra tu reclamo sobre:
+
+                                <li>La calidad del servicio de internet. </li>
+                                <li>Desacuerdo sobre la facturación. </li>
+                                <li>Otros inconvenientes con el servicio contratado. </li>
+
                             </p>
                         </div>
                     </div>
@@ -43,7 +48,7 @@
 
                         <div class="descripcionCajas">
                             <p>
-                                El usuario puede presentar una queja cuando surjan problemas o inconveniente en el trámite de su reclamo.
+                                El usuario puede presentar una queja cuando surjan inconvenientes en el trámite del reclamo.  
                             </p>
                         </div>
                     </div>
@@ -55,9 +60,10 @@
 
                         <div class="descripcionCajas">
                             <p>
-                                El recurso de apelación es el mecanismo que tiene el usuario para que el tribunal Administrativo de Solución de Reclamos de Usuarios del OSIPTEL (TRASU) revise su reclamo, en caso no se encuentre de acuerdo con la respuesta en Primera Instancia de la empresa operadora.
+                                Si no estás de acuerdo con la respuesta o resolución que se dio a tu reclamo presentado anteriormente.
                             </p>
                         </div>
+
                     </div>
 
                 </div>
@@ -65,8 +71,8 @@
             </div>
     
             <div class="serie">
-                <input type="hidden" value="" id="tipoticket" disabled>
-                <input type="hidden" value="" id="diagnostico" disabled>
+                <input type="text" value="" id="tipoticket" disabled>
+                <input type="text" value="" id="diagnostico" disabled>
             </div>
     
             <div class="tituloOpciones" id="tituloOpcionesQRA">
@@ -109,7 +115,7 @@
 
                         <div class="descripcionCajas">
                             <p>
-                                Las personas que contratan el servicio, Titulares del servicio.
+                                Las personas que contratan el servicio (Titular del servicio)
                             </p>
                         </div>
 
@@ -124,7 +130,7 @@
 
                         <div class="descripcionCajas">
                             <p>
-                                Las personas que utilizan el servicio.
+                                Las personas que utilizan el servicio. 
                             </p>
                         </div>
 
@@ -138,7 +144,7 @@
                         </div>
                         <div class="descripcionCajas">
                             <p>
-                                El Usuario podrá designar un representante para iniciar el procedimiento de reclamo, a través de una carta poder simple firmada por el usuario.
+                                La persona designada por el titular del servicio a través de una carta poder simple.
                             </p>
                         </div>
 
@@ -149,7 +155,6 @@
             </div>
 
             <!-- datos de validación  -->
-
             <div class="contenedorPreguntas" id="datosValidacionAbonado">
 
                 <details id="contenedorDatosValidacionAbonado">
@@ -174,7 +179,7 @@
             
                                 <div class="datos">
                                     <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                                    <input type="date" id="fechaNacimiento">
+                                    <input type="date" class="fecha" id="fechaNacimiento">
                                 </div>
             
                             </div>
@@ -197,7 +202,7 @@
             
                                 <div class="datos">
                                     <label for="fechaVencimiento">Fecha de Vencimiento del Recibo</label>
-                                    <input type="date" id="fechaVencimiento">
+                                    <input type="date" class="fecha" id="fechaVencimiento">
                                 </div>
             
                                 <div class="datos">
@@ -222,7 +227,6 @@
             </div>
     
             <!-- contenedor de datos personales -->
-    
             <div class="contenedorPreguntas" id="contenidoDatos">
     
                 <details id="contenedorDatosPersonalesDetails">
@@ -306,15 +310,13 @@
                                 </div>
                                 
                             </div>
-                            <div class="datos_solo">
-                                <div class="textolabel">
+                            <div class="datos_solo" id="escojerCorreo">
+                                <!-- <div class="textolabel">
                                     <label for="">
-                                        Autorizo ser notificado por el correo electrónico registrado
-                                        (opcional)
+                                        Autorizo ser notificado por el correo electrónico registrado(opcional)
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="opcionCorreo">
-                                    <!-- <input type="checkbox" name="autoriza" id="autoriza" value="true"> -->
                                     <div class="oCorreo">
                                         <label for="autoriza">Si</label>
                                         <input type="radio" name="autorizacion" id="autoriza" value="True">
@@ -335,9 +337,8 @@
                 </details>
     
             </div>
-    
+
             <!-- para seleccionar las opciones --->
-    
             <div class="cajasContenedorSeleccionesMultiples" id="seleccionarApelacion">
     
                 <details class="seleccionarOpcciones" id="seleccionUnicaApelacion">
@@ -581,7 +582,7 @@
             
                                 <div class="datos">
                                     <label for="fechaEmisionCartaApelacion">Fecha de emisión de la cara que resuelve el reclamo:   </label>
-                                    <input type="date" id="fechaEmisionCartaApelacion">
+                                    <input type="date" class="fecha" id="fechaEmisionCartaApelacion">
                                 </div>
             
                         </div>
@@ -647,12 +648,12 @@
         
                                         <div class="datos">
                                             <label for="fechaEmisionApelacionSiCuatro">Fecha de emisión: </label>
-                                            <input type="date" id="fechaEmisionApelacionSiCuatro">
+                                            <input type="date" class="fecha" id="fechaEmisionApelacionSiCuatro">
                                         </div>
         
                                         <div class="datos">
                                             <label for="fechaVencimientoApelacionSiCuatro">Fecha de vencimiento: </label>
-                                            <input type="date" id="fechaVencimientoApelacionSiCuatro">
+                                            <input type="date" class="fecha" id="fechaVencimientoApelacionSiCuatro">
                                         </div>
         
                                         <div class="datos">
@@ -693,7 +694,7 @@
         
                                         <div class="datos">
                                             <label for="fechaEmisionApelacionSiCinco">Fecha de emisión: </label>
-                                            <input type="date" id="fechaEmisionApelacionSiCinco">
+                                            <input type="date" class="fecha" id="fechaEmisionApelacionSiCinco">
                                         </div>
         
                                         <div class="datos">
@@ -776,7 +777,7 @@
         
                             <div class="contenedorDatosPersonales" id="quejaPreguntaUno" style="display: none;">
                                 <label for="fechaPresentacionQueja">Fecha de presentación del reclamo</label>
-                                <input type="date" id="fechaPresentacionQueja">
+                                <input type="date" class="fecha" id="fechaPresentacionQueja">
                             </div>
         
                             <div class="contenedorDatosPersonales" id="quejaPreguntaDos" style="display: none;">
@@ -798,7 +799,7 @@
         
                                     <div class="datos">
                                         <label for="fechaNegativaQueja">Fecha de la Negativa</label>
-                                        <input type="date" id="fechaNegativaQueja">
+                                        <input type="date" class="fecha" id="fechaNegativaQueja">
                                     </div>
         
                                     <div class="datos">
@@ -838,7 +839,7 @@
         
                             <div class="contenedorDatosPersonales" id="quejaPreguntaTres" style="display: none;">
                                 <label for="fechaSuspendioServicioQueja">Fecha en la cual se habría suspendido el servicio</label>
-                                <input type="date" id="fechaSuspendioServicioQueja">
+                                <input type="date" class="fecha" id="fechaSuspendioServicioQueja">
                             </div>
         
                             <div class="contenedorDatosPersonales" id="quejaPreguntaCuatro" style="display: none;">
@@ -1012,12 +1013,12 @@
     
                                 <div class="datos" id="">
                                     <label for="fechaEmisionFCone">Fecha de emisión:</label>
-                                    <input type="date" id="fechaEmisionFCone">
+                                    <input type="date" class="fecha" id="fechaEmisionFCone">
                                 </div>
     
                                 <div class="datos" id="">
                                     <label for="fechavencimientoFCone">Fecha de vencimiento:</label>
-                                    <input type="date" id="fechavencimientoFCone">
+                                    <input type="date" class="fecha" id="fechavencimientoFCone">
                                 </div>
     
                                 <div class="datos" id="">
@@ -1039,7 +1040,7 @@
     
                                     <div class="datos">
                                         <label for="fechaEstimadaPagoFCone">Fecha estimada en la que se efectuó el pago:</label>
-                                        <input type="date" id="fechaEstimadaPagoFCone">
+                                        <input type="date" class="fecha" id="fechaEstimadaPagoFCone">
                                     </div>
     
                                     <div class="datos">
@@ -1101,7 +1102,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaInicioCalidadI">Fecha de Inicio del Problema: </label>
-                                        <input type="date" id="fechaInicioCalidadI">
+                                        <input type="date" class="fecha" id="fechaInicioCalidadI">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1172,7 +1173,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaIncumplimiento">fecha desde la cual se presento el incumplimiento: </label>
-                                        <input type="date" id="fechaIncumplimiento">
+                                        <input type="date" class="fecha" id="fechaIncumplimiento">
                                     </div>
     
                                 </div>
@@ -1202,7 +1203,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechAproximadaIncumplimiento">Fecha aproximada: </label>
-                                        <input type="date" id="fechAproximadaIncumplimiento">
+                                        <input type="date" class="fecha" id="fechAproximadaIncumplimiento">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1231,7 +1232,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaCualPincumplimiento">fecha desde la cual se presento el incumplimiento: </label>
-                                        <input type="date" id="fechaCualPincumplimiento">
+                                        <input type="date" class="fecha" id="fechaCualPincumplimiento">
                                     </div>
     
                                 </div>
@@ -1331,7 +1332,7 @@
     
                                     <div class="datos" id="">
                                         <label for="">Fecha de inicio del problema: </label>
-                                        <input type="date">
+                                        <input type="date" class="fecha">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1374,7 +1375,7 @@
     
                                     <div class="datos" id="">
                                         <label for="">Fecha de inicio del problema: </label>
-                                        <input type="date" id="fechaServicio">
+                                        <input type="date" class="fecha" id="fechaServicio">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1433,12 +1434,12 @@
     
                                     <div class="datos" id="">
                                         <label for="">Fecha que correspondía reactivar el servicio: </label>
-                                        <input type="date" id="fechaReactivarServicio">
+                                        <input type="date" class="fecha" id="fechaReactivarServicio">
                                     </div>
     
                                     <div class="datos" id="">
                                         <label for="">Fecha del pago pendiente: </label>
-                                        <input type="date" id="fechaPagoPendiente">
+                                        <input type="date" class="fecha" id="fechaPagoPendiente">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1501,7 +1502,7 @@
                             <div class="contenedorDatosPersonales" id="contenidoinstalacionuno" style="display: none;">
     
                                 <label for="fechaContratacionServicioInstalacion">Fecha de contratación del servicio: </label>
-                                <input type="date" id="fechaContratacionServicioInstalacion">
+                                <input type="date" class="fecha" id="fechaContratacionServicioInstalacion">
     
                             </div>
     
@@ -1511,7 +1512,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaSolicitudTrasladoInstalacion">fecha de la solicitud de traslado: </label>
-                                        <input type="date" id="fechaSolicitudTrasladoInstalacion">
+                                        <input type="date" class="fecha" id="fechaSolicitudTrasladoInstalacion">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1567,7 +1568,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaContratacionSInstalacion">Fecha de la contratación o solicitud de traslado: </label>
-                                        <input type="date" id="fechaContratacionSInstalacion">
+                                        <input type="date" class="fecha" id="fechaContratacionSInstalacion">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1633,7 +1634,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaSolicitudBaja">Fecha de la solicitud de baja: </label>
-                                        <input type="date" id="fechaSolicitudBaja">
+                                        <input type="date" class="fecha" id="fechaSolicitudBaja">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1688,7 +1689,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaSolicitudSuspensionBaja">Fecha de la solicitud de suspension: </label>
-                                        <input type="date" id="fechaSolicitudSuspensionBaja">
+                                        <input type="date" class="fecha" id="fechaSolicitudSuspensionBaja">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1818,12 +1819,12 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaEmisionContratacion">Fecha de emisión: </label>
-                                        <input type="date" id="fechaEmisionContratacion">
+                                        <input type="date" class="fecha" id="fechaEmisionContratacion">
                                     </div>
     
                                     <div class="datos" id="">
                                         <label for="fechaVencimientoContratacion">Fecha de vencimiento: </label>
-                                        <input type="date" id="fechaVencimientoContratacion">
+                                        <input type="date" class="fecha" id="fechaVencimientoContratacion">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1847,7 +1848,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaSolicitudMigracionX">Fecha de la solicitud de migración: </label>
-                                        <input type="date" id="fechaSolicitudMigracionX">
+                                        <input type="date" class="fecha" id="fechaSolicitudMigracionX">
                                     </div>
     
                                     <div class="datos" id="">
@@ -1949,12 +1950,12 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaEmisionII">Fecha de emision: </label>
-                                        <input type="date" id="fechaEmisionII">
+                                        <input type="date" class="fecha" id="fechaEmisionII">
                                     </div>
     
                                     <div class="datos" id="">
                                         <label for="fechaVencimientoMigracionII">Fecha de vencimiento: </label>
-                                        <input type="date" id="fechaVencimientoMigracionII">
+                                        <input type="date" class="fecha" id="fechaVencimientoMigracionII">
                                     </div>
     
                                 </div>
@@ -1972,12 +1973,12 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaEmisionMigracion">Fecha de emision: </label>
-                                        <input type="date" id="fechaEmisionMigracion">
+                                        <input type="date" class="fecha" id="fechaEmisionMigracion">
                                     </div>
     
                                     <div class="datos" id="">
                                         <label for="fechaVencimientoMigracion">Fecha de vencimiento: </label>
-                                        <input type="date" id="fechaVencimientoMigracion">
+                                        <input type="date" class="fecha" id="fechaVencimientoMigracion">
                                     </div>
     
                                     <div class="datos" id="">
@@ -2001,7 +2002,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaSolicitudX">Fecha de la solicitud de contratación: </label>
-                                        <input type="date" id="fechaSolicitudX">
+                                        <input type="date" class="fecha" id="fechaSolicitudX">
                                     </div>
     
                                     <div class="datos" id="">
@@ -2049,12 +2050,12 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaEmisionX">Fecha de emision: </label>
-                                        <input type="date" id="fechaEmisionX">
+                                        <input type="date" class="fecha" id="fechaEmisionX">
                                     </div>
     
                                     <div class="datos" id="">
                                         <label for="fechaVencimientoX">Fecha de vencimiento: </label>
-                                        <input type="date" id="fechaVencimientoX">
+                                        <input type="date" class="fecha" id="fechaVencimientoX">
                                     </div>
     
                                     <div class="datos" id="">
@@ -2077,7 +2078,7 @@
     
                                     <div class="datos" id="">
                                         <label for="fechaSolicitudFacturacionX">Fecha de la solicitud de la facturacion detallada o llamadas entrantes: </label>
-                                        <input type="date" id="fechaSolicitudFacturacionX">
+                                        <input type="date" class="fecha" id="fechaSolicitudFacturacionX">
                                     </div>
     
                                     <div class="datos" id="">
@@ -2161,12 +2162,12 @@
 
                         <div class="contenedorDatosPersonales">
                             <label for="informacionNecesariaReclamo">Información Necesaria</label>
-                            <textarea name="" id="informacionNecesariaReclamo" rows="10" maxlength="300"></textarea>
+                            <textarea name="" id="informacionNecesariaReclamo" maxlength="50"></textarea>
                         </div>
                         
                         <div class="contenedorDatosPersonales">
                             <label for="descripcionProblemaSolicitudReclamo">Descripción del problema y solicitud concreta *</label>
-                            <textarea name="" id="descripcionProblemaSolicitudReclamo" rows="10" maxlength="300"></textarea>
+                            <textarea name="" id="descripcionProblemaSolicitudReclamo" maxlength="300"></textarea>
                         </div>
 
                     </details>
@@ -2181,12 +2182,12 @@
 
                         <div class="contenedorDatosPersonales">
                             <label for="informacionNecesariaQueja">Información Necesaria</label>
-                            <textarea name="" id="informacionNecesariaQueja" rows="10" maxlength="300"></textarea>
+                            <textarea name="" id="informacionNecesariaQueja" maxlength="50"></textarea>
                         </div>
                         
                         <div class="contenedorDatosPersonales">
                             <label for="descripcionProblemaQueja">Descripción del problema *</label>
-                            <textarea name="" id="descripcionProblemaQueja" rows="10" maxlength="300"></textarea>
+                            <textarea name="" id="descripcionProblemaQueja" maxlength="300"></textarea>
                         </div>
 
                     </details>
@@ -2201,12 +2202,12 @@
 
                         <div class="contenedorDatosPersonales">
                             <label for="informacionNecesariaApelacion">Información Necesaria *</label>
-                            <textarea name="" id="informacionNecesariaApelacion" rows="10" maxlength="300"></textarea>
+                            <textarea name="" id="informacionNecesariaApelacion" maxlength="50"></textarea>
                         </div>
                         
                         <div class="contenedorDatosPersonales">
                             <label for="sustentoApelacion">Sustento de apelación</label>
-                            <textarea name="" id="sustentoApelacion" rows="10" maxlength="300"></textarea>
+                            <textarea name="" id="sustentoApelacion" maxlength="300"></textarea>
                         </div>
 
                     </details>
@@ -2248,6 +2249,7 @@
     </form>
 
     <script>
+
         // const opcionReclamo=document.getElementById("reclamo");
         // const opcionQueja=document.getElementById("queja");
         // const opcionApelacion=document.getElementById("apelacion");
@@ -4057,7 +4059,6 @@
             return `${formattedYear}-${formattedMonth}-${formattedDay}`;
         }
 
-
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('claimForm').addEventListener('submit', function(event) {
                 event.preventDefault(); // Evita el envío del formulario por defecto
@@ -4078,6 +4079,17 @@
                 direccion: document.getElementById('direccion').value,
                 correo: document.getElementById('correo').value,
                 autoriza: document.getElementById('autoriza').checked,
+
+                // Datos de validacion
+                // abonado
+                nombrePadre:document.getElementById('nombrePadre').value,
+                nombreMadre:document.getElementById('nombreMadre').value,
+                lugarNacimiento:document.getElementById('lugarNacimiento').value,
+                fechaNacimiento:formatDateToYYMMDD(document.getElementById('fechaNacimiento').value),
+                //usuario
+                fechaVencimiento:formatDateToYYMMDD(document.getElementById('fechaVencimiento').value),
+                montoTarifa:document.getElementById('montoTarifa').value,
+                direccionFacturacion:document.getElementById('direccionFacturacion').value,
 
                 //Reclamo
                 //problemaEspecifico: document.getElementById('problemaEspecifico').value,
@@ -4279,6 +4291,18 @@
                 codigoNumeroApelacion: document.getElementById('codigoNumeroApelacion').value,
                 numeroCartaApelacion: document.getElementById('numeroCartaApelacion').value,
                 fechaEmisionCartaApelacion: document.getElementById('fechaEmisionCartaApelacion').value,
+
+                // informacion extra
+                // reclamo
+                informacionNecesariaReclamo: document.getElementById('informacionNecesariaReclamo').value,
+                descripcionProblemaSolicitudReclamo: document.getElementById('descripcionProblemaSolicitudReclamo').value,
+                // queja
+                informacionNecesariaQueja: document.getElementById('informacionNecesariaQueja').value,
+                descripcionProblemaQueja: document.getElementById('descripcionProblemaQueja').value,
+                // apelacion
+                informacionNecesariaApelacion: document.getElementById('informacionNecesariaApelacion').value,
+                sustentoApelacion: document.getElementById('sustentoApelacion').value,
+
 
                 }
 

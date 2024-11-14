@@ -242,8 +242,6 @@ label{
 /* Seleccionables */
 
 .seleccionarOpcciones{
-    display: flex;
-    justify-content: space-around;
     gap: 10px;
     padding: 20px;
     /* margin-bottom: 10px; */
@@ -436,6 +434,13 @@ details{
         transform: rotate(360deg);
     }
 }
+
+/* ESTILO DE FECHA */
+
+
+
+/* FIN DE ESTILO DE FECHA*/
+
 
 /**/
 

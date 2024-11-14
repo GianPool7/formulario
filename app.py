@@ -53,7 +53,7 @@ def add_claim():
     try:
         body = {
             'name': title,
-            'ticket_type_id': claim['tipoticket'],
+            'ticket_type_id': claim.get('diagnostico'),
             'x_studio_diagnostico_aacc_id': claim.get('diagnostico'),
             'x_studio_nombre_cliente': claim['nombres'],
             'x_studio_apellidos': claim['apellidos'],
@@ -289,6 +289,19 @@ def add_claim():
             'x_studio_cdigo_nmero_reclamo_ds': claim.get('codigoNumeroApelacion', ''),
             'x_studio_nmero_carta_resuelve_reclamo_ds': claim.get('numeroCartaApelacion', ''),
             'x_studio_fecha_emisin_carta_ds': claim.get('fechaEmisionCartaApelacion', ''),
+
+            # informacion extra reclamo
+            'x_studio_informacin_necesaria_reclamo': claim.get('informacionNecesariaReclamo', ''),
+            'x_studio_descripcin_problema_solicitud_concreta_reclamo': claim.get('descripcionProblemaSolicitudReclamo', ''),
+
+            # informacion extra queja
+            'x_studio_informacin_necesaria_queja': claim.get('informacionNecesariaQueja', ''),
+            'x_studio_descripcin_problema_queja': claim.get('descripcionProblemaQueja', ''),
+
+            # informacion extra apelacion
+            'x_studio_informacin_necesaria_apelacion': claim.get('informacionNecesariaApelacion', ''),
+            'x_studio_descripcin_problema_solicitud_concreta_reclamo': claim.get('sustentoApelacion', ''),
+
         }
 
         new_claim = models.execute_kw(db, uid, password, 'helpdesk.ticket', 'create', [body])

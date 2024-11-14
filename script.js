@@ -47,8 +47,6 @@ const inputTicket = document.getElementById('tipoticket');
 const inputDiagnostico = document.getElementById('diagnostico');
 
 
-
-
 // Evento
 // Reclamos
 opcionSeleccionadaReclamos.addEventListener("click",function () {
@@ -466,8 +464,35 @@ const seleccionarQueja=document.getElementById("seleccionUnicoQueja");
 const seleccionarApelacion=document.getElementById("seleccionUnicaApelacion");
 
 
+
+
 const validadFormularioDatosPersonales=document.getElementById("validarFormularioContinuar");
 validadFormularioDatosPersonales.addEventListener("click",function () {
+
+    // Seleccionar todos los radio buttons con el nombre 'autorizacion'
+    const radios = document.querySelectorAll("input[name='autorizacion']");
+    const txtCorreo=document.getElementById("escojerCorreo")
+
+    // Usar 'forEach' para recorrer todos los radio buttons
+    let seleccionado = false;
+    
+    radios.forEach(function(radio) {
+        if (radio.checked) {
+            seleccionado = true;  // Si un radio button está seleccionado, actualizar la variable
+        }
+    });
+
+    // mensaje de alerta
+    const alertaRadio=document.createElement("p")
+    alertaRadio.textContent="Marcar una opción";
+    alertaRadio.classList.add("alert");
+    alertaRadio.style.textAlign="center"
+
+    // Si ninguno está seleccionado, mostrar un mensaje de alerta
+    if (!seleccionado) {
+        txtCorreo.insertAdjacentElement("afterend",alertaRadio)
+        return false;  // Detener el envío del formulario
+    }
 
     switch (valorSeleccionado) {
         case "3":
@@ -1955,22 +1980,29 @@ botonMostrarDatos.addEventListener('click', function() {
     cajaTotal.style.display="none";
 
     // Seleccionamos todos los inputs de tipo texto dentro del formulario
-    const inputs = document.querySelectorAll('input[type="text"],input[type="date"],select');
+    const inputs = document.querySelectorAll('input[type="text"],input[type="date"],input[type="email"],input[type="radio"],textarea,select');
 
     // Creamos una variable para almacenar los resultados
     let datosRellenados = '';
 
-    // Primero, capturamos el valor del radio seleccionado (Reclamo, Queja o Apelación)
-    const radioSeleccionado = document.querySelector('input[name="opcionesPrimero"]:checked');
-    if (radioSeleccionado) {
-        const valorRadio = radioSeleccionado.nextElementSibling.innerText; // Obtenemos el texto del label asociado
-        // Mostramos el valor del radio seleccionado de forma destacada
-        datosRellenados =valorRadio;
+    // mostrar titulo en el ticket
+    const titulo=document.getElementById("tituloTicketFinal")
 
-        // Actualizamos el contenido del elemento con id "tituloTicketFinal"
-        const tituloTickets = document.getElementById("tituloTicketFinal");
-        tituloTickets.innerHTML = datosRellenados;
+    switch (valorSeleccionado) {
+        case "3":
+            titulo.innerHTML="Reclamo";
+            break;
+        case "6":
+            titulo.innerHTML="Queja";
+            break;
+        case "7":
+            titulo.innerHTML="Apelación";
+            break;
+    
+        default:
+            break;
     }
+
 
     // Recorremos todos los inputs de tipo texto
     inputs.forEach(input => {
@@ -2006,8 +2038,5 @@ function editarDatos() {
     ticketLegal.style.display="none"
     cajaTotal.style.display="block";
 }
-
-
-
 
 
