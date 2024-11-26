@@ -1,326 +1,584 @@
-#import os
-import xmlrpc.client
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import xmlrpc.client
+import base64
 from datetime import datetime
 
+
+# Crear la aplicación Flask
 app = Flask(__name__)
-CORS(app)  # Habilita CORS para todas las rutas
+CORS(app)  # Habilitar CORS para permitir solicitudes desde el frontend
 
-
-# Conexión XML-RPC con Odoo
+# Conexión con Odoo
 url = 'http://localhost:8069'
-db = 'fiberOdoo_17-24-09-24' 
+db = 'fiberOdoo_17-24-09-24'
 username = 'z.barreto@fiberpro.com.pe'
 password = 'SystemFiberPRO**13'
 
-common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
-uid = common.authenticate(db, username, password, {})
-models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
+# Conexión a Odoo usando XML-RPC
+common = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/common')
+models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object')
 
-def recibir_fecha(fecha_str):
-    """Convierte una fecha en formato YY-MM-DD a un objeto datetime."""
-    if not fecha_str:
-        return ""  # Manejo de fechas vacías
-
-    try:
-        return datetime.strptime(fecha_str, '%y-%m-%d').strftime('%Y-%m-%d')  # Convierte a YYYY-MM-DD
-    except ValueError:
-        raise ValueError('Formato de fecha inválido. Se esperaba YY-MM-DD.')
+# Función para autenticar al usuario en Odoo
+def authenticate():
+    uid = common.authenticate(db, username, password, {})
+    return uid
 
 @app.route('/api/reclamos', methods=['POST'])
-def add_claim():
-    claim = request.json
+def crear_reclamo():
+    data = request.json
 
-    # Validación básica de datos
-    required_fields = ['nombres', 'apellidos', 'numeroContacto', 'numDoc', 'tipoticket']
+    # Validación de datos básicos
+    required_fields = [
+
+        'tipoticket',
+        'diagnostico',
+        'nombrePadre',
+        'nombreMadre',
+        'lugarNacimiento',
+        'fechaNacimiento',
+        'fechaVencimiento',
+        'montoTarifa',
+        'direccionFacturacion',
+        'cartaPoder',  # será una cadena vacía si no se cargó un archivo
+        'nombre',
+        'apellidos',
+        'relacion',
+        'razonSocial',
+        'numeroContacto',
+        'tipoDoc',
+        'numDoc',
+        'distritos',
+        'direccion',
+        'correo',
+        'autoriza',
+        'empresaOperadora',
+        'servicioContratado',
+        'servicioMateriaReclamo',
+        'numeroServicioContratado',
+        'correoFC',
+        'numeroReciboFC',
+        'numeroDocumentoCobroFC',
+        'fechaEmisionFC',
+        'fechaVencimientoFC',
+        'montoReclamadoFC',
+        'conceptoFacturadoFC',
+        'tarifaUsuarioFC',
+        'fechaEstimadaPagoFC',
+        'modalidadPagoFC',
+        'especificarModalidadPagoFC',
+        'adjuntarHojaPagoFC',
+        
+        # Calidad
+        'fechaInicioCalidadI',
+        'direccionCalidadI',
+        'departamentoCalidadI',
+        'provinciaCalidadI',
+        'distritoCalidad',
+        'calleJrAvCalidad',
+        'codigoReportePrevioCalidad',
+        
+        # Incumplimiento
+        'detalleCondicionIncumplimiento',
+        'fechaIncumplimientos',
+        'detalleOfertaIncumplimiento',
+        'oportunidadBrindoOfertaIncumplimiento',
+        'fechAproximadaIncumplimiento',
+        'cbpromocionfs',
+        'especificarIncumplimiento',
+        'codigOtorgamientoIncumplimiento',
+        'fechaCualPincumplimiento',
+        'detalleAtributosIncumplimiento',
+        'reciboCorrespondienteIncumplimiento',
+        'fechaEmisionIncumplimineto',
+        'numeroRecivoIncumplimiento',
+        'fechavencimientoIncumplimineto',
+        'oportunidadBrindoInfoOmitida',
+        'fechaAproxInfoOmitida',
+
+
+
+       # Servicio
+        'fechaInicioProblemafs',
+        'direccionProblemafs',
+        'direccionServicio',
+        'departamentofs',
+        'provinciafs',
+        'distritofs',
+        'calleJrAvfs',
+        'numerofs',
+        'adrecibos',
+        'adjuntarVinculo',
+        'fechaReactivarServicio',
+        'fechaPagoPendiente',
+        'mpagos',
+        'especificarMedioPago',
+        'adrecibosPendiente',
+        'vinculoAdjuntarSolicitud',
+        'fechaSIMCARD',
+
+        # activaciones
+        'fechaContratacionServicioInstalacion',
+        'fechaSolicitudTrasladoInstalacion',
+        'strasladoe',
+        'especificarCanalSinstalacion',
+        'codigoPedidoII',
+        'adsOpcionTraslado',
+        'vinculoSolicitudReclamo',
+        'fechaContratacionSInstalacion',
+        'ctopcionCinco',
+        'especificarInstalacion',
+        'codigoPedidoInstalacion',
+        'opcionCuatroTraslado',
+        'adjuntarSolicitudReclamoCuatro',
+        'montoPendienteInstalacion',
+
+        #Baja
+        'fechaSolicitudBaja',
+        'cbaja',
+        'especificarCanalBaja',
+        'codigoPedidoBaja',
+        'asb',
+        'solicitudBajaReclamo',
+        'fechaSolicitudSuspensionBaja',
+        'ctraslado',
+        'especificarCanalTraslado',
+        'cPedidoBaja',
+        'asT',
+        'adjuntarVinculoSolicitud',
+        'datosRecibosCuestionadoBaja',
+        'numeroReciboBaja',
+        'fechaEmisionBaja',
+        'fechaVencimientoBaja',
+        'montoReclamadoBaja',
+
+        #contratacion
+        'detalleServicioAdicional',
+        'detallePaquete',
+        'datosRecibomrContatacion',
+        'numeroReciboContratacion',
+        'fechaEmisionContratacion',
+        'fechaVencimientoContratacion',
+        'montoReclamadoContratacion',
+
+        #migracion
+        'fechaSolicitudMigracionX',
+        'canalMigracion',
+        'especificarCanalMigracion',
+        'codigoPedidoMigracion',
+        'planTarifarioMigracion',
+        'motivoNegativaMigracion',
+        'solicitudAdjunta',
+        'documentoSolicitudMigracionOne',
+        'numeroReciboMigracionII',
+        'fechaEmisionMigracionIII',
+        'fechaMovimientoMigracion',
+        'montoReclamadoMigracionMigracion',
+        'numeroReciboII',
+        'fechaEmisionII',
+        'fechaVencimientoMigracionII',
+        'numeroReciboMigracion',
+        'fechaEmisionMigracion',
+        'fechaVencimientoMigracion',
+        'montoReclamadoMigracion',
+
+        # otros
+        'tipoticket',
+        'fechaSolicitudX',
+        'ccontratacion',
+        'especificarx',
+        'servicioContratarX',
+        'planTarifarioX',
+        'numeroReciboX',
+        'fechaEmisionX',
+        'fechaVencimientoX',
+        'mesReciboPentregaX',
+        'direccionFisicaX',
+        'fechaSolicitudFacturacionX',
+        'cpresentacion',
+        'especificarCanalX',
+        'codigoPedidoX',
+        'sasfll',
+        'vinculoSolicitudSX',
+        'detallePedidoX',
+
+        # descargo del cliente
+        'informacionNecesariaReclamo',
+        'descripcionProblemaSolicitudReclamo',
+
+        #queja
+        'fechaPresentacionQueja',
+        'negativaQueja',
+        'fechaNegativaQueja',
+        'canalPresentacion',
+        'especificarCanalQuejaDos',
+        'adjuntaPrueba',
+        'fechaSuspendioServicioQueja',
+        'MediosCobranzasQuejas',
+        'constanciaPagoQueja',
+        'pagoCuentaQueja',
+        'espeficiarQueja',
+        'capturaQuejaCinco',
+        'dtramitacion',
+        'medioProbatorioNegativa',
+        'constanciaPagoMedioCobranza',
+        'medioProbatoriopgQueja',
+        'medioProbatoriosTramitacion',
+
+        # descargo del cliente
+        'informacionNecesariaQueja',
+        'descripcionProblemaQueja',
+
+        #apelaciones
+        'detallePruebaApelacionUno',
+        'detallefsApelacionDos',
+        'materiaEmpresaApelacionTres',
+        'apelacionopcioncuatro',
+        'numeroReciboApelacionSiCuatro',
+        'fechaEmisionApelacionSiCuatro',
+        'fechaVencimientoApelacionSiCuatro',
+        'montoReclamadoApelacionSiCuatro',
+        'detalleReclamoApelacionSiCuatro',
+        'apelacionOpcioncinco',
+        'numeroReciboApelacionSiCinco',
+        'fechaEmisionApelacionSiCinco',
+        'montoTotalApelacionSiCinco',
+        'detalleReclamoApelacionSiCinco',
+        'materiaEmpresaEmitirApelacionSeis',
+
+        # descargo del cliente
+        'informacionNecesariaApelacion',
+        'sustentoApelacion',
+
+    ]
+
+    def validate_date(date_str):
+    # Si la fecha es vacía o None, devuelve None
+        if not date_str:
+            return None
+        try:
+            # Intenta convertir la cadena en un objeto datetime
+            return datetime.strptime(date_str, '%Y-%m-%d').date()
+        except ValueError:
+            # Si no se puede convertir, retorna None
+            return None
+
+
+
     for field in required_fields:
-        if field not in claim:
-            return jsonify({'error': f'El campo {field} es obligatorio.'}), 400
+        if field not in data:
+            return jsonify({"error": f"Missing required field: {field}"}), 400
+        
+    # Condicional para determinar el valor de una variable según el 'tipoticket'
+    tipoticket = data.get('tipoticket')
 
-        # Mapeo de números a títulos
-    def obtener_titulo(tipoticket):
-        titulos = {
-            '3': 'Reclamo',
-            '6': 'Queja',
-            '7': 'Apelación'
-        }
-        return titulos.get(tipoticket, 'Reclamo sin asunto')  # Valor por defecto
+    if tipoticket == '3':
+        title = "Reclamo"
+    elif tipoticket == '7':
+        title = "Apelacion"
+    elif tipoticket == '6':
+        title = "Queja"
+    else:
+        title = "Tipo desconocido"  # Valor por defecto si no coincide con ningún caso
 
-    # Obtener el título según el tipoticket
-    title = obtener_titulo(claim['tipoticket'])
+
+
+    if data.get('tipoticket') == '3':  # Si 'tipoticket' es igual a 3, imprime 'Reclamo'
+        print("Reclamo")
+
+    # Obtener los archivos si están presentes
+    file_base64 = data.get('cartaPoder', None)
+    file_constancia_base64 = data.get('constancia', None)
+
+    if file_base64:
+        try:
+            # Asegurarse de que el archivo esté en formato base64
+            file_content = base64.b64decode(file_base64)
+        except Exception as e:
+            return jsonify({"error": "Error decoding cartaPoder file: " + str(e)}), 400
+    else:
+        file_content = None  # Si no hay archivo, dejamos como None
+
+    if file_constancia_base64:
+        try:
+            # Asegurarse de que el archivo esté en formato base64
+            file_constancia_content = base64.b64decode(file_constancia_base64)
+        except Exception as e:
+            return jsonify({"error": "Error decoding constancia file: " + str(e)}), 400
+    else:
+        file_constancia_content = None  # Si no hay archivo, dejamos como None
+
+    # Autenticación con Odoo
+    uid = authenticate()
+    if not uid:
+        return jsonify({"error": "Authentication error"}), 400
 
     try:
-        body = {
-            'name': title,
-            'ticket_type_id': claim.get('diagnostico'),
-            'x_studio_diagnostico_aacc_id': claim.get('diagnostico'),
-            'x_studio_nombre_cliente': claim['nombres'],
-            'x_studio_apellidos': claim['apellidos'],
-            'x_studio_relacin_familiar': claim.get('relacion', ''),
-            'x_studio_nro_contacto': claim['numeroContacto'],
-            'x_studio_tipo_doc': claim['tipoDoc'],
-            'x_studio_nro_documento': claim['numDoc'],
-            'x_studio_razon_social': claim.get('razonSocial', ''),
-            'x_studio_vinculo_de_la_carta_de_poder': claim.get('link', ''),
-            'x_studio_distrito_cliente': claim.get('distritos', ''),
-            'x_studio_direccin_cliente': claim.get('direccion', ''),
-            'x_studio_correo_electrnico': claim.get('correo', ''),
-            'x_studio_notificacin_por_correo_electronico': claim.get('autoriza', False),
-            'x_studio_canal_id': 48,
+        # Crear el ticket en Odoo
+        ticket_data = {
+            'name': title,  # Nombre del ticket
+            # generar ticket
+            'ticket_type_id':data['tipoticket'],
+            'x_studio_diagnostico_aacc_id':data['diagnostico'],
+            # Validaciones de abonado
+            'x_studio_nombre_del_padre_abonado': data['nombrePadre'],
+            'x_studio_nombre_de_la_madre_abonado': data['nombreMadre'],
+            'x_studio_lugar_de_nacimiento_abonado': data['lugarNacimiento'],
+            'x_studio_fecha_de_nacimiento_abonado': data['fechaNacimiento'],
+            'x_studio_fecha_vencimiento_del_recibo_usuario': data['fechaVencimiento'],
+            'x_studio_monto_de_tarifa_usuario': data['montoTarifa'],
+            'x_studio_direccin_de_facturacin_usuario': data['direccionFacturacion'],
 
-            # Datos de validacion abonado
-            'x_studio_nombre_del_padre_abonado': claim.get('nombrePadre', ''),
-            'x_studio_nombre_de_la_madre_abonado': claim.get('nombrePadre', ''),
-            'x_studio_lugar_de_nacimiento_abonado': claim.get('lugarNacimiento', ''),
-            'x_studio_fecha_de_nacimiento_abonado': recibir_fecha(claim.get('fechaNacimiento', '')),
+            # Datos personales
+            'x_studio_nombre_cliente': data['nombre'],
+            'x_studio_apellidos': data['apellidos'],
+            'x_studio_relacin_familiar': data['relacion'],
+            'x_studio_razon_social': data['razonSocial'],
+            'x_studio_nro_contacto': data['numeroContacto'],
+            'x_studio_tipo_doc': data['tipoDoc'],
+            'x_studio_nro_documento': data['numDoc'],
+            'x_studio_distrito_cliente': data['distritos'],
+            'x_studio_direccin_cliente': data['direccion'],
+            'x_studio_correo_electrnico': data['correo'],
+            'x_studio_notificacin_por_correo_electronico': data['autoriza'],
 
-            # Datos de validacion Usuario
-            'x_studio_fecha_vencimiento_del_recibo_usuario': recibir_fecha(claim.get('fechaVencimiento', '')),
-            'x_studio_monto_de_tarifa_usuario': claim.get('montoTarifa', ''),
-            'x_studio_direccin_de_facturacin_usuario': claim.get('direccionFacturacion', ''),
+            # Archivos opcionales - Solo agregar si están presentes
+            'x_studio_carta_de_poder': file_base64 if file_base64 else None,
+            'x_studio_documento_de_cobro': file_constancia_base64 if file_constancia_base64 else None,
 
+            # Datos del servicio de reclamo
+            'x_studio_empresa_operadora_dsr': data['empresaOperadora'],
+            'x_studio_servicio_contratado_dsr': data['servicioContratado'],
+            'x_studio_nmero_cdigo_servicio_contrato_dsr': data['servicioMateriaReclamo'],
+            'x_studio_servicio_materia_de_reclamo': data['numeroServicioContratado'],
 
-            # Reclamo
-            #Reclamo
+            # Facturación y cobro
+            'x_studio_numero_de_recibo': data['numeroReciboFC'],
+            'x_studio_documento_cobro': data['numeroDocumentoCobroFC'],
+            'x_studio_fecha_de_emisin': data['fechaEmisionFC'],
+            'x_studio_fecha_de_vencimiento_1': data['fechaVencimientoFC'],
+            'x_studio_monto_reclamado': data['montoReclamadoFC'],
+            'x_studio_concepto_facturado': data['conceptoFacturadoFC'],
+            'x_studio_tarifa_debio_aplicarse': data['tarifaUsuarioFC'],
+            'x_studio_fecha_efectu_el_pago': data['fechaEstimadaPagoFC'],
+            'x_studio_modalidad_de_pago': data['modalidadPagoFC'],
+            'x_studio_especificar_modalidad_pago': data['especificarModalidadPagoFC'],
+            'x_studio_adjunta_doc_cobro': data['adjuntarHojaPagoFC'],
 
-            'ticket_type_id': claim.get('tipoTicket', 3), 
-            
-            #'x_studio_materia_del_reclamo': claim.get('materias', ''),
-            #'x_studio_detalle_del_reclamo': claim.get('materias', ''),
-            #'x_studio_materia_reclamable': claim.get('materiaReclamable', ''),
-            #'x_studio_problema_especifico': claim.get('problemaEspecifico', ''),
-            'x_studio_numero_de_recibo': claim.get('numeroReciboFCone', ''),
-            'x_studio_documento_cobro': claim.get('numeroDocumentoCobroFCone', ''),
-            'x_studio_fecha_de_emisin':  recibir_fecha(claim.get('fechaEmisionFCone', '')),
-            'x_studio_fecha_de_vencimiento_1': recibir_fecha(claim.get('fechavencimientoFCone', '')),
-            'x_studio_monto_reclamado': claim.get('montoReclamadoFCone', 0),
-            'x_studio_concepto_facturado': claim.get('conceptoFacturadoFCone', ''),
-            'x_studio_tarifa_debio_aplicarse': claim.get('tarifaUsuarioFCone', ''),
-            'x_studio_fecha_efectu_el_pago': recibir_fecha(claim.get('fechaEstimadaPagoFCone', '')),
-            'x_studio_modalidad_de_pago': claim.get('mPago', ''),
-            'x_studio_especificar_modalidad_pago': claim.get('especificarModalidadPago', ''),
-            'x_studio_adjunta_doc_cobro': claim.get('hpfacturado', ''),
-            'x_studio_documento_de_cobro': claim.get('linkHojaPagoFC', ''),
-            # #opcion2
-            'x_studio_fecha_de_inicio_del_problema_1': recibir_fecha(claim.get('fechaInicioCalidadI', '')),
-            'x_studio_direccin_presenta_problema': claim.get('direccionCalidadI', ''),
-            'x_studio_departamento': claim.get('departamentoCalidadI', ''),
-            'x_studio_provincia': claim.get('provinciaCalidadI', ''),
-            'x_studio_distrito_calidad': claim.get('distritoCalidad', ''),
-            'x_studio_calle_jr_av': claim.get('CalleJrAvCalidad', ''),
-            #'x_studio_numero_contacto': claim.get('numerocalidad', ''),
-            'x_studio_codigo': claim.get('codigoReportePrevioCalidad', ''),
-            # #opcion 3
-            'x_studio_detalle_condicin_': claim.get('detalleCondicionIncumplimiento', ''),
-            'x_studio_fecha_de_incumplimiento_1': recibir_fecha(claim.get('fechaIncumplimiento', '')),
-            'x_studio_detalle_oferta_promocin_brindada': claim.get('detalleOfertaIncumplimiento', ''),
-            'x_studio_oportunidad_en_el_cual_se_brindo_la_oferta_o_promocin': claim.get('oportunidadBrindoOfertaIncumplimiento', ''),
-            'x_studio_fecha_aproximada_1': recibir_fecha(claim.get('fechAproximadaIncumplimiento', '')),
-            #'x_studio_detalle_condicin_': claim.get('detalleCondicionIncumplimiento', ''),
-            #'x_studio_canal_oferta_promocion': claim.get('cbpromocion', ''),
-            'x_studio_especificar_canal': claim.get('especificarIncumplimiento', ''),
-            'x_studio_cdigo_de_oferta_o_promocin': claim.get('codigOtorgamientoIncumplimiento', ''),
-            'x_studio_fecha_se_presento_incumplimiento': recibir_fecha(claim.get('fechaCualPincumplimiento', '')),
-            'x_studio_detalles_atributos_descontando': claim.get('detalleOfertaIncumplimiento', ''),
-            'x_studio_oportunidad_brindo_informacin_inexacta': claim.get('oportunidadBrindoOfertaIncumplimiento', ''),
-            #'x_studio_fecha_presento_incumplimiento': claim.get('fechAproximadaIncumplimiento', ''),
-            'x_studio_canal_oferta_promocion': claim.get('cbpromocionfs', ''),
-            #'x_studio_fecha_presento_incumplimiento': claim.get('fechaCualPincumplimiento', ''),
-            'x_studio_detalles_atributos_descontando': claim.get('detalleAtributosIncumplimiento', ''),
-            'x_studio_recibo_correspondiente_al_periodo': claim.get('reciboCorrespondienteIncumplimiento', ''),
-            'x_studio_fecha_de_emisin_del_recibo': recibir_fecha(claim.get('fechaEmisionIncumplimineto', '')),
-            'x_studio_numero_de_recibo_tres': claim.get('numeroRecivoIncumplimiento', ''),
-            'x_studio_fecha_de_vencimiento_6': recibir_fecha(claim.get('fechavencimientoIncumplimineto', '')),
-            # #Servicio
-            #'x_studio_detalle_condicin_': claim.get('detalleCondicionIncumplimiento', ''),
-            #'x_studio_detalle_condicin_': claim.get('detalleCondicionIncumplimiento', ''),
-            'x_studio_fecha_de_inicio_del_problema': recibir_fecha(claim.get('fechaServicio', '')),
-            'x_studio_direccin_problema': claim.get('direccionServicio', ''),
-            'x_studio_departamento_fs': claim.get('departamentoServicio', ''),
-            'x_studio_provincia_fs': claim.get('provinciaServicio', ''),
-            'x_studio_distrito_fs': claim.get('distritoServicio', ''),
-            'x_studio_calle_jr_av_fs': claim.get('calleJrAvServicio', ''),
-            'x_studio_numero_de_servicio': claim.get('numeroServicio', ''),
-            'x_studio_constancias_de_lugar_de_trabajo': claim.get('adrecibos', ''),
-            'x_studio_adjuntar_documento': claim.get('adjuntarVinculo', ''),
-            'x_studio_fecha_que_corresponda_reactivar_el_servicio': recibir_fecha(claim.get('fechaReactivarServicio', '')),
-            'x_studio_fecha_de_pago_pendiente': recibir_fecha(claim.get('fechaPagoPendiente', '')),
-            'x_studio_lugar_medio_de_pago': claim.get('mpagos', ''),
-            'x_studio_especificar_medio_pago': claim.get('especificarMedioPago', ''),
-            'x_studio_adjunta_recibo_pendiente': claim.get('adrecibosPendiente', ''),
-            'x_studio_vinculo_de_documento_adjuntado_1': claim.get('vinculoAdjuntarSolicitud', ''),
-            'x_studio_fecha_que_se_ejecuto_el_cambio_sim_card': claim.get('fechaSIMCARD', ''),
-            # # Instalacion
-            'x_studio_fecha_de_contratacin_de_servicio': recibir_fecha(claim.get('fechaContratacionServicioInstalacion', '')),
-            'x_studio_fecha_de_la_solicitud_de_traslado': recibir_fecha(claim.get('fechaSolicitudTrasladoInstalacion', '')),
-            'x_studio_canal_solicitud_traslado': claim.get('strasladoe', ''),
-            'x_studio_especificar_canal_2': claim.get('especificarCanalSinstalacion', ''),
-            'x_studio_codigo_de_pedido': claim.get('codigoPedidoII', ''),
-            'x_studio_se_adjunta_solicitud': claim.get('adsOpcionTraslado', ''),
-            'x_studio_vinculo_de_documento_adjuntado': claim.get('avsInstalacionII', ''),
-            'x_studio_fecha_de_la_contratacin_o_solicitud_de_trabajo': recibir_fecha(claim.get('fechaContratacionSInstalacion', '')),
-            'x_studio_canal_de_presentacin': claim.get('ctopcionCinco', ''),
-            'x_studio_especificar_canal_3': claim.get('especificarInstalacion', ''),
-            'x_studio_cdigo_de_pedido_2': claim.get('codigoPedidoInstalacion', ''),
-            'x_studio_adjuntar_solicitud_1': claim.get('opcionCuatroTraslado', ''),
-            'x_studio_vinculo_del_documento_adjuntando': claim.get('adjuntarSolicitudInstalacion', ''),
-            'x_studio_monto_pendiente': claim.get('montoPendienteInstalacion', ''),
+            # calidad
+            'x_studio_fecha_de_inicio_del_problema_1': data['fechaInicioCalidadI'],
+            'x_studio_direccin_presenta_problema': data['direccionCalidadI'],
+            'x_studio_departamento': data['departamentoCalidadI'],
+            'x_studio_provincia': data['provinciaCalidadI'],
+            'x_studio_distrito_calidad': data['distritoCalidad'],
+            'x_studio_calle_jr_av': data['calleJrAvCalidad'],
+            #'x_studio_numero_contacto': data['numerocalidad'],
+            'x_studio_codigo': data['codigoReportePrevioCalidad'],
+
+            # # #opcion 3
+            'x_studio_detalle_condicin_': data['detalleCondicionIncumplimiento'],
+            'x_studio_fecha_de_incumplimiento_1': data['fechaIncumplimientos'],
+            'x_studio_detalle_oferta_promocin_brindada': data['detalleOfertaIncumplimiento'],
+            'x_studio_oportunidad_en_el_cual_se_brindo_la_oferta_o_promocin': data['oportunidadBrindoOfertaIncumplimiento'],
+            'x_studio_fecha_aproximada_1': data['fechAproximadaIncumplimiento'],
+            #'x_studio_canal_oferta_promocion': data['cbpromocion'],
+            'x_studio_canal_oferta_promocion': data['cbpromocionfs'],
+            'x_studio_especificar_canal': data['especificarIncumplimiento'],
+            'x_studio_cdigo_de_oferta_o_promocin': data['codigOtorgamientoIncumplimiento'],
+            'x_studio_fecha_se_presento_incumplimiento': data['fechaCualPincumplimiento'],
+            'x_studio_detalles_atributos_descontando': data['detalleAtributosIncumplimiento'],
+            'x_studio_recibo_correspondiente_al_periodo': data['reciboCorrespondienteIncumplimiento'],
+            'x_studio_fecha_de_emisin_del_recibo': data['fechaEmisionIncumplimineto'],
+            'x_studio_numero_de_recibo_tres': data['numeroRecivoIncumplimiento'],
+            'x_studio_fecha_de_vencimiento_6': data['fechavencimientoIncumplimineto'],
+
+            'x_studio_oportunidad_brindo_informacin_inexacta': data['oportunidadBrindoInfoOmitida'],
+            'x_studio_fecha_aproximada_2': data['fechaAproxInfoOmitida'],
+            #'x_studio_fecha_presento_incumplimiento': data['fechaCualPincumplimiento'],
+            #'x_studio_detalles_atributos_descontando': data['detalleAtributosIncumplimiento'],
+
+            #falta de servicio
+            'x_studio_fecha_de_inicio_del_problema': data['fechaInicioProblemafs'],
+            'x_studio_direccion_1': data['direccionProblemafs'],
+            'x_studio_direccin_problema': data['direccionServicio'],
+            'x_studio_departamento_fs': data['departamentofs'],
+            'x_studio_provincia_fs': data['provinciafs'],
+            'x_studio_distrito_fs': data['distritofs'],
+            'x_studio_calle_jr_av_fs': data['calleJrAvfs'],
+            'x_studio_numero_de_servicio': data['numerofs'],
+            'x_studio_constancias_de_lugar_de_trabajo': data['adrecibos'],
+            'x_studio_documento': data['adjuntarVinculo'],
+            'x_studio_fecha_que_corresponda_reactivar_el_servicio': data['fechaReactivarServicio'],
+            'x_studio_fecha_de_pago_pendiente': data['fechaPagoPendiente'],
+            'x_studio_lugar_medio_de_pago': data['mpagos'],
+            'x_studio_especificar_medio_pago': data['especificarMedioPago'],
+            'x_studio_adjunta_recibo_pendiente': data['adrecibosPendiente'],
+            'x_studio_documento_1': data['vinculoAdjuntarSolicitud'],
+            'x_studio_fecha_que_se_ejecuto_el_cambio_sim_card': data['fechaSIMCARD'],
+
+            # # instalcion
+            'x_studio_fecha_de_contratacin_de_servicio': data['fechaContratacionServicioInstalacion'],
+            'x_studio_fecha_de_la_solicitud_de_traslado': data['fechaSolicitudTrasladoInstalacion'],
+            'x_studio_canal_solicitud_traslado': data['strasladoe'],
+            'x_studio_especificar_canal_2': data['especificarCanalSinstalacion'],
+            'x_studio_codigo_de_pedido': data['codigoPedidoII'],
+            'x_studio_se_adjunta_solicitud': data['adsOpcionTraslado'],
+            'x_studio_vinculo_de_documento_adjuntado': data['vinculoSolicitudReclamo'],
+            'x_studio_fecha_de_la_contratacin_o_solicitud_de_trabajo': data['fechaContratacionSInstalacion'],
+            'x_studio_canal_de_presentacin': data['ctopcionCinco'],
+            'x_studio_especificar_canal_3': data['especificarInstalacion'],
+            'x_studio_cdigo_de_pedido_2': data['codigoPedidoInstalacion'],
+            'x_studio_adjuntar_solicitud_1': data['opcionCuatroTraslado'],
+            'x_studio_vinculo_del_documento_adjuntando': data['adjuntarSolicitudReclamoCuatro'],
+            'x_studio_monto_pendiente': data['montoPendienteInstalacion'],
+
             # # Baja
-            'x_studio_fecha_de_la_solicitud_de_baja': recibir_fecha(claim.get('fechaSolicitudBaja', '')),
-            'x_studio_canal_presentacin_baja': claim.get('cbaja', ''),
-            'x_studio_especificar_canal_baja': claim.get('especificarCanalBaja', ''),
-            'x_studio_cdigo_de_pedido': claim.get('codigoPedidoBaja', ''),
-            'x_studio_adjuntar_solicitud': claim.get('asb', ''),
-            'x_studio_vinculo_del_documento_2': claim.get('adjuntarVinculoSolicitudBaja', ''),
-            'x_studio_fecha_de_solicitud_de_suspensin_1': recibir_fecha(claim.get('fechaSolicitudSuspensionBaja', '')),
-            'x_studio_canal_traslado': claim.get('ctraslado', ''),
-            'x_studio_especificar_canal_1': claim.get('especificarCanalTraslado', ''),
-            'x_studio_cdigo_de_pedido_1': claim.get('cPedidoBaja', ''),
-            'x_studio_adjuntar_solicitud_suspensin': claim.get('asT', ''),
-            'x_studio_vinculo_del_documento_1': claim.get('vinculoHojaSolicitud', ''),
-            'x_studio_datos_de_los_recibos_cuestionados': claim.get('datosRecibosCuestionadoBaja', ''),
-            'x_studio_numero_de_recibo_1': claim.get('numeroReciboBaja', ''),
-            'x_studio_fecha_de_emisin_3': recibir_fecha(claim.get('fechaEmisionBaja', '')),
-            'x_studio_fecha_de_vencimiento_3': recibir_fecha(claim.get('fechaVencimientoBaja', '')),
-            'x_studio_monto_reclamado_3': claim.get('montoReclamadoBaja', ''),
-            # # Contratacion
-            'x_studio_detalle_adicional_no_solicitada': claim.get('detalleServicioAdicional', ''),
-            'x_studio_detalle_paquete_desconoce': claim.get('detallePaquete', ''),
-            'x_studio_datos_recibos_cuestionados': claim.get('datosRecibomrContatacion', ''),
-            'x_studio_numero_de_recibo_no_solicitada': claim.get('numeroReciboContratacion', ''),
-            'x_studio_fecha_de_emisin_5': recibir_fecha(claim.get('fechaEmisionContratacion', '')),
-            'x_studio_fecha_de_vencimiento_5': recibir_fecha(claim.get('fechaVencimientoContratacion', '')),
-            'x_studio_monto_reclamado_no_solicitud': claim.get('montoReclamadoContratacion', ''),
-            # # Migracion
-            'x_studio_fecha_de_solicitud_de_migracin_1': recibir_fecha(claim.get('fechaSolicitudMigracionX', '')),
-            'x_studio_canal_solicitud_de_migracin': claim.get('cmigracion', ''),
-            'x_studio_especificar_canal_de_solicitud': claim.get('especificarCanalMigracion', ''),
-            'x_studio_codigo_pedido_migracion': claim.get('codigoPedidoMigracion', ''),
-            'x_studio_plan_tarifario_solicita_migrar': claim.get('planTarifarioMigracion', ''),
-            'x_studio_motivo_de_la_negativa': claim.get('motivoNegativaMigracion', ''),
-            'x_studio_adjunta_solicitud_de_migracins': claim.get('asm', ''),
-            'x_studio_vinculo_de_la_solicitud_de_migracin': claim.get('vinculoSolicitudMigracion', ''),
-            'x_studio_numero_recibo': claim.get('numeroReciboMigracionII', ''),
-            'x_studio_fecha_de_emisin_2': recibir_fecha(claim.get('fechaEmisionMigracionIII', '')),
-            'x_studio_fecha_de_movimiento': recibir_fecha(claim.get('fechaMovimientoMigracion', '')),
-            'x_studio_monto_reclamado_1': claim.get('montoReclamadoMigracionMigracion', ''),
-            'x_studio_numero_de_recibo_migracion': claim.get('numeroReciboII', ''),
-            'x_studio_fecha_emisin': recibir_fecha(claim.get('fechaEmisionII', '')),
-            'x_studio_fecha_de_vencimiento_2': recibir_fecha(claim.get('fechaVencimientoMigracionII', '')),
-            'x_studio_numero_recibo_migracin': claim.get('numeroReciboMigracion', ''),
-            'x_studio_fecha_de_emisin_migracin_1': recibir_fecha(claim.get('fechaEmisionMigracion', '')),
-            'x_studio_fecha_de_vencimiento_migracin_1': recibir_fecha(claim.get('fechaVencimientoMigracion', '')),
-            'x_studio_monto_reclamado_migracion': claim.get('montoReclamadoMigracion', ''),
-            # # Otros
-            'x_studio_fecha_de_la_solicitud_de_contratacion': recibir_fecha(claim.get('fechaSolicitudX', '')),
-            'x_studio_canal_solicitud_de_contratacion': claim.get('ccontratacion', ''),
-            'x_studio_canal_solicitud_de_contratacion': claim.get('especificarx', ''),
-            'x_studio_servicio_que_desea_contratar': claim.get('servicioContratarX', ''),
-            'x_studio_plan_tarifario_que_desea_contratar': claim.get('planTarifarioX', ''),
-            'x_studio_numero_de_recibo_x': claim.get('numeroReciboX', ''),
-            'x_studio_fecha_de_emisin_4': recibir_fecha(claim.get('fechaEmisionX', '')),
-            'x_studio_fecha_de_vencimiento_4': recibir_fecha(claim.get('fechaVencimientoX', '')),
-            'x_studio_mes_recibo_pendiente_entrega_x': claim.get('mesReciboPentregaX', ''),
-            'x_studio_direccin_para_notificacin_x': claim.get('direccionFisicaX', ''),
-            'x_studio_fecha_solicitud_facturacin_x': recibir_fecha(claim.get('fechaSolicitudFacturacionX', '')),
-            'x_studio_canal_presentacin_solicitud_facturacion': claim.get('cpresentacion', ''),
-            'x_studio_especificar_canal_x': claim.get('especificarCanalX', ''),
-            'x_studio_cdigo_de_pedido_x': claim.get('codigoPedidoX', ''),
-            'x_studio_se_adjunta_la_solicitud_x': claim.get('sasfll', ''),
-            'x_studio_detalle_condicin_': claim.get('vinculoSolicitudSX', ''),
-            'x_studio_detalle_pedido_x': claim.get('detallePedidoX', ''),
-            # Queja
-            'x_studio_detalle_de_la_queja':claim.get('quejasOpciones',''),
-            'x_studio_fecha_presentacin_reclamo_queja_uno':recibir_fecha(claim.get('fechaPresentacionQueja','')),
-            'x_studio_negativa_relacionada_queja_dos':claim.get('negativaQueja',''),
-            'x_studio_char_field_2bo_1ibhijmmb':recibir_fecha(claim.get('fechaNegativaQueja','')),
-            'x_studio_canal_presentacin_reclamo_queja_dos':claim.get('canalPresentacion',''),
-            'x_studio_canal_especificado_queja_dos':claim.get('canalQueja',''),
-            'x_studio_vinculo_del_documento':claim.get('adjuntaPrueba',''),
-            'x_studio_medios_probatorios':claim.get('mediosProbatoriosQuejas',''),
-            'x_studio_fecha_en_la_cual_se_habra_suspendido_el_servicio':recibir_fecha(claim.get('fechaSuspendioServicioQueja','')),
-            'x_studio_medio_de_cobranza_queja_cuatro':claim.get('MediosCobranzasQuejas',''),
-            'x_studio_se_adjunta_documento_queja_cuatro':claim.get('constanciaPagoQueja',''),
-            'x_studio_vinculo_de_documento':claim.get('constanciaPagoFile',''),
-            'x_studio_lugar_donde_permiti_pago_cinco':claim.get('pagoCuentaQueja',''),
-            'x_studio_especificar_quejas':claim.get('espeficiarQueja',''),
-            'x_studio_adjunta_prueba_cinco':claim.get('capturaQuejaCinco',''),
-            'x_studio_medios_probatorios_1':claim.get('mediosProbatoriosQuejas',''),
-            'x_studio_adjunta_medios_probatorios_x_seis':claim.get('dtramitacion',''),
-            'x_studio_vinculo_de_medios_probatorios':claim.get('mediosProbatiosQuejaSeis',''),
-            # Apelacion
-            'x_studio_detalle_de_la_apelacin': claim.get('apelacionOpciones', ''),
-            'x_studio_detalle_pruebas_apelacion_uno': claim.get('detallePruebaApelacionUno', ''),
-            'x_studio_detalle_falta_sustentacion_apelacion_dos': claim.get('detallefsApelacionDos', ''),
-            'x_studio_materia_empresa_comunicarse': claim.get('materiaEmpresaApelacionTres', ''),
-            'x_studio_respuesta_empresa_apelacion_cuatro': claim.get('apelacionopcioncuatro', ''),
-            'x_studio_numero_recibo_apelacion_cinco': claim.get('numeroReciboApelacionSiCuatro', ''),
-            'x_studio_fecha_de_emision': recibir_fecha(claim.get('fechaEmisionApelacionSiCuatro', '')),
-            'x_studio_fecha_de_vencimiento': recibir_fecha(claim.get('fechaVencimientoApelacionSiCuatro', '')),
-            'x_studio_monto_reclamado_apelacion_cinco': claim.get('montoReclamadoApelacionSiCuatro', ''),
-            'x_studio_pronunciamiento_empresa_ape_cuatro': claim.get('detalleReclamoApelacionSiCuatro', ''),
-            'x_studio_falto_acoger_ape_cinco': claim.get('apelacionOpcioncinco', ''),
-            'x_studio_nmero_recibo_apleacion_cinco': claim.get('numeroReciboApelacionSiCinco', ''),
-            'x_studio_fecha_de_emisin_1': recibir_fecha(claim.get('fechaEmisionApelacionSiCinco', '')),
-            'x_studio_monto_total_corresponde_cinco': claim.get('montoTotalApelacionSiCinco', ''),
-            'x_studio_detalle_extremo_apelacion_cinco': claim.get('detalleReclamoApelacionSiCinco', ''),
-            'x_studio_materia_cual_empresa_ape_seis': claim.get('materiaEmpresaEmitirApelacionSeis', ''),
+            'x_studio_fecha_de_la_solicitud_de_baja': data['fechaSolicitudBaja'],
+            'x_studio_canal_presentacin_baja': data['cbaja'],
+            'x_studio_especificar_canal_baja': data['especificarCanalBaja'],
+            'x_studio_cdigo_de_pedido': data['codigoPedidoBaja'],
+            'x_studio_adjuntar_solicitud': data['asb'],
+            'x_studio_vinculo_del_documento_2': data['solicitudBajaReclamo'],
+            'x_studio_fecha_de_solicitud_de_suspensin_1': data['fechaSolicitudSuspensionBaja'],
+            'x_studio_canal_traslado': data['ctraslado'],
+            'x_studio_especificar_canal_1': data['especificarCanalTraslado'],
+            'x_studio_cdigo_de_pedido_1': data['cPedidoBaja'],
+            'x_studio_adjuntar_solicitud_suspensin': data['asT'],
+            'x_studio_vinculo_del_documento_1': data['adjuntarVinculoSolicitud'],
+            'x_studio_datos_de_los_recibos_cuestionados': data['datosRecibosCuestionadoBaja'],
+            'x_studio_numero_de_recibo_1': data['numeroReciboBaja'],
+            'x_studio_fecha_de_emisin_3': data['fechaEmisionBaja'],
+            'x_studio_fecha_de_vencimiento_3': data['fechaVencimientoBaja'],
+            'x_studio_monto_reclamado_3': data['montoReclamadoBaja'],
 
-            # datos del servicio reclamo
-            'x_studio_empresa_operadora_dsr': claim.get('empresaOperadorReclamo', ''),
-            'x_studio_servicio_contratado_dsr': claim.get('servicioContratadoReclamo', ''),
-            'x_studio_nmero_cdigo_servicio_contrato_dsr': claim.get('numeroServicioContratadoReclamo', ''),
-            'x_studio_servicio_materia_de_reclamo': claim.get('servicioMateriaReclamo', ''),
-            #'x_studio_especificar_dsr': claim.get('especificarReclamoTwo', ''),
+            # # # Contratacion
+            'x_studio_detalle_adicional_no_solicitada': data['detalleServicioAdicional'],
+            'x_studio_detalle_paquete_desconoce': data['detallePaquete'],
+            'x_studio_datos_recibos_cuestionados': data['datosRecibomrContatacion'],
+            'x_studio_numero_de_recibo_no_solicitada': data['numeroReciboContratacion'],
+            'x_studio_fecha_de_emisin_5': data['fechaEmisionContratacion'],
+            'x_studio_fecha_de_vencimiento_5': data['fechaVencimientoContratacion'],
+            'x_studio_monto_reclamado_no_solicitud': data['montoReclamadoContratacion'],
 
-            #datos del servicio queja
-            'x_studio_empresa_operadora_ds1': claim.get('empresaOperadoraQueja', ''),
-            'x_studio_servicio_objeto_queja_dsq': claim.get('servicioObjetoQueja', ''),
-            #'x_studio_especificar_dsq': claim.get('especificarQueja', ''),
-            'x_studio_nmero_servicio_reclamado_dsq': claim.get('numServicioQueja', ''),
-            'x_studio_cdigo_nmero_reclamo_dsq': claim.get('codigoNumeroQueja', ''),
-            #datos del servicio apelacion
+            # # # Migracion
+            'x_studio_fecha_de_solicitud_de_migracin_1': data['fechaSolicitudMigracionX'],
+            'x_studio_canal_solicitud_de_migracin': data['canalMigracion'],
+            'x_studio_especificar_canal_de_solicitud': data['especificarCanalMigracion'],
+            'x_studio_codigo_pedido_migracion': data['codigoPedidoMigracion'],
+            'x_studio_plan_tarifario_solicita_migrar': data['planTarifarioMigracion'],
+            'x_studio_motivo_de_la_negativa': data['motivoNegativaMigracion'],
+            'x_studio_verificacion': data['solicitudAdjunta'],
+            'x_studio_documento_de_migracin': data['documentoSolicitudMigracionOne'],
+            'x_studio_numero_recibo': data['numeroReciboMigracionII'],
+            'x_studio_fecha_de_emisin_2': data['fechaEmisionMigracionIII'],
+            'x_studio_fecha_de_movimiento': data['fechaMovimientoMigracion'],
+            'x_studio_monto_reclamado_1': data['montoReclamadoMigracionMigracion'],
+            'x_studio_numero_de_recibo_migracion': data['numeroReciboII'],
+            'x_studio_fecha_emisin': data['fechaEmisionII'],
+            'x_studio_fecha_de_vencimiento_2': data['fechaVencimientoMigracionII'],
+            'x_studio_numero_recibo_migracin': data['numeroReciboMigracion'],
+            'x_studio_fecha_de_emisin_migracin_1': data['fechaEmisionMigracion'],
+            'x_studio_fecha_de_vencimiento_migracin_1': data['fechaVencimientoMigracion'],
+            'x_studio_monto_reclamado_migracion': data['montoReclamadoMigracion'],
 
-            'x_studio_empresa_operadora_ds': claim.get('empresaOperadoraApelacion', ''),
-            'x_studio_servicio_materia_de_apelacin_ds': claim.get('servicioMateriaApelacion', ''),
-            #'x_studio_especificar_ds': claim.get('especificarApelacionOne', ''),
-            'x_studio_nmero_servicio_reclamado_ds': claim.get('numeroServicioApelacion', ''),
-            'x_studio_cdigo_nmero_reclamo_ds': claim.get('codigoNumeroApelacion', ''),
-            'x_studio_nmero_carta_resuelve_reclamo_ds': claim.get('numeroCartaApelacion', ''),
-            'x_studio_fecha_emisin_carta_ds': claim.get('fechaEmisionCartaApelacion', ''),
+            # otros
+            'x_studio_fecha_de_la_solicitud_de_contratacion': data['fechaSolicitudX'],
+            'x_studio_canal_solicitud_de_contratacion': data['ccontratacion'],
+            'x_studio_canal_solicitud_de_contratacion': data['especificarx'],
+            'x_studio_servicio_que_desea_contratar': data['servicioContratarX'],
+            'x_studio_plan_tarifario_que_desea_contratar': data['planTarifarioX'],
+            'x_studio_numero_de_recibo_x': data['numeroReciboX'],
+            'x_studio_fecha_de_emisin_4': data['fechaEmisionX'],
+            'x_studio_fecha_de_vencimiento_4': data['fechaVencimientoX'],
+            'x_studio_mes_recibo_pendiente_entrega_x': data['mesReciboPentregaX'],
+            'x_studio_direccin_para_notificacin_x': data['direccionFisicaX'],
+            'x_studio_fecha_solicitud_facturacin_x': data['fechaSolicitudFacturacionX'],
+            'x_studio_canal_presentacin_solicitud_facturacion': data['cpresentacion'],
+            'x_studio_especificar_canal_x': data['especificarCanalX'],
+            'x_studio_cdigo_de_pedido_x': data['codigoPedidoX'],
+            'x_studio_se_adjunta_la_solicitud_x': data['sasfll'],
+            'x_studio_documento_adjuntado_x': data['vinculoSolicitudSX'],
+            'x_studio_detalle_pedido_x': data['detallePedidoX'],
 
-            # informacion extra reclamo
-            'x_studio_informacin_necesaria_reclamo': claim.get('informacionNecesariaReclamo', ''),
-            'x_studio_descripcin_problema_solicitud_concreta_reclamo': claim.get('descripcionProblemaSolicitudReclamo', ''),
+            # descargo del cliente
+            'x_studio_informacin_necesaria_reclamo': data['informacionNecesariaReclamo'],
+            'x_studio_descripcin_problema_solicitud_concreta_reclamo': data['descripcionProblemaSolicitudReclamo'],
+            
 
-            # informacion extra queja
-            'x_studio_informacin_necesaria_queja': claim.get('informacionNecesariaQueja', ''),
-            'x_studio_descripcin_problema_queja': claim.get('descripcionProblemaQueja', ''),
+            #queja
 
-            # informacion extra apelacion
-            'x_studio_informacin_necesaria_apelacion': claim.get('informacionNecesariaApelacion', ''),
-            'x_studio_descripcin_problema_solicitud_concreta_reclamo': claim.get('sustentoApelacion', ''),
+            #quejas datos extras
+            'x_studio_empresa_operadora_ds1':data['empresaOperadoraQueja'],
+            'x_studio_servicio_objeto_queja_dsq':data['servicioObjetoQueja'],
+            'x_studio_nmero_servicio_reclamado_dsq':data['numServicioQueja'],
+            'x_studio_cdigo_nmero_reclamo_dsq':data['codigoNumeroQueja'],
+
+            #'x_studio_detalle_de_la_queja':data['fechaPresentacionQueja'],
+            'x_studio_fecha_presentacin_reclamo_queja_uno':data['fechaPresentacionQueja'],
+            'x_studio_negativa_relacionada_queja_dos':data['negativaQueja'],
+            'x_studio_char_field_2bo_1ibhijmmb':data['fechaNegativaQueja'],
+            'x_studio_canal_presentacin_reclamo_queja_dos':data['canalPresentacion'],
+            'x_studio_canal_especificado_queja_dos':data['especificarCanalQuejaDos'],
+            'x_studio_vinculo_del_documento':data['medioProbatorioNegativa'],
+            'x_studio_fecha_en_la_cual_se_habra_suspendido_el_servicio':data['fechaSuspendioServicioQueja'],
+            'x_studio_medio_de_cobranza_queja_cuatro':data['MediosCobranzasQuejas'],
+            'x_studio_se_adjunta_documento_queja_cuatro':data['medioProbatoriopgQueja'],
+            'x_studio_vinculo_de_documento':data['constanciaPagoMedioCobranza'],
+            'x_studio_lugar_donde_permiti_pago_cinco':data['pagoCuentaQueja'],
+            'x_studio_especificar_quejas':data['espeficiarQueja'],
+            'x_studio_adjunta_prueba_cinco':data['capturaQuejaCinco'],
+            'x_studio_medios_probatorios_1':data['medioProbatoriopgQueja'],
+
+            'x_studio_adjunta_medios_probatorios_x_seis':data['dtramitacion'],
+            'x_studio_vinculo_de_medios_probatorios':data['medioProbatoriosTramitacion'],
+
+            'x_studio_medios_probatorios':data['medioProbatorioNegativa'],
+
+            # descargo del cliente
+            'x_studio_informacin_necesaria_queja': data['informacionNecesariaQueja'],
+            'x_studio_descripcin_problema_queja': data['descripcionProblemaQueja'],
+
+            # apelaciones
+            'x_studio_empresa_operadora_ds':data['empresaOperadoraApelacion'],
+            'x_studio_servicio_materia_de_apelacin_ds':data['servicioMateriaApelacion'],
+            'x_studio_nmero_servicio_reclamado_ds':data['numeroServicioApelacion'],
+            'x_studio_cdigo_nmero_reclamo_ds':data['codigoNumeroApelacion'],
+            'x_studio_nmero_carta_resuelve_reclamo_ds':data['numeroCartaApelacion'],
+            'x_studio_fecha_emisin_carta_ds':data['fechaEmisionCartaApelacion'],
+
+            #'x_studio_detalle_de_la_apelacin':data['detallePruebaApelacionUno'],
+            'x_studio_detalle_pruebas_apelacion_uno':data['detallePruebaApelacionUno'],
+            'x_studio_detalle_falta_sustentacion_apelacion_dos':data['detallefsApelacionDos'],
+            'x_studio_materia_empresa_comunicarse':data['materiaEmpresaApelacionTres'],
+            'x_studio_respuesta_empresa_apelacion_cuatro':data['apelacionopcioncuatro'],
+            'x_studio_numero_recibo_apelacion_cinco':data['numeroReciboApelacionSiCuatro'],
+            'x_studio_fecha_de_emision': data['fechaEmisionApelacionSiCuatro'],
+            'x_studio_fecha_de_vencimiento': data['fechaVencimientoApelacionSiCuatro'],
+            'x_studio_monto_reclamado_apelacion_cinco':data['montoReclamadoApelacionSiCuatro'],
+            'x_studio_pronunciamiento_empresa_ape_cuatro':data['detalleReclamoApelacionSiCuatro'],
+            'x_studio_falto_acoger_ape_cinco':data['apelacionOpcioncinco'],
+            'x_studio_nmero_recibo_apleacion_cinco':data['numeroReciboApelacionSiCinco'],
+            'x_studio_fecha_de_emisin_1': data['fechaEmisionApelacionSiCinco'],
+            'x_studio_monto_total_corresponde_cinco':data['montoTotalApelacionSiCinco'],
+            'x_studio_detalle_extremo_apelacion_cinco':data['detalleReclamoApelacionSiCinco'],
+            'x_studio_materia_cual_empresa_ape_seis':data['materiaEmpresaEmitirApelacionSeis'],
+
+            # descargo del cliente
+            'x_studio_informacin_necesaria_apelacion': data['informacionNecesariaApelacion'],
+            'x_studio_sustento_de_apelacin': data['sustentoApelacion'],
 
         }
 
-        new_claim = models.execute_kw(db, uid, password, 'helpdesk.ticket', 'create', [body])
-        
-        # Intenta obtener el código del nuevo reclamo
-        get_code = models.execute_kw(db, uid, password, 'helpdesk.ticket', 'read', [new_claim],
-                                      {'fields': ['x_studio_nro_ticket_reclamo']})
+        # Solo eliminar las claves con valores None
+        ticket_data = {key: value for key, value in ticket_data.items() if value is not None}
 
-        claim_code = get_code[0].get('x_studio_nro_ticket_reclamo')
-        get_subject = f"Código de reclamo: {claim_code}" if claim_code else "Reclamo creado sin código."
+        ticket_id = models.execute_kw(
+            db, uid, password, 'helpdesk.ticket', 'create', [ticket_data])
 
-        return jsonify({'subject': get_subject, 'request_code': claim_code}), 201
+        return jsonify({'ticket_id': ticket_id}), 200
 
-    except ValueError as ve:
-        return jsonify({'error': str(ve)}), 400
     except Exception as e:
-        print(f"Error al crear el reclamo: {str(e)}")  # Ayuda a depurar
-        return jsonify({'error': 'Ocurrió un error al procesar la solicitud.'}), 500
-
+        return jsonify({"error": "Error creating ticket or attachment: " + str(e)}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
