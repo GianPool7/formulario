@@ -382,6 +382,7 @@ details{
     border-radius: 8px;
     width: 30%;
     word-wrap: break-word; /* Rompe palabras largas si es necesario */
+    background-color: whitesmoke;
 }
 
 .tituloTicket{
@@ -463,6 +464,29 @@ details{
         transform: rotate(360deg);
     }
 }
+
+/* regresar a casa*/
+
+.btnhome{
+    display: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #002ccc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+}
+
+/**/
+
 
 /* ESTILO DE FECHA */
 

@@ -581,7 +581,7 @@
                                     </div>
                             
                                     <div class="datos">
-                                        <label for="fechaEmisionCartaApelacion">Fecha de emisión de la cara que resuelve el reclamo:   </label>
+                                        <label for="fechaEmisionCartaApelacion">Fecha de emisión de la carta que resuelve el reclamo:   </label>
                                         <input type="date" class="fecha" id="fechaEmisionCartaApelacion">
                                     </div>
                             
@@ -2207,10 +2207,14 @@
                 </div>
     
                 <div class="contenedorBtn" id="btnEnviarFormulario">
-                    <input type="button" value="Editar" onclick="editarDatos()">
-                    <button type="submit">Enviar</button>
+                    <input type="button" value="Editar" id="back" onclick="editarDatos()">
+                    <button type="submit" id="click">Enviar</button>
+
                 </div>
 
+                <div class="home">
+                    <a href="https://fiberpro.com.pe/reclamos/" class="btnhome" id="inicio">Volver a inicio</a>
+                </div>
 
             </div>
 
@@ -3036,7 +3040,9 @@
                     messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
                 } else {
                     messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_id} </span>`;
-                    ocultarBotonesYRedirigir();
+                    ocultarBotonesYRedirigir();    
+                    const btns=document.getElementById("btnEnviarFormulario");
+                    btns.style.display="none";
                 }
             } catch (error) {
                 const messageDiv = document.getElementById('message');
@@ -3046,8 +3052,9 @@
 
         // Función para ocultar botones y redirigir
         function ocultarBotonesYRedirigir() {
-            // Suponiendo que tienes botones con estos IDs
-            const btns=document.getElementById("btnEnviarFormulario").style.display="none";
+
+
+
 
             // Limpiar todos los campos de tipo input y textarea
             const inputs = document.querySelectorAll('input[type="text"], select, textarea,input[type="date"],email');

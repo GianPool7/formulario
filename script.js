@@ -2110,4 +2110,17 @@ function editarDatos() {
     cajaTotal.style.display="block";
 }
 
+const btnClick=document.getElementById("click");
+btnClick.addEventListener('click', function() {
 
+    const btnBack=document.getElementById("back");
+    const enviarClick=document.getElementById("click");
+
+    btnBack.style.display="none";
+    enviarClick.style.display="none"
+
+    // inicio
+    const btnInicio=document.getElementById("inicio");
+    btnInicio.style.display="block"
+
+})
