@@ -570,6 +570,7 @@ def crear_reclamo():
             'x_studio_fecha_de_emision': data['fechaEmisionApelacionSiCuatro'],
             'x_studio_fecha_de_vencimiento': data['fechaVencimientoApelacionSiCuatro'],
             'x_studio_monto_reclamado_apelacion_cinco':data['montoReclamadoApelacionSiCuatro'],
+            #'x_studio_monto':data['montoReclamadoApelacionSiCuatro'],
             'x_studio_pronunciamiento_empresa_ape_cuatro':data['detalleReclamoApelacionSiCuatro'],
             'x_studio_falto_acoger_ape_cinco':data['apelacionOpcioncinco'],
             'x_studio_nmero_recibo_apleacion_cinco':data['numeroReciboApelacionSiCinco'],
