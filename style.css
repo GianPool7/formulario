@@ -380,7 +380,8 @@ details{
     display: block;
     margin: auto;
     border-radius: 8px;
-    width: 40%;
+    width: 30%;
+    word-wrap: break-word; /* Rompe palabras largas si es necesario */
 }
 
 .tituloTicket{
@@ -469,6 +470,13 @@ details{
 
 /* FIN DE ESTILO DE FECHA*/
 
+/* text area*/
+
+textarea{
+    white-space: pre-wrap;
+}
+
+/* estilo fin de text area*/
 
 /**/
 
