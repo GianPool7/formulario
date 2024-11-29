@@ -2048,7 +2048,7 @@ botonMostrarDatos.addEventListener('click', function() {
     cajaTotal.style.display="none";
 
     // Seleccionamos todos los inputs de tipo texto dentro del formulario
-    const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket  input[type="date"],#DatosTicketMostrarTicket  input[type="email"],#DatosTicketMostrarTicket ,#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
+    const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket  input[type="date"],#DatosTicketMostrarTicket  input[type="email"],#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
 
     // Creamos una variable para almacenar los resultados
     let datosRellenados = '';

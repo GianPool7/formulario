@@ -560,6 +560,7 @@ def crear_reclamo():
             'x_studio_cdigo_nmero_reclamo_ds':data['codigoNumeroApelacion'],
             'x_studio_nmero_carta_resuelve_reclamo_ds':data['numeroCartaApelacion'],
             'x_studio_fecha_emisin_carta_ds':data['fechaEmisionCartaApelacion'],
+            #'x_studio_fecha_apelacion':data['fechaEmisionCartaApelacion'],
 
             'x_studio_detalle_pruebas_apelacion_uno':data['detallePruebaApelacionUno'],
             'x_studio_detalle_falta_sustentacion_apelacion_dos':data['detallefsApelacionDos'],
