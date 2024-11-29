@@ -322,18 +322,28 @@ label{
 
 .contenedorBtn{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding: 10px;
 }
 
 button{
-    padding: 10px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #002ccc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    /* padding: 10px;
     border: none;
     border-radius: 10px;
     background-color: blue;
     color: white;
     font-size: 15px;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
 button:hover{
@@ -365,21 +375,23 @@ details{
 }
 
 .cajaContenedorTickets{
-    border: 2px solid #ff4c00;
+    border: 2px solid #002ccc;
     padding: 10px;
     display: block;
     margin: auto;
-    border-radius: 4px;
+    border-radius: 8px;
     width: 40%;
 }
 
 .tituloTicket{
-    border: 2px solid #002ccc;
+    background-color: #ff4c00;
+    /*border: 2px solid #002ccc;*/
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 12px;
-    color: black;
+    color: white;
+    border-radius: 5px;
 }
 
 .ticket{

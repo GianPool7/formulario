@@ -52,10 +52,17 @@ def crear_reclamo():
         'direccion',
         'correo',
         'autoriza',
+
+        # reclamos
+        'selectReclamos',
+        'problemaEspecificoValor',
+
+        # datos de servicio
         'empresaOperadora',
         'servicioContratado',
         'servicioMateriaReclamo',
         'numeroServicioContratado',
+        # factuacion
         'correoFC',
         'numeroReciboFC',
         'numeroDocumentoCobroFC',
@@ -346,6 +353,11 @@ def crear_reclamo():
             'x_studio_carta_de_poder': file_base64 if file_base64 else None,
             'x_studio_documento_de_cobro': file_constancia_base64 if file_constancia_base64 else None,
 
+            # reclamos
+            'x_studio_reclamo_1': data['selectReclamos'],
+            'x_studio_trata_reclamo': data['problemaEspecificoValor'],
+
+
             # Datos del servicio de reclamo
             'x_studio_empresa_operadora_dsr': data['empresaOperadora'],
             'x_studio_servicio_contratado_dsr': data['servicioContratado'],
@@ -507,13 +519,14 @@ def crear_reclamo():
 
             #queja
 
+            'x_studio_queja':data['selectQueja'],
+
             #quejas datos extras
             'x_studio_empresa_operadora_ds1':data['empresaOperadoraQueja'],
             'x_studio_servicio_objeto_queja_dsq':data['servicioObjetoQueja'],
             'x_studio_nmero_servicio_reclamado_dsq':data['numServicioQueja'],
             'x_studio_cdigo_nmero_reclamo_dsq':data['codigoNumeroQueja'],
 
-            #'x_studio_detalle_de_la_queja':data['fechaPresentacionQueja'],
             'x_studio_fecha_presentacin_reclamo_queja_uno':data['fechaPresentacionQueja'],
             'x_studio_negativa_relacionada_queja_dos':data['negativaQueja'],
             'x_studio_char_field_2bo_1ibhijmmb':data['fechaNegativaQueja'],
@@ -523,14 +536,14 @@ def crear_reclamo():
             'x_studio_fecha_en_la_cual_se_habra_suspendido_el_servicio':data['fechaSuspendioServicioQueja'],
             'x_studio_medio_de_cobranza_queja_cuatro':data['MediosCobranzasQuejas'],
             'x_studio_se_adjunta_documento_queja_cuatro':data['medioProbatoriopgQueja'],
-            'x_studio_vinculo_de_documento':data['constanciaPagoMedioCobranza'],
+            'x_studio_documento_queja':data['constanciaPagoMedioCobranza'],
             'x_studio_lugar_donde_permiti_pago_cinco':data['pagoCuentaQueja'],
             'x_studio_especificar_quejas':data['espeficiarQueja'],
             'x_studio_adjunta_prueba_cinco':data['capturaQuejaCinco'],
             'x_studio_medios_probatorios_1':data['medioProbatoriopgQueja'],
 
             'x_studio_adjunta_medios_probatorios_x_seis':data['dtramitacion'],
-            'x_studio_vinculo_de_medios_probatorios':data['medioProbatoriosTramitacion'],
+            'x_studio_medio_probatorios_queja_ultimo':data['medioProbatoriosTramitacion'],
 
             'x_studio_medios_probatorios':data['medioProbatorioNegativa'],
 
@@ -539,6 +552,8 @@ def crear_reclamo():
             'x_studio_descripcin_problema_queja': data['descripcionProblemaQueja'],
 
             # apelaciones
+            'x_studio_apelacin':data['selectApelacion'],
+
             'x_studio_empresa_operadora_ds':data['empresaOperadoraApelacion'],
             'x_studio_servicio_materia_de_apelacin_ds':data['servicioMateriaApelacion'],
             'x_studio_nmero_servicio_reclamado_ds':data['numeroServicioApelacion'],
@@ -546,7 +561,6 @@ def crear_reclamo():
             'x_studio_nmero_carta_resuelve_reclamo_ds':data['numeroCartaApelacion'],
             'x_studio_fecha_emisin_carta_ds':data['fechaEmisionCartaApelacion'],
 
-            #'x_studio_detalle_de_la_apelacin':data['detallePruebaApelacionUno'],
             'x_studio_detalle_pruebas_apelacion_uno':data['detallePruebaApelacionUno'],
             'x_studio_detalle_falta_sustentacion_apelacion_dos':data['detallefsApelacionDos'],
             'x_studio_materia_empresa_comunicarse':data['materiaEmpresaApelacionTres'],

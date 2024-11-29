@@ -343,20 +343,20 @@
         
                     <details class="seleccionarOpcciones" id="seleccionUnicaApelacion">
                     
-                            <summary>Motivo de Apelación</summary>
-                            
-                            <div class="materiaReclamableUnica">
-                                <label for="">Apelación Especifica</label>
-                                <select name="materiaReclamable" id="apelacionOpciones" onchange="apelaciones()">
-                                    <option value="" selected>Seleccionar Opción</option>
-                                    <option value="apelacionOne">No se analizaron pruebas presentadas por el usuario</option>
-                                    <option value="apelacionTwo">La carta no motiva o sustenta la decisión de la empresa sobre el reclamo</option>
-                                    <option value="apelacionThree">Empresa operadora emitió pronunciamiento por materia distinta a la reclamada</option>
-                                    <option value="apelacionFour">Empresa omitió pronunciarse por un extremo del reclamo o un recibo reclamado</option>
-                                    <option value="apelacionFive">La empresa operadora no acogió toda su pretensión</option>
-                                    <option value="apelacionSix">Otros</option>
-                                </select>
-                            </div>
+                        <summary>Motivo de Apelación</summary>
+                        
+                        <div class="materiaReclamableUnica">
+                            <label for="">Apelación Especifica</label>
+                            <select name="materiaReclamable" id="apelacionOpciones" onchange="apelaciones()">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="apelacionOne">No se analizaron pruebas presentadas por el usuario</option>
+                                <option value="apelacionTwo">La carta no motiva o sustenta la decisión de la empresa sobre el reclamo</option>
+                                <option value="apelacionThree">Empresa operadora emitió pronunciamiento por materia distinta a la reclamada</option>
+                                <option value="apelacionFour">Empresa omitió pronunciarse por un extremo del reclamo o un recibo reclamado</option>
+                                <option value="apelacionFive">La empresa operadora no acogió toda su pretensión</option>
+                                <option value="apelacionSix">Otros</option>
+                            </select>
+                        </div>
                             
                     </details>
                     
@@ -393,123 +393,123 @@
                         
                         <div class="columnTwo">
                         
-                                <div class="materiaReclamable">
-                                    <label for="">Materias Reclamables</label>
-                                    <select name="materiaReclamable" id="materias" onchange="selecion()">
-                                        <option value="" selected>Seleccionar Opción</option>
-                                        <option id="mUno" value="fcs">Facturación y cobro</option>
-                                        <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
-                                        <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y promociones</option>
-                                        <option id="mCuatro" value="falta">Falta de servicio</option>
-                                        <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio</option>
-                                        <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio</option>
-                                        <option id="mSiete" value="contratacion">Contratación no solicitada</option>
-                                        <option id="mOcho" value="migracion">Migración</option>
-                                        <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="fc" style="display: none;">
-                            
-                                    <label for="">Problema Especifico</label>
-                                    <select name="" id="facturados" onchange="facturado()">
-                                        <option id="flimpio" value="" selected>Selecciona la Opción</option>
-                                        <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados</option>
-                                        <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales facturados</option>
-                                        <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
-                                        <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier concepto facturado en el recibo cuyo consumo se desconoce</option>
-                                        <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
-                                        <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o realizados por documentos distintos al recibo</option>
-                                        <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado</option>
-                                        <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento</option>
-                                    </select>
-                            
-                                </div>
-                            
-                                <div class="fc" id="cs" style="display: none;">
-                                    <label for="calidad">Problema Especifico</label>
-                                    <select name="" id="calidadidoneidad" onchange="calidad()">
-                                        <option value="" selected>Selecciona la Opción</option>
-                                        <option id="cuno" value="calidaduno">Problemas con la prestación del servicio, tales como intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="op" style="display: none;">
-                                    <label for="ofertas">Problema Especifico</label>
-                                    <select name="" id="ofertas" onchange="incumpliento()">
-                                        <option value="" selected>Seleccionar Opción</option>
-                                        <option value="incumplimientoUNO">Incumplimiento de la aplicación de condiciones y tarifas del plan contratado distintas a las pactadas en el contrato</option>
-                                        <option value="incumplimientoDOS">Incumplimiento de ofertas o promociones ofrecidas y/o contratadas</option>
-                                        <option value="incumplimientoTRES">Descuentos no reconocidos de los atributos y/o beneficios del plan contratado, oferta y/o promoción</option>
-                                        <option value="incumplimientoCUATRO">Omisión de información o información inexacta sobre cobertura u otras características o limitaciones del servicio</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="fs" style="display: none;">
-                                    <label for="fservicio">Problema Especifico</label>
-                                    <select name="serivio" id="fservicio" onchange="faltaServicios()">
-                                        <option value="" selected>Seleccionar Opción</option>
-                                        <option value="servicioone">Interrupción, suspensión, corte o baja injustificada del servicio o sin observar el procedimiento establecido en la normativa vigente</option>
-                                        <option value="serviciotwo">Suspensión del servicio por uso prohibido en establecimientos penitenciarios</option>
-                                        <option value="serviciothree">Falta de reactivación del servicio pese al pago del recibo</option>
-                                        <option value="serviciofour"> Cambio de titularidad del servicio o reposición de SIM Card sin consentimiento del abonado</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="ia" style="display: none;">
-                                    <label for="instalacion">Problema Especifico</label>
-                                    <select name="" id="instalacion" onchange="instalaciones();">
-                                        <option value="" selected>Seleccionar Opción </option>
-                                        <option value="instalacionesUno">Falta de instalación del servicio fijo</option>
-                                        <option value="instalacionesDos">Falta de activación del servicio móvil</option>
-                                        <option value="instalacionesTres">Falta de traslado del servicio</option>
-                                        <option value="instalacionesCuatro">Falta de respuesta a la solicitud de trasladado o negativa a la misma</option>
-                                        <option value="instalacionesCinco">Falta de devolución de los montos cobrados por instalación, activación o traslado no ejecutados</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="sus" style="display: none;">
-                                    <label for="sb">Problema Especifico</label>
-                                    <select name="" id="sb" onchange="baja()">
-                                        <option value="" selected>Seleccionar Opción </option>
-                                        <option value="bajaUno">Falta de ejecución de la baja</option>
-                                        <option value="bajaDos">Falta de ejecución de la suspensión temporal del servicio</option>
-                                        <option value="bajaTres">Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla</option>
-                                        <option value="bajaCuatro">Montos cobrados posteriores a la fecha en que se efectuó la suspensión temporal o correspondía efectuarla</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="ct" style="display: none;">
-                                    <label for="con">Problema Especifico</label>
-                                    <select name="" id="con" onchange="contratos();">
-                                        <option value="">Seleccionar Opción</option>
-                                        <option value="conuno">Desconoce contratación del servicio principal (*telefonía fija, acceso a internet, servicio móvil, televisión de paga)</option>
-                                        <option value="condos">Desconoce contratación o afiliación a servicios adicionales o suplementarios</option>
-                                        <option value="contres">Desconoce adquisición de paquetes de tráfico o señales de programación (*datos, minutos, canales, otros)</option>
-                                        <option value="concuatro">Desconoce contrato de adquisición o financiamiento de equipo terminal cuyo pago es incluido en el recibo como concepto facturable</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="mi" style="display: none;">
-                                    <label for="mig">Problema Especifico</label>
-                                    <select name="" id="mig" onchange="migracionReclamable()">
-                                        <option value="">Seleccione Opción</option>
-                                        <option value="migracionOne">Condicionamiento, negativa o falta de respuesta de la solicitud de migración</option>
-                                        <option value="migracionTwo">Falta de ejecución de la migración dentro del plazo establecido</option>
-                                        <option value="migracionThree">Facturación corresponde al plan anterior</option>
-                                        <option value="migracionFour">Migración no solicitada</option>
-                                    </select>
-                                </div>
-                            
-                                <div class="fc" id="xma" style="display: none;">
-                                    <label for="x">Problema Especifico</label>
-                                    <select name="" id="x" onchange="xMaterias()">
-                                        <option value="">Seleccione opción</option>
-                                        <option value="xMateriasROne">Negativa a contratar el servicio</option>
-                                        <option value="xMateriasRTwo">Falta de entrega de recibos</option>
-                                        <option value="xMateriasRThree">Negativa a brindar la facturación detallada o llamadas entrantes</option>
-                                    </select>
-                                </div>
+                            <div class="materiaReclamable">
+                                <label for="">Materias Reclamables</label>
+                                <select name="materiaReclamable" id="materias" onchange="selecion()">
+                                    <option value="" selected>Seleccionar Opción</option>
+                                    <option id="mUno" value="fcs">Facturación y cobro</option>
+                                    <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
+                                    <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y promociones</option>
+                                    <option id="mCuatro" value="falta">Falta de servicio</option>
+                                    <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio</option>
+                                    <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio</option>
+                                    <option id="mSiete" value="contratacion">Contratación no solicitada</option>
+                                    <option id="mOcho" value="migracion">Migración</option>
+                                    <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="fc" style="display: none;">
+                        
+                                <label for="">Problema Especifico</label>
+                                <select name="" id="facturados" onchange="facturado()">
+                                    <option id="flimpio" value="" selected>Selecciona la Opción</option>
+                                    <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados</option>
+                                    <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales facturados</option>
+                                    <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
+                                    <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier concepto facturado en el recibo cuyo consumo se desconoce</option>
+                                    <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
+                                    <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o realizados por documentos distintos al recibo</option>
+                                    <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado</option>
+                                    <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento</option>
+                                </select>
+                        
+                            </div>
+                        
+                            <div class="fc" id="cs" style="display: none;">
+                                <label for="calidad">Problema Especifico</label>
+                                <select name="" id="calidadidoneidad" onchange="calidad()">
+                                    <option value="" selected>Selecciona la Opción</option>
+                                    <option id="cuno" value="calidaduno">Problemas con la prestación del servicio, tales como intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="op" style="display: none;">
+                                <label for="ofertas">Problema Especifico</label>
+                                <select name="" id="ofertas" onchange="incumpliento()">
+                                    <option value="" selected>Seleccionar Opción</option>
+                                    <option value="incumplimientoUNO">Incumplimiento de la aplicación de condiciones y tarifas del plan contratado distintas a las pactadas en el contrato</option>
+                                    <option value="incumplimientoDOS">Incumplimiento de ofertas o promociones ofrecidas y/o contratadas</option>
+                                    <option value="incumplimientoTRES">Descuentos no reconocidos de los atributos y/o beneficios del plan contratado, oferta y/o promoción</option>
+                                    <option value="incumplimientoCUATRO">Omisión de información o información inexacta sobre cobertura u otras características o limitaciones del servicio</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="fs" style="display: none;">
+                                <label for="fservicio">Problema Especifico</label>
+                                <select name="serivio" id="fservicio" onchange="faltaServicios()">
+                                    <option value="" selected>Seleccionar Opción</option>
+                                    <option value="servicioone">Interrupción, suspensión, corte o baja injustificada del servicio o sin observar el procedimiento establecido en la normativa vigente</option>
+                                    <option value="serviciotwo">Suspensión del servicio por uso prohibido en establecimientos penitenciarios</option>
+                                    <option value="serviciothree">Falta de reactivación del servicio pese al pago del recibo</option>
+                                    <option value="serviciofour"> Cambio de titularidad del servicio o reposición de SIM Card sin consentimiento del abonado</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="ia" style="display: none;">
+                                <label for="instalacion">Problema Especifico</label>
+                                <select name="" id="instalacion" onchange="instalaciones();">
+                                    <option value="" selected>Seleccionar Opción </option>
+                                    <option value="instalacionesUno">Falta de instalación del servicio fijo</option>
+                                    <option value="instalacionesDos">Falta de activación del servicio móvil</option>
+                                    <option value="instalacionesTres">Falta de traslado del servicio</option>
+                                    <option value="instalacionesCuatro">Falta de respuesta a la solicitud de trasladado o negativa a la misma</option>
+                                    <option value="instalacionesCinco">Falta de devolución de los montos cobrados por instalación, activación o traslado no ejecutados</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="sus" style="display: none;">
+                                <label for="sb">Problema Especifico</label>
+                                <select name="" id="sb" onchange="baja()">
+                                    <option value="" selected>Seleccionar Opción </option>
+                                    <option value="bajaUno">Falta de ejecución de la baja</option>
+                                    <option value="bajaDos">Falta de ejecución de la suspensión temporal del servicio</option>
+                                    <option value="bajaTres">Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla</option>
+                                    <option value="bajaCuatro">Montos cobrados posteriores a la fecha en que se efectuó la suspensión temporal o correspondía efectuarla</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="ct" style="display: none;">
+                                <label for="con">Problema Especifico</label>
+                                <select name="" id="con" onchange="contratos();">
+                                    <option value="">Seleccionar Opción</option>
+                                    <option value="conuno">Desconoce contratación del servicio principal (*telefonía fija, acceso a internet, servicio móvil, televisión de paga)</option>
+                                    <option value="condos">Desconoce contratación o afiliación a servicios adicionales o suplementarios</option>
+                                    <option value="contres">Desconoce adquisición de paquetes de tráfico o señales de programación (*datos, minutos, canales, otros)</option>
+                                    <option value="concuatro">Desconoce contrato de adquisición o financiamiento de equipo terminal cuyo pago es incluido en el recibo como concepto facturable</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="mi" style="display: none;">
+                                <label for="mig">Problema Especifico</label>
+                                <select name="" id="mig" onchange="migracionReclamable()">
+                                    <option value="">Seleccione Opción</option>
+                                    <option value="migracionOne">Condicionamiento, negativa o falta de respuesta de la solicitud de migración</option>
+                                    <option value="migracionTwo">Falta de ejecución de la migración dentro del plazo establecido</option>
+                                    <option value="migracionThree">Facturación corresponde al plan anterior</option>
+                                    <option value="migracionFour">Migración no solicitada</option>
+                                </select>
+                            </div>
+                        
+                            <div class="fc" id="xma" style="display: none;">
+                                <label for="x">Problema Especifico</label>
+                                <select name="" id="x" onchange="xMaterias()">
+                                    <option value="">Seleccione opción</option>
+                                    <option value="xMateriasROne">Negativa a contratar el servicio</option>
+                                    <option value="xMateriasRTwo">Falta de entrega de recibos</option>
+                                    <option value="xMateriasRThree">Negativa a brindar la facturación detallada o llamadas entrantes</option>
+                                </select>
+                            </div>
                             
                         </div>
                         
@@ -2216,11 +2216,10 @@
 
         </div>
 
-
-
     </form>
 
     <script>
+
         // el manejo de fechas
         function formatDateToYYMMDD(date) {
             if (!date) return ""; // Retorna una cadena vacía si no hay fecha
@@ -2278,6 +2277,22 @@
             const correo = document.getElementById('correo').value.trim();
             const autoriza = document.querySelector('input[name="autorizacion"]:checked')?.value || "False"; // 'True' or 'False'
             
+            // opcion materias
+            const selectReclamos = document.getElementById("materias").options[document.getElementById("materias").selectedIndex].text;
+
+            // const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
+            // const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
+            // const selectIncumplimiento = document.getElementById("ofertas").options[document.getElementById("ofertas").selectedIndex].text;
+            // const selectFaltaServicio = document.getElementById("fservicio").options[document.getElementById("fservicio").selectedIndex].text;
+            // const selectActivacion = document.getElementById("instalacion").options[document.getElementById("instalacion").selectedIndex].text;
+            // const selectBaja = document.getElementById("sb").options[document.getElementById("sb").selectedIndex].text;
+            // const selectContratacion = document.getElementById("con").options[document.getElementById("con").selectedIndex].text;
+            // const selectMigracion = document.getElementById("mig").options[document.getElementById("mig").selectedIndex].text;
+            // const selectOtros = document.getElementById("x").options[document.getElementById("x").selectedIndex].text;
+
+            //console.log(selectFacturado);
+            
+
             // Datos de servicio reclamo
             const empresaOperadora = document.getElementById('empresaOperadorReclamo').value.trim();
             const servicioContratado = document.getElementById('servicioContratadoReclamo').value.trim();
@@ -2571,7 +2586,44 @@
                 }
             }
 
+            // opciones
+
+            // Crear un objeto para almacenar los datos validados
+            
+
+            let datosSeleccionados = {};
+
+            // Obtenemos los textos seleccionados de los demás select (excluyendo "Materia Reclamable")
+            const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
+            const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
+            const selectIncumplimiento = document.getElementById("ofertas").options[document.getElementById("ofertas").selectedIndex].text;
+            const selectFaltaServicio = document.getElementById("fservicio").options[document.getElementById("fservicio").selectedIndex].text;
+            const selectActivacion = document.getElementById("instalacion").options[document.getElementById("instalacion").selectedIndex].text;
+            const selectBaja = document.getElementById("sb").options[document.getElementById("sb").selectedIndex].text;
+            const selectContratacion = document.getElementById("con").options[document.getElementById("con").selectedIndex].text;
+            const selectMigracion = document.getElementById("mig").options[document.getElementById("mig").selectedIndex].text;
+            const selectOtros = document.getElementById("x").options[document.getElementById("x").selectedIndex].text;
+
+            // Almacenamos solo los textos si no es "Seleccionar Opción" (o cualquier opción predeterminada)
+            if (selectFacturado !== "Selecciona la Opción") datosSeleccionados.facturado = selectFacturado;
+            if (selectCalidad !== "Selecciona la Opción") datosSeleccionados.calidad = selectCalidad;
+            if (selectIncumplimiento !== "Seleccionar Opción") datosSeleccionados.incumplimiento = selectIncumplimiento;
+            if (selectFaltaServicio !== "Seleccionar Opción") datosSeleccionados.faltaServicio = selectFaltaServicio;
+            if (selectActivacion !== "Seleccionar Opción") datosSeleccionados.activacion = selectActivacion;
+            if (selectBaja !== "Seleccionar Opción") datosSeleccionados.baja = selectBaja;
+            if (selectContratacion !== "Seleccionar Opción") datosSeleccionados.contratacion = selectContratacion;
+            if (selectMigracion !== "Seleccionar Opción") datosSeleccionados.migracion = selectMigracion;
+            if (selectOtros !== "Seleccionar opción") datosSeleccionados.otros = selectOtros;
+
+            // limpiando el objeto
+            // Crear un array con solo los valores del objeto, excluyendo "Seleccione opción"
+            let problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => value !== "Seleccione opción");
+
+
             // quejas
+            // Guardamos el texto de la opción seleccionada en una constante
+            const selectQueja = document.getElementById("quejasOpciones").options[document.getElementById("quejasOpciones").selectedIndex].text;
+
             //quejas datos extras
             // Obtener los valores de los campos en el formulario
             const empresaOperadoraQueja = document.getElementById("empresaOperadoraQueja").value;
@@ -2665,6 +2717,10 @@
 
             // apelacion
 
+            // opcion 
+            // Guardamos el texto de la opción seleccionada en una constante
+            const selectApelacion = document.getElementById("apelacionOpciones").options[document.getElementById("apelacionOpciones").selectedIndex].text;
+
             // datos extras
             // Obtener el valor de la "Empresa Operadora"
             const empresaOperadoraApelacion = document.getElementById("empresaOperadoraApelacion").value;
@@ -2738,10 +2794,17 @@
                 direccion,
                 correo,
                 autoriza,
+
+                // seleccionable
+                selectReclamos,
+                problemaEspecificoValor,
+                
+                // datos del servicio
                 empresaOperadora,
                 servicioContratado,
                 servicioMateriaReclamo,
                 numeroServicioContratado,
+                // fc
                 correoFC,
                 numeroReciboFC,
                 numeroDocumentoCobroFC,
@@ -2890,6 +2953,8 @@
                 descripcionProblemaSolicitudReclamo,
 
                 // quejas
+                //selecion
+                selectQueja,
                 // quejas datos extra
                 empresaOperadoraQueja,
                 servicioObjetoQueja,
@@ -2920,6 +2985,8 @@
                 descripcionProblemaQueja,
 
                 //Apelaciones
+                // selecion
+                selectApelacion,
 
                 // datos extras
                 empresaOperadoraApelacion,
@@ -2993,10 +3060,10 @@
             });
 
             // Esperar 3 segundos antes de redirigir
-            setTimeout(function() {
+            //setTimeout(function() {
                 // Redirigir a otra página (por ejemplo, página de confirmación)
-                window.location.href = 'https://fiberpro.com.pe/'; // Cambia la URL aquí
-            }, 3000); // 3000 milisegundos = 3 segundos
+                //window.location.href = 'https://fiberpro.com.pe/'; // Cambia la URL aquí
+            //}, 3000); // 3000 milisegundos = 3 segundos
         }
 
     </script>

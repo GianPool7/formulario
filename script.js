@@ -2,6 +2,8 @@
 // const opcionQueja=document.getElementById("queja");
 // const opcionApelacion=document.getElementById("apelacion");
 
+
+
 //pantalla de carga
 const loading=document.getElementById("validandoDatos");
 loading.style.display="none"
@@ -158,6 +160,17 @@ function volverRQA() {
     contenedorDetailsExtraApelacion.open=false;
     //btn de finalizar
     enviar.style.display="none";
+    // datos
+    // Limpiar todos los campos de tipo input y textarea
+    const txtInputs = document.querySelectorAll('input[type="text"], select, textarea, input[type="date"]');
+    txtInputs.forEach(function(input) {
+        if (input.type === 'radio') {
+            input.checked = false; // Para checkboxes y radios
+        } else {
+            input.value = ''; // Para otros tipos de inputs y select
+        }
+    });
+
 }
 
 
@@ -293,7 +306,7 @@ const vUsuario=document.getElementById("validarFormularioUsuario");
 
 vUsuario.addEventListener("click",function () {
 
-    const txtValidarUsuario=cDatosValidacionUsuario.querySelectorAll("input[type='text'], input[type='date']");
+    const txtValidarUsuario=cDatosValidacionUsuario.querySelectorAll("input[type='text'], input[type='date'],email");
     let validadoUsuario = true; // Variable para comprobar si todos los campos están llenos
 
     // Limpiar cualquier mensaje de error previo
@@ -344,10 +357,6 @@ vUsuario.addEventListener("click",function () {
 
 })
 
-
-
-
-
 // funcion para volver cuando ya escojio al usuario
 
 function volverUsuario() {
@@ -384,6 +393,16 @@ function volverUsuario() {
     contenedorDetailsExtraApelacion.open=false;
     //btn de finalizar
     enviar.style.display="none";
+
+    // Limpiar todos los campos de tipo input y textarea
+    const txtInputs = document.querySelectorAll('input[type="text"], select, textarea, input[type="date"],email');
+    txtInputs.forEach(function(input) {
+        if (input.type === 'radio') {
+            input.checked = false; // Para checkboxes y radios
+        } else {
+            input.value = ''; // Para otros tipos de inputs y select
+        }
+    });
 
 }
 
@@ -471,27 +490,37 @@ validadFormularioDatosPersonales.addEventListener("click",function () {
 
     // Seleccionar todos los radio buttons con el nombre 'autorizacion'
     const radios = document.querySelectorAll("input[name='autorizacion']");
-    const txtCorreo=document.getElementById("escojerCorreo")
+    const txtCorreo = document.getElementById("escojerCorreo");
 
     // Usar 'forEach' para recorrer todos los radio buttons
     let seleccionado = false;
-    
-    radios.forEach(function(radio) {
+
+    radios.forEach(function (radio) {
         if (radio.checked) {
             seleccionado = true;  // Si un radio button está seleccionado, actualizar la variable
         }
     });
 
-    // mensaje de alerta
-    const alertaRadio=document.createElement("p")
-    alertaRadio.textContent="Marcar una opción";
-    alertaRadio.classList.add("alert");
-    alertaRadio.style.textAlign="center"
+    // Verificar si ya existe el mensaje de alerta
+    let alertaRadio = document.querySelector(".alert");
 
-    // Si ninguno está seleccionado, mostrar un mensaje de alerta
+    // Si no existe el mensaje de alerta, crearlo
+    if (!alertaRadio) {
+        alertaRadio = document.createElement("p");
+        alertaRadio.textContent = "Marcar una opción";
+        alertaRadio.classList.add("alert");
+        alertaRadio.style.textAlign = "center";
+        txtCorreo.insertAdjacentElement("afterend", alertaRadio);
+    }
+
+    // Si ninguno está seleccionado, mostrar el mensaje de alerta
     if (!seleccionado) {
-        txtCorreo.insertAdjacentElement("afterend",alertaRadio)
         return false;  // Detener el envío del formulario
+    }
+
+    // Si ya hay una selección, eliminamos el mensaje de alerta
+    if (alertaRadio) {
+        alertaRadio.remove();
     }
 
     switch (valorSeleccionado) {
@@ -518,6 +547,15 @@ validadFormularioDatosPersonales.addEventListener("click",function () {
 
 
 //
+/*
+*/
+
+
+
+    
+
+/*
+*/
 
 const cApelacion=document.getElementById("datosApelacion");
 const cQueja=document.getElementById("datosQueja");
@@ -571,11 +609,11 @@ function selecion() {
 
     //servicio
     const cfsOne=document.getElementById("contenidofservicioone");
-    const cfsTwo=document.getElementById("contenidofserviciotwo");
+    //const cfsTwo=document.getElementById("contenidofserviciotwo");
     const cfsThree=document.getElementById("contenidofsthree");
     const cfsFour=document.getElementById("contenidofsfour");
     cfsOne.style.display="none";
-    cfsTwo.style.display="none";
+    //cfsTwo.style.display="none";
     cfsThree.style.display="none";
     cfsFour.style.display="none";
     //
@@ -778,6 +816,8 @@ function selecion() {
 
 }
 
+
+
 /* facturacion */
 
 function facturado() {  
@@ -861,8 +901,17 @@ function facturado() {
     }
 
 
-    //limpiarInputs();
 
+    //
+    //console.log(selectFacturado);
+    
+
+    //guardarSeleccion();
+
+
+    // el objeto selecionado;
+    //const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
+    //console.log(selectFacturado);
 }
 
 function hojaFacturado(){
@@ -925,7 +974,9 @@ function calidad() {
             break;
     }
 
-
+    // el objeto selecionado;
+    //const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
+    //console.log(selectCalidad);
 }
 
 /* Fin de calidad */
@@ -1018,11 +1069,19 @@ function faltaServicios() {
 
     const fServicio=document.getElementById("fservicio")
     const cfsOne=document.getElementById("contenidofservicioone");
-    const cfsTwo=document.getElementById("contenidofserviciotwo");
     const cfsThree=document.getElementById("contenidofsthree");
     const cfsFour=document.getElementById("contenidofsfour");
+    //
+    const fsOneOpcion=document.getElementById("fsOne");
+    const fsTwoOpcion=document.getElementById("fsTwo");
+    const fsF=document.getElementById("fsFile");
+    //
+    fsOneOpcion.style.display="none";
+    fsTwoOpcion.style.display="none";
+    fsF.style.display="none";
+    //
     cfsOne.style.display="none";
-    cfsTwo.style.display="none";
+    //cfsTwo.style.display="none";
     cfsThree.style.display="none";
     cfsFour.style.display="none";
     //
@@ -1033,10 +1092,15 @@ function faltaServicios() {
 
         case "servicioone":
             cfsOne.style.display="block";
+            fsTwoOpcion.style.display="none";
+            fsOneOpcion.style.display="block";
             break;
 
         case "serviciotwo":
-            cfsTwo.style.display="block";
+            fsOneOpcion.style.display="none";
+            cfsOne.style.display="block";
+            fsTwoOpcion.style.display="block";
+            fsF.style.display="block";
             break;
 
         case "serviciothree":
@@ -1868,7 +1932,7 @@ function apelaciones() {
             break;
     }
 
-    
+
 }
 
 function apelacionCuatro() {
@@ -1940,6 +2004,10 @@ validarFormularioReclamo.addEventListener("click",function () {
     contenedorDetailsExtraReclamo.open=true;
     contenedorDetailsReclamo.open = false;
     enviar.style.display="flex";
+
+    //
+
+
 })
 
 /* Despues de formulario queja */
@@ -1980,7 +2048,7 @@ botonMostrarDatos.addEventListener('click', function() {
     cajaTotal.style.display="none";
 
     // Seleccionamos todos los inputs de tipo texto dentro del formulario
-    const inputs = document.querySelectorAll('input[type="text"],input[type="date"],input[type="email"],input[type="radio"],textarea,select');
+    const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket  input[type="date"],#DatosTicketMostrarTicket  input[type="email"],#DatosTicketMostrarTicket ,#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
 
     // Creamos una variable para almacenar los resultados
     let datosRellenados = '';
