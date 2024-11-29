@@ -2086,7 +2086,7 @@ botonMostrarDatos.addEventListener('click', function() {
                 // Extraemos el texto del label
                 const labelText = label.innerText || label.textContent;
                 // Convertimos saltos de línea a <br> para mostrarlos en HTML
-                const valorConSaltos = valor.replace(/\n/g, '<br>');
+                //const valorConSaltos = valor.replace(/\n/g, '<br>');
 
                 // Agregamos el nombre del campo y su valor
                 datosRellenados += `<p><strong>${labelText}:</strong> <span>${valor}</span> </p>`;

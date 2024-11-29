@@ -380,7 +380,7 @@ details{
     display: block;
     margin: auto;
     border-radius: 8px;
-    width: 30%;
+    width: 50%;
     word-wrap: break-word; /* Rompe palabras largas si es necesario */
     background-color: whitesmoke;
 }
