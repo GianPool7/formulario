@@ -1020,7 +1020,7 @@
                     
                                     <div class="datos" id="">
                                         <label for="fechavencimientoFCone">Fecha de vencimiento </label>
-                                        <input type="date" class="fecha" class="fecha" id="fechavencimientoFCone">
+                                        <input type="date" class="fecha" id="fechavencimientoFCone">
                                     </div>
                     
                                     <div class="datos" id="">
@@ -1042,7 +1042,7 @@
                     
                                         <div class="datos">
                                             <label for="fechaEstimadaPagoFCone">Fecha estimada en la que se efectuó el pago </label>
-                                            <input type="date" class="fecha" class="fecha" id="fechaEstimadaPagoFCone">
+                                            <input type="date" class="fecha" id="fechaEstimadaPagoFCone">
                                         </div>
                     
                                         <div class="datos">
@@ -1394,7 +1394,7 @@
                         
                                             <div class="datos" id="adRecibofs" style="display: none;">
                                                 <label for="adjuntarVinculo">Adjuntar Solicitud </label>
-                                                <input type="file" name="adjuntarVinculo" id="adjuntarVinculo">
+                                                <input type="file" name="" id="adjuntarVinculo">
                                             </div>
 
                                         </div>
@@ -1452,7 +1452,7 @@
                     
                                         <div class="datos" id="adReciboPendientefs" style="display: none;">
                                             <label for="vinculoAdjuntarSolicitud">Adjuntar Solicitud </label>
-                                            <input type="file" name="vinculoAdjuntarSolicitud" id="vinculoAdjuntarSolicitud">
+                                            <input type="file" name="" id="vinculoAdjuntarSolicitud">
                                         </div>
                     
                                     </div>
@@ -1729,12 +1729,12 @@
                     
                                         <div class="datos" id="">
                                             <label for="fechaEmisionBaja">Fecha de emision </label>
-                                            <input type="text" id="fechaEmisionBaja">
+                                            <input type="date" id="fechaEmisionBaja">
                                         </div>
                     
                                         <div class="datos" id="">
                                             <label for="fechaVencimientoBaja">Fecha de vencimiento </label>
-                                            <input type="text" id="fechaVencimientoBaja">
+                                            <input type="date" id="fechaVencimientoBaja">
                                         </div>
                     
                                         <div class="datos" id="">
@@ -2472,7 +2472,6 @@
 
 
             // Obtener los archivos si existen
-            // migracion
             const documentoSolicitudMigracionOne = document.getElementById("documentoSolicitudMigracionOne");
 
             const solicitudBajaReclamo = document.getElementById('solicitudBajaReclamo');
@@ -2490,8 +2489,8 @@
             const vinculoSolicitudSX = document.getElementById('vinculoSolicitudSX');
 
 
-            const documentoAdjuntadofsI=adjuntarVinculo.files[0];
-            const documentoAdjuntadofsII=vinculoAdjuntarSolicitud.files[0];
+            const documentoAdjuntadofsOne=adjuntarVinculo.files[0];
+            const documentoAdjuntadofsTwo=vinculoAdjuntarSolicitud.files[0];
             const file = fileInput.files[0];  // Archivo de carta de poder
             const hojaDocumentadaFile = hojaDocumentoAdjuntada.files[0];  // Archivo de hoja de pago
             const documentoSolicitudReclamo=vinculoSolicitudReclamo.files[0];
@@ -2511,8 +2510,8 @@
             let documentoBajaII="";
             let documentoSRI="";
             let documentoSRII=""; 
-            let documentoAdjuntadoFSI="";
-            let documentoAdjuntadoFSII=""; 
+            let documentoAdjuntadosFSI="";
+            let documentoAdjuntadosFSII=""; 
             let fileBase64 = "";
             let fileConstacia = "";
 
@@ -2534,17 +2533,17 @@
                 }
             }
 
-            if (documentoAdjuntadofsI) {
+            if (documentoAdjuntadofsOne) {
                 try {
-                    documentoAdjuntadoFSI = await convertFileToBase64(documentoAdjuntadofsI);
+                    documentoAdjuntadosFSI = await convertFileToBase64(documentoAdjuntadofsOne);
                 } catch (error) {
                     console.error('Error al convertir archivo de carta de poder:', error);
                 }
             }
 
-            if (documentoAdjuntadofsII) {
+            if (documentoAdjuntadofsTwo) {
                 try {
-                    documentoAdjuntadoFSII = await convertFileToBase64(documentoAdjuntadofsII);
+                    documentoAdjuntadosFSII = await convertFileToBase64(documentoAdjuntadofsTwo);
                 } catch (error) {
                     console.error('Error al convertir archivo de hoja de pago:', error);
                 }
@@ -2786,7 +2785,7 @@
             const data = {
 
                 tipoticket,
-                diagnostico,
+                // diagnostico,
                 nombrePadre,
                 nombreMadre,
                 lugarNacimiento,
@@ -2807,7 +2806,7 @@
                 correo,
                 autoriza,
 
-                // seleccionable
+                // // seleccionable
                 selectReclamos,
                 problemaEspecificoValor,
                 
@@ -2816,7 +2815,7 @@
                 servicioContratado,
                 servicioMateriaReclamo,
                 numeroServicioContratado,
-                // fc
+                // // fc
                 correoFC,
                 numeroReciboFC,
                 numeroDocumentoCobroFC,
@@ -2829,7 +2828,9 @@
                 modalidadPagoFC,
                 especificarModalidadPagoFC,
                 adjuntarHojaPagoFC,
-                constancia: fileConstacia,  // Será una cadena vacía si no se cargó un archivo
+                constancia: fileConstacia, 
+                // Será una cadena vacía si no se cargó un archivo
+
                 // calidad
                 fechaInicioCalidadI,
                 direccionCalidadI,
@@ -2867,13 +2868,13 @@
                 calleJrAvfs,
                 numerofs,
                 adrecibos,
-                adjuntarVinculo:documentoAdjuntadoFSI,
+                adjuntarVinculo:documentoAdjuntadosFSI,
                 fechaReactivarServicio,
                 fechaPagoPendiente,
                 mpagos,
                 especificarMedioPago,
                 adrecibosPendiente,
-                vinculoAdjuntarSolicitud:documentoAdjuntadoFSII,
+                vinculoAdjuntarSolicitud:documentoAdjuntadosFSII,
                 fechaSIMCARD,
 
                 // Instalacion
@@ -2964,9 +2965,9 @@
                 informacionNecesariaReclamo,
                 descripcionProblemaSolicitudReclamo,
 
-                // quejas
+                //quejas
                 //selecion
-                selectQueja,
+                //selectQueja,
                 // quejas datos extra
                 empresaOperadoraQueja,
                 servicioObjetoQueja,
@@ -2998,36 +2999,36 @@
 
                 //Apelaciones
                 // selecion
-                selectApelacion,
+                // selectApelacion,
 
-                // datos extras
-                empresaOperadoraApelacion,
-                servicioMateriaApelacion,
-                numeroServicioApelacion,
-                codigoNumeroApelacion,
-                numeroCartaApelacion,
-                fechaEmisionCartaApelacion,
+                // // datos extras
+                // empresaOperadoraApelacion,
+                // servicioMateriaApelacion,
+                // numeroServicioApelacion,
+                // codigoNumeroApelacion,
+                // numeroCartaApelacion,
+                // fechaEmisionCartaApelacion,
 
-                // preguntas 
-                detallePruebaApelacionUno,
-                detallefsApelacionDos,
-                materiaEmpresaApelacionTres,
-                apelacionopcioncuatro,
-                numeroReciboApelacionSiCuatro,
-                fechaEmisionApelacionSiCuatro,
-                fechaVencimientoApelacionSiCuatro,
-                montoReclamadoApelacionSiCuatro,
-                detalleReclamoApelacionSiCuatro,
-                apelacionOpcioncinco,
-                numeroReciboApelacionSiCinco,
-                fechaEmisionApelacionSiCinco,
-                montoTotalApelacionSiCinco,
-                detalleReclamoApelacionSiCinco,
-                materiaEmpresaEmitirApelacionSeis,
+                // // preguntas 
+                // detallePruebaApelacionUno,
+                // detallefsApelacionDos,
+                // materiaEmpresaApelacionTres,
+                // apelacionopcioncuatro,
+                // numeroReciboApelacionSiCuatro,
+                // fechaEmisionApelacionSiCuatro,
+                // fechaVencimientoApelacionSiCuatro,
+                // montoReclamadoApelacionSiCuatro,
+                // detalleReclamoApelacionSiCuatro,
+                // apelacionOpcioncinco,
+                // numeroReciboApelacionSiCinco,
+                // fechaEmisionApelacionSiCinco,
+                // montoTotalApelacionSiCinco,
+                // detalleReclamoApelacionSiCinco,
+                // materiaEmpresaEmitirApelacionSeis,
 
-                // descargo del cliente
-                informacionNecesariaApelacion,
-                sustentoApelacion,
+                // // descargo del cliente
+                // informacionNecesariaApelacion,
+                // sustentoApelacion,
 
             };
 
@@ -3048,9 +3049,9 @@
                     messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
                 } else {
                     messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_id} </span>`;
-                    ocultarBotonesYRedirigir();    
-                    const btns=document.getElementById("btnEnviarFormulario");
-                    btns.style.display="none";
+                    //ocultarBotonesYRedirigir();    
+                    //const btns=document.getElementById("btnEnviarFormulario");
+                    //btns.style.display="none";
                 }
             } catch (error) {
                 const messageDiv = document.getElementById('message');
@@ -3060,9 +3061,6 @@
 
         // Función para ocultar botones y redirigir
         function ocultarBotonesYRedirigir() {
-
-
-
 
             // Limpiar todos los campos de tipo input y textarea
             const inputs = document.querySelectorAll('input[type="text"], select, textarea,input[type="date"],email');

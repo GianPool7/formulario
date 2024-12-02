@@ -1361,6 +1361,8 @@ function canalTraslado() {
     }
 }
 
+
+
 function adjuntarTraslado() {
     const asTraslado=document.getElementById("asT").value;
     const fileTraslado=document.getElementById("asTraslado");
@@ -2106,21 +2108,21 @@ botonMostrarDatos.addEventListener('click', function() {
 });
 
 function editarDatos() {
-    ticketLegal.style.display="none"
-    cajaTotal.style.display="block";
+    //ticketLegal.style.display="none"
+    //cajaTotal.style.display="block";
 }
 
-const btnClick=document.getElementById("click");
-btnClick.addEventListener('click', function() {
+// const btnClick=document.getElementById("click");
+// btnClick.addEventListener('click', function() {
 
-    const btnBack=document.getElementById("back");
-    const enviarClick=document.getElementById("click");
+//     const btnBack=document.getElementById("back");
+//     const enviarClick=document.getElementById("click");
 
-    btnBack.style.display="none";
-    enviarClick.style.display="none"
+//     btnBack.style.display="none";
+//     enviarClick.style.display="none"
 
-    // inicio
-    const btnInicio=document.getElementById("inicio");
-    btnInicio.style.display="block"
+//     // inicio
+//     const btnInicio=document.getElementById("inicio");
+//     btnInicio.style.display="block"
 
-})
+// })
