@@ -1,8 +1,25 @@
-// const opcionReclamo=document.getElementById("reclamo");
-// const opcionQueja=document.getElementById("queja");
-// const opcionApelacion=document.getElementById("apelacion");
 
+// prevenir el envio cuando doy enter
+const formularioEnviar = document.getElementById("claimForm");
+const cajasdeEntradas =document.querySelectorAll("input, textarea, select")
+// Función para evitar el envío al presionar 'Enter'
+function prevenirEnvio(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Previene que el formulario se envíe
+    }
+}
 
+// Añadir evento de keydown a todos los campos de entrada, textarea y select
+cajasdeEntradas.forEach(input => {
+    input.addEventListener("keydown", prevenirEnvio);
+});
+
+// Manejar el envío del formulario con el botón
+formularioEnviar.addEventListener("submit", function(event) {
+    event.preventDefault();  // Evita el envío predeterminado
+    console.log("Formulario enviado");
+    // Aquí puedes agregar la lógica para enviar el formulario manualmente (por ejemplo, con AJAX)
+});
 
 //pantalla de carga
 const loading=document.getElementById("validandoDatos");
@@ -109,6 +126,32 @@ opcionSeleccionadaApelacion.addEventListener("click",function () {
     contenedorAUR.style.display="flex";
 })
 
+const monto=document.getElementById("montoTarifa");
+monto.setAttribute("type", "number");
+
+const montoApelacion=document.getElementById("montoReclamadoApelacionSiCuatro");
+montoApelacion.setAttribute("type", "number");
+
+const montoApelacionDos=document.getElementById("montoTotalApelacionSiCinco");
+montoApelacionDos.setAttribute("type", "number");
+
+const montoFCone=document.getElementById("montoReclamadoFCone");
+montoFCone.setAttribute("type", "number");
+
+const montoInstalacion=document.getElementById("montoPendienteInstalacion");
+montoInstalacion.setAttribute("type", "number");
+
+const montoBaja=document.getElementById("montoReclamadoBaja");
+montoBaja.setAttribute("type", "number");
+
+const montoContratacion=document.getElementById("montoReclamadoContratacion");
+montoContratacion.setAttribute("type", "number");
+
+const montoMigracion=document.getElementById("montoReclamadoMigracionMigracion");
+montoMigracion.setAttribute("type", "number");
+
+const montoMigracionDos=document.getElementById("montoReclamadoMigracion");
+montoMigracionDos.setAttribute("type","number");
 
 
 
@@ -406,9 +449,16 @@ function volverUsuario() {
 
 }
 
+// cambiando tipo de numero de contacto
+const numeroContacto=document.getElementById("numeroContacto")
+// numeroContacto.setAttribute("type", "number");
+// numeroContacto.setAttribute('max', '9');
+
 // Datos personales
 const txtNum=document.getElementById("numDoc")
 txtNum.setAttribute('maxlength', '0');
+//txtNum.setAttribute("type", "number");
+//txtNum.setAttribute("type", "number");
 
 function tipoDocumento() {
     const option=document.getElementById("tipoDoc").value;
@@ -1029,7 +1079,7 @@ function incumpliento() {
 }
 
 function canalPromocion() {
-    const canalPromocion=document.getElementById("cbpromocion").value;
+    const canalPromocion=document.getElementById("cbpromocionfs").value;
     const txtPromocion=document.getElementById("txtcpromocion");
 
     switch (canalPromocion) {
@@ -1335,7 +1385,7 @@ function adjuntarBaja() {
 
 
     switch (opcionBaja) {
-        case "si":
+        case "no":
             adjuntoBaja.style.display="block";
             break;
     
@@ -1360,8 +1410,6 @@ function canalTraslado() {
             break;
     }
 }
-
-
 
 function adjuntarTraslado() {
     const asTraslado=document.getElementById("asT").value;
@@ -2050,7 +2098,7 @@ botonMostrarDatos.addEventListener('click', function() {
     cajaTotal.style.display="none";
 
     // Seleccionamos todos los inputs de tipo texto dentro del formulario
-    const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket  input[type="date"],#DatosTicketMostrarTicket  input[type="email"],#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
+    const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket input[type="date"],#DatosTicketMostrarTicket input[type="email"],#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
 
     // Creamos una variable para almacenar los resultados
     let datosRellenados = '';
@@ -2108,21 +2156,7 @@ botonMostrarDatos.addEventListener('click', function() {
 });
 
 function editarDatos() {
-    //ticketLegal.style.display="none"
-    //cajaTotal.style.display="block";
+    ticketLegal.style.display="none"
+    cajaTotal.style.display="block";
 }
 
-// const btnClick=document.getElementById("click");
-// btnClick.addEventListener('click', function() {
-
-//     const btnBack=document.getElementById("back");
-//     const enviarClick=document.getElementById("click");
-
-//     btnBack.style.display="none";
-//     enviarClick.style.display="none"
-
-//     // inicio
-//     const btnInicio=document.getElementById("inicio");
-//     btnInicio.style.display="block"
-
-// })

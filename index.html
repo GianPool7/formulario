@@ -3633,30 +3633,29 @@
             };
 
             // Enviar la solicitud POST a la API Flask
-            const response = await fetch('http://127.0.0.1:5000/api/reclamos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/reclamos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
 
-            if (!response.ok) {
-                throw new Error(`Error en la respuesta del servidor: ${response.status} - ${response.statusText}`);
-            }
+                const responseData = await response.json();
+                const messageDiv = document.getElementById('message');
 
-            const responseData = await response.json();
-            console.log('Datos de la respuesta:', responseData);  // Para ver la respuesta completa
-
-            const messageDiv = document.getElementById('message');
-
-            if (responseData.error) {
-                messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
-            } else {
-                messageDiv.innerHTML = `<span class="success">Número: ${responseData.ticket_id}</span>`;
-                ocultarBotonesYRedirigir();
-                const btns = document.getElementById("btnEnviarFormulario");
-                btns.style.display = "none";
+                if (responseData.error) {
+                    messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
+                } else {
+                    messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_id} </span>`;
+                    ocultarBotonesYRedirigir();    
+                    const btns=document.getElementById("btnEnviarFormulario");
+                    btns.style.display="none";
+                }
+            } catch (error) {
+                const messageDiv = document.getElementById('message');
+                messageDiv.innerHTML = `<span class="error">Hubo un problema al enviar la solicitud: ${error.message}</span>`;
             }
 
         });

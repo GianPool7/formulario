@@ -1,0 +1,379 @@
+
+nombre_del_padre_abonado = fields.Char(string='Nombre del Padre Abonado')
+    nombre_de_la_madre_abonado = fields.Char(string='Nombre de la Madre Abonado')
+    lugar_de_nacimiento_abonado = fields.Char(string='Lugar de Nacimiento Abonado')
+    fecha_de_nacimiento_abonado = fields.Date(string='Fecha de Nacimiento Abonado')
+    fecha_vencimiento_del_recibo_usuario = fields.Date(string='Fecha de Vencimiento del Recibo Usuario')
+    monto_de_tarifa_usuario = fields.Float(string='Monto de Tarifa Usuario')
+
+    #DATOS PERSONALES
+    direccion_de_facturacion_usuario = fields.Char(string='Dirección de Facturación Usuario')
+    tipo_de_usuario = fields.Char(string='Tipo de Usuario')
+    nombre_cliente = fields.Char(string='Nombre del Cliente' , required=True, readonly=True)
+    apellidos = fields.Char(string='Apellidos del Cliente', required=True, readonly=True)
+    relacion_familiar = fields.Char(string='Relación Familiar')
+    razon_social = fields.Char(string='Razón Social')
+    carta_de_poder = fields.Binary(string='Carta de Poder')
+    nro_contacto = fields.Char(string='Número de Contacto', required=True, readonly=True)
+    tipo_doc = fields.Char(string='Tipo de Documento', required=True, readonly=True)
+    nro_documento = fields.Char(string='Número de Documento', tracking=True, required=True, readonly=True)
+    distrito_cliente = fields.Char(string='Distrito del Cliente', required=True, readonly=True)
+    direccion_cliente = fields.Char(string='Dirección del Cliente', required=True, readonly=True)
+    correo_electronico = fields.Char(string='Correo Electrónico', required=True, readonly=True)
+    notificacion_por_correo_electronico = fields.Boolean(string='Notificación por Correo Electrónico', required=True, readonly=True)
+    
+    #DATOS DEL RECLAMO
+    reclamo_1 = fields.Char(string='Selección del Tipo de Reclamo')
+    trata_reclamo = fields.Text(string='Especificación del Problema Tratado')
+    empresa_operadora_dsr = fields.Char(string='Empresa Operadora del Servicio')
+    servicio_contratado_dsr = fields.Char(string='Servicio Contratado')
+    nmero_cdigo_servicio_contrato_dsr = fields.Char(string='Número o Código del Servicio Contratado')
+    servicio_materia_de_reclamo = fields.Char(string='Número de Servicio Relacionado con el Reclamo')
+    
+    #DATOS DE FACTURACION
+    numero_de_recibo = fields.Char(string='Número de Recibo de Facturación')
+    documento_cobro = fields.Char(string='Número de Documento de Cobro')
+    fecha_de_emisin = fields.Date(string='Fecha de Emisión del Recibo')
+    fecha_de_vencimiento_1 = fields.Date(string='Fecha de Vencimiento del Recibo')
+    monto_reclamado = fields.Float(string='Monto Reclamado en la Factura')
+    concepto_facturado = fields.Char(string='Concepto de Facturación')
+    tarifa_debio_aplicarse = fields.Float(string='Tarifa que Debió Aplicarse')
+    fecha_efectu_el_pago = fields.Date(string='Fecha Estimada de Pago')
+    modalidad_de_pago = fields.Char(string='Modalidad de Pago')
+    especificar_modalidad_pago = fields.Char(string='Especificación de Modalidad de Pago')
+    adjunta_doc_cobro = fields.Binary(string='Documento de Cobro Adjunto')
+
+    #DATOS DE CALIDAD
+    fecha_de_inicio_del_problema_1 = fields.Date(string='Fecha de Inicio del Problema en Calidad')
+    direccin_presenta_problema = fields.Char(string='Dirección donde se presenta el Problema')
+    departamento = fields.Char(string='Departamento donde Ocurre el Problema')
+    provincia = fields.Char(string='Provincia donde Ocurre el Problema')
+    distrito_calidad = fields.Char(string='Distrito donde se Presenta el Problema')
+    calle_jr_av = fields.Char(string='Calle o Avenida donde Ocurre el Problema')
+    codigo = fields.Char(string='Código del Reporte Previo de Calidad')
+
+    #DATOS DE INCUMPLIMIENTO
+    detalle_condicin_ = fields.Text(string='Detalle de la Condición de Incumplimiento')
+    fecha_de_incumplimiento_1 = fields.Date(string='Fecha del Incumplimiento')
+    detalle_oferta_promocin_brindada = fields.Text(string='Detalle de la Oferta Promocional Brindada')
+    oportunidad_en_el_cual_se_brindo_la_oferta_o_promocin = fields.Text(string='Oportunidad en la que se Brindó la Oferta o Promoción')
+    fecha_aproximada_1 = fields.Date(string='Fecha Aproximada de la Oferta o Promoción')
+    canal_oferta_promocion = fields.Char(string='Canal por el cual se Brindó la Oferta')
+    especificar_canal = fields.Char(string='Especificación del Canal de Oferta')
+    cdigo_de_oferta_o_promocin = fields.Char(string='Código de la Oferta o Promoción')
+    fecha_se_presento_incumplimiento = fields.Date(string='Fecha en que se Presentó el Incumplimiento')
+    detalles_atributos_descontando = fields.Text(string='Detalles de Atributos Descontando')
+    recibo_correspondiente_al_periodo = fields.Char(string='Recibo Correspondiente al Periodo')
+    fecha_de_emisin_del_recibo = fields.Date(string='Fecha de Emisión del Recibo')
+    numero_de_recibo_tres = fields.Char(string='Número de Recibo (Tercer Periodo)')
+    fecha_de_vencimiento_6 = fields.Date(string='Fecha de Vencimiento del Tercer Recibo')
+    oportunidad_brindo_informacin_inexacta = fields.Text(string='Oportunidad de Información Inexacta Proporcionada')
+    fecha_aproximada_2 = fields.Date(string='Fecha Aproximada de la Información Omitida')
+
+    #DATOS DE FALTA DE SERVICIO
+    fecha_de_inicio_del_problema = fields.Date(string='Fecha de Inicio del Problema de Falta de Servicio')
+    direccion_1 = fields.Char(string='Dirección Relacionada con el Problema')
+    direccin_problema = fields.Char(string='Dirección del Problema de Servicio')
+    departamento_fs = fields.Char(string='Departamento donde Ocurre el Problema de Servicio')
+    provincia_fs = fields.Char(string='Provincia donde Ocurre el Problema de Servicio')
+    distrito_fs = fields.Char(string='Distrito donde Ocurre el Problema de Servicio')
+    calle_jr_av_fs = fields.Char(string='Calle o Avenida donde Ocurre el Problema de Servicio')
+    numero_de_servicio = fields.Char(string='Número de Servicio Relacionado con el Problema')
+    constancias_de_lugar_de_trabajo = fields.Boolean(string='Constancias de Lugar de Trabajo Relacionadas')
+    documento = fields.Binary(string='Documento Adjunto Relacionado con el Reclamo')
+    fecha_que_corresponda_reactivar_el_servicio = fields.Date(string='Fecha de Reactivación del Servicio')
+    fecha_de_pago_pendiente = fields.Date(string='Fecha de Pago Pendiente')
+    lugar_medio_de_pago = fields.Char(string='Medio de Pago donde se Efectuó la Transacción')
+    especificar_medio_pago = fields.Char(string='Especificación del Medio de Pago')
+    adjunta_recibo_pendiente = fields.Boolean(string='Recibo Pendiente Adjunto')
+    documento_1 = fields.Binary(string='Documento Adjunto Relacionado con Solicitud')
+    fecha_que_se_ejecuto_el_cambio_sim_card = fields.Date(string='Fecha de Ejecución del Cambio de SIM Card')
+
+    #DATOS DE INSTALACION
+    fecha_de_contratacin_de_servicio = fields.Date(string='Fecha de Contratación del Servicio')
+    fecha_de_la_solicitud_de_traslado = fields.Date(string='Fecha de Solicitud de Traslado')
+    canal_solicitud_traslado = fields.Char(string='Canal de Solicitud de Traslado')
+    especificar_canal_2 = fields.Char(string='Especificar Canal de Traslado')
+    codigo_de_pedido = fields.Char(string='Código de Pedido de Instalación')
+    se_adjunta_solicitud = fields.Boolean(string='Indica si se Adjunta Solicitud')
+    vinculo_de_documento_adjuntado = fields.Binary(string='Documento Adjunto Relacionado')
+    fecha_de_la_contratacin_o_solicitud_de_trabajo = fields.Date(string='Fecha de Solicitud o Contratación de Trabajo')
+    canal_de_presentacin = fields.Char(string='Canal de Presentación')
+    especificar_canal_3 = fields.Char(string='Especificar Canal de Presentación')
+    cdigo_de_pedido_2 = fields.Char(string='Código de Pedido (Segunda Instancia)')
+    adjuntar_solicitud_1 = fields.Boolean(string='Adjuntar Solicitud de Instalación')
+    vinculo_del_documento_adjuntando = fields.Binary(string='Vinculo al Documento Adjunto')
+    monto_pendiente = fields.Float(string='Monto Pendiente por Instalación')
+
+    #DATOS DE BAJA
+    fecha_de_la_solicitud_de_baja = fields.Date(string='Fecha de Solicitud de Baja')
+    canal_presentacin_baja = fields.Char(string='Canal de Presentación para Baja')
+    especificar_canal_baja = fields.Char(string='Especificar Canal de Baja')
+    cdigo_de_pedido = fields.Char(string='Código de Pedido de Baja')
+    adjuntar_solicitud = fields.Boolean(string='Solicitud Adjunta para Baja')
+    vinculo_del_documento_2 = fields.Binary(string='Vinculo al Documento de Baja')
+    fecha_de_solicitud_de_suspensin_1 = fields.Date(string='Fecha de Solicitud de Suspensión')
+    canal_traslado = fields.Char(string='Canal de Traslado para Baja')
+    especificar_canal_1 = fields.Char(string='Especificar Canal de Traslado')
+    cdigo_de_pedido_1 = fields.Char(string='Código de Pedido de Baja (Segunda Instancia)')
+    adjuntar_solicitud_suspensin = fields.Boolean(string='Solicitud de Suspensión Adjunta')
+    vinculo_del_documento_1 = fields.Binary(string='Vinculo al Documento de Solicitud de Suspensión')
+    datos_de_los_recibos_cuestionados = fields.Char(string='Datos de Recibos Cuestionados en la Baja')
+    numero_de_recibo_1 = fields.Integer(string='Número de Recibo para Baja')
+    fecha_de_emisin_3 = fields.Date(string='Fecha de Emisión del Recibo de Baja')
+    fecha_de_vencimiento_3 = fields.Date(string='Fecha de Vencimiento del Recibo de Baja')
+    monto_reclamado_3 = fields.Float(string='Monto Reclamado para Baja')
+
+    #DATOS DE CONTRATACION
+    detalle_adicional_no_solicitada = fields.Char(string='Detalle de Servicio Adicional No Solicitado')
+    detalle_paquete_desconoce = fields.Char(string='Detalle de Paquete Desconocido')
+    datos_recibos_cuestionados = fields.Char(string='Datos de Recibos Cuestionados en Contratación')
+    numero_de_recibo_no_solicitada = fields.Integer(string='Número de Recibo de Contratación No Solicitada')
+    fecha_de_emisin_5 = fields.Date(string='Fecha de Emisión del Recibo de Contratación')
+    fecha_de_vencimiento_5 = fields.Date(string='Fecha de Vencimiento del Recibo de Contratación')
+    monto_reclamado_no_solicitud = fields.Float(string='Monto Reclamado en Contratación No Solicitada')
+
+    #DATOS DE MIGRACION
+    fecha_de_solicitud_de_migracin_1 = fields.Date(string='Fecha de Solicitud de Migración')
+    canal_solicitud_de_migracin = fields.Char(string='Canal de Solicitud de Migración')
+    especificar_canal_de_solicitud = fields.Char(string='Especificar Canal de Solicitud de Migración')
+    codigo_pedido_migracion = fields.Char(string='Código de Pedido de Migración')
+    plan_tarifario_solicita_migrar = fields.Char(string='Plan Tarifario Solicitado para Migración')
+    motivo_de_la_negativa = fields.Char(string='Motivo de la Negativa de Migración')
+    verificacion = fields.Boolean(string='Verificación de Solicitud de Migración')
+    documento_de_migracin = fields.Binary(string='Documento de Solicitud de Migración')
+    numero_recibo = fields.Integer(string='Número de Recibo de Migración')
+    fecha_de_emisin_2 = fields.Date(string='Fecha de Emisión del Recibo de Migración')
+    fecha_de_movimiento = fields.Date(string='Fecha del Movimiento de Migración')
+    monto_reclamado_1 = fields.Float(string='Monto Reclamado de Migración')
+    numero_de_recibo_migracion = fields.Integer(string='Número de Recibo de Migración')
+    fecha_emisin = fields.Date(string='Fecha de Emisión del Recibo de Migración')
+    fecha_de_vencimiento_2 = fields.Date(string='Fecha de Vencimiento del Recibo de Migración')
+    numero_recibo_migracin = fields.Integer(string='Número de Recibo de Migración')
+    fecha_de_emisin_migracin_1 = fields.Date(string='Fecha de Emisión del Recibo de Migración')
+    fecha_de_vencimiento_migracin_1 = fields.Date(string='Fecha de Vencimiento del Recibo de Migración')
+    monto_reclamado_migracion = fields.Float(string='Monto Reclamado de Migración')
+
+    #DATOS DE OTROS
+    fecha_de_la_solicitud_de_contratacion = fields.Date(string='Fecha de Solicitud de Contratación')
+    canal_solicitud_de_contratacion = fields.Char(string='Canal de Solicitud de Contratación')
+    servicio_que_desea_contratar = fields.Char(string='Servicio que Desea Contratar')
+    plan_tarifario_que_desea_contratar = fields.Char(string='Plan Tarifario que Desea Contratar')
+    numero_de_recibo_x = fields.Char(string='Número de Recibo de Contratación')
+    fecha_de_emisin_4 = fields.Date(string='Fecha de Emisión del Recibo de Contratación')
+    fecha_de_vencimiento_4 = fields.Date(string='Fecha de Vencimiento del Recibo de Contratación')
+    mes_recibo_pendiente_entrega_x = fields.Char(string='Mes del Recibo Pendiente de Entrega')
+    direccin_para_notificacin_x = fields.Char(string='Dirección para Notificación')
+    fecha_solicitud_facturacin_x = fields.Date(string='Fecha de Solicitud de Facturación')
+    canal_presentacin_solicitud_facturacion = fields.Char(string='Canal de Presentación para Solicitud de Facturación')
+    especificar_canal_x = fields.Char(string='Especificar Canal de Solicitud de Facturación')
+    cdigo_de_pedido_x = fields.Char(string='Código de Pedido de Facturación')
+    se_adjunta_la_solicitud_x = fields.Boolean(string='Adjuntar Solicitud de Facturación')
+    documento_adjuntado_x = fields.Binary(string='Documento Adjunto para Facturación')
+    detalle_pedido_x = fields.Char(string='Detalle del Pedido de Facturación')
+
+    #DATOS DE DESCARGO
+    informacin_necesaria_reclamo = fields.Char(string='Información Necesaria para el Reclamo')
+    descripcin_problema_solicitud_concreta_reclamo = fields.Text(string='Descripción del Problema y Solicitud de Reclamo')
+
+
+    queja
+
+     # DATOS DE VERIFICACION
+    nombre_del_padre_abonado_qja = fields.Char(string='Nombre del Padre Abonado')
+    nombre_de_la_madre_abonado_qja = fields.Char(string='Nombre de la Madre Abonado')
+    lugar_de_nacimiento_abonado_qja = fields.Char(string='Lugar de Nacimiento Abonado')
+    fecha_de_nacimiento_abonado_qja = fields.Date(string='Fecha de Nacimiento Abonado')
+    fecha_vencimiento_del_recibo_usuario_qja = fields.Date(string='Fecha de Vencimiento del Recibo Usuario')
+    monto_de_tarifa_usuario_qja = fields.Float(string='Monto de Tarifa Usuario')
+
+    # DATOS PERSONALES
+    direccion_de_facturacion_usuario_qja = fields.Char(string='Dirección de Facturación Usuario')
+    tipo_de_usuario_qja = fields.Char(string='Tipo de Usuario')
+    nombre_cliente_qja = fields.Char(string='Nombre del Cliente', required=True, readonly=True)
+    apellidos_qja = fields.Char(string='Apellidos del Cliente', required=True, readonly=True)
+    relacion_familiar_qja = fields.Char(string='Relación Familiar')
+    razon_social_qja = fields.Char(string='Razón Social')
+    carta_de_poder_qja = fields.Binary(string='Carta de Poder')
+    nro_contacto_qja = fields.Char(string='Número de Contacto', required=True, readonly=True)
+    tipo_doc_qja = fields.Char(string='Tipo de Documento', required=True, readonly=True)
+    nro_documento_qja = fields.Char(string='Número de Documento', tracking=True, required=True, readonly=True)
+    distrito_cliente_qja = fields.Char(string='Distrito del Cliente', required=True, readonly=True)
+    direccion_cliente_qja = fields.Char(string='Dirección del Cliente', required=True, readonly=True)
+    correo_electronico_qja = fields.Char(string='Correo Electrónico', required=True, readonly=True)
+    notificacion_por_correo_electronico_qja = fields.Boolean(string='Notificación por Correo Electrónico', required=True, readonly=True)
+
+
+    # DATOS DE LA QUEJA
+    queja = fields.Text(string='Tipo de queja')
+    empresa_operadora_ds1 = fields.Char(string='Empresa operadora de la queja')
+    servicio_objeto_queja_dsq = fields.Char(string='Servicio relacionado con la queja')
+    nmero_servicio_reclamado_dsq = fields.Char(string='Número del servicio reclamado en la queja')
+    cdigo_nmero_reclamo_dsq = fields.Char(string='Código o número de reclamo asociado a la queja')
+    fecha_presentacin_reclamo_queja_uno = fields.Date(string='Fecha de presentación del reclamo de la queja')
+
+    # datos
+
+    negativa_relacionada_queja_dos = fields.Text(string='Negativa relacionada con la queja')
+    char_field_2bo_1ibhijmmb = fields.Date(string='Fecha de la negativa asociada a la queja')
+    canal_presentacin_reclamo_queja_dos = fields.Char(string='Canal de presentación de la queja')
+    canal_especificado_queja_dos = fields.Char(string='Canal especificado para la queja')
+    vinculo_del_documento = fields.Binary(string='Vinculo al documento probatorio de la negativa')
+    fecha_en_la_cual_se_habra_suspendido_el_servicio = fields.Date(string='Fecha en la que se suspendió el servicio de la queja')
+    medio_de_cobranza_queja_cuatro = fields.Char(string='Medio de cobranza relacionado con la queja')
+    boolean-se_adjunta_documento_queja_cuatro = fields.Binary(string='Documento adjunto relacionado con el cobro de la queja')
+    documento_queja = fields.Binary(string='Documento que respalda la queja')
+    lugar_donde_permiti_pago_cinco = fields.Char(string='Lugar donde se permitió el pago relacionado con la queja')
+    especificar_quejas = fields.Text(string='Especificar detalles adicionales sobre la queja')
+    booleans-adjunta_prueba_cinco = fields.Binary(string='Prueba adjunta relacionada con la queja')
+    medios_probatorios_1 = fields.Binary(string='Medios probatorios adicionales de la queja')
+    
+    boolean-adjunta_medios_probatorios_x_seis = fields.Binary(string='Documentos adicionales relacionados con la queja')
+    // medio_probatorios_queja_ultimo = fields.Binary(string='Último medio probatorio relacionado con la queja')
+    medios_probatorios = fields.Binary(string='Medios probatorios relacionados con la queja')
+
+    informacion_necesaria_queja = fields.Text(string='Información necesaria para el reclamo de la queja')
+    descripcion_problema_queja = fields.Text(string='Descripción del problema relacionado con la queja')
+
+    
+    apelacion
+
+    apelacion
+# DATOS DE VERIFICACION
+    nombre_del_padre_abonado_ape = fields.Char(string='Nombre del Padre Abonado')
+    nombre_de_la_madre_abonado_ape = fields.Char(string='Nombre de la Madre Abonado')
+    lugar_de_nacimiento_abonado_ape = fields.Char(string='Lugar de Nacimiento Abonado')
+    fecha_de_nacimiento_abonado_ape = fields.Date(string='Fecha de Nacimiento Abonado')
+    fecha_vencimiento_del_recibo_usuario_ape = fields.Date(string='Fecha de Vencimiento del Recibo Usuario')
+    monto_de_tarifa_usuario_ape = fields.Float(string='Monto de Tarifa Usuario')
+
+    # DATOS PERSONALES
+    direccion_de_facturacion_usuario_ape = fields.Char(string='Dirección de Facturación Usuario')
+    tipo_de_usuario_ape = fields.Char(string='Tipo de Usuario')
+    nombre_cliente_ape = fields.Char(string='Nombre del Cliente', required=True, readonly=True)
+    apellidos_ape = fields.Char(string='Apellidos del Cliente', required=True, readonly=True)
+    relacion_familiar_ape = fields.Char(string='Relación Familiar')
+    razon_social_ape = fields.Char(string='Razón Social')
+    carta_de_poder_ape = fields.Binary(string='Carta de Poder')
+    nro_contacto_ape = fields.Char(string='Número de Contacto', required=True, readonly=True)
+    tipo_doc_ape = fields.Char(string='Tipo de Documento', required=True, readonly=True)
+    nro_documento_ape = fields.Char(string='Número de Documento', tracking=True, required=True, readonly=True)
+    distrito_cliente_ape = fields.Char(string='Distrito del Cliente', required=True, readonly=True)
+    direccion_cliente_ape = fields.Char(string='Dirección del Cliente', required=True, readonly=True)
+    correo_electronico_ape = fields.Char(string='Correo Electrónico', required=True, readonly=True)
+    notificacion_por_correo_electronico_ape = fields.Boolean(string='Notificación por Correo Electrónico', required=True, readonly=True)
+
+
+
+    apelacin = fields.Char('Tipo de apelación')
+    empresa_operadora_ds = fields.Char('Empresa operadora asociada a la apelación')
+    servicio_materia_de_apelacin_ds = fields.Char('Servicio relacionado con la apelación')
+    nmero_servicio_reclamado_ds = fields.Char('Número de servicio reclamado en la apelación')
+    cdigo_nmero_reclamo_ds = fields.Char('Código o número de reclamo asociado a la apelación')
+    nmero_carta_resuelve_reclamo_ds = fields.Char('Número de la carta que resuelve el reclamo')
+    fecha_emisin_carta_ds = fields.Date('Fecha de emisión de la carta que resuelve el reclamo')
+
+    detalle_pruebas_apelacion_uno = fields.Text('Detalles de las pruebas presentadas en la apelación')
+    detalle_falta_sustentacion_apelacion_dos = fields.Text('Detalles de falta de sustentación en la apelación')
+    materia_empresa_comunicarse = fields.Char('Materia de la empresa para comunicarse respecto a la apelación')
+    respuesta_empresa_apelacion_cuatro = fields.Text('Respuesta de la empresa a la apelación')
+    numero_recibo_apelacion_cinco = fields.Char('Número de recibo relacionado con la apelación')
+    fecha_de_emision = fields.Date('Fecha de emisión del recibo relacionado con la apelación')
+    fecha_de_vencimiento = fields.Date('Fecha de vencimiento del recibo relacionado con la apelación')
+    monto_reclamado_apelacion_cinco = fields.Float('Monto reclamado en la apelación')
+    pronunciamiento_empresa_ape_cuatro = fields.Text('Pronunciamiento de la empresa sobre la apelación')
+    falto_acoger_ape_cinco = fields.Char('Falta de acogimiento de la apelación')
+    nmero_recibo_apleacion_cinco = fields.Char('Número de recibo de la apelación')
+    fecha_de_emisin_1 = fields.Date('Fecha de emisión del recibo de apelación')
+    monto_total_corresponde_cinco = fields.Float('Monto total correspondiente a la apelación')
+    detalle_extremo_apelacion_cinco = fields.Text('Detalles extremos relacionados con la apelación')
+    materia_cual_empresa_ape_seis = fields.Char('Materia de la empresa en el caso de la apelación')
+
+    #DESCARGO DEL CLIENTE
+    informacin_necesaria_apelacion = fields.Text('Información necesaria para el reclamo de apelación')
+    sustento_de_apelacin = fields.Text('Sustento o justificación de la apelación')
+
+    descripcion_problema_queja = fields.Text(string='Descripción del problema relacionado con la queja')
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reclamo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="claimForm" class="contendioFormulario">
+        <input type="file" name="archivo" id="archivo">
+        <label for="">Queja</label>
+        <input type="text" id="queja">
+        <button type="submit">Enviar Reclamo</button>
+    </form>
+
+    <div id="message"></div> <!-- Div para mostrar mensajes de éxito o error -->
+
+    <script>
+        // Función para convertir archivo a base64
+        function convertFileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = function () {
+                    resolve(reader.result.split(',')[1]);  // Devuelve solo la parte base64
+                };
+                reader.onerror = function (error) {
+                    reject(error);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        document.getElementById("claimForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const queja = document.getElementById('queja').value.trim();
+            const fileInput = document.getElementById('archivo');
+            const file = fileInput.files[0];
+
+            if (file) {
+                try {
+                    const fileBase64 = await convertFileToBase64(file);
+
+                    const data = {
+                        queja,
+                        archivo: fileBase64,
+                    };
+
+                    fetch('http://127.0.0.1:5000/api/reclamos', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        const messageDiv = document.getElementById('message');
+                        if (data.error) {
+                            messageDiv.innerHTML = `<span class="error">${data.error}</span>`;
+                        } else {
+                            messageDiv.innerHTML = `<span class="success">Reclamo ${data.ticket_id} creado exitosamente</span>`;
+                        }
+                    })
+                    .catch(error => {
+                        const messageDiv = document.getElementById('message');
+                        messageDiv.innerHTML = `<span class="error">Hubo un problema al enviar la solicitud: ${error.message}</span>`;
+                    });
+                } catch (error) {
+                    const messageDiv = document.getElementById('message');
+                    messageDiv.innerHTML = `<span class="error">Error al convertir el archivo: ${error.message}</span>`;
+                }
+            } else {
+                const messageDiv = document.getElementById('message');
+                messageDiv.innerHTML = `<span class="error">Debe seleccionar un archivo</span>`;
+            }
+        });
+    </script>
+</body>
+</html>
