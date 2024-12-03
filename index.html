@@ -501,13 +501,6 @@
             justify-content: center;
         }
 
-        /**/
-
-
-        /* ESTILO DE FECHA */
-
-
-
         /* FIN DE ESTILO DE FECHA*/
 
         /* text area*/
@@ -814,11 +807,11 @@
                 
                                 <div class="datos">
                                     <label for="name">Nombres</label>
-                                    <input type="text" id="name" name="name" placeholder="Nombre del reclamante">
+                                    <input type="text" id="name" name="name" placeholder="Nombre del reclamante" required>
                                 </div>
                                 <div class="datos">
                                     <label for="apellidos">Apellidos</label>
-                                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del reclamante">
+                                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos del reclamante" required>
                                 </div>
                                 <div class="datos" id="extra_usuario">
                                     <label for="relacion">Especifique su relación con el cliente</label>
@@ -836,7 +829,7 @@
                                 </div>
                                 <div class="datos">
                                     <label for="numeroContacto">Número de contacto</label>
-                                    <input type="text" name="numeroContacto" id="numeroContacto" placeholder="Número de contacto" max="9">
+                                    <input type="text" name="numeroContacto" id="numeroContacto" placeholder="Número de contacto" max="9" required>
                                 </div>
                                 <div class="datos">
                                     <label for="tipoDoc">Tipo de Documento</label>
@@ -851,7 +844,7 @@
                                 </div>
                                 <div class="datos">
                                     <label for="numDoc">Número de Documento</label>
-                                    <input type="text" class="" id="numDoc" placeholder="Número de identidad" max="9">
+                                    <input type="text" class="" id="numDoc" placeholder="Número de identidad" max="9" required>
                                 </div>
                                 <div class="datos">
                                     <label for="distritos">Distrito</label>
@@ -876,11 +869,11 @@
                                 </div>
                                 <div class="datos">
                                     <label for="direccion">Dirección</label>
-                                    <input type="text" class="" name="datosPersonales" id="direccion" placeholder="Dirección">
+                                    <input type="text" class="" name="datosPersonales" id="direccion" placeholder="Dirección" required>
                                 </div>
                                 <div class="datos">
                                     <label for="correo">Correo electrónico</label>
-                                    <input type="email" class="" name="datosPersonales" id="correo" placeholder="ejemplo@gmail.com">
+                                    <input type="email" class="" name="datosPersonales" id="correo" placeholder="ejemplo@gmail.com" required>
                                 </div>
                                 
                             </div>
@@ -1318,7 +1311,9 @@
                         
                                 <div class="datos">
                                     <label for="servicioObjetoQueja" >Servicio objeto de la queja </label>
-                                    <input type="text" id="servicioObjetoQueja">
+                                    <select name="" id="servicioObjetoQueja">
+                                        <option value="Internet Fijo">Internet Fijo</option>
+                                    </select>
                                 </div>
                         
                                 <div class="datos">
@@ -2799,10 +2794,15 @@
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Incluir el archivo de idioma para español -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    
     <script>
         // Iniciar Flatpickr para todos los campos de fecha
         flatpickr(".fecha", {
             dateFormat: "Y-m-d",  // Cambiar el formato de fecha
+            locale: "es"  
         });
 
         // el manejo de fechas
