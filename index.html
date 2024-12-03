@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <!-- Incluir el CSS de Flatpickr -->
+    <title>Formulario de Reclamo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
-<body>
 
+<body>
     <style>
         *{
             padding: 0;
@@ -3381,188 +3379,188 @@
             // Crear el objeto de datos a enviar
             const data = {
 
-                //
-                tipoUsuarioSeleccionado,
-                tipoticket,
-                // diagnostico,
-                nombrePadre,
-                nombreMadre,
-                lugarNacimiento,
-                fechaNacimiento,
-                fechaVencimiento,
-                montoTarifa,
-                direccionFacturacion,
-                cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
-                nombre: nombres,
-                apellidos,
-                relacion,
-                razonSocial,
-                numeroContacto,
-                tipoDoc,
-                numDoc,
-                distritos,
-                direccion,
-                correo,
-                autoriza:autoriza,
+                // //
+                // tipoUsuarioSeleccionado,
+                // tipoticket,
+                // // diagnostico,
+                // nombrePadre,
+                // nombreMadre,
+                // lugarNacimiento,
+                // fechaNacimiento,
+                // fechaVencimiento,
+                // montoTarifa,
+                // direccionFacturacion,
+                // cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
+                // nombre: nombres,
+                // apellidos,
+                // relacion,
+                // razonSocial,
+                // numeroContacto,
+                // tipoDoc,
+                // numDoc,
+                // distritos,
+                // direccion,
+                // correo,
+                // autoriza:autoriza,
 
-                // // seleccionable
-                selectReclamos,
-                problemaEspecificoValor,
+                // // // seleccionable
+                // selectReclamos,
+                // problemaEspecificoValor,
                 
-                // datos del servicio
-                empresaOperadora,
-                servicioContratado,
-                servicioMateriaReclamo,
-                numeroServicioContratado,
-                // // fc
-                correoFC,
-                numeroReciboFC,
-                numeroDocumentoCobroFC,
-                fechaEmisionFC,
-                fechaVencimientoFC,
-                montoReclamadoFC,
-                conceptoFacturadoFC,
-                tarifaUsuarioFC,
-                fechaEstimadaPagoFC,
-                modalidadPagoFC,
-                especificarModalidadPagoFC,
-                adjuntarHojaPagoFC,
-                constancia: fileConstacia, 
-                // Será una cadena vacía si no se cargó un archivo
+                // // datos del servicio
+                // empresaOperadora,
+                // servicioContratado,
+                // servicioMateriaReclamo,
+                // numeroServicioContratado,
+                // // // fc
+                // correoFC,
+                // numeroReciboFC,
+                // numeroDocumentoCobroFC,
+                // fechaEmisionFC,
+                // fechaVencimientoFC,
+                // montoReclamadoFC,
+                // conceptoFacturadoFC,
+                // tarifaUsuarioFC,
+                // fechaEstimadaPagoFC,
+                // modalidadPagoFC,
+                // especificarModalidadPagoFC,
+                // adjuntarHojaPagoFC,
+                // constancia: fileConstacia, 
+                // // Será una cadena vacía si no se cargó un archivo
 
-                // calidad
-                fechaInicioCalidadI,
-                direccionCalidadI,
-                departamentoCalidadI,
-                provinciaCalidadI,
-                distritoCalidad,
-                calleJrAvCalidad,
-                codigoReportePrevioCalidad,
+                // // calidad
+                // fechaInicioCalidadI,
+                // direccionCalidadI,
+                // departamentoCalidadI,
+                // provinciaCalidadI,
+                // distritoCalidad,
+                // calleJrAvCalidad,
+                // codigoReportePrevioCalidad,
 
-                // incumplimiento 
-                detalleCondicionIncumplimiento,
-                fechaIncumplimientos,
-                detalleOfertaIncumplimiento,
-                oportunidadBrindoOfertaIncumplimiento,
-                fechAproximadaIncumplimiento,
-                cbpromocionfs,
-                especificarIncumplimiento,
-                codigOtorgamientoIncumplimiento,
-                fechaCualPincumplimiento,
-                detalleAtributosIncumplimiento,
-                reciboCorrespondienteIncumplimiento,
-                fechaEmisionIncumplimineto,
-                numeroRecivoIncumplimiento,
-                fechavencimientoIncumplimineto,
-                oportunidadBrindoInfoOmitida,
-                fechaAproxInfoOmitida,
+                // // incumplimiento 
+                // detalleCondicionIncumplimiento,
+                // fechaIncumplimientos,
+                // detalleOfertaIncumplimiento,
+                // oportunidadBrindoOfertaIncumplimiento,
+                // fechAproximadaIncumplimiento,
+                // cbpromocionfs,
+                // especificarIncumplimiento,
+                // codigOtorgamientoIncumplimiento,
+                // fechaCualPincumplimiento,
+                // detalleAtributosIncumplimiento,
+                // reciboCorrespondienteIncumplimiento,
+                // fechaEmisionIncumplimineto,
+                // numeroRecivoIncumplimiento,
+                // fechavencimientoIncumplimineto,
+                // oportunidadBrindoInfoOmitida,
+                // fechaAproxInfoOmitida,
 
-                // falta de servicio - borre algo arriba 3 datos 
-                fechaInicioProblemafs,
-                direccionProblemafs,
-                direccionServicio,
-                departamentofs,
-                provinciafs,
-                distritofs,
-                calleJrAvfs,
-                numerofs,
-                adrecibos,
-                adjuntarVinculo:documentoAdjuntadosFSI,
-                fechaReactivarServicio,
-                fechaPagoPendiente,
-                mpagos,
-                especificarMedioPago,
-                adrecibosPendiente,
-                vinculoAdjuntarSolicitud:documentoAdjuntadosFSII,
-                fechaSIMCARD,
+                // // falta de servicio - borre algo arriba 3 datos 
+                // fechaInicioProblemafs,
+                // direccionProblemafs,
+                // direccionServicio,
+                // departamentofs,
+                // provinciafs,
+                // distritofs,
+                // calleJrAvfs,
+                // numerofs,
+                // adrecibos,
+                // adjuntarVinculo:documentoAdjuntadosFSI,
+                // fechaReactivarServicio,
+                // fechaPagoPendiente,
+                // mpagos,
+                // especificarMedioPago,
+                // adrecibosPendiente,
+                // vinculoAdjuntarSolicitud:documentoAdjuntadosFSII,
+                // fechaSIMCARD,
 
-                // Instalacion
-                fechaContratacionServicioInstalacion,
-                fechaSolicitudTrasladoInstalacion,
-                strasladoe,
-                especificarCanalSinstalacion,
-                codigoPedidoII,
-                adsOpcionTraslado,
-                vinculoSolicitudReclamo:documentoSRI,
-                fechaContratacionSInstalacion,
-                ctopcionCinco,
-                especificarInstalacion,
-                codigoPedidoInstalacion,
-                opcionCuatroTraslado,
-                adjuntarSolicitudReclamoCuatro:documentoSRII,
-                montoPendienteInstalacion,
+                // // Instalacion
+                // fechaContratacionServicioInstalacion,
+                // fechaSolicitudTrasladoInstalacion,
+                // strasladoe,
+                // especificarCanalSinstalacion,
+                // codigoPedidoII,
+                // adsOpcionTraslado,
+                // vinculoSolicitudReclamo:documentoSRI,
+                // fechaContratacionSInstalacion,
+                // ctopcionCinco,
+                // especificarInstalacion,
+                // codigoPedidoInstalacion,
+                // opcionCuatroTraslado,
+                // adjuntarSolicitudReclamoCuatro:documentoSRII,
+                // montoPendienteInstalacion,
                             
-                //baja
-                fechaSolicitudBaja,
-                cbaja,
-                especificarCanalBaja,
-                codigoPedidoBaja,
-                asb,
-                solicitudBajaReclamo:documentoBajaI,
-                fechaSolicitudSuspensionBaja,
-                ctraslado,
-                especificarCanalTraslado,
-                cPedidoBaja,
-                asT,
-                adjuntarVinculoSolicitud:documentoBajaII,
-                datosRecibosCuestionadoBaja,
-                numeroReciboBaja,
-                fechaEmisionBaja,
-                fechaVencimientoBaja,
-                montoReclamadoBaja,
+                // //baja
+                // fechaSolicitudBaja,
+                // cbaja,
+                // especificarCanalBaja,
+                // codigoPedidoBaja,
+                // asb,
+                // solicitudBajaReclamo:documentoBajaI,
+                // fechaSolicitudSuspensionBaja,
+                // ctraslado,
+                // especificarCanalTraslado,
+                // cPedidoBaja,
+                // asT,
+                // adjuntarVinculoSolicitud:documentoBajaII,
+                // datosRecibosCuestionadoBaja,
+                // numeroReciboBaja,
+                // fechaEmisionBaja,
+                // fechaVencimientoBaja,
+                // montoReclamadoBaja,
 
-                // contratacion
-                detalleServicioAdicional,
-                detallePaquete,
-                datosRecibomrContatacion,
-                numeroReciboContratacion,
-                fechaEmisionContratacion,
-                fechaVencimientoContratacion,
-                montoReclamadoContratacion,
+                // // contratacion
+                // detalleServicioAdicional,
+                // detallePaquete,
+                // datosRecibomrContatacion,
+                // numeroReciboContratacion,
+                // fechaEmisionContratacion,
+                // fechaVencimientoContratacion,
+                // montoReclamadoContratacion,
 
-                // migracion
-                fechaSolicitudMigracionX,
-                canalMigracion,
-                especificarCanalMigracion,
-                codigoPedidoMigracion,
-                planTarifarioMigracion,
-                motivoNegativaMigracion,
-                solicitudAdjunta,
-                documentoSolicitudMigracionOne:documentoMigracionI,
-                numeroReciboMigracionII,
-                fechaEmisionMigracionIII,
-                fechaMovimientoMigracion,
-                montoReclamadoMigracionMigracion,
-                numeroReciboII,
-                fechaEmisionII,
-                fechaVencimientoMigracionII,
-                numeroReciboMigracion,
-                fechaEmisionMigracion,
-                fechaVencimientoMigracion,
-                montoReclamadoMigracion,
+                // // migracion
+                // fechaSolicitudMigracionX,
+                // canalMigracion,
+                // especificarCanalMigracion,
+                // codigoPedidoMigracion,
+                // planTarifarioMigracion,
+                // motivoNegativaMigracion,
+                // solicitudAdjunta,
+                // documentoSolicitudMigracionOne:documentoMigracionI,
+                // numeroReciboMigracionII,
+                // fechaEmisionMigracionIII,
+                // fechaMovimientoMigracion,
+                // montoReclamadoMigracionMigracion,
+                // numeroReciboII,
+                // fechaEmisionII,
+                // fechaVencimientoMigracionII,
+                // numeroReciboMigracion,
+                // fechaEmisionMigracion,
+                // fechaVencimientoMigracion,
+                // montoReclamadoMigracion,
 
-                // otros
-                fechaSolicitudX,
-                ccontratacion,
-                especificarx,
-                servicioContratarX,
-                planTarifarioX,
-                numeroReciboX,
-                fechaEmisionX,
-                fechaVencimientoX,
-                mesReciboPentregaX,
-                direccionFisicaX,
-                fechaSolicitudFacturacionX,
-                cpresentacion,
-                especificarCanalX,
-                codigoPedidoX,
-                sasfll,
-                vinculoSolicitudSX:documentoX,
-                detallePedidoX,
+                // // otros
+                // fechaSolicitudX,
+                // ccontratacion,
+                // especificarx,
+                // servicioContratarX,
+                // planTarifarioX,
+                // numeroReciboX,
+                // fechaEmisionX,
+                // fechaVencimientoX,
+                // mesReciboPentregaX,
+                // direccionFisicaX,
+                // fechaSolicitudFacturacionX,
+                // cpresentacion,
+                // especificarCanalX,
+                // codigoPedidoX,
+                // sasfll,
+                // vinculoSolicitudSX:documentoX,
+                // detallePedidoX,
 
-                // descargo del cliente
-                informacionNecesariaReclamo,
-                descripcionProblemaSolicitudReclamo,
+                // // descargo del cliente
+                // informacionNecesariaReclamo,
+                // descripcionProblemaSolicitudReclamo,
 
                 //quejas
                 //selecion
@@ -3635,38 +3633,32 @@
             };
 
             // Enviar la solicitud POST a la API Flask
-            try {
-                const response = await fetch('https://back.fiberpro.com.pe/api/reclamos', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
+            const response = await fetch('http://127.0.0.1:5000/api/reclamos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-                const responseData = await response.json();
-                const messageDiv = document.getElementById('message');
-                const msg=document.getElementById('gracias');
-
-                if (responseData.error) {
-                    messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
-                } else {
-                    // Asegurarse de que ticket_name existe antes de intentar acceder a él
-                    if (responseData.ticket_name) {
-                        messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_name} </span>`;
-                        msg.innerHTML = '"Gracias, su solicitud fue aceptada, en el transcurso será enviado su formulario"';
-                        const btns = document.getElementById("cajadeBtnsSuccess");
-                        btns.style.display = "none";
-                        const btnVolverHome = document.getElementById("inicio");
-                        btnVolverHome.style.display = "block";
-                    } else {
-                        messageDiv.innerHTML = `<span class="error">No se recibió un nombre de ticket válido.</span>`;
-                    }
-                }
-            } catch (error) {
-                const messageDiv = document.getElementById('message');
-                messageDiv.innerHTML = `<span class="error">Hubo un problema al enviar la solicitud: ${error.message}</span>`;
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta del servidor: ${response.status} - ${response.statusText}`);
             }
+
+            const responseData = await response.json();
+            console.log('Datos de la respuesta:', responseData);  // Para ver la respuesta completa
+
+            const messageDiv = document.getElementById('message');
+
+            if (responseData.error) {
+                messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
+            } else {
+                messageDiv.innerHTML = `<span class="success">Número: ${responseData.ticket_id}</span>`;
+                ocultarBotonesYRedirigir();
+                const btns = document.getElementById("btnEnviarFormulario");
+                btns.style.display = "none";
+            }
+
         });
 
         // Función para ocultar botones y redirigir
@@ -3708,7 +3700,7 @@
         // Manejar el envío del formulario con el botón
         formularioEnviar.addEventListener("submit", function(event) {
             event.preventDefault();  // Evita el envío predeterminado
-            console.log("Formulario enviado");
+            //console.log("Formulario enviado");
             // Aquí puedes agregar la lógica para enviar el formulario manualmente (por ejemplo, con AJAX)
         });
 
@@ -4211,13 +4203,13 @@
                 valorSeleccionado = caja.getAttribute('data-value');
 
                 // Mostramos el valor obtenido en la consola (solo como ejemplo)
-                console.log('Valor seleccionado:', valorSeleccionado);
+                //console.log('Valor seleccionado:', valorSeleccionado);
 
                 // También puedes hacer algo con ese valor, como abrir un formulario o cambiar contenido
             });
         });
 
-        console.log(valorSeleccionado);
+        //console.log(valorSeleccionado);
 
         const seleccionarMultipleReclamo=document.getElementById("seleccionMultipleReclamo");
         const seleccionarQueja=document.getElementById("seleccionUnicoQueja");
@@ -4286,17 +4278,6 @@
             
         })
 
-
-        //
-        /*
-        */
-
-
-
-            
-
-        /*
-        */
 
         const cApelacion=document.getElementById("datosApelacion");
         const cQueja=document.getElementById("datosQueja");
@@ -5884,7 +5865,7 @@
             cajaTotal.style.display="none";
 
             // Seleccionamos todos los inputs de tipo texto dentro del formulario
-            const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket input[type="date"],#DatosTicketMostrarTicket input[type="email"],#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
+            const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket input[type="date"],#DatosTicketMostrarTicket input[type="email"],#DatosTicketMostrarTicket textarea');
 
             // Creamos una variable para almacenar los resultados
             let datosRellenados = '';
@@ -5949,7 +5930,6 @@
  
     </script>
 
-
-
 </body>
+
 </html>
