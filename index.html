@@ -4,11 +4,583 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- Incluir el CSS de Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        /**/
+
+        summary {
+            border: none;
+            margin-bottom: 20px;
+        }
+        
+        legend {
+        font-size: 18px;
+        color: #333333;
+        margin-bottom: 10px;
+        display: inline-block;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #0056ff;
+        }
+
+        /**/
+
+        /*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
+        .contenedorRQA{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cajaContenedor{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 10px;
+            gap: 20px;
+        }
+
+        .contenedorOpciones label{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .contenedorOpciones{
+            padding: 10px;
+            text-align: center;
+            background-color: #002ccc;
+            border-radius: 10px;
+        }
+
+        .contenedorOpciones h3{
+            color: white;
+            font-weight: bold;
+        }
+
+
+        .contenedorTituloDescripcion{
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .descripcionCajas{
+            padding: 10px;
+            margin-top: 10px;
+            text-align: justify;
+            height: 80%;
+            color: #002ccc;
+        }
+
+        .contenedorTituloDescripcion:hover{
+            transform: scale(1.05);
+            /* box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); */
+        }
+
+
+
+        /*Titulo*/
+
+        .tituloOpciones{
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contenedorTitulo{
+            width: 70%;
+            display: flex;
+        }
+        .btnTitulo{
+            width: 10%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input[type="button"]{
+            /* outline: none; */
+            /* width: 100%; */
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4c00;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .tituloOpcion{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tituloOpcion h3{
+            color: #002ccc;
+            font-size: 30px;
+        }
+
+        #tituloOpcionesQRA{
+            display: none;
+        }
+
+        /* GLOSARIO */
+
+        .glosario{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            width: 50%;
+        }
+
+        .contenedorGlosario{
+            background-color:#11f5f7 ;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            color: black;
+        }
+
+        #glosarioQRA{
+            display: none;
+        }
+
+        /* Contenedor de preguntas: Usuarios - Abonado - Representante */
+
+        .contenedorPreguntas{
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        details{
+            width: 50%;
+            padding: 10px;
+        }
+
+        .contenedorDatosPersonales{
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            /*margin-top: 20px;*/
+        }
+
+        .datos{
+            margin: 5px;
+            padding: 15px;
+            width: 40%;
+        }
+
+        .datos_solo{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .opcionCorreo{
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .representantecss{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        input[type="text"],input[type="email"],input[type="file"],input[type="date"],input[type="number"],select{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            background-color: #f5f8ff;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea{
+            background-color: aliceblue;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            outline: none;
+            margin-top: 10px;
+            padding: 20px;
+            box-shadow: 3px 2px 1px black;
+        }
+
+        /** errores **/
+
+        .error{
+            border: 1px solid #ff4c00;
+        }
+
+        .txtError{
+            padding: 10px;
+            color: red;
+        }
+
+        /**fin de errores**/
+
+        label{
+            display: block;
+            margin-bottom: 5px;
+            color: #555555;
+            font-weight: bold;
+        }
+
+        /* continuar , despues de los datos personales*/
+
+        .btnContinuar{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        /* Seleccionables */
+
+        .seleccionarOpcciones{
+            gap: 10px;
+            padding: 20px;
+            /* margin-bottom: 10px; */
+        }
+
+        .cajasCentradas{
+            width: 50%;
+            padding: 10px;
+        }
+
+        .seleccionMultipleReclamo{
+            width: 42%;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cajasContenedorSeleccionesMultiples{
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .materiaReclamable{
+            width: 42%;
+            padding: 10px;
+        }
+
+        .fc{
+            width: 50%;
+            padding: 10px;
+        }
+
+        .materiaReclamableUnica{
+            padding: 20px;
+        }
+
+
+        /* contenedor de respuestas en las opciones seleccionados*/
+
+        .cajaRespuesta{
+            padding: 20px;
+            width: 90%;
+            display: block;
+            margin: auto;
+        }
+
+        .columnTwo{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+
+
+
+        /*BOTON DE ENVIAR EL FORMULARIO*/
+
+        .contenedorBtn{
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        button{
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #002ccc;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+
+            /* padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            font-size: 15px;
+            cursor: pointer; */
+        }
+
+        button:hover{
+            background-color: #001d86;
+            outline: none;
+        }
+
+        .botonesEnviarEditar{
+            width: 50%;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: space-around;
+
+        }
+
+        /**/
+
+        details{
+            cursor: pointer;
+        }
+
+        /**/
+
+        .alert{
+            color: red;
+            padding: 10px;
+        }
+
+        /**/
+
+        .contenedorTicket{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajaContenedorTickets{
+            border: 2px solid #002ccc;
+            padding: 10px;
+            display: block;
+            margin: auto;
+            border-radius: 8px;
+            width: 50%;
+            word-wrap: break-word; /* Rompe palabras largas si es necesario */
+            background-color: whitesmoke;
+        }
+
+        .tituloTicket{
+            background-color: #ff4c00;
+            /*border: 2px solid #002ccc;*/
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 12px;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .ticket{
+            color: black;
+            padding: 12px;
+            line-height: 30px;
+        }
+        /**/
+
+        .contenedorHijo{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Para el descargo del cliente */
+
+        .detalleInformacionExtra{
+            display: flex;
+            justify-content: center;
+        }
+
+        /*carga*/
+
+        .contenedorLoading{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+            backdrop-filter: blur(10px);
+        }
+
+        .loader{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+
+        .loader::before,
+        .loader::after{
+            content: '';
+            position: absolute;
+            border-radius: inherit;
+        }
+
+        .loader::before{
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(0deg,#002ccc 30%,#ff4c00 70%);
+        }
+
+        .loader::after{
+            width: 85%;
+            height: 85%;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        @keyframes spin {
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+        /* regresar a casa*/
+
+        .btnhome{
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #002ccc;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .home{
+            display: flex;
+            justify-content: center;
+        }
+
+        /**/
+
+
+        /* ESTILO DE FECHA */
+
+
+
+        /* FIN DE ESTILO DE FECHA*/
+
+        /* text area*/
+
+        textarea{
+            white-space: pre-wrap;
+        }
+
+        /* estilo fin de text area*/
+
+        /**/
+
+        @media only screen and (max-width: 768px) {
+            .contenedorOpciones {
+                width: 100%;
+            }
+            .contenedorTitulo{
+                width: 70%;
+            }
+            .contenedorGlosario{
+                width: 70%;
+            }
+            details{
+                width: 70%;
+            }
+            .datos{
+                width: 100%;
+            }
+            .cajasCentradas{
+                width: 70%;
+            }
+            .seleccionMultipleReclamo{
+                width: 80%;
+                justify-content: center;
+            }
+            .materiaReclamable{
+                width: 80%;
+            }
+            .fc{
+                width: 80%;
+            }
+
+            /**/
+
+            .contenedorTitulo{
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .btnTitulo{
+                width: 100%;
+            }
+
+            .tituloOpcion{
+                width: 100%;
+            }
+
+            .glosario{
+                width: 100%;
+            }
+
+            /**/
+
+            .cajaContenedorTickets{
+                width: 80%;
+            }
+            
+            /**/
+            .contenedorTituloDescripcion{
+                width: 100%;
+            }
+        }
+    </style>
 
     <form action="" method="post" class="contendioFormulario" id="claimForm" enctype="multipart/form-data">
 
@@ -109,7 +681,7 @@
 
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado" data-value="1">
 
                         <div class="contenedorOpciones">
                             <!-- <input type="radio" name="tipoUsuario" value="abonado" id="abonado"> -->
@@ -124,7 +696,7 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="usuario">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="usuario" data-value="2">
 
                         <div class="contenedorOpciones">
                             <!-- <input type="radio" name="tipoUsuario" value="usuario" id="usuario"> -->
@@ -139,7 +711,7 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="representante">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="representante" data-value="3">
 
                         <div class="contenedorOpciones">
                             <!-- <input type="radio" name="tipoUsuario" value="representante" id="representante"> -->
@@ -264,7 +836,7 @@
                                 </div>
                                 <div class="datos">
                                     <label for="numeroContacto">Número de contacto</label>
-                                    <input type="text" name="datosPersonales" id="numeroContacto" placeholder="Número de contacto" maxlength="9">
+                                    <input type="text" name="numeroContacto" id="numeroContacto" placeholder="Número de contacto" max="9">
                                 </div>
                                 <div class="datos">
                                     <label for="tipoDoc">Tipo de Documento</label>
@@ -279,7 +851,7 @@
                                 </div>
                                 <div class="datos">
                                     <label for="numDoc">Número de Documento</label>
-                                    <input type="text" class="" id="numDoc" placeholder="Número de identidad">
+                                    <input type="text" class="" id="numDoc" placeholder="Número de identidad" max="9">
                                 </div>
                                 <div class="datos">
                                     <label for="distritos">Distrito</label>
@@ -314,20 +886,15 @@
                             </div>
 
                             <div class="datos_solo" id="escojerCorreo">
-                                <!-- <div class="textolabel">
-                                    <label for="">
-                                        Autorizo ser notificado por el correo electrónico registrado(opcional)
-                                    </label>
-                                </div> -->
-                                <label for="">Autoriza ser notificado por correo electrónico </label>
+                                <p>Autoriza ser notificado por correo electrónico </p>
                                 <div class="opcionCorreo">
                                     <div class="oCorreo">
                                         <label for="autoriza">Si</label>
-                                        <input type="radio" name="autorizacion" id="autoriza" value="True">
+                                        <input type="radio" name="autorizacion" id="autorizaSi" value="True">
                                     </div>
                                     <div class="oCorreo">
                                         <label for="autoriza">No</label>
-                                        <input type="radio" name="autorizacion" id="autoriza" value="False">
+                                        <input type="radio" name="autorizacion" id="autorizaNo" value="False">
                                     </div>
                                 </div>
                             </div>
@@ -348,7 +915,7 @@
                         <summary>Motivo de Apelación</summary>
                         
                         <div class="materiaReclamableUnica">
-                            <label for="">Apelación Especifica</label>
+                            <label for="apelacionOpciones">Apelación Especifica</label>
                             <select name="materiaReclamable" id="apelacionOpciones" onchange="apelaciones()">
                                 <option value="" selected>Seleccionar Opción</option>
                                 <option value="apelacionOne">No se analizaron pruebas presentadas por el usuario</option>
@@ -371,7 +938,7 @@
                             <summary>Motivo de la Queja</summary>
                     
                             <div class="materiaReclamableUnica">
-                                <label for="">Objeto de la queja </label>
+                                <label for="quejasOpciones">Objeto de la queja </label>
                                 <select name="materiaReclamable" id="quejasOpciones" onchange="quejas()">seleccionarQueja
                                     <option value="" selected>Seleccionar Opción</option>
                                     <option value="quejaUno">Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)</option>
@@ -396,7 +963,7 @@
                         <div class="columnTwo">
                         
                             <div class="materiaReclamable">
-                                <label for="">Materias Reclamables</label>
+                                <label for="materias">Materias Reclamables</label>
                                 <select name="materiaReclamable" id="materias" onchange="selecion()">
                                     <option value="" selected>Seleccionar Opción</option>
                                     <option id="mUno" value="fcs">Facturación y cobro</option>
@@ -413,7 +980,7 @@
                         
                             <div class="fc" id="fc" style="display: none;">
                         
-                                <label for="">Problema Especifico</label>
+                                <label for="facturados">Problema Especifico</label>
                                 <select name="" id="facturados" onchange="facturado()">
                                     <option id="flimpio" value="" selected>Selecciona la Opción</option>
                                     <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados</option>
@@ -495,7 +1062,7 @@
                             <div class="fc" id="mi" style="display: none;">
                                 <label for="mig">Problema Especifico</label>
                                 <select name="" id="mig" onchange="migracionReclamable()">
-                                    <option value="">Seleccione Opción</option>
+                                    <option value="">Seleccione opción</option>
                                     <option value="migracionOne">Condicionamiento, negativa o falta de respuesta de la solicitud de migración</option>
                                     <option value="migracionTwo">Falta de ejecución de la migración dentro del plazo establecido</option>
                                     <option value="migracionThree">Facturación corresponde al plan anterior</option>
@@ -584,7 +1151,7 @@
                             
                                     <div class="datos">
                                         <label for="fechaEmisionCartaApelacion">Fecha de emisión de la carta que resuelve el reclamo:   </label>
-                                        <input type="date" class="fecha" class="fecha" id="fechaEmisionCartaApelacion">
+                                        <input type="date" class="fecha" id="fechaEmisionCartaApelacion">
                                     </div>
                             
                             </div>
@@ -596,135 +1163,134 @@
                         </details>
                         
                         <details class="seleccionarOpcciones" id="apelacionRespuestasSelecciones">
-                        
-                                        <summary id="tituloApelacion">Detalles adicionales </summary>
+                            <summary id="tituloApelacion">Detalles adicionales </summary>
                     
-                                            <div class="contenedorDatosPersonales" id="apelacionUno" style="display: none;">
+                            <div class="contenedorDatosPersonales" id="apelacionUno" style="display: none;">
                     
-                                                <div class="cajaRespuesta">
-                                                    <label for="detallePruebaApelacionUno">Detalle de pruebas presentadas y no analizadas por la empresa operadora </label>
-                                                    <input type="text" id="detallePruebaApelacionUno">
-                                                </div>
+                                <div class="cajaRespuesta">
+                                    <label for="detallePruebaApelacionUno">Detalle de pruebas presentadas y no analizadas por la empresa operadora </label>
+                                    <input type="text" name="detallePruebaApelacionUno" id="detallePruebaApelacionUno">
+                                </div>
                     
-                                            </div>
+                            </div>
                         
-                                            <div class="contenedorDatosPersonales" id="apelacionDos" style="display: none;">
+                            <div class="contenedorDatosPersonales" id="apelacionDos" style="display: none;">
                         
-                                                <div class="cajaRespuesta">
-                                                    <label for="detallefsApelacionDos">Detalle la falta de sustento o motivación de la carta de la empresa </label>
-                                                    <input type="text" id="detallefsApelacionDos">
-                                                </div>
+                                <div class="cajaRespuesta">
+                                    <label for="detallefsApelacionDos">Detalle la falta de sustento o motivación de la carta de la empresa </label>
+                                    <input type="text" name="detallefsApelacionDos" id="detallefsApelacionDos">
+                                </div>
                         
-                                            </div>
+                            </div>
                         
-                                            <div class="contenedorDatosPersonales" id="apelacionTres" style="display: none;">
+                            <div class="contenedorDatosPersonales" id="apelacionTres" style="display: none;">
                         
-                                                <div class="cajaRespuesta">
-                                                    <label for="materiaEmpresaApelacionTres">Materia por la cual la empresa debió emitir pronunciamento </label>
-                                                    <input type="text" id="materiaEmpresaApelacionTres">
-                                                </div>
+                                <div class="cajaRespuesta">
+                                    <label for="materiaEmpresaApelacionTres">Materia por la cual la empresa debió emitir pronunciamento </label>
+                                    <input type="text" name="materiaEmpresaApelacionTres" id="materiaEmpresaApelacionTres">
+                                </div>
                         
-                                            </div>
+                            </div>
                         
-                                            <div class="contenedorDatosPersonales" id="apelacionCuatro" style="display: none;">
+                            <div class="contenedorDatosPersonales" id="apelacionCuatro" style="display: none;">
                         
-                                                <div class="cajaRespuesta">
+                                <div class="cajaRespuesta">
                         
-                                                    <label for="apelacionopcioncuatro">Empresa operadora omitió pronunciamiento sobre un recibo reclamado </label>
-                                                    <select name="" id="apelacionopcioncuatro" onchange="apelacionCuatro()">
-                                                        <option value="" selected>Seleccione una Opción</option>
-                                                        <option value="si">Si</option>
-                                                        <option value="no">No</option>
-                                                    </select>
+                                    <label for="apelacionopcioncuatro">Empresa operadora omitió pronunciamiento sobre un recibo reclamado </label>
+                                    <select name="apelacionopcioncuatro" id="apelacionopcioncuatro" onchange="apelacionCuatro()">
+                                        <option value="" selected>Seleccione una Opción</option>
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
                         
-                                                </div>
+                                </div>
                         
-                                                <div class="contenedorDatosPersonales" id="apelacionCuatroSi" style="display: none;">
+                                <div class="contenedorDatosPersonales" id="apelacionCuatroSi" style="display: none;">
                         
-                                                    <div class="columnTwo">
+                                    <div class="columnTwo">
                         
-                                                        <div class="datos">
-                                                            <label for="numeroReciboApelacionSiCuatro">Número de recibo </label>
-                                                            <input type="text" id="numeroReciboApelacionSiCuatro">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="numeroReciboApelacionSiCuatro">Número de recibo </label>
+                                            <input type="text" name="numeroReciboApelacionSiCuatro" id="numeroReciboApelacionSiCuatro">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="fechaEmisionApelacionSiCuatro">Fecha de emisión </label>
-                                                            <input type="date" class="fecha" class="fecha" id="fechaEmisionApelacionSiCuatro">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="fechaEmisionApelacionSiCuatro">Fecha de emisión </label>
+                                            <input type="date" class="fecha" id="fechaEmisionApelacionSiCuatro">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="fechaVencimientoApelacionSiCuatro">Fecha de vencimiento </label>
-                                                            <input type="date" class="fecha" class="fecha" id="fechaVencimientoApelacionSiCuatro">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="fechaVencimientoApelacionSiCuatro">Fecha de vencimiento </label>
+                                            <input type="date" class="fecha" id="fechaVencimientoApelacionSiCuatro">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="montoReclamadoApelacionSiCuatro">Monto reclamado: (S/) </label>
-                                                            <input type="text" id="montoReclamadoApelacionSiCuatro">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="montoReclamadoApelacionSiCuatro">Monto reclamado: (S/) </label>
+                                            <input type="text" name="montoReclamadoApelacionSiCuatro" id="montoReclamadoApelacionSiCuatro">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="detalleReclamoApelacionSiCuatro">Detalle del extremo del reclamo por el cual la empresa omitió pronunciamiento </label>
-                                                            <input type="text" id="detalleReclamoApelacionSiCuatro">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="detalleReclamoApelacionSiCuatro">Detalle del extremo del reclamo por el cual la empresa omitió pronunciamiento </label>
+                                            <input type="text" name="detalleReclamoApelacionSiCuatro" id="detalleReclamoApelacionSiCuatro">
+                                        </div>
                         
-                                                    </div>
+                                    </div>
                         
-                                                </div>
+                                </div>
                         
-                                            </div>
+                            </div>
                         
-                                            <div class="contenedorDatosPersonales" id="apelacionCinco" style="display: none;">
+                            <div class="contenedorDatosPersonales" id="apelacionCinco" style="display: none;">
                         
-                                                <div class="cajaRespuesta">
-                                                    <label for="apelacionOpcioncinco">Falta acoger todo o parte del monto reclamado </label>
-                                                    <select name="" id="apelacionOpcioncinco" onchange="apelacionCinco();">
-                                                        <option value="" selected>Seleccione Opción</option>
-                                                        <option value="si">Si</option>
-                                                        <option value="no">No</option>
-                                                    </select>
-                                                </div>
+                                <div class="cajaRespuesta">
+                                    <label for="apelacionOpcioncinco">Falta acoger todo o parte del monto reclamado </label>
+                                    <select name="apelacionOpcioncinco" id="apelacionOpcioncinco" onchange="apelacionCinco();">
+                                        <option value="" selected>Seleccione Opción</option>
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
                         
-                                                <div class="contenedorDatosPersonales" id="apelacionCincoSi" style="display: none;">
+                                <div class="contenedorDatosPersonales" id="apelacionCincoSi" style="display: none;">
                         
-                                                    <div class="columnTwo">
+                                    <div class="columnTwo">
                         
-                                                        <div class="datos">
-                                                            <label for="numeroReciboApelacionSiCinco">Número de recibo (S/)</label>
-                                                            <input type="text" id="numeroReciboApelacionSiCinco">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="numeroReciboApelacionSiCinco">Número de recibo (S/)</label>
+                                            <input type="text" name="numeroReciboApelacionSiCinco" id="numeroReciboApelacionSiCinco">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="fechaEmisionApelacionSiCinco">Fecha de emisión </label>
-                                                            <input type="date" class="fecha" class="fecha" id="fechaEmisionApelacionSiCinco">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="fechaEmisionApelacionSiCinco">Fecha de emisión </label>
+                                            <input type="date" class="fecha" name="fechaEmisionApelacionSiCinco" id="fechaEmisionApelacionSiCinco">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="montoTotalApelacionSiCinco">Monto total que corresponde ajustar: (S/)</label>
-                                                            <input type="text" id="montoTotalApelacionSiCinco">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="montoTotalApelacionSiCinco">Monto total que corresponde ajustar: (S/)</label>
+                                            <input type="text" name="montoTotalApelacionSiCinco" id="montoTotalApelacionSiCinco">
+                                        </div>
                         
-                                                        <div class="datos">
-                                                            <label for="detalleReclamoApelacionSiCinco">Detalle del extremo del reclamo que no fue acogido </label>
-                                                            <input type="text" id="detalleReclamoApelacionSiCinco">
-                                                        </div>
+                                        <div class="datos">
+                                            <label for="detalleReclamoApelacionSiCinco">Detalle del extremo del reclamo que no fue acogido </label>
+                                            <input type="text" name="detalleReclamoApelacionSiCinco" id="detalleReclamoApelacionSiCinco">
+                                        </div>
                         
-                                                    </div>
+                                    </div>
                         
-                                                </div>
+                                </div>
                         
-                                            </div>
+                            </div>
                         
-                                            <div class="contenedorDatosPersonales" id="apelacionSeis" style="display: none;">
+                            <div class="contenedorDatosPersonales" id="apelacionSeis" style="display: none;">
                         
-                                                <label for="materiaEmpresaEmitirApelacionSeis">Materia por la cual la empresa debió emitir pronunciamento </label>
-                                                <input type="text" id="materiaEmpresaEmitirApelacionSeis">
+                                <label for="materiaEmpresaEmitirApelacionSeis">Materia por la cual la empresa debió emitir pronunciamento </label>
+                                <input type="text" name="materiaEmpresaEmitirApelacionSeis" id="materiaEmpresaEmitirApelacionSeis">
                         
-                                            </div>
+                            </div>
                 
-                                            <div class="contenedorDatosPersonales">
-                                                <input type="button" value="Continuar" id="continuarFormularioApelacion">
-                                            </div>
+                            <div class="contenedorDatosPersonales">
+                                <input type="button" value="Continuar" id="continuarFormularioApelacion">
+                            </div>
                         
                         </details>
                     
@@ -779,7 +1345,7 @@
                         
                                 <div class="contenedorDatosPersonales" id="quejaPreguntaUno" style="display: none;">
                                     <label for="fechaPresentacionQueja">Fecha de presentación del reclamo</label>
-                                    <input type="date" class="fecha" class="fecha" id="fechaPresentacionQueja">
+                                    <input type="date" class="fecha" name="fechaPresentacionQueja" id="fechaPresentacionQueja">
                                 </div>
                         
                                 <div class="contenedorDatosPersonales" id="quejaPreguntaDos" style="display: none;">
@@ -801,7 +1367,7 @@
                         
                                         <div class="datos">
                                             <label for="fechaNegativaQueja">Fecha de la Negativa</label>
-                                            <input type="date" class="fecha" class="fecha" id="fechaNegativaQueja">
+                                            <input type="date" class="fecha" name="fechaNegativaQueja" id="fechaNegativaQueja">
                                         </div>
                         
                                         <div class="datos">
@@ -817,13 +1383,13 @@
                                         </div>
                         
                                         <div class="datos" id="canalQueja" style="display: none;">
-                                            <label for="">Especificar canal</label>
-                                            <input type="text">
+                                            <label for="especificarCanalQuejaDos">Especificar canal</label>
+                                            <input type="text" id="especificarCanalQuejaDos">
                                         </div>
                         
                                         <div class="datos">
-                                            <label for="">Se adjunta medios probatorios (pantalla u otra prueba)</label>
-                                            <select name="" id="adjuntaPrueba" onchange="adjuntaPruebaQueja()">
+                                            <label for="adjuntaPrueba">Se adjunta medios probatorios (pantalla u otra prueba)</label>
+                                            <select name="adjuntaPrueba" id="adjuntaPrueba" onchange="adjuntaPruebaQueja()">
                                                 <option value="">Seleccionar Opción</option>
                                                 <option value="si">Si</option>
                                                 <option value="no">No</option>
@@ -832,7 +1398,7 @@
                         
                                         <div class="datos" id="pruebaQuejas" style="display: none;">
                                             <label for="mediosProbatoriosQuejas">Se adjunta medio probatorio</label>
-                                            <input type="file" name="" id="medioProbatorioNegativa">
+                                            <input type="file" name="medioProbatorioNegativa" id="medioProbatorioNegativa">
                                         </div>
                         
                                     </div>
@@ -841,7 +1407,7 @@
                         
                                 <div class="contenedorDatosPersonales" id="quejaPreguntaTres" style="display: none;">
                                     <label for="fechaSuspendioServicioQueja">Fecha en la cual se habría suspendido el servicio</label>
-                                    <input type="date" class="fecha" class="fecha" id="fechaSuspendioServicioQueja">
+                                    <input type="date" class="fecha" name="fechaSuspendioServicioQueja" id="fechaSuspendioServicioQueja">
                                 </div>
                         
                                 <div class="contenedorDatosPersonales" id="quejaPreguntaCuatro" style="display: none;">
@@ -850,7 +1416,7 @@
                         
                                         <div class="datos">
                                             <label for="MediosCobranzasQuejas">Medio de cobranza </label>
-                                            <select name="" id="MediosCobranzasQuejas">
+                                            <select name="MediosCobranzasQuejas" id="MediosCobranzasQuejas">
                                                 <option value="" selected>Seleccionar Opción</option>
                                                 <option value="Carta">Carta</option>
                                                 <option value="Recibo">Recibo</option>
@@ -860,7 +1426,7 @@
                         
                                         <div class="datos">
                                             <label for="constanciaPagoQueja">Se adjunta documento donde conste el requerimiento de pago</label>
-                                            <select name="" id="constanciaPagoQueja" onchange="constanciaPago()">
+                                            <select name="constanciaPagoQueja" id="constanciaPagoQueja" onchange="constanciaPago()">
                                                 <option value="" selected>Seleccionar Opción</option>
                                                 <option value="si">Si</option>
                                                 <option value="no">No</option>
@@ -883,7 +1449,7 @@
                         
                                         <div class="datos">
                                             <label for="pagoCuentaQueja">Lugar donde no se permitió el pago a cuenta</label>
-                                            <select name="" id="pagoCuentaQueja" onchange="pagoCuenta()">
+                                            <select name="pagoCuentaQueja" id="pagoCuentaQueja" onchange="pagoCuenta()">
                                                 <option value="">Seleccionar Opción</option>
                                                 <option value="Oficina del banco">Oficina del banco</option>
                                                 <option value="Agente de Banco">Agente de Banco</option>
@@ -900,7 +1466,7 @@
                         
                                         <div class="datos">
                                             <label for="capturaQuejaCinco">Se adjunta captura de pantalla u otra prueba</label>
-                                            <select name="" id="capturaQuejaCinco" onchange="capturaQueja()">
+                                            <select name="capturaQuejaCinco" id="capturaQuejaCinco" onchange="capturaQueja()">
                                                 <option value="">Seleccionar Opción</option>
                                                 <option value="si">Si</option>
                                                 <option value="no">No</option>
@@ -922,7 +1488,7 @@
                         
                                         <div class="datos">
                                             <label for="dtramitacion">Se adjunta documentos de prueba</label>
-                                            <select name="" id="dtramitacion" onchange="defectos()">
+                                            <select name="dtramitacion" id="dtramitacion" onchange="defectos()">
                                                 <option value="">Seleccionar Opción</option>
                                                 <option value="si">Si</option>
                                                 <option value="no">No</option>
@@ -959,7 +1525,7 @@
                     
                                 <div class="datos">
                                     <label for="empresaOperadorReclamo">Empresa Operadora</label>
-                                    <select name="" id="empresaOperadorReclamo">
+                                    <select name="empresaOperadorReclamo" id="empresaOperadorReclamo">
                                         <option value="" selected>Seleccionar Opción</option>
                                         <option value="FiberPro - PYD Telecom S.R.L">FiberPro - PYD Telecom S.R.L</option>
                                     </select>
@@ -967,7 +1533,7 @@
                     
                                 <div class="datos">
                                     <label for="servicioContratadoReclamo">Servicio Contratado</label>
-                                    <select name="" id="servicioContratadoReclamo">
+                                    <select name="servicioContratadoReclamo" id="servicioContratadoReclamo">
                                         <option value="" selected>Seleccionar Opción</option>
                                         <option value="Internet de acceso fijo">Internet de acceso fijo</option>
                                     </select>
@@ -975,7 +1541,7 @@
                     
                                 <div class="datos">
                                     <label for="servicioMateriaReclamo">Servicio Materia reclamo</label>
-                                    <select name="" id="servicioMateriaReclamo">
+                                    <select name="servicioMateriaReclamo" id="servicioMateriaReclamo">
                                         <option value="">Seleccionar Opción</option>
                                         <option value="Internet de acceso fijo">Internet de acceso fijo</option>
                                     </select>
@@ -983,7 +1549,7 @@
                     
                                 <div class="datos">
                                     <label for="numeroServicioContratadoReclamo">Número o código del servicio o del contrato de abonado </label>
-                                    <input type="text" id="numeroServicioContratadoReclamo">
+                                    <input type="text" name="numeroServicioContratadoReclamo" id="numeroServicioContratadoReclamo">
                                 </div>
                     
                             </div>
@@ -1015,7 +1581,7 @@
                     
                                     <div class="datos" id="">
                                         <label for="fechaEmisionFCone">Fecha de emisión </label>
-                                        <input type="date" class="fecha" class="fecha" id="fechaEmisionFCone">
+                                        <input type="date" class="fecha" id="fechaEmisionFCone">
                                     </div>
                     
                                     <div class="datos" id="">
@@ -1034,7 +1600,7 @@
                                     </div>
                     
                                     <div class="datos" id="cfCondicionDos">
-                                            <label for="tarifaUsuarioFCone">Tarifa que el usuario indica debió aplicarse </label>
+                                            <label for="tarifaUsuarioFCone">Tarifa que el usuario indica debió aplicarse (solo costo)</label>
                                             <input type="text" id="tarifaUsuarioFCone">
                                     </div>
                     
@@ -1104,7 +1670,7 @@
                     
                                         <div class="datos" id="">
                                             <label for="fechaInicioCalidadI">Fecha de Inicio del Problema </label>
-                                            <input type="date" class="fecha" class="fecha" id="fechaInicioCalidadI">
+                                            <input type="date" class="fecha" id="fechaInicioCalidadI">
                                         </div>
                     
                                         <div class="datos" id="">
@@ -1279,7 +1845,7 @@
                                     <div class="columnTwo">
         
                                         <div class="datos" id="">
-                                            <label for="">Detalle de la información omitida o inexacta </label>
+                                            <label for="detalleInfoOmitida">Detalle de la información omitida o inexacta </label>
                                             <input type="text" id="detalleInfoOmitida">
                                         </div>
         
@@ -1295,7 +1861,7 @@
                                         </div>
         
                                         <div class="datos" id="">
-                                            <label for="">Fecha aproximada </label>
+                                            <label for="fechaAproxInfoOmitida">Fecha aproximada </label>
                                             <input type="date" class="fecha" id="fechaAproxInfoOmitida">
                                         </div>
         
@@ -1314,7 +1880,7 @@
                                         </div>
         
                                         <div class="datos" id="txtcpromocioC" style="display: none;">
-                                            <label for="">Especificar </label>
+                                            <label for="especificarInfoOmitida">Especificar </label>
                                             <input type="text" id="especificarInfoOmitida">
                                         </div>
         
@@ -1334,26 +1900,26 @@
 
                                         <div class="datos" id="">
                                             <label for="fechaInicioProblemafs">Fecha de inicio del problema </label>
-                                            <input type="date" class="fecha" id="fechaInicioProblemafs">
+                                            <input type="date" class="fecha" name="fechaInicioProblemafs" id="fechaInicioProblemafs">
                                         </div>
 
-                                        <div id="fsOne">
+                                        <!-- <div class="datos" id="fsOne"> -->
                         
-                                            <div class="datos" id="">
-                                                <label for="direccionProblemafs">Dirección en el cual se presenta el problema </label>
-                                                <input type="text" id="direccionProblemafs">
-                                            </div>
-
+                                        <div class="datos" id="fsOne">
+                                            <label for="direccionProblemafs">Dirección en el cual se presenta el problema </label>
+                                            <input type="text" id="direccionProblemafs">
                                         </div>
 
-                                        <div id="fsTwo">
+                                        <!-- </div> -->
 
-                                            <div class="datos" id="">
+                                        <!-- <div id="fsTwo"> -->
+
+                                            <div class="datos" id="fsTwo">
                                                 <label for="direccionServicio">Dirección en la cual reside o labora, cercana a un centro penitenciario </label>
                                                 <input type="text" id="direccionServicio">
                                             </div>
-
-                                        </div>
+<!-- 
+                                        </div> -->
                     
                                         <div class="datos" id="">
                                             <label for="departamentofs">Departamento </label>
@@ -1379,9 +1945,9 @@
                                             <label for="numerofs">Número </label>
                                             <input type="text" id="numerofs">
                                         </div>
-
-                                        <div id="fsFile">
-                                            <div class="datos" id="">
+<!-- 
+                                        <div class="datos" id="fsFile"> -->
+                                            <div class="datos" id="fsFile">
                                                 <label for="adrecibos">Se adjunta recibo de servicios </label>
                         
                                                 <select name="" id="adrecibos" onchange="fsrecibo()">
@@ -1396,8 +1962,8 @@
                                                 <label for="adjuntarVinculo">Adjuntar Solicitud </label>
                                                 <input type="file" name="" id="adjuntarVinculo">
                                             </div>
-
-                                        </div>
+<!-- 
+                                        </div> -->
 
                                     </div>
                     
@@ -1782,7 +2348,7 @@
                                 <div class="contenedorDatosPersonales" id="respuestascontratosbase" style="display: none;">
                     
                                     <div class="cajaRespuesta" id="">
-                                        <h2 for="" class="tituloContenido">Datos del recibo que incluye el monto reclamado</h2>
+                                        <h2 class="tituloContenido">Datos del recibo que incluye el monto reclamado</h2>
                                     </div>
                     
                                     <div class="columnTwo">
@@ -1904,7 +2470,7 @@
                                         </div>
                     
                                         <div class="datos" id="montoReclamadoStres">
-                                            <label for="montoReclamadoMigracionMigracion">Monto reclamado: *</label>
+                                            <label for="montoReclamadoMigracionMigracion">Monto reclamado</label>
                                             <input type="text" id="montoReclamadoMigracionMigracion">
                                         </div>
                     
@@ -1957,7 +2523,7 @@
                                         </div>
                     
                                         <div class="datos" id="">
-                                            <label for="montoReclamadoMigracion">Monto reclamado:*</label>
+                                            <label for="montoReclamadoMigracion">Monto reclamado</label>
                                             <input type="text" id="montoReclamadoMigracion">
                                         </div>
                     
@@ -2209,12 +2775,20 @@
                 </div>
     
                 <div class="contenedorBtn" id="btnEnviarFormulario">
-                    <input type="button" value="Editar" id="back" onclick="editarDatos()">
-                    <button type="submit" id="click">Enviar</button>
+
+                    <div class="">
+                        <h3 id="gracias"></h3>
+                    </div>
+
+                    <div class="botonesEnviarEditar" id="cajadeBtnsSuccess">
+                        <input type="button" value="Editar" id="back" onclick="editarDatos()">
+                        <button type="submit" id="click">Enviar</button>
+                    </div>
+
 
                 </div>
 
-                <div class="home">
+                <div class="home" id="home">
                     <a href="https://fiberpro.com.pe/reclamos/" class="btnhome" id="inicio">Volver a inicio</a>
                 </div>
 
@@ -2226,7 +2800,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-
         // Iniciar Flatpickr para todos los campos de fecha
         flatpickr(".fecha", {
             dateFormat: "Y-m-d",  // Cambiar el formato de fecha
@@ -2266,6 +2839,26 @@
         document.getElementById("claimForm").addEventListener("submit", async function(event) {
             event.preventDefault();  // Prevenir el envío normal del formulario
 
+            // usuarios
+            // Variables para almacenar el tipo de usuario
+            const tipoUsuarioSeleccionado = "";
+
+            // Añadir eventos de clic a cada uno de los elementos
+            document.getElementById("abonado").addEventListener("click", function() {
+                tipoUsuarioSeleccionado = "abonado"; // Se ha seleccionado "Abonado"
+                console.log("Tipo de usuario seleccionado: " + tipoUsuarioSeleccionado);
+            });
+
+            document.getElementById("usuario").addEventListener("click", function() {
+                tipoUsuarioSeleccionado = "usuario"; // Se ha seleccionado "Usuario"
+                console.log("Tipo de usuario seleccionado: " + tipoUsuarioSeleccionado);
+            });
+
+            document.getElementById("representante").addEventListener("click", function() {
+                tipoUsuarioSeleccionado = "representante"; // Se ha seleccionado "Representante"
+                console.log("Tipo de usuario seleccionado: " + tipoUsuarioSeleccionado);
+            });
+
             //Empezar formulario
             const tipoticket=document.getElementById('tipoticket').value.trim();
             const diagnostico=document.getElementById('diagnostico').value.trim();
@@ -2287,23 +2880,14 @@
             const distritos = document.getElementById('distritos').value.trim();
             const direccion = document.getElementById('direccion').value.trim();
             const correo = document.getElementById('correo').value.trim();
-            const autoriza = document.querySelector('input[name="autorizacion"]:checked')?.value || "False"; // 'True' or 'False'
+                // Obtener el valor de la autorización (True o False)
+            const autoriza = document.querySelector('input[name="autorizacion"]:checked') ? 
+                            document.querySelector('input[name="autorizacion"]:checked').value : 
+                            "False"; // Valor predeterminado si no se selecciona nada
+
             
             // opcion materias
             const selectReclamos = document.getElementById("materias").options[document.getElementById("materias").selectedIndex].text;
-
-            // const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
-            // const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
-            // const selectIncumplimiento = document.getElementById("ofertas").options[document.getElementById("ofertas").selectedIndex].text;
-            // const selectFaltaServicio = document.getElementById("fservicio").options[document.getElementById("fservicio").selectedIndex].text;
-            // const selectActivacion = document.getElementById("instalacion").options[document.getElementById("instalacion").selectedIndex].text;
-            // const selectBaja = document.getElementById("sb").options[document.getElementById("sb").selectedIndex].text;
-            // const selectContratacion = document.getElementById("con").options[document.getElementById("con").selectedIndex].text;
-            // const selectMigracion = document.getElementById("mig").options[document.getElementById("mig").selectedIndex].text;
-            // const selectOtros = document.getElementById("x").options[document.getElementById("x").selectedIndex].text;
-
-            //console.log(selectFacturado);
-            
 
             // Datos de servicio reclamo
             const empresaOperadora = document.getElementById('empresaOperadorReclamo').value.trim();
@@ -2615,6 +3199,16 @@
             const selectMigracion = document.getElementById("mig").options[document.getElementById("mig").selectedIndex].text;
             const selectOtros = document.getElementById("x").options[document.getElementById("x").selectedIndex].text;
 
+            // Definir las opciones predeterminadas que deben ser excluidas
+            const opcionesPredeterminadas = [
+                "Selecciona la Opción", 
+                "Seleccionar Opción", 
+                "Seleccionar opción",
+                "Seleccione opción",
+                "Seleccione Opción",
+                "Seleccione una Opción",
+            ];
+
             // Almacenamos solo los textos si no es "Seleccionar Opción" (o cualquier opción predeterminada)
             if (selectFacturado !== "Selecciona la Opción") datosSeleccionados.facturado = selectFacturado;
             if (selectCalidad !== "Selecciona la Opción") datosSeleccionados.calidad = selectCalidad;
@@ -2628,7 +3222,10 @@
 
             // limpiando el objeto
             // Crear un array con solo los valores del objeto, excluyendo "Seleccione opción"
-            let problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => value !== "Seleccione opción");
+            //const problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => value !== "Seleccione opción");
+            // Limpiando el objeto y excluyendo las opciones predeterminadas
+            const problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => !opcionesPredeterminadas.includes(value));
+
 
 
             // quejas
@@ -2784,6 +3381,8 @@
             // Crear el objeto de datos a enviar
             const data = {
 
+                //
+                tipoUsuarioSeleccionado,
                 tipoticket,
                 // diagnostico,
                 nombrePadre,
@@ -2804,7 +3403,7 @@
                 distritos,
                 direccion,
                 correo,
-                autoriza,
+                autoriza:autoriza,
 
                 // // seleccionable
                 selectReclamos,
@@ -2968,6 +3567,8 @@
                 //quejas
                 //selecion
                 //selectQueja,
+                //
+                //tipoUsuarioSeleccionado,
                 // quejas datos extra
                 empresaOperadoraQueja,
                 servicioObjetoQueja,
@@ -2999,36 +3600,37 @@
 
                 //Apelaciones
                 // selecion
-                // selectApelacion,
+                selectApelacion,
+                //
+                //tipoUsuarioSeleccionado,
+                // datos extras
+                empresaOperadoraApelacion,
+                servicioMateriaApelacion,
+                numeroServicioApelacion,
+                codigoNumeroApelacion,
+                numeroCartaApelacion,
+                fechaEmisionCartaApelacion,
 
-                // // datos extras
-                // empresaOperadoraApelacion,
-                // servicioMateriaApelacion,
-                // numeroServicioApelacion,
-                // codigoNumeroApelacion,
-                // numeroCartaApelacion,
-                // fechaEmisionCartaApelacion,
+                // preguntas 
+                detallePruebaApelacionUno,
+                detallefsApelacionDos,
+                materiaEmpresaApelacionTres,
+                apelacionopcioncuatro,
+                numeroReciboApelacionSiCuatro,
+                fechaEmisionApelacionSiCuatro,
+                fechaVencimientoApelacionSiCuatro,
+                montoReclamadoApelacionSiCuatro,
+                detalleReclamoApelacionSiCuatro,
+                apelacionOpcioncinco,
+                numeroReciboApelacionSiCinco,
+                fechaEmisionApelacionSiCinco,
+                montoTotalApelacionSiCinco,
+                detalleReclamoApelacionSiCinco,
+                materiaEmpresaEmitirApelacionSeis,
 
-                // // preguntas 
-                // detallePruebaApelacionUno,
-                // detallefsApelacionDos,
-                // materiaEmpresaApelacionTres,
-                // apelacionopcioncuatro,
-                // numeroReciboApelacionSiCuatro,
-                // fechaEmisionApelacionSiCuatro,
-                // fechaVencimientoApelacionSiCuatro,
-                // montoReclamadoApelacionSiCuatro,
-                // detalleReclamoApelacionSiCuatro,
-                // apelacionOpcioncinco,
-                // numeroReciboApelacionSiCinco,
-                // fechaEmisionApelacionSiCinco,
-                // montoTotalApelacionSiCinco,
-                // detalleReclamoApelacionSiCinco,
-                // materiaEmpresaEmitirApelacionSeis,
-
-                // // descargo del cliente
-                // informacionNecesariaApelacion,
-                // sustentoApelacion,
+                // descargo del cliente
+                informacionNecesariaApelacion,
+                sustentoApelacion,
 
             };
 
@@ -3044,14 +3646,22 @@
 
                 const responseData = await response.json();
                 const messageDiv = document.getElementById('message');
+                const msg=document.getElementById('gracias');
 
                 if (responseData.error) {
                     messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
                 } else {
-                    messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_id} </span>`;
-                    //ocultarBotonesYRedirigir();    
-                    //const btns=document.getElementById("btnEnviarFormulario");
-                    //btns.style.display="none";
+                    // Asegurarse de que ticket_name existe antes de intentar acceder a él
+                    if (responseData.ticket_name) {
+                        messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_name} </span>`;
+                        msg.innerHTML = '"Gracias, su solicitud fue aceptada, en el transcurso será enviado su formulario"';
+                        const btns = document.getElementById("cajadeBtnsSuccess");
+                        btns.style.display = "none";
+                        const btnVolverHome = document.getElementById("inicio");
+                        btnVolverHome.style.display = "block";
+                    } else {
+                        messageDiv.innerHTML = `<span class="error">No se recibió un nombre de ticket válido.</span>`;
+                    }
                 }
             } catch (error) {
                 const messageDiv = document.getElementById('message');
@@ -3072,17 +3682,2177 @@
                 }
             });
 
-            // Esperar 3 segundos antes de redirigir
-            //setTimeout(function() {
-                // Redirigir a otra página (por ejemplo, página de confirmación)
-                //window.location.href = 'https://fiberpro.com.pe/'; // Cambia la URL aquí
-            //}, 3000); // 3000 milisegundos = 3 segundos
         }
 
     </script>
 
+    <!-- <script src="script.js"></script> -->
 
-    <script src="script.js"></script>
+    <script>
+       
+        // prevenir el envio cuando doy enter
+        const formularioEnviar = document.getElementById("claimForm");
+        const cajasdeEntradas =document.querySelectorAll("input, textarea, select")
+        // Función para evitar el envío al presionar 'Enter'
+        function prevenirEnvio(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Previene que el formulario se envíe
+            }
+        }
+
+        // Añadir evento de keydown a todos los campos de entrada, textarea y select
+        cajasdeEntradas.forEach(input => {
+            input.addEventListener("keydown", prevenirEnvio);
+        });
+
+        // Manejar el envío del formulario con el botón
+        formularioEnviar.addEventListener("submit", function(event) {
+            event.preventDefault();  // Evita el envío predeterminado
+            console.log("Formulario enviado");
+            // Aquí puedes agregar la lógica para enviar el formulario manualmente (por ejemplo, con AJAX)
+        });
+
+        //pantalla de carga
+        const loading=document.getElementById("validandoDatos");
+        loading.style.display="none"
+
+        // details de reclamo
+        const contenedorDetailsReclamo=document.getElementById("contenedorDatosPersonales");
+        const contenedorDetailsQueja=document.getElementById("quejaRespuestasSelecciones");
+        const contenedorDetailsApelacion=document.getElementById("apelacionRespuestasSelecciones");
+
+        //poniendo nombre a la caja de details de datos personales
+
+
+        const datosPersonalesDetailsContenedor=document.getElementById('contenedorDatosPersonalesDetails');
+        //
+
+        const cajaTotal=document.getElementById("cajaPadre")
+        // los inputs de los datos
+
+        // boton para enviar el todo formulario
+        const enviar=document.getElementById("btnEnviarFormulario");
+        enviar.style.display="none";
+        //
+        // inicio
+        // caja de selecion de reclamo - queja - apelacion
+        const contenedor=document.getElementById("contenedorOpcionesQRA");
+        // titulo de opcion escojida
+        const contenedorCajaTitulo=document.getElementById("tituloOpcionesQRA");
+        const tituloOpcion=document.getElementById("opcionEscojida");
+        //tituloOpcionEscojida.style.display="none"
+
+        // contenedor de usuario - abonado - representante
+        const contenedorAUR=document.getElementById("contenedorOpcionesAUR");
+        contenedorAUR.style.display="none";
+
+
+        // funcion ids - para la seleccion de RECLAMO - QUEJA - APELACION
+        const opcionSeleccionadaReclamos=document.getElementById("reclamo");
+        const opcionSeleccionadaQueja=document.getElementById("queja");
+        const opcionSeleccionadaApelacion=document.getElementById("apelacion");
+
+        //el valor actual del input
+        const inputTicket = document.getElementById('tipoticket');
+        const inputDiagnostico = document.getElementById('diagnostico');
+
+
+        // Evento
+        // Reclamos
+        opcionSeleccionadaReclamos.addEventListener("click",function () {
+            // El número que deseas agregar, por ejemplo, 12345
+            const numT = 3;
+            const numD = 34;
+                
+            // Asignar ese número al valor del input
+            inputTicket.value = numT;
+            inputDiagnostico.value = numD;
+
+            // desaparecer las cajas de opciones
+            contenedor.style.display="none"
+            contenedorCajaTitulo.style.display="flex"
+            // Escribir la opcion escojida
+            tituloOpcion.innerHTML="Reclamo";
+            //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
+            contenedorAUR.style.display="flex";
+            // RECLAMOS
+
+        })
+
+        //Quejas
+        opcionSeleccionadaQueja.addEventListener("click",function () {
+            // El número que deseas agregar, por ejemplo, 12345
+            const numT = 6;
+            const numD = 82;
+                
+            // Asignar ese número al valor del input
+            inputTicket.value = numT;
+            inputDiagnostico.value = numD;
+
+            // desaparecer las cajas de opciones
+            contenedor.style.display="none"
+            contenedorCajaTitulo.style.display="flex"
+            // Escribir la opcion escojida
+            tituloOpcion.innerHTML="Queja";
+            //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
+            contenedorAUR.style.display="flex";
+        })
+
+        //Apelacion
+        opcionSeleccionadaApelacion.addEventListener("click",function () {
+            // El número que deseas agregar, por ejemplo, 12345
+            const numT = 7;
+            const numD = 81;
+                
+            // Asignar ese número al valor del input
+            inputTicket.value = numT;
+            inputDiagnostico.value = numD;
+
+            // desaparecer las cajas de opciones
+            contenedor.style.display="none"
+            contenedorCajaTitulo.style.display="flex"
+            // Escribir la opcion escojida
+            tituloOpcion.innerHTML="Apelación";
+            //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
+            contenedorAUR.style.display="flex";
+        })
+
+        const monto=document.getElementById("montoTarifa");
+        monto.setAttribute("type", "number");
+
+        const montoApelacion=document.getElementById("montoReclamadoApelacionSiCuatro");
+        montoApelacion.setAttribute("type", "number");
+
+        const montoApelacionDos=document.getElementById("montoTotalApelacionSiCinco");
+        montoApelacionDos.setAttribute("type", "number");
+
+        const montoFCone=document.getElementById("montoReclamadoFCone");
+        montoFCone.setAttribute("type", "number");
+
+        const montoInstalacion=document.getElementById("montoPendienteInstalacion");
+        montoInstalacion.setAttribute("type", "number");
+
+        const montoBaja=document.getElementById("montoReclamadoBaja");
+        montoBaja.setAttribute("type", "number");
+
+        const montoContratacion=document.getElementById("montoReclamadoContratacion");
+        montoContratacion.setAttribute("type", "number");
+
+        const montoMigracion=document.getElementById("montoReclamadoMigracionMigracion");
+        montoMigracion.setAttribute("type", "number");
+
+        const montoMigracionDos=document.getElementById("montoReclamadoMigracion");
+        montoMigracionDos.setAttribute("type","number");
+
+
+
+        // funciona los que estan en la siguiente linea
+        // contenedor de datos personales
+        const contenedorDatosPersonales=document.getElementById("contenidoDatos")
+        contenedorDatosPersonales.style.display="none";
+
+
+        function volverRQA() {
+            // para mostrar opciones de tipo de reclamo
+            contenedor.style.display="flex"
+            //para ocultar las cajas el titulo de opciones de reclamo 
+            contenedorCajaTitulo.style.display="none"
+            //para guardar el details
+            datosPersonalesDetailsContenedor.open=false;
+            //para ocultar opciones de tipo de personales
+            contenedorDatosPersonales.style.display="none";
+            //para ocultar el titulo de tipo de personales
+            tituloAUR.style.display="none";
+            // ocultar la opcion de tipo de personas
+            contenedorAUR.style.display="none";
+            //ocultar el details de validacion
+            dValidacionAbonado.style.display="none"
+            dValidacionUsuario.style.display="none"
+            cDatosValidacionAbonado.open=false;
+            cDatosValidacionUsuario.open=false;
+            //oculta todo los datos del formulario
+            // reclamo
+            sReclamo.style.display="none";
+            seleccionarMultipleReclamo.open=false;
+            cReclamo.style.display="none"
+            //queja
+            sQueja.style.display="none";
+            seleccionarQueja.open=false;
+            cQueja.style.display="none"
+            //apelacion
+            sApelacion.style.display="none";
+            seleccionarApelacion.open=false;
+            cApelacion.style.display="none"
+            // comentarios finales del reclamo
+            extraReclamo.style.display="none";
+            contenedorDetailsExtraReclamo.open=false;
+            // comentarios finales del queja
+            extraQueja.style.display="none";
+            contenedorDetailsExtraQueja.open=false;
+            // comentarios finales del apelacion
+            extraApelacion.style.display="none";
+            contenedorDetailsExtraApelacion.open=false;
+            //btn de finalizar
+            enviar.style.display="none";
+            // datos
+            // Limpiar todos los campos de tipo input y textarea
+            const txtInputs = document.querySelectorAll('input[type="text"], select, textarea, input[type="date"]');
+            txtInputs.forEach(function(input) {
+                if (input.type === 'radio') {
+                    input.checked = false; // Para checkboxes y radios
+                } else {
+                    input.value = ''; // Para otros tipos de inputs y select
+                }
+            });
+
+        }
+
+
+        //usuarios
+        // titulo de usuario
+        const tituloAUR=document.getElementById("tituloOpcionesAUR");
+        tituloAUR.style.display="none"
+        const txtTituloAUR=document.getElementById("tituloAUR");
+        // contenedores de tipos de usuarios
+        const tpAbonado=document.getElementById("abonado");
+        const tpUsuario=document.getElementById("usuario");
+        const tpRepresentante=document.getElementById("representante")
+        //datos extras del respresentantes
+        const dRepresentante=document.getElementById("extra_representante");
+        // datos extras del usuario
+        const dUsuarios=document.getElementById("extra_usuario")
+        //para datos de la validacion abonado
+        const dValidacionAbonado=document.getElementById("datosValidacionAbonado")
+        dValidacionAbonado.style.display="none"
+        const cDatosValidacionAbonado=document.getElementById("contenedorDatosValidacionAbonado")
+        cDatosValidacionAbonado.open=false;
+        //para datos de la validacion usuario
+        const dValidacionUsuario=document.getElementById("datosValidacionUsuario")
+        dValidacionUsuario.style.display="none"
+        const cDatosValidacionUsuario=document.getElementById("contenedorDatosValidacionUsuario")
+        cDatosValidacionUsuario.open=false;
+
+
+        // funcion para mostrar el formulario de los datos personales
+
+        tpAbonado.addEventListener("click",function () {
+            // para extender el details
+            datosPersonalesDetailsContenedor.open=true;
+            // para mostrar los datos de validacion
+            dValidacionAbonado.style.display="flex"
+            cDatosValidacionAbonado.open=true;
+            //contenedor de las opciones
+            contenedorAUR.style.display="none";
+            // el titulo del usuario
+            tituloAUR.style.display="flex"
+            txtTituloAUR.innerHTML="Abonado";
+        })
+
+        tpUsuario.addEventListener("click",function(){
+            // para extender el details
+            datosPersonalesDetailsContenedor.open=true;
+            // para mostrar los datos de validacion
+            dValidacionAbonado.style.display="none"
+            dValidacionUsuario.style.display="flex"
+            cDatosValidacionUsuario.open=true;
+            //contenedor de las opciones
+            contenedorAUR.style.display="none";
+            // el titulo del usuario
+            tituloAUR.style.display="flex"
+            txtTituloAUR.innerHTML="Usuario";
+        })
+
+        tpRepresentante.addEventListener("click",function(){
+            // para extender el details
+            datosPersonalesDetailsContenedor.open=true;
+            // datos para mostrar formulario de datos personales
+            contenedorDatosPersonales.style.display="flex";
+            dUsuarios.style.display="none";
+            dRepresentante.style.display="flex";
+            //contenedor de las opciones
+            contenedorAUR.style.display="none";
+            // el titulo del usuario
+            tituloAUR.style.display="flex"
+            txtTituloAUR.innerHTML="Representante";
+            // ocultar datos
+            dValidacionAbonado.style.display="none"
+            dValidacionUsuario.style.display="none"
+        })
+
+        // para validar los datos del abonado
+        // Obtener el botón de validación
+        const vAbonado = document.getElementById("validarFormularioAbonado");
+
+        vAbonado.addEventListener("click", function () {
+            // Obtener los campos de texto y fecha dentro del formulario de validación
+            const txtValidarAbonado = cDatosValidacionAbonado.querySelectorAll("input[type='text'], input[type='date']");
+            let validado = true; // Variable para comprobar si todos los campos están llenos
+
+            // Limpiar cualquier mensaje de error previo
+            txtValidarAbonado.forEach(txtDatos => {
+                const errorMsg = txtDatos.parentElement.querySelector(".txtError");
+                if (errorMsg) {
+                    errorMsg.remove(); // Eliminar el mensaje de error si ya existía
+                }
+            });
+
+            // Validación de los campos
+            txtValidarAbonado.forEach(txtDatos => {
+                // Si el campo está vacío
+                if (txtDatos.value.trim() === "") {
+                    const alerta = document.createElement("p");
+                    alerta.textContent = "Este campo es obligatorio";
+                    alerta.classList.add("txtError"); // Añadir una clase de estilo
+
+                    // Insertar el mensaje de error debajo del campo
+                    txtDatos.insertAdjacentElement("afterend", alerta);
+
+                    // Cambiar la variable de validación a false, ya que hay un campo vacío
+                    validado = false;
+                }
+            });
+
+            // Si todos los campos están llenos (validado es true)
+            if (validado) {
+                // Mostrar el loading
+                loading.style.display = "flex";
+
+                // Esperar 3 segundos para simular un retraso y ocultar el loading
+                setTimeout(function () {
+                    loading.style.display = "none"; // Ocultar el loading después de 3 segundos
+
+                    // Si los datos son válidos, mostrar el siguiente formulario
+                    contenedorDatosPersonales.style.display = "flex";
+                    dRepresentante.style.display = "none";
+                    dUsuarios.style.display = "none";
+
+                    // Ocultar el formulario de validación de abonado
+                    cDatosValidacionAbonado.open = false;
+                    dValidacionAbonado.style.display = "none";
+                }, 3000); // 3000 ms = 3 segundos
+            }
+        });
+
+
+        // para validar los datos del usuario
+
+        const vUsuario=document.getElementById("validarFormularioUsuario");
+
+        vUsuario.addEventListener("click",function () {
+
+            const txtValidarUsuario=cDatosValidacionUsuario.querySelectorAll("input[type='text'], input[type='date'],email");
+            let validadoUsuario = true; // Variable para comprobar si todos los campos están llenos
+
+            // Limpiar cualquier mensaje de error previo
+            txtValidarUsuario.forEach(txtDatosUsuario => {
+                const errorMsg = txtDatosUsuario.parentElement.querySelector(".txtError");
+                if (errorMsg) {
+                    errorMsg.remove(); // Eliminar el mensaje de error si ya existía
+                }
+            });
+
+            // Validación de los campos
+            txtValidarUsuario.forEach(txtDatosUsuario => {
+                // Si el campo está vacío
+                if (txtDatosUsuario.value.trim() === "") {
+                    const alertaUsuario = document.createElement("p");
+                    alertaUsuario.textContent = "Este campo es obligatorio";
+                    alertaUsuario.classList.add("txtError"); // Añadir una clase de estilo
+
+                    // Insertar el mensaje de error debajo del campo
+                    txtDatosUsuario.insertAdjacentElement("afterend", alertaUsuario);
+
+                    // Cambiar la variable de validación a false, ya que hay un campo vacío
+                    validadoUsuario = false;
+                }
+            });
+
+            // Si todos los campos están llenos (validado es true)
+            if (validadoUsuario) {
+                // Mostrar el loading
+                loading.style.display = "flex";
+
+                // Esperar 3 segundos para simular un retraso y ocultar el loading
+                setTimeout(function () {
+                    loading.style.display = "none"; // Ocultar el loading después de 3 segundos
+
+                    // Si necesitas hacer algo después del delay, como cambiar más elementos o mostrar algo
+                    // datos para mostrar formulario de datos personales
+                    contenedorDatosPersonales.style.display="flex";
+                    dUsuarios.style.display="block";
+                    dRepresentante.style.display="none";
+                    // ocultar datos de validacion de usuario
+                    cDatosValidacionUsuario.open=false;
+                    dValidacionUsuario.style.display="none"
+
+                }, 3000); // 3000 ms = 3 segundos
+            }
+
+
+        })
+
+        // funcion para volver cuando ya escojio al usuario
+
+        function volverUsuario() {
+            //para ocultar el titulo de tipos de usuarios
+            tituloAUR.style.display="none"
+            // para mostrar las opciones de tipos de usuario
+            contenedorAUR.style.display="flex";
+            // para ocultar los details
+            dValidacionAbonado.style.display="none"
+            dValidacionUsuario.style.display="none"
+            // para ocultar las opciones de representante
+            contenedorDatosPersonales.style.display="none";
+            //oculta todo los datos del formulario
+            // reclamo
+            sReclamo.style.display="none";
+            seleccionarMultipleReclamo.open=false;
+            cReclamo.style.display="none"
+            //queja
+            sQueja.style.display="none";
+            seleccionarQueja.open=false;
+            cQueja.style.display="none"
+            //apelacion
+            sApelacion.style.display="none";
+            seleccionarApelacion.open=false;
+            cApelacion.style.display="none"
+            // comentarios finales del reclamo
+            extraReclamo.style.display="none";
+            contenedorDetailsExtraReclamo.open=false;
+            // comentarios finales del queja
+            extraQueja.style.display="none";
+            contenedorDetailsExtraQueja.open=false;
+            // comentarios finales del apelacion
+            extraApelacion.style.display="none";
+            contenedorDetailsExtraApelacion.open=false;
+            //btn de finalizar
+            enviar.style.display="none";
+
+            // Limpiar todos los campos de tipo input y textarea
+            const txtInputs = document.querySelectorAll('input[type="text"], select, textarea, input[type="date"],email');
+            txtInputs.forEach(function(input) {
+                if (input.type === 'radio') {
+                    input.checked = false; // Para checkboxes y radios
+                } else {
+                    input.value = ''; // Para otros tipos de inputs y select
+                }
+            });
+
+        }
+
+        // cambiando tipo de numero de contacto
+        const numeroContacto=document.getElementById("numeroContacto")
+        // numeroContacto.setAttribute("type", "number");
+        // numeroContacto.setAttribute('max', '9');
+
+        // Datos personales
+        const txtNum=document.getElementById("numDoc")
+        txtNum.setAttribute('maxlength', '0');
+        //txtNum.setAttribute("type", "number");
+        //txtNum.setAttribute("type", "number");
+
+        function tipoDocumento() {
+            const option=document.getElementById("tipoDoc").value;
+
+            switch (option) {
+                case "DNI":
+                    txtNum.setAttribute('maxlength', '8');
+                    break;
+
+                case "RUC":
+                    txtNum.setAttribute('maxlength', '11');
+                    break;
+
+                case "Pasaporte":
+                    txtNum.setAttribute('maxlength', '20');
+                    break;
+
+                case "CE":
+                    txtNum.setAttribute('maxlength', '20');
+                    break;
+
+                case "Otro_Documento":
+                    txtNum.setAttribute('maxlength', '20');
+                    break;
+            
+                default:
+                    txtNum.setAttribute('maxlength', '0');
+                    break;
+            }
+
+        }
+
+
+        // para continuar con el formulario
+
+
+        // Selecciona todas las cajas con la clase 'opcionesPrimero'
+
+
+        const sApelacion=document.getElementById("seleccionarApelacion");
+        const sQueja=document.getElementById("seleccionarQueja");
+        const sReclamo=document.getElementById("seleccionarReclamo");
+
+        sApelacion.style.display="none";
+        sQueja.style.display="none";
+        sReclamo.style.display="none";
+
+        // Variable global donde se guardará el valor de 'data-value' del contenedor seleccionado
+        let valorSeleccionado = null;
+
+        // Seleccionamos todos los contenedores de las cajas con el nombre 'cajasValores'
+        const cajas = document.querySelectorAll('[name="cajasValores"]');
+
+        // Iteramos sobre cada uno de los elementos de las cajas
+        cajas.forEach(function(caja) {
+            // Agregamos el evento de clic a cada caja
+            caja.addEventListener('click', function() {
+                // Obtenemos el valor de 'data-value' del contenedor que se ha clickeado
+                valorSeleccionado = caja.getAttribute('data-value');
+
+                // Mostramos el valor obtenido en la consola (solo como ejemplo)
+                console.log('Valor seleccionado:', valorSeleccionado);
+
+                // También puedes hacer algo con ese valor, como abrir un formulario o cambiar contenido
+            });
+        });
+
+        console.log(valorSeleccionado);
+
+        const seleccionarMultipleReclamo=document.getElementById("seleccionMultipleReclamo");
+        const seleccionarQueja=document.getElementById("seleccionUnicoQueja");
+        const seleccionarApelacion=document.getElementById("seleccionUnicaApelacion");
+
+
+
+
+        const validadFormularioDatosPersonales=document.getElementById("validarFormularioContinuar");
+        validadFormularioDatosPersonales.addEventListener("click",function () {
+
+            // Seleccionar todos los radio buttons con el nombre 'autorizacion'
+            const radios = document.querySelectorAll("input[name='autorizacion']");
+            const txtCorreo = document.getElementById("escojerCorreo");
+
+            // Usar 'forEach' para recorrer todos los radio buttons
+            let seleccionado = false;
+
+            radios.forEach(function (radio) {
+                if (radio.checked) {
+                    seleccionado = true;  // Si un radio button está seleccionado, actualizar la variable
+                }
+            });
+
+            // Verificar si ya existe el mensaje de alerta
+            let alertaRadio = document.querySelector(".alert");
+
+            // Si no existe el mensaje de alerta, crearlo
+            if (!alertaRadio) {
+                alertaRadio = document.createElement("p");
+                alertaRadio.textContent = "Marcar una opción";
+                alertaRadio.classList.add("alert");
+                alertaRadio.style.textAlign = "center";
+                txtCorreo.insertAdjacentElement("afterend", alertaRadio);
+            }
+
+            // Si ninguno está seleccionado, mostrar el mensaje de alerta
+            if (!seleccionado) {
+                return false;  // Detener el envío del formulario
+            }
+
+            // Si ya hay una selección, eliminamos el mensaje de alerta
+            if (alertaRadio) {
+                alertaRadio.remove();
+            }
+
+            switch (valorSeleccionado) {
+                case "3":
+                    datosPersonalesDetailsContenedor.open=false;
+                    sReclamo.style.display="flex";
+                    seleccionarMultipleReclamo.open=true;
+                    break;
+                case "6":
+                    datosPersonalesDetailsContenedor.open=false;
+                    sQueja.style.display="flex";
+                    seleccionarQueja.open=true;
+                    break;
+                case "7":
+                    datosPersonalesDetailsContenedor.open=false;
+                    sApelacion.style.display="flex";
+                    seleccionarApelacion.open=true;
+                    break;
+                default:
+                    break;
+            }
+            
+        })
+
+
+        //
+        /*
+        */
+
+
+
+            
+
+        /*
+        */
+
+        const cApelacion=document.getElementById("datosApelacion");
+        const cQueja=document.getElementById("datosQueja");
+        const cReclamo=document.getElementById("datosReclamos");
+
+        cApelacion.style.display="none"
+        cQueja.style.display="none"
+        cReclamo.style.display="none"
+
+        /* Facturacion */
+
+
+        function selecion() {
+
+            //
+            //
+            cReclamo.style.display="block";
+            //
+            const materiaR=document.getElementById("materias");
+            const materiasFacturacion=document.getElementById("fc");
+            const materiasCalidad=document.getElementById("cs");
+            const materiasOfertas=document.getElementById("op");
+            const materiasFaltaServicio=document.getElementById("fs");
+            const materiasInstalacion=document.getElementById("ia");
+            const materiasBaja=document.getElementById("sus");
+            const materiasContratacion=document.getElementById("ct");
+            const materiasMigracion=document.getElementById("mi");
+            const materiasXmaterias=document.getElementById("xma");
+            //Opcion
+
+            // facturacion
+            const contenidoFacturacion=document.getElementById("contenidoBase");
+            contenidoFacturacion.style.display="none";
+            //
+
+            //calidad
+            const contenidoci=document.getElementById("contenidocaliad");
+            contenidoci.style.display="none"
+            //
+
+            //incumplimiento
+            const incumplimientoO=document.getElementById("contenidoincumplimientoone");
+            const incumplimientoT=document.getElementById("contenidoincumplimientotwo");
+            const incumplimientoTr=document.getElementById("contenidoincumplimientothree");
+            const incumplimientoF=document.getElementById("contenidoincumplimientofour");
+            incumplimientoO.style.display="none";
+            incumplimientoT.style.display="none";
+            incumplimientoTr.style.display="none";
+            incumplimientoF.style.display="none";
+            //
+
+            //servicio
+            const cfsOne=document.getElementById("contenidofservicioone");
+            //const cfsTwo=document.getElementById("contenidofserviciotwo");
+            const cfsThree=document.getElementById("contenidofsthree");
+            const cfsFour=document.getElementById("contenidofsfour");
+            cfsOne.style.display="none";
+            //cfsTwo.style.display="none";
+            cfsThree.style.display="none";
+            cfsFour.style.display="none";
+            //
+
+            //activacion
+            const instalacionUnoDos=document.getElementById("contenidoinstalacionuno")
+            const intalacionTresCuatro=document.getElementById("contenidoinstalaciontres")
+            const instalacionCinco=document.getElementById("contenidoinstalacioncinco")
+            instalacionUnoDos.style.display="none";
+            intalacionTresCuatro.style.display="none";
+            instalacionCinco.style.display="none";
+            //
+
+            //baja
+            const bajaOne=document.getElementById("respuestabajauno");
+            const bajaDos=document.getElementById("respuestabajados");
+            const bajaTres=document.getElementById("respuestastrescuatro");
+            bajaOne.style.display="none";
+            bajaDos.style.display="none";
+            bajaTres.style.display="none";
+            //
+
+            // contratacion
+            const contratosUno=document.getElementById("respuestascontratosbase");
+            const contratoDos=document.getElementById("respuestascontratosdos");
+            const contratosTres=document.getElementById("respuestascontratostres");
+            const contratoCuatro=document.getElementById("respuestascontratoscuatros");
+            contratosUno.style.display="none";
+            contratoDos.style.display="none";
+            contratosTres.style.display="none";
+            contratoCuatro.style.display="none";
+            //
+
+            //migracion
+            const migracionUno=document.getElementById("respuestasMigracionBase");
+            // const migracionDos=document.getElementById("respuestasMigracionDos");
+            // const migracionTres=document.getElementById("respuestaMigracionTres");
+            // const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
+            // const datoExtraUno=document.getElementById("respuestaMigracionUno");
+            migracionUno.style.display="none";
+            // migracionDos.style.display="none";
+            // migracionTres.style.display="none";
+            // migracionCuatro.style.display="none";
+            // datoExtraUno.style.display="none";
+            //
+
+            // otros
+            const xReclamablesUno=document.getElementById("xmateriasOne");
+            const xReclamablesDos=document.getElementById("xmateriasTwo");
+            const xReclamablesTres=document.getElementById("xmateriasThree");
+            xReclamablesUno.style.display="none";
+            xReclamablesDos.style.display="none";
+            xReclamablesTres.style.display="none";
+            //
+
+            //details
+            document.getElementById('seleccionMultipleReclamo').open = true;
+
+            switch (materiaR.value) {
+
+                case "fcs":
+                    
+                    materiasFacturacion.style.display = 'block';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+                    break;
+
+                case "calidad":
+
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'block';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+                    break;
+
+                case "oferta":
+
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'block';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+                    break;
+                    
+                case "falta":
+                
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'block';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+
+                    break;
+
+                case "instalacion":
+
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'block';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+
+                    break;
+                    
+                case "baja":
+                    
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'block';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+
+                    break;
+
+                case "contratacion":
+                    
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'block';
+                    materiasMigracion.style.display = 'none';
+                    materiasXmaterias.style.display = 'none';
+
+                    break;
+
+                case "migracion":
+
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display = 'block';
+                    materiasXmaterias.style.display = 'none';
+
+                    break;
+                    
+                case "xmaterias":
+                    
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display="none";
+                    materiasXmaterias.style.display = 'block';
+                    //cCalidad.style.display="none"
+
+                    break;
+            
+                default:
+                    materiasFacturacion.style.display = 'none';
+                    materiasCalidad.style.display = 'none';
+                    materiasOfertas.style.display = 'none';
+                    materiasFaltaServicio.style.display = 'none';
+                    materiasInstalacion.style.display = 'none';
+                    materiasBaja.style.display = 'none';
+                    materiasContratacion.style.display = 'none';
+                    materiasMigracion.style.display="none";
+                    materiasXmaterias.style.display = 'none';
+                    //
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+
+        }
+
+
+
+        /* facturacion */
+
+        function facturado() {  
+
+            const oFacturado=document.getElementById("facturados").value;
+            const nRecibo=document.getElementById("nReciboBase");
+            const contenidoFacturacion=document.getElementById("contenidoBase");
+            const conceptoFacturado=document.getElementById("cfCondicion");
+            const tarifaUsuario=document.getElementById("cfCondicionDos");
+            const medioPagoFacturacion=document.getElementById("cfCondicionCinco");
+            const adHojaPagoFacturacion=document.getElementById("cfCondicionSeis");
+            const numDocCobro=document.getElementById("numDocCobroSeis");
+            //
+            //const selectElement = document.getElementById('facturados');
+            //
+            nRecibo.style.display="none";
+            contenidoFacturacion.style.display="none";
+            tarifaUsuario.style.display="none";
+            conceptoFacturado.style.display="none";
+            medioPagoFacturacion.style.display="none";
+            adHojaPagoFacturacion.style.display="none";
+            numDocCobro.style.display="none";
+            //
+            //selectElement.value = ""; 
+            //
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            switch (oFacturado) {
+
+                case "calculo":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    conceptoFacturado.style.display="block";
+                    break;
+                
+                case "tarifa":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    tarifaUsuario.style.display="block"
+                    conceptoFacturado.style.display="block";
+                    break;
+
+                case "reconexion":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    conceptoFacturado.style.display="none";
+                    break;
+
+                case "dmonto":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    conceptoFacturado.style.display="block";
+                    break;
+                
+                case "noprocesado":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    medioPagoFacturacion.style.display="flex";
+                    break;
+
+                case "nfacturados":
+                    numDocCobro.style.display="block"
+                    contenidoFacturacion.style.display="flex";
+                    adHojaPagoFacturacion.style.display="flex";
+                    break;
+
+                case "cequipos":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    break;
+                
+                case "incremento":
+                    nRecibo.style.display="block";
+                    contenidoFacturacion.style.display="flex";
+                    break;
+            
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+
+
+            //
+            //console.log(selectFacturado);
+            
+
+            //guardarSeleccion();
+
+
+            // el objeto selecionado;
+            //const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
+            //console.log(selectFacturado);
+        }
+
+        function hojaFacturado(){
+            const hoja=document.getElementById("hpfacturado").value;
+            const fileFacturacion=document.getElementById("fhpf");
+            fileFacturacion.style.display="none";
+            
+            switch (hoja) {
+                case "si":
+                    fileFacturacion.style.display="block"
+                    break;
+            
+                default:
+                    fileFacturacion.style.display="none";
+                    break;
+            }
+
+        }
+
+        function mdPagoFacturacion() {
+            
+            const xMedioPago=document.getElementById("mPago").value;
+            const especificarMedioPagoFacturacion=document.getElementById("especificarMPfacturacion");
+
+            especificarMedioPagoFacturacion.style.display="none";
+
+            switch (xMedioPago) {
+                case "otro":
+                    especificarMedioPagoFacturacion.style.display="block";
+                    break;
+            
+                default:
+                    break;
+            }
+
+        }
+
+        /* Fin de facturacion */
+
+        /* calidad */
+
+        function calidad() {
+
+            const oCalidad=document.getElementById("calidadidoneidad");
+            const contenidoci=document.getElementById("contenidocaliad");
+            document.getElementById('detailsReclamoDs').open = true;
+            //calidad
+            contenidoci.style.display="none";
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            switch (oCalidad.value) {
+
+                case "calidaduno":
+                    contenidoci.style.display="flex"
+                    break;
+            
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+            // el objeto selecionado;
+            //const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
+            //console.log(selectCalidad);
+        }
+
+        /* Fin de calidad */
+
+        /* incumplimiento */
+
+        function incumpliento() {
+            
+            const oincumplimiento=document.getElementById("ofertas");
+            const incumplimientoO=document.getElementById("contenidoincumplimientoone");
+            const incumplimientoT=document.getElementById("contenidoincumplimientotwo");
+            const incumplimientoTr=document.getElementById("contenidoincumplimientothree");
+            const incumplimientoF=document.getElementById("contenidoincumplimientofour");
+            incumplimientoO.style.display="none";
+            incumplimientoT.style.display="none";
+            incumplimientoTr.style.display="none";
+            incumplimientoF.style.display="none";
+            //
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            switch (oincumplimiento.value) {
+
+                case "incumplimientoUNO":
+                    incumplimientoO.style.display="block"
+                    break;
+            
+                case "incumplimientoDOS":
+                    incumplimientoT.style.display="block"
+                    //
+                    break;
+
+                case "incumplimientoTRES":
+                    incumplimientoTr.style.display="block"
+                    //
+                    break;
+            
+                case "incumplimientoCUATRO":
+                    incumplimientoF.style.display="block"
+                    //
+                    break;
+                
+                default:
+                    //
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+
+        }
+
+        function canalPromocion() {
+            const canalPromocion=document.getElementById("cbpromocionfs").value;
+            const txtPromocion=document.getElementById("txtcpromocion");
+
+            switch (canalPromocion) {
+                case "otro":
+                    txtPromocion.style.display="block";
+                    break;
+            
+                default:
+                    txtPromocion.style.display="none";
+                    break;
+            }
+
+        }
+
+        function canalPromocionCuatro() {
+            const cPromocionC=document.getElementById("cnPromocionCuatro").value;
+            const txtPromocionC=document.getElementById("txtcpromocioC");
+
+
+            switch (cPromocionC) {
+                case "otro":
+                    txtPromocionC.style.display="block";
+                    break;
+            
+                default:
+                    txtPromocionC.style.display="none";
+                    break;
+            }
+        }
+
+        /* Fin de incumplimiento */
+
+
+        /* falta de servicio */
+
+        function faltaServicios() {
+
+            const fServicio=document.getElementById("fservicio")
+            const cfsOne=document.getElementById("contenidofservicioone");
+            const cfsThree=document.getElementById("contenidofsthree");
+            const cfsFour=document.getElementById("contenidofsfour");
+            //
+            const fsOneOpcion=document.getElementById("fsOne");
+            const fsTwoOpcion=document.getElementById("fsTwo");
+            const fsF=document.getElementById("fsFile");
+            //
+            fsOneOpcion.style.display="none";
+            fsTwoOpcion.style.display="none";
+            fsF.style.display="none";
+            //
+            cfsOne.style.display="none";
+            //cfsTwo.style.display="none";
+            cfsThree.style.display="none";
+            cfsFour.style.display="none";
+            //
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+            
+            switch (fServicio.value) {
+
+                case "servicioone":
+                    cfsOne.style.display="block";
+                    fsTwoOpcion.style.display="none";
+                    fsOneOpcion.style.display="block";
+                    break;
+
+                case "serviciotwo":
+                    fsOneOpcion.style.display="none";
+                    cfsOne.style.display="block";
+                    fsTwoOpcion.style.display="block";
+                    fsF.style.display="block";
+                    break;
+
+                case "serviciothree":
+                    cfsThree.style.display="block";
+                    break;
+
+                case "serviciofour":
+                    cfsFour.style.display="block";
+                    break;
+            
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+        }
+
+        function fsrecibo(){
+            const adjuntaRecibo=document.getElementById("adrecibos").value;
+            const adjuntarElRecibo=document.getElementById("adRecibofs");
+            //
+
+            switch (adjuntaRecibo) {
+                case "si":
+                    adjuntarElRecibo.style.display="block";
+                    break;
+            
+                default:
+                    adjuntarElRecibo.style.display="none";
+                    break;
+            }
+
+        }
+
+        function mpagosfs() {
+            const mediosPagos=document.getElementById("mpagos").value;
+            const medioPagoEspecifique=document.getElementById("txtmpagos");
+
+            switch (mediosPagos) {
+                case "otros": 
+                    medioPagoEspecifique.style.display="block";
+                    break;
+            
+                default:
+                    medioPagoEspecifique.style.display="none";
+                    break;
+            }
+        }
+
+        function fsreciboPendiente() {
+            const recibosPendientes=document.getElementById("adrecibosPendiente").value;
+            const fileRPendiente=document.getElementById("adReciboPendientefs");
+
+
+            switch (recibosPendientes) {
+                case "si":
+                    fileRPendiente.style.display="block";
+                    break;
+            
+                default:
+                    fileRPendiente.style.display="none";
+                    break;
+            }
+        }
+
+        /* fin de falta de servicio */
+
+        /* activaciones */
+
+        function instalaciones() {
+            const instalacionOpcion=document.getElementById("instalacion")
+            const instalacionUnoDos=document.getElementById("contenidoinstalacionuno")
+            const intalacionTresCuatro=document.getElementById("contenidoinstalaciontres")
+            const instalacionCinco=document.getElementById("contenidoinstalacioncinco")
+            instalacionUnoDos.style.display="none";
+            intalacionTresCuatro.style.display="none";
+            instalacionCinco.style.display="none";
+            //
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            switch (instalacionOpcion.value) {
+                case "instalacionesUno":
+                    instalacionUnoDos.style.display="block";
+                    break;
+
+                case "instalacionesDos":
+                    instalacionUnoDos.style.display="block";
+                    break;
+
+                case "instalacionesTres":
+                    intalacionTresCuatro.style.display="block";
+                    break;
+                    
+                case "instalacionesCuatro":
+                    intalacionTresCuatro.style.display="block";
+                    break;
+            
+                case "instalacionesCinco":
+                    instalacionCinco.style.display="block";
+                    break;
+
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+        }
+
+        function soltrasladoe() {
+            const opTraslado=document.getElementById("strasladoe").value;
+            const espTraslado=document.getElementById("estraslado");
+
+            switch (opTraslado) {
+                case "otros":
+                    espTraslado.style.display="block"
+                    break;
+            
+                default:
+                    espTraslado.style.display="none";
+                    break;
+            }
+        }
+
+        function adsTraslado() {
+            const adsopcion=document.getElementById("adsOpcionTraslado").value;
+            const adjuntarSolicitud=document.getElementById("adsot");
+
+            switch (adsopcion) {
+                case "si":
+                    adjuntarSolicitud.style.display="block";
+                    break;
+            
+                default:
+                    adjuntarSolicitud.style.display="none";
+                    break;
+            }
+
+        }
+
+        function canalTrasladoCinco() {
+            const opcionCtraslado=document.getElementById("ctopcionCinco").value;
+            const textoTraslado=document.getElementById("txtCincoTraslado");
+
+            switch (opcionCtraslado) {
+                case "otros":
+                    textoTraslado.style.display="block";
+                    break;
+            
+                default:
+                    textoTraslado.style.display="none"
+                    break;
+            }
+
+        }
+
+        function opcionTrasladoCuatro() {
+            const opcionS=document.getElementById("opcionCuatroTraslado").value;
+            const fileCuatro=document.getElementById("asbaja")
+
+            switch (opcionS) {
+                case "si":
+                    fileCuatro.style.display="block";
+                    break;
+            
+                default:
+                    fileCuatro.style.display="none";
+                    break;
+            }
+
+        }
+
+
+        /* fin de activaciones */
+
+        /* baja */
+
+        function baja() {
+            const opcionBaja=document.getElementById("sb");
+            const bajaOne=document.getElementById("respuestabajauno");
+            const bajaDos=document.getElementById("respuestabajados");
+            const bajaTres=document.getElementById("respuestastrescuatro");
+            bajaOne.style.display="none";
+            bajaDos.style.display="none";
+            bajaTres.style.display="none";
+
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            switch (opcionBaja.value) {
+                case "bajaUno":
+                    bajaOne.style.display="block";
+                    break;
+
+                case "bajaDos":
+                    bajaDos.style.display="block";
+                    break;
+
+                case "bajaTres":
+                    bajaOne.style.display="block";
+                    bajaTres.style.display="block";   
+                    break;
+
+                case "bajaCuatro":
+                        
+                    bajaDos.style.display="block";
+                    bajaTres.style.display="block";   
+                    break;
+            
+                default:  
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+        }
+
+        function canaldBaja() {
+            const canalBaja=document.getElementById("cbaja").value;
+            const especificarBaja=document.getElementById("txtcanalbaja")
+
+            switch (canalBaja) {
+                case "otros":
+                    especificarBaja.style.display="block";
+                    break;
+            
+                default:
+                    especificarBaja.style.display="none";
+                    break;
+            }
+        }
+
+        function adjuntarBaja() {
+            const opcionBaja=document.getElementById("asb").value;
+            const adjuntoBaja=document.getElementById("asbaja")
+
+
+            switch (opcionBaja) {
+                case "no":
+                    adjuntoBaja.style.display="block";
+                    break;
+            
+                default:
+                    adjuntoBaja.style.display="none";
+                    break;
+            }
+
+        }
+
+        function canalTraslado() {
+            const sTraslado=document.getElementById("ctraslado").value;
+            const txtTraslado=document.getElementById("txtcanalTraslado");
+
+            switch (sTraslado) {
+                case "otros":
+                    txtTraslado.style.display="block";
+                    break;
+            
+                default:
+                    txtTraslado.style.display="none";
+                    break;
+            }
+        }
+
+        function adjuntarTraslado() {
+            const asTraslado=document.getElementById("asT").value;
+            const fileTraslado=document.getElementById("asTraslado");
+
+            switch (asTraslado) {
+                case "si":
+                    fileTraslado.style.display="block";
+                    break;
+            
+                default:
+                    fileTraslado.style.display="none";
+                    break;
+            }
+
+        }
+
+        /* fin de baja */
+
+        /* contratacion */
+
+        function contratos() {
+
+            const contratoOpcion=document.getElementById("con");
+            const contratosUno=document.getElementById("respuestascontratosbase");
+            const contratoDos=document.getElementById("respuestascontratosdos");
+            const contratosTres=document.getElementById("respuestascontratostres");
+            const contratoCuatro=document.getElementById("respuestascontratoscuatros");
+            contratosUno.style.display="none";
+            contratoDos.style.display="none";
+            contratosTres.style.display="none";
+            contratoCuatro.style.display="none";
+            ///
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            switch (contratoOpcion.value) {
+                case "conuno":
+                    contratosUno.style.display="block";
+                    
+                    break;
+                
+                case "condos":
+                    contratosUno.style.display="block";
+                    contratoDos.style.display="block";
+                    break;
+
+                case "contres":
+                    contratosUno.style.display="block";
+                    contratosTres.style.display="block";
+                    break;
+                
+                case "concuatro":
+                    contratosUno.style.display="block";
+                    break;
+            
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+
+        }
+
+        /* fin de contratacion */
+
+        /* Migracion */
+
+        function migracionReclamable() {
+
+            const opcionMigracion=document.getElementById("mig").value;
+            const migracionUno=document.getElementById("respuestasMigracionBase");
+            const migracionDos=document.getElementById("respuestasMigracionDos");
+            const migracionTres=document.getElementById("montoReclamadoStres");
+            const migracionCuatro=document.getElementById("respuestaMigracionesCuatro");
+            const datoExtraUno=document.getElementById("respuestaMigracionUno");
+            //
+            migracionUno.style.display="none";
+            migracionDos.style.display="none";
+            // migracionTres.style.display="none";
+            migracionCuatro.style.display="none";
+            // datoExtraUno.style.display="none";
+            // const aDatos=document.getElementById("adsdos");
+            // aDatos.style.display="none"
+
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+            
+            switch (opcionMigracion) {
+                case "migracionOne":
+                    migracionUno.style.display="block";
+                    break;
+
+                case "migracionTwo":
+                    migracionUno.style.display="block";
+                    migracionDos.style.display="block";
+                    break;
+
+                case "migracionThree":
+                    migracionUno.style.display="block";
+                    break;
+
+                case "migracionFour":
+                    migracionCuatro.style.display="block";
+                    break;
+            
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+        }
+
+        function canalMigracion() {
+            const canalMigracion=document.getElementById("cmigracion").value;
+            const eMigracion=document.getElementById("canaldmigracion");
+
+            switch (canalMigracion) {
+                case "otros":
+                    eMigracion.style.display="block";
+                    break;
+            
+                default:
+                    eMigracion.style.display="none";
+                    break;
+            }
+        }
+
+        function asolicitud() {
+            const docM=document.getElementById("asm").value;
+            const docF=document.getElementById("asmf");
+
+            switch (docM) {
+                case "si":
+                    docF.style.display="block";        
+                    break;
+            
+                default:
+                    docF.style.display="none";       
+                    break;
+            }
+        }
+
+        /* fin de migraciones */
+
+        /* OTROS */
+
+        function xMaterias() {
+
+            const xMateriasReclamables=document.getElementById("x");
+            const xReclamablesUno=document.getElementById("xmateriasOne");
+            const xReclamablesDos=document.getElementById("xmateriasTwo");
+            const xReclamablesTres=document.getElementById("xmateriasThree");
+            xReclamablesUno.style.display="none";
+            xReclamablesDos.style.display="none";
+            xReclamablesTres.style.display="none";
+
+            document.getElementById('detailsReclamoDs').open = true;
+            document.getElementById('seleccionMultipleReclamo').open = false;
+
+            
+            switch (xMateriasReclamables.value) {
+
+                case "xMateriasROne":
+                    xReclamablesUno.style.display="block";
+                    break;
+
+                case "xMateriasRTwo":
+                    xReclamablesDos.style.display="block";
+                    break;
+
+                case "xMateriasRThree":
+                    xReclamablesTres.style.display="block";
+                    break;
+            
+                default:
+                    document.getElementById('detailsReclamoDs').open = false;
+                    break;
+            }
+
+
+        }
+
+        function canalContratacion() {
+            const contratacion=document.getElementById("ccontratacion").value;
+            const especificar=document.getElementById("txtcontratacion");
+
+            switch (contratacion) {
+                case "otros":
+                    especificar.style.display="block";
+                    break;
+            
+                default:
+                    especificar.style.display="none";
+                    break;
+            }
+
+        }
+
+        function cPresentacionFLL() {
+            const cpfll=document.getElementById("cpresentacion").value;
+            const presentacionfll=document.getElementById("cpresentacionf");
+
+            switch (cpfll) {
+                case "otros":
+                    presentacionfll.style.display="block";
+                    break;
+            
+                default:
+                    presentacionfll.style.display="none";
+                    break;
+            }
+
+        }
+
+        function solicitudfll() {
+            const solicitdu=document.getElementById("sasfll").value;
+            const dfll=document.getElementById("asfll");
+
+            switch (solicitdu) {
+                case "si":
+                    dfll.style.display="block";
+                    break;
+            
+                default:
+                    dfll.style.display="none";
+                    break;
+            }
+
+        }
+
+        function pestañaReclamo() {
+            document.getElementById('detailsReclamoDs').open=false;
+            contenedorDetailsReclamo.open = true;
+        }
+
+        /* FIN DE OTROS */
+        /* FIN DE RECLAMOS */
+
+
+        /* EMPIEZA LAS QUEJAS */
+
+        function quejas() {
+
+            cQueja.style.display="block"
+            //
+            const opcionQueja=document.getElementById("quejasOpciones");
+            const quejaRespuestaUno=document.getElementById("quejaPreguntaUno");
+            const quejaRespuestaDos=document.getElementById("quejaPreguntaDos");
+            const quejaRespuestaTres=document.getElementById("quejaPreguntaTres");
+            const quejaRespuestaCuatro=document.getElementById("quejaPreguntaCuatro");
+            const quejaRespuestaCinco=document.getElementById("quejaPreguntaCinco");
+            const quejaRespuestaSeis=document.getElementById("quejaPreguntaSeis");
+            //la condicion
+            const cajaReclamoenQueja=document.getElementById("datosReclamos");
+            const cajaApelacionenQueja=document.getElementById("datosApelacion");
+            // los details
+            document.getElementById('detailsQuejaDs').open = true;
+            document.getElementById('seleccionUnicoQueja').open=false;
+
+
+            switch (opcionQueja.value) {
+                case "quejaUno":
+                    quejaRespuestaUno.style.display="block";
+                    quejaRespuestaDos.style.display="none";
+                    quejaRespuestaTres.style.display="none";
+                    quejaRespuestaCuatro.style.display="none";
+                    quejaRespuestaCinco.style.display="none";
+                    quejaRespuestaSeis.style.display="none";
+                    //condicion
+                    cajaReclamoenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    break;
+
+                case "quejaDos":
+                    quejaRespuestaUno.style.display="none";
+                    quejaRespuestaDos.style.display="flex";
+                    quejaRespuestaTres.style.display="none";
+                    quejaRespuestaCuatro.style.display="none";
+                    quejaRespuestaCinco.style.display="none";
+                    quejaRespuestaSeis.style.display="none";
+                    //condicion
+                    cajaReclamoenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    break;
+
+                case "quejaTres":
+                    quejaRespuestaUno.style.display="none";
+                    quejaRespuestaDos.style.display="none";
+                    quejaRespuestaTres.style.display="block";
+                    quejaRespuestaCuatro.style.display="none";
+                    quejaRespuestaCinco.style.display="none";
+                    quejaRespuestaSeis.style.display="none";
+                    //condicion
+                    cajaReclamoenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    break;
+                    
+                case "quejaCuatro":
+                    quejaRespuestaUno.style.display="none";
+                    quejaRespuestaDos.style.display="none";
+                    quejaRespuestaTres.style.display="none";
+                    quejaRespuestaCuatro.style.display="block";
+                    quejaRespuestaCinco.style.display="none";
+                    quejaRespuestaSeis.style.display="none";
+                    //condicion
+                    cajaReclamoenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    break;
+
+                case "quejaCinco":
+                    quejaRespuestaUno.style.display="none";
+                    quejaRespuestaDos.style.display="none";
+                    quejaRespuestaTres.style.display="none";
+                    quejaRespuestaCuatro.style.display="none";
+                    quejaRespuestaCinco.style.display="block";
+                    quejaRespuestaSeis.style.display="none";
+                    //condicion
+                    cajaReclamoenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    break;
+
+                case "quejaSeis":
+                    quejaRespuestaUno.style.display="none";
+                    quejaRespuestaDos.style.display="none";
+                    quejaRespuestaTres.style.display="none";
+                    quejaRespuestaCuatro.style.display="none";
+                    quejaRespuestaCinco.style.display="none";
+                    quejaRespuestaSeis.style.display="block";
+                    //condicion
+                    cajaReclamoenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    break;
+                    
+            
+                default:
+                    quejaRespuestaUno.style.display="none";
+                    quejaRespuestaDos.style.display="none";
+                    quejaRespuestaTres.style.display="none";
+                    quejaRespuestaCuatro.style.display="none";
+                    quejaRespuestaCinco.style.display="none";
+                    quejaRespuestaSeis.style.display="none";
+                    cajaReclamoenQueja.style.display="none"
+                    //cajaQuejaenQueja.style.display="none"
+                    cajaApelacionenQueja.style.display="none"
+                    //
+                    document.getElementById('detailsQuejaDs').open=false;
+                    break;
+            }
+
+
+        }
+
+        function canal() {
+            const cPresentacion=document.getElementById("canalPresentacion").value;
+            const cQueja = document.getElementById("canalQueja");
+
+
+            switch (cPresentacion) {
+                case "otro":
+                    cQueja.style.display="block"
+                    break;
+            
+                default:
+                    cQueja.style.display="none"
+                    break;
+            }
+
+        }
+
+        function adjuntaPruebaQueja() {
+            const aPrueba=document.getElementById("adjuntaPrueba").value;
+            const pQueja=document.getElementById("pruebaQuejas")
+
+            switch (aPrueba) {
+                case "si":
+                    pQueja.style.display="block"
+                    break;
+            
+                default:
+                    pQueja.style.display="none"
+                    break;
+            }
+
+        }
+
+        function constanciaPago() {
+            const cPagoQueja=document.getElementById("constanciaPagoQueja").value;
+            const cpago=document.getElementById("constanciaPago");
+
+            switch (cPagoQueja) {
+                case "si":
+                    cpago.style.display="block";
+                    break;
+            
+                default:
+                    cpago.style.display="none";
+                    break;
+            }
+        }
+
+        function pagoCuenta() {
+            
+            const pcQueja=document.getElementById("pagoCuentaQueja").value;
+            const dpQueja=document.getElementById("dpagocuenta");
+
+            switch (pcQueja) {
+                case "otros":
+                    dpQueja.style.display="block"
+                    break;
+            
+                default:
+                    dpQueja.style.display="none"
+                    break;
+            }
+
+        }
+
+        function capturaQueja() {
+            const cQueja=document.getElementById("capturaQuejaCinco").value;
+            const mprobatorio=document.getElementById("mpQueja");
+
+            switch (cQueja) {
+                case "si":
+                    mprobatorio.style.display="block";
+                    break;
+            
+                default:
+                    mprobatorio.style.display="none";
+                    break;
+            }
+        }
+
+        function defectos() {
+            const dPruebaTramitacion=document.getElementById("dtramitacion").value;
+            const dptramitacion=document.getElementById("dptramitacion")
+
+            switch (dPruebaTramitacion) {
+                case "si":
+                    dptramitacion.style.display="block"
+                    break;
+            
+                default:
+                    dptramitacion.style.display="none"
+                    break;
+            }
+        }
+
+        function pestañaQueja() {
+            document.getElementById('detailsQuejaDs').open=false;
+            contenedorDetailsQueja.open=true
+        }
+
+        /* Fin de queja */
+
+        /* Apelacion */
+
+        function apelaciones() {
+            cApelacion.style.display="block"
+
+            const apelacion=document.getElementById("apelacionOpciones")
+            const apelacionoOne=document.getElementById("apelacionUno")
+            const apelacionoTwo=document.getElementById("apelacionDos")
+            const apelacionoThree=document.getElementById("apelacionTres")
+            const apelacionoFour=document.getElementById("apelacionCuatro")
+            const apelacionoFive=document.getElementById("apelacionCinco")
+            const apelacionoSix=document.getElementById("apelacionSeis")
+            //condiciones
+            const cajaReclamoenApelacion=document.getElementById("datosReclamos");
+            const cajaQuejaenApelacion=document.getElementById("datosQueja");
+            //const cajaApelacionenApelacion=document.getElementById("datosApelacion");
+            //limpiarInputsApelacion();
+            //limpiarInputs();
+            //
+
+            document.getElementById('detailsApelacionDs').open = true;
+            document.getElementById('seleccionUnicaApelacion').open=false;
+
+            switch (apelacion.value) {
+
+                case "apelacionOne":
+                    apelacionoOne.style.display="block"
+                    apelacionoTwo.style.display="none"
+                    apelacionoThree.style.display="none"
+                    apelacionoFour.style.display="none"
+                    apelacionoFive.style.display="none"
+                    apelacionoSix.style.display="none"
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+
+                    break;
+
+                case "apelacionTwo":
+                    apelacionoOne.style.display="none"
+                    apelacionoTwo.style.display="block"
+                    apelacionoThree.style.display="none"
+                    apelacionoFour.style.display="none"
+                    apelacionoFive.style.display="none"
+                    apelacionoSix.style.display="none"
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+                    break;
+
+                case "apelacionThree":
+                    apelacionoOne.style.display="none"
+                    apelacionoTwo.style.display="none"
+                    apelacionoThree.style.display="block"
+                    apelacionoFour.style.display="none"
+                    apelacionoFive.style.display="none"
+                    apelacionoSix.style.display="none"
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+                    break;
+
+                case "apelacionFour":
+                    apelacionoOne.style.display="none"
+                    apelacionoTwo.style.display="none"
+                    apelacionoThree.style.display="none"
+                    apelacionoFour.style.display="block"
+                    apelacionoFive.style.display="none"
+                    apelacionoSix.style.display="none"
+                    //
+                    //resetSelect();
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+                    //
+                    break;
+                case "apelacionFive":
+                    apelacionoOne.style.display="none"
+                    apelacionoTwo.style.display="none"
+                    apelacionoThree.style.display="none"
+                    apelacionoFour.style.display="none"
+                    apelacionoFive.style.display="block"
+                    apelacionoSix.style.display="none"
+                    //
+                    //resetSelect();
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+                    break;
+
+                case "apelacionSix":
+                    apelacionoOne.style.display="none"
+                    apelacionoTwo.style.display="none"
+                    apelacionoThree.style.display="none"
+                    apelacionoFour.style.display="none"
+                    apelacionoFive.style.display="none"
+                    apelacionoSix.style.display="block"
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+                    break;
+            
+                default:
+                    apelacionoOne.style.display="none"
+                    apelacionoTwo.style.display="none"
+                    apelacionoThree.style.display="none"
+                    apelacionoFour.style.display="none"
+                    apelacionoFive.style.display="none"
+                    apelacionoSix.style.display="none"
+                    //
+                    cajaQuejaenApelacion.style.display="none";
+                    cajaReclamoenApelacion.style.display="none";
+                    //
+                    document.getElementById('detailsApelacionDs').open = false;
+                    break;
+            }
+
+
+        }
+
+        function apelacionCuatro() {
+            const aCuatro=document.getElementById("apelacionopcioncuatro").value;
+            const cCuatro=document.getElementById("apelacionCuatroSi");
+
+            cCuatro.style.display="none";
+
+            switch (aCuatro) {
+                case "si":
+                    cCuatro.style.display="block"
+                    break;
+            
+                default:
+                    break;
+            }
+
+        }
+
+        function apelacionCinco() {
+            const aCinco=document.getElementById("apelacionOpcioncinco").value;
+            const cCinco=document.getElementById("apelacionCincoSi");
+
+            cCinco.style.display="none";
+
+            switch (aCinco) {
+                case "si":
+                    cCinco.style.display="block"
+                    break;
+            
+                default:
+                    break;
+            }
+
+        }
+
+        function pestañaApelacion() {
+            document.getElementById('detailsApelacionDs').open=false;
+            contenedorDetailsApelacion.open=true
+        }
+
+        /* el descargo del cliente */
+
+        const extraReclamo=document.getElementById("informacionExtraReclamo");
+        const extraQueja=document.getElementById("informacionExtraQueja");
+        const extraApelacion=document.getElementById("informacionExtraApelacion");
+
+
+        extraReclamo.style.display="none";
+        extraQueja.style.display="none";
+        extraApelacion.style.display="none";
+
+        // detail de la informacion extra
+        const contenedorDetailsExtraReclamo=document.getElementById("detailsIExtraReclamo");
+        const contenedorDetailsExtraQueja=document.getElementById("detailIExtraQueja");
+        const contenedorDetailsExtraApelacion=document.getElementById("detailsIExtraApelacion");
+
+        contenedorDetailsExtraReclamo.open=false;
+        contenedorDetailsExtraQueja.open=false;
+        contenedorDetailsExtraApelacion.open=false;
+
+
+        /* despues de formulario  reclamo*/
+
+        const validarFormularioReclamo=document.getElementById("continuarFormulario");
+
+        validarFormularioReclamo.addEventListener("click",function () {
+            extraReclamo.style.display="block";
+            contenedorDetailsExtraReclamo.open=true;
+            contenedorDetailsReclamo.open = false;
+            enviar.style.display="flex";
+
+            //
+
+
+        })
+
+        /* Despues de formulario queja */
+
+        const validarFormularioQueja=document.getElementById("continuarFormularioQueja");
+
+        validarFormularioQueja.addEventListener("click",function () {
+            extraQueja.style.display="block"
+            contenedorDetailsExtraQueja.open=true;
+            contenedorDetailsQueja.open=false
+            enviar.style.display="flex";
+        })
+
+        const validarFormularioApelacion=document.getElementById("continuarFormularioApelacion");
+
+        validarFormularioApelacion.addEventListener("click",function () {
+            extraApelacion.style.display="block"
+            contenedorDetailsExtraApelacion.open=true;
+            contenedorDetailsApelacion.open=false
+            enviar.style.display="flex";
+        })
+
+
+        /* */
+
+        const ticketLegal=document.getElementById("cajaContenedorTicket");
+        ticketLegal.style.display="none"
+
+
+        /* mostrando el detalle */
+
+        const botonMostrarDatos = document.getElementById('mostrarDatos');
+        //botonMostrarDatos.style.display="flex";
+
+        // Evento para cuando el usuario haga click en el botón
+        botonMostrarDatos.addEventListener('click', function() {
+            ticketLegal.style.display="block";
+            cajaTotal.style.display="none";
+
+            // Seleccionamos todos los inputs de tipo texto dentro del formulario
+            const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket input[type="date"],#DatosTicketMostrarTicket input[type="email"],#DatosTicketMostrarTicket textarea,#DatosTicketMostrarTicket select');
+
+            // Creamos una variable para almacenar los resultados
+            let datosRellenados = '';
+
+            // mostrar titulo en el ticket
+            const titulo=document.getElementById("tituloTicketFinal")
+
+            switch (valorSeleccionado) {
+                case "3":
+                    titulo.innerHTML="Reclamo";
+                    break;
+                case "6":
+                    titulo.innerHTML="Queja";
+                    break;
+                case "7":
+                    titulo.innerHTML="Apelación";
+                    break;
+            
+                default:
+                    break;
+            }
+
+
+            // Recorremos todos los inputs de tipo texto
+            inputs.forEach(input => {
+                const valor = input.value.trim(); // Obtenemos el valor del campo
+                
+                // Si el campo tiene valor (no está vacío)
+                if (valor) {
+                    // Intentamos encontrar el label asociado
+                    const label = document.querySelector(`label[for="${input.id}"]`);
+                    
+                    // Verificamos si encontramos el label
+                    if (label) {
+                        // Extraemos el texto del label
+                        const labelText = label.innerText || label.textContent;
+                        // Convertimos saltos de línea a <br> para mostrarlos en HTML
+                        //const valorConSaltos = valor.replace(/\n/g, '<br>');
+
+                        // Agregamos el nombre del campo y su valor
+                        datosRellenados += `<p><strong>${labelText}:</strong> <span>${valor}</span> </p>`;
+                    }
+                }
+            });
+
+            // Mostrar los resultados
+            const resultados = document.getElementById('resultados');
+            if (datosRellenados) {
+                // Si hay datos, los mostramos
+                resultados.innerHTML = datosRellenados;
+            } else {
+                // Si no hay datos, mostramos un mensaje
+                resultados.innerHTML = '<p>No se han rellenado datos.</p>';
+            }
+        });
+
+        function editarDatos() {
+            ticketLegal.style.display="none"
+            cajaTotal.style.display="block";
+        }
+
+ 
+    </script>
 
 
 
