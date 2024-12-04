@@ -16,12 +16,8 @@ password = 'ae6cd458ff84c2774a628a3fb3bd3c14edd310a1'
 
 # Conexión a Odoo usando XML-RPC
 common = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/common')
+uid = 213
 models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object')
-
-# Función para autenticar al usuario en Odoo
-def authenticate():
-    uid = common.authenticate(db, username, password, {})
-    return uid
 
 # Función para validar las fechas (en formato YYYY-MM-DD)
 def validate_date(date_str):
@@ -33,24 +29,8 @@ def validate_date(date_str):
         # Devolvemos la fecha en formato de cadena 'YYYY-MM-DD'
         return date_obj.strftime('%Y-%m-%d')
     except ValueError:
-        return None  # Si no es una fecha válida, devolvemos None
-
-# Función para corregir el relleno de base64
-def corregir_base64(cadena_base64):
-    try:
-        # Eliminar saltos de línea y espacios innecesarios
-        cadena_base64 = cadena_base64.replace('\n', '').replace('\r', '')
-        
-        # Corregir el padding de base64 si es necesario
-        padding = len(cadena_base64) % 4
-        if padding != 0:
-            cadena_base64 += '=' * (4 - padding)
-        
-        # Intentar decodificar la cadena base64
-        return base64.b64decode(cadena_base64)
-    except Exception as e:
-        # Si hay un error en la decodificación, podemos manejarlo y devolver None o lanzar un error
-        return None  # O puedes devolver un mensaje de error como 'Codificación base64 incorrecta'
+        return None  # Si no es una fecha válida, devolvemos Non
+    
 
 @app.route('/api/reclamos', methods=['POST'])
 def crear_reclamo():
@@ -66,11 +46,9 @@ def crear_reclamo():
         'fechaOtroCampoFecha1', 'fechaOtroCampoFecha2',  # Añadir más campos de fecha
         # Puedes seguir agregando más campos aquí
 
-        #apelaciones
+        # apelaciones
         'fechaEmisionCartaApelacion',
-        'fechaEmisionApelacionSiCuatro',
-        'fechaVencimientoApelacionSiCuatro',
-        'fechaEmisionApelacionSiCinco',
+
     ]
 
     # Iterar sobre los campos de fecha y validarlos
@@ -83,35 +61,6 @@ def crear_reclamo():
         # tipo usuario
         'tipoUsuarioSeleccionado',
         # datos personales
-        'nombrePadre',
-        'nombreMadre',
-        'lugarNacimiento',
-        'montoTarifa',
-        'direccionFacturacion',
-        'cartaPoder',
-        'nombre',
-        'apellidos',
-        'relacion',
-        'razonSocial',
-        'numeroContacto',
-        'tipoDoc',
-        'numDoc',
-        'distritos',
-        'direccion',
-        'correo',
-        'autoriza',
-
-
-        # quejas
-        'fechaPresentacionQueja', 'negativaQueja', 'fechaNegativaQueja', 'canalPresentacion',
-        'especificarCanalQuejaDos', 'adjuntaPrueba', 'fechaSuspendioServicioQueja', 'MediosCobranzasQuejas',
-        'constanciaPagoQueja', 'pagoCuentaQueja', 'espeficiarQueja',
-        'constanciaPagoMedioCobranza', 'medioProbatoriopgQueja','informacionNecesariaQueja'
-        ,'descripcionProblemaQueja',
-
-        #
-
-        #apelacion
         'selectApelacion',
 
         'empresaOperadoraApelacion',
@@ -119,25 +68,6 @@ def crear_reclamo():
         'numeroServicioApelacion',
         'codigoNumeroApelacion',
         'numeroCartaApelacion',
-
-
-        'detallePruebaApelacionUno',
-        'detallefsApelacionDos',
-        'materiaEmpresaApelacionTres',
-        'apelacionopcioncuatro',
-        'numeroReciboApelacionSiCuatro',
-
-        'montoReclamadoApelacionSiCuatro',
-        'detalleReclamoApelacionSiCuatro',
-        'apelacionOpcioncinco',
-        'numeroReciboApelacionSiCinco',
-
-        'montoTotalApelacionSiCinco',
-        'detalleReclamoApelacionSiCinco',
-        'materiaEmpresaEmitirApelacionSeis',
-
-        'informacionNecesariaApelacion',
-        'sustentoApelacion',
 
 
     ]
@@ -151,86 +81,26 @@ def crear_reclamo():
     tipoticket = data.get('tipoticket')
 
     # Cambiar el modelo según el valor de 'tipoticket'
-    if tipoticket == '3':
-        model = 'reclamosfp'  # Cambiar a 'reclamosfp' si es un Reclamo
+    if tipoticket == '6':
+        model = 'apelacionfp'  # Cambiar a un modelo diferente si es Queja
         ticket_data = {
-            'state':"draft",
-            'tipo_de_usuario':data.get('tipoUsuarioSeleccionado'),
-        }
-
-    elif tipoticket == '7':
-        model = 'apelacionfp'  # Cambiar a un modelo diferente si es Apelación
-        ticket_data = {
-            #
+#
             'state':"draft",
             #
             'tipo_de_usuario_ape':data.get('tipoUsuarioSeleccionado'),
-        }
-    elif tipoticket == '6':
-        model = 'quejasfp'  # Cambiar a un modelo diferente si es Queja
-        ticket_data = {
-            'state':"draft",
-            # queja
-            # 'name':"queja",
-            'tipo_de_usuario_qja':data.get('tipoUsuarioSeleccionado'),
             # datos personales
             # Validaciones de abonado
-            'nombre_del_padre_abonado_qja': data.get('nombrePadre'),
-            'nombre_de_la_madre_abonado_qja': data.get('nombreMadre'),
-            'lugar_de_nacimiento_abonado_qja': data.get('lugarNacimiento'),
-            'fecha_de_nacimiento_abonado_qja': data.get('fechaNacimiento'),
-            'fecha_vencimiento_del_recibo_usuario_qja': data.get('fechaVencimiento'),
-            'monto_de_tarifa_usuario_qja': data.get('montoTarifa'),
-            'direccion_de_facturacion_usuario_qja': data.get('direccionFacturacion'),
+            # prueba
+            'empresa_operadora_ds':data['empresaOperadoraApelacion'],
+            'servicio_materia_de_apelacin_ds':data['servicioMateriaApelacion'],
+            'nmero_servicio_reclamado_ds':data['numeroServicioApelacion'],
+            'cdigo_nmero_reclamo_ds':data['codigoNumeroApelacion'],
+            'nmero_carta_resuelve_reclamo_ds':data['numeroCartaApelacion'],
 
-            # Datos personales
-            'nombre_cliente_qja': data.get('nombre'),
-            'apellidos_qja': data.get('apellidos'),
-            'relacion_familiar_qja': data.get('relacion'),
-            'razon_social_qja': data.get('razonSocial'),
-            'carta_de_poder_qja': data.get('cartaPoder'),
-            'nro_contacto_qja': data.get('numeroContacto'),
-            'tipo_doc_qja': data.get('tipoDoc'),
-            'nro_documento_qja': data.get('numDoc'),
-            'distrito_cliente_qja': data.get('distritos'),
-            'direccion_cliente_qja': data.get('direccion'),
-            'correo_electronico_qja': data.get('correo'),
-            'notificacion_por_correo_electronico_qja': data.get('autoriza'),
         }
     else:
         model = 'default_model'  # Modelo por defecto para casos no especificados
 
-
-    # Obtener los archivos si están presentes
-    file_base64 = data.get('cartaPoder', None)
-    file_constancia_base64 = data.get('constancia', None)
-
-    # Decodificar los archivos si están presentes
-    if file_base64:
-        try:
-            file_content = corregir_base64(file_base64)  # Decodificar el archivo en base64
-            if file_content is None:
-                return jsonify({"error": "Error decoding cartaPoder file: Incorrect base64 padding"}), 400
-        except Exception as e:
-            return jsonify({"error": "Error decoding cartaPoder file: " + str(e)}), 400
-    else:
-        file_content = None  # Si no hay archivo, asignamos None
-
-    if file_constancia_base64:
-        try:
-            file_constancia_content = corregir_base64(file_constancia_base64)  # Decodificar archivo constancia
-            if file_constancia_content is None:
-                return jsonify({"error": "Error decoding constancia file: Incorrect base64 padding"}), 400
-        except Exception as e:
-            return jsonify({"error": "Error decoding constancia file: " + str(e)}), 400
-    else:
-        file_constancia_content = None  # Si no hay archivo, asignamos None
-
-    # Autenticación con Odoo
-    uid = authenticate()
-    if not uid:
-        return jsonify({"error": "Authentication error"}), 400
-    
     try:
         # Eliminar claves con valores None
         ticket_data = {key: value for key, value in ticket_data.items() if value is not None}
