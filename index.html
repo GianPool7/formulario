@@ -2884,448 +2884,448 @@
                             "False"; // Valor predeterminado si no se selecciona nada
 
             
-            // opcion materias
-            const selectReclamos = document.getElementById("materias").options[document.getElementById("materias").selectedIndex].text;
+            // // opcion materias
+            // const selectReclamos = document.getElementById("materias").options[document.getElementById("materias").selectedIndex].text;
 
-            // Datos de servicio reclamo
-            const empresaOperadora = document.getElementById('empresaOperadorReclamo').value.trim();
-            const servicioContratado = document.getElementById('servicioContratadoReclamo').value.trim();
-            const servicioMateriaReclamo = document.getElementById('servicioMateriaReclamo').value.trim();
-            const numeroServicioContratado = document.getElementById('numeroServicioContratadoReclamo').value.trim();
+            // // Datos de servicio reclamo
+            // const empresaOperadora = document.getElementById('empresaOperadorReclamo').value.trim();
+            // const servicioContratado = document.getElementById('servicioContratadoReclamo').value.trim();
+            // const servicioMateriaReclamo = document.getElementById('servicioMateriaReclamo').value.trim();
+            // const numeroServicioContratado = document.getElementById('numeroServicioContratadoReclamo').value.trim();
             
-            // Datos de facturación y cobro
-            const correoFC = document.getElementById('correo').value.trim();
-            const numeroReciboFC = document.getElementById('numeroReciboFCone').value.trim();
-            const numeroDocumentoCobroFC = document.getElementById('numeroDocumentoCobroFCone').value.trim();
-            const fechaEmisionFC = document.getElementById('fechaEmisionFCone').value.trim();
-            const fechaVencimientoFC = document.getElementById('fechavencimientoFCone').value.trim();
-            const montoReclamadoFC = document.getElementById('montoReclamadoFCone').value.trim();
-            const conceptoFacturadoFC = document.getElementById('conceptoFacturadoFCone').value.trim();
-            const tarifaUsuarioFC = document.getElementById('tarifaUsuarioFCone').value.trim();
-            const fechaEstimadaPagoFC = document.getElementById('fechaEstimadaPagoFCone').value.trim();
-            const modalidadPagoFC = document.getElementById('mPago').value;
-            const especificarModalidadPagoFC = document.getElementById('especificarModalidadPago').value.trim();
-            const adjuntarHojaPagoFC = document.getElementById('hpfacturado').value.trim();
-            // calidad
-            // Obtener los valores de los campos del formulario y guardarlos en constantes
-            const fechaInicioCalidadI = document.getElementById('fechaInicioCalidadI').value.trim();
-            const direccionCalidadI = document.getElementById('direccionCalidadI').value.trim();
-            const departamentoCalidadI = document.getElementById('departamentoCalidadI').value.trim();
-            const provinciaCalidadI = document.getElementById('provinciaCalidadI').value.trim();
-            const distritoCalidad = document.getElementById('distritoCalidad').value.trim();
-            const calleJrAvCalidad = document.getElementById('CalleJrAvCalidad').value.trim();
-            const codigoReportePrevioCalidad = document.getElementById('codigoReportePrevioCalidad').value.trim();
-            // incumplimiento
-            //Obtener los valores de los campos en constantes
-            const detalleCondicionIncumplimiento = document.getElementById('detalleCondicionIncumplimiento').value.trim();
-            const fechaIncumplimientos = document.getElementById('fechaIncumplimiento').value;
-            const detalleOfertaIncumplimiento = document.getElementById('detalleOfertaIncumplimiento').value.trim();
-            const oportunidadBrindoOfertaIncumplimiento = document.getElementById('oportunidadBrindoOfertaIncumplimiento').value.trim();
-            const fechAproximadaIncumplimiento = document.getElementById('fechAproximadaIncumplimiento').value;
-            const cbpromocionfs = document.getElementById('cbpromocionfs').value.trim();
-            const especificarIncumplimiento = document.getElementById('especificarIncumplimiento').value.trim();
-            const codigOtorgamientoIncumplimiento = document.getElementById('codigOtorgamientoIncumplimiento').value.trim();
-            const fechaCualPincumplimiento = document.getElementById('fechaCualPincumplimiento').value;
-            const detalleAtributosIncumplimiento = document.getElementById('detalleAtributosIncumplimiento').value.trim();
-            const reciboCorrespondienteIncumplimiento = document.getElementById('reciboCorrespondienteIncumplimiento').value.trim();
-            const fechaEmisionIncumplimineto = document.getElementById('fechaEmisionIncumplimineto').value;
-            const numeroRecivoIncumplimiento = document.getElementById('numeroRecivoIncumplimiento').value.trim();
-            const fechavencimientoIncumplimineto = document.getElementById('fechavencimientoIncumplimineto').value;
+            // // Datos de facturación y cobro
+            // const correoFC = document.getElementById('correo').value.trim();
+            // const numeroReciboFC = document.getElementById('numeroReciboFCone').value.trim();
+            // const numeroDocumentoCobroFC = document.getElementById('numeroDocumentoCobroFCone').value.trim();
+            // const fechaEmisionFC = document.getElementById('fechaEmisionFCone').value.trim();
+            // const fechaVencimientoFC = document.getElementById('fechavencimientoFCone').value.trim();
+            // const montoReclamadoFC = document.getElementById('montoReclamadoFCone').value.trim();
+            // const conceptoFacturadoFC = document.getElementById('conceptoFacturadoFCone').value.trim();
+            // const tarifaUsuarioFC = document.getElementById('tarifaUsuarioFCone').value.trim();
+            // const fechaEstimadaPagoFC = document.getElementById('fechaEstimadaPagoFCone').value.trim();
+            // const modalidadPagoFC = document.getElementById('mPago').value;
+            // const especificarModalidadPagoFC = document.getElementById('especificarModalidadPago').value.trim();
+            // const adjuntarHojaPagoFC = document.getElementById('hpfacturado').value.trim();
+            // // calidad
+            // // Obtener los valores de los campos del formulario y guardarlos en constantes
+            // const fechaInicioCalidadI = document.getElementById('fechaInicioCalidadI').value.trim();
+            // const direccionCalidadI = document.getElementById('direccionCalidadI').value.trim();
+            // const departamentoCalidadI = document.getElementById('departamentoCalidadI').value.trim();
+            // const provinciaCalidadI = document.getElementById('provinciaCalidadI').value.trim();
+            // const distritoCalidad = document.getElementById('distritoCalidad').value.trim();
+            // const calleJrAvCalidad = document.getElementById('CalleJrAvCalidad').value.trim();
+            // const codigoReportePrevioCalidad = document.getElementById('codigoReportePrevioCalidad').value.trim();
+            // // incumplimiento
+            // //Obtener los valores de los campos en constantes
+            // const detalleCondicionIncumplimiento = document.getElementById('detalleCondicionIncumplimiento').value.trim();
+            // const fechaIncumplimientos = document.getElementById('fechaIncumplimiento').value;
+            // const detalleOfertaIncumplimiento = document.getElementById('detalleOfertaIncumplimiento').value.trim();
+            // const oportunidadBrindoOfertaIncumplimiento = document.getElementById('oportunidadBrindoOfertaIncumplimiento').value.trim();
+            // const fechAproximadaIncumplimiento = document.getElementById('fechAproximadaIncumplimiento').value;
+            // const cbpromocionfs = document.getElementById('cbpromocionfs').value.trim();
+            // const especificarIncumplimiento = document.getElementById('especificarIncumplimiento').value.trim();
+            // const codigOtorgamientoIncumplimiento = document.getElementById('codigOtorgamientoIncumplimiento').value.trim();
+            // const fechaCualPincumplimiento = document.getElementById('fechaCualPincumplimiento').value;
+            // const detalleAtributosIncumplimiento = document.getElementById('detalleAtributosIncumplimiento').value.trim();
+            // const reciboCorrespondienteIncumplimiento = document.getElementById('reciboCorrespondienteIncumplimiento').value.trim();
+            // const fechaEmisionIncumplimineto = document.getElementById('fechaEmisionIncumplimineto').value;
+            // const numeroRecivoIncumplimiento = document.getElementById('numeroRecivoIncumplimiento').value.trim();
+            // const fechavencimientoIncumplimineto = document.getElementById('fechavencimientoIncumplimineto').value;
            
-            const oportunidadBrindoInfoOmitida = document.getElementById('oportunidadBrindoInfoOmitida').value;
-            const fechaAproxInfoOmitida = document.getElementById('fechaAproxInfoOmitida').value;
+            // const oportunidadBrindoInfoOmitida = document.getElementById('oportunidadBrindoInfoOmitida').value;
+            // const fechaAproxInfoOmitida = document.getElementById('fechaAproxInfoOmitida').value;
 
 
-            //falta de servicio
-            // Obtener los valores de los inputs y almacenarlos en constantes
-            const fechaInicioProblemafs = document.getElementById('fechaInicioProblemafs').value;
-            const direccionProblemafs = document.getElementById('direccionProblemafs').value;
-            const direccionServicio = document.getElementById('direccionServicio').value;
-            const departamentofs = document.getElementById('departamentofs').value;
-            const provinciafs = document.getElementById('provinciafs').value;
-            const distritofs = document.getElementById('distritofs').value;
-            const calleJrAvfs = document.getElementById('calleJrAvfs').value;
-            const numerofs = document.getElementById('numerofs').value;
+            // //falta de servicio
+            // // Obtener los valores de los inputs y almacenarlos en constantes
+            // const fechaInicioProblemafs = document.getElementById('fechaInicioProblemafs').value;
+            // const direccionProblemafs = document.getElementById('direccionProblemafs').value;
+            // const direccionServicio = document.getElementById('direccionServicio').value;
+            // const departamentofs = document.getElementById('departamentofs').value;
+            // const provinciafs = document.getElementById('provinciafs').value;
+            // const distritofs = document.getElementById('distritofs').value;
+            // const calleJrAvfs = document.getElementById('calleJrAvfs').value;
+            // const numerofs = document.getElementById('numerofs').value;
 
-            // Recibo de servicios
-            const adrecibos = document.getElementById('adrecibos').value;
+            // // Recibo de servicios
+            // const adrecibos = document.getElementById('adrecibos').value;
 
-            // Fecha de reactivación del servicio
-            const fechaReactivarServicio = document.getElementById('fechaReactivarServicio').value;
+            // // Fecha de reactivación del servicio
+            // const fechaReactivarServicio = document.getElementById('fechaReactivarServicio').value;
 
-            // Fecha de pago pendiente
-            const fechaPagoPendiente = document.getElementById('fechaPagoPendiente').value;
+            // // Fecha de pago pendiente
+            // const fechaPagoPendiente = document.getElementById('fechaPagoPendiente').value;
 
-            // Lugar o medio del pago pendiente
-            const mpagos = document.getElementById('mpagos').value;
-            const especificarMedioPago = document.getElementById('especificarMedioPago').value;
+            // // Lugar o medio del pago pendiente
+            // const mpagos = document.getElementById('mpagos').value;
+            // const especificarMedioPago = document.getElementById('especificarMedioPago').value;
 
-            // Recibo de pago pendiente
-            const adrecibosPendiente = document.getElementById('adrecibosPendiente').value;
+            // // Recibo de pago pendiente
+            // const adrecibosPendiente = document.getElementById('adrecibosPendiente').value;
 
-            // Fecha del cambio de SIM Card
-            const fechaSIMCARD = document.getElementById('fechaSIMCARD').value;
+            // // Fecha del cambio de SIM Card
+            // const fechaSIMCARD = document.getElementById('fechaSIMCARD').value;
 
-            // activacion
-            // Obtener valores de los campos de fecha
-            const fechaContratacionServicioInstalacion = document.getElementById('fechaContratacionServicioInstalacion').value;
-            const fechaSolicitudTrasladoInstalacion = document.getElementById('fechaSolicitudTrasladoInstalacion').value;
-            const strasladoe = document.getElementById('strasladoe').value;
-            const especificarCanalSinstalacion = document.getElementById('especificarCanalSinstalacion').value;
-            const codigoPedidoII = document.getElementById('codigoPedidoII').value;
-            const adsOpcionTraslado = document.getElementById('adsOpcionTraslado').value;
-            const fechaContratacionSInstalacion = document.getElementById('fechaContratacionSInstalacion').value;
-            const ctopcionCinco = document.getElementById('ctopcionCinco').value;
-            const especificarInstalacion = document.getElementById('especificarInstalacion').value;
-            const codigoPedidoInstalacion = document.getElementById('codigoPedidoInstalacion').value;
-            const opcionCuatroTraslado = document.getElementById('opcionCuatroTraslado').value;
-            const montoPendienteInstalacion = document.getElementById('montoPendienteInstalacion').value;
-
-
-            //baja
-            const fechaSolicitudBaja = document.getElementById('fechaSolicitudBaja').value;
-            const cbaja = document.getElementById('cbaja').value;
-            const especificarCanalBaja = document.getElementById('especificarCanalBaja').value;
-            const codigoPedidoBaja = document.getElementById('codigoPedidoBaja').value;
-            const asb = document.getElementById('asb').value;
-            const fechaSolicitudSuspensionBaja = document.getElementById('fechaSolicitudSuspensionBaja').value;
-            const ctraslado = document.getElementById('ctraslado').value;
-            const especificarCanalTraslado = document.getElementById('especificarCanalTraslado').value;
-            const cPedidoBaja = document.getElementById('cPedidoBaja').value;
-            const asT = document.getElementById('asT').value;
-            const datosRecibosCuestionadoBaja = document.getElementById('datosRecibosCuestionadoBaja').value;
-            const numeroReciboBaja = document.getElementById('numeroReciboBaja').value;
-            const fechaEmisionBaja = document.getElementById('fechaEmisionBaja').value;
-            const fechaVencimientoBaja = document.getElementById('fechaVencimientoBaja').value;
-            const montoReclamadoBaja = document.getElementById('montoReclamadoBaja').value;
+            // // activacion
+            // // Obtener valores de los campos de fecha
+            // const fechaContratacionServicioInstalacion = document.getElementById('fechaContratacionServicioInstalacion').value;
+            // const fechaSolicitudTrasladoInstalacion = document.getElementById('fechaSolicitudTrasladoInstalacion').value;
+            // const strasladoe = document.getElementById('strasladoe').value;
+            // const especificarCanalSinstalacion = document.getElementById('especificarCanalSinstalacion').value;
+            // const codigoPedidoII = document.getElementById('codigoPedidoII').value;
+            // const adsOpcionTraslado = document.getElementById('adsOpcionTraslado').value;
+            // const fechaContratacionSInstalacion = document.getElementById('fechaContratacionSInstalacion').value;
+            // const ctopcionCinco = document.getElementById('ctopcionCinco').value;
+            // const especificarInstalacion = document.getElementById('especificarInstalacion').value;
+            // const codigoPedidoInstalacion = document.getElementById('codigoPedidoInstalacion').value;
+            // const opcionCuatroTraslado = document.getElementById('opcionCuatroTraslado').value;
+            // const montoPendienteInstalacion = document.getElementById('montoPendienteInstalacion').value;
 
 
-            // contratacion
-            const detalleServicioAdicional = document.getElementById('detalleServicioAdicional').value;
-            const detallePaquete = document.getElementById('detallePaquete').value;
-            const datosRecibomrContatacion = document.getElementById('datosRecibomrContatacion').value;
-            const numeroReciboContratacion = document.getElementById('numeroReciboContratacion').value;
-            const fechaEmisionContratacion = document.getElementById('fechaEmisionContratacion').value;
-            const fechaVencimientoContratacion = document.getElementById('fechaVencimientoContratacion').value;
-            const montoReclamadoContratacion = document.getElementById('montoReclamadoContratacion').value;
-
-            // migracion
-            const fechaSolicitudMigracionX = document.getElementById("fechaSolicitudMigracionX").value;
-            const canalMigracion = document.getElementById("cmigracion").value;
-            const especificarCanalMigracion = document.getElementById("especificarCanalMigracion").value;
-            const codigoPedidoMigracion = document.getElementById("codigoPedidoMigracion").value;
-            const planTarifarioMigracion = document.getElementById("planTarifarioMigracion").value;
-            const motivoNegativaMigracion = document.getElementById("motivoNegativaMigracion").value;
-            const solicitudAdjunta = document.getElementById("asm").value;
-            const numeroReciboMigracionII = document.getElementById("numeroReciboMigracionII").value;
-            const fechaEmisionMigracionIII = document.getElementById("fechaEmisionMigracionIII").value;
-            const fechaMovimientoMigracion = document.getElementById("fechaMovimientoMigracion").value;
-            const montoReclamadoMigracionMigracion = document.getElementById("montoReclamadoMigracionMigracion").value;
-            const numeroReciboII = document.getElementById("numeroReciboII").value;
-            const fechaEmisionII = document.getElementById("fechaEmisionII").value;
-            const fechaVencimientoMigracionII = document.getElementById("fechaVencimientoMigracionII").value;
-            const numeroReciboMigracion = document.getElementById("numeroReciboMigracion").value;
-            const fechaEmisionMigracion = document.getElementById("fechaEmisionMigracion").value;
-            const fechaVencimientoMigracion = document.getElementById("fechaVencimientoMigracion").value;
-            const montoReclamadoMigracion = document.getElementById("montoReclamadoMigracion").value;
-
-            // otros
-            const fechaSolicitudX = document.getElementById('fechaSolicitudX').value;
-            const ccontratacion = document.getElementById('ccontratacion').value;
-            const especificarx = document.getElementById('especificarx').value;
-            const servicioContratarX = document.getElementById('servicioContratarX').value;
-            const planTarifarioX = document.getElementById('planTarifarioX').value;
-            const numeroReciboX = document.getElementById('numeroReciboX').value;
-            const fechaEmisionX = document.getElementById('fechaEmisionX').value;
-            const fechaVencimientoX = document.getElementById('fechaVencimientoX').value;
-            const mesReciboPentregaX = document.getElementById('mesReciboPentregaX').value;
-            const direccionFisicaX = document.getElementById('direccionFisicaX').value;
-            const fechaSolicitudFacturacionX = document.getElementById('fechaSolicitudFacturacionX').value;
-            const cpresentacion = document.getElementById('cpresentacion').value;
-            const especificarCanalX = document.getElementById('especificarCanalX').value;
-            const codigoPedidoX = document.getElementById('codigoPedidoX').value;
-            const sasfll = document.getElementById('sasfll').value;
-            const detallePedidoX = document.getElementById('detallePedidoX').value;
-
-            // descargo del cliente
-            // Obtener el valor de los campos de "Descargo de cliente" en "Reclamo"
-            const informacionNecesariaReclamo = document.getElementById("informacionNecesariaReclamo").value;
-            const descripcionProblemaSolicitudReclamo = document.getElementById("descripcionProblemaSolicitudReclamo").value;
+            // //baja
+            // const fechaSolicitudBaja = document.getElementById('fechaSolicitudBaja').value;
+            // const cbaja = document.getElementById('cbaja').value;
+            // const especificarCanalBaja = document.getElementById('especificarCanalBaja').value;
+            // const codigoPedidoBaja = document.getElementById('codigoPedidoBaja').value;
+            // const asb = document.getElementById('asb').value;
+            // const fechaSolicitudSuspensionBaja = document.getElementById('fechaSolicitudSuspensionBaja').value;
+            // const ctraslado = document.getElementById('ctraslado').value;
+            // const especificarCanalTraslado = document.getElementById('especificarCanalTraslado').value;
+            // const cPedidoBaja = document.getElementById('cPedidoBaja').value;
+            // const asT = document.getElementById('asT').value;
+            // const datosRecibosCuestionadoBaja = document.getElementById('datosRecibosCuestionadoBaja').value;
+            // const numeroReciboBaja = document.getElementById('numeroReciboBaja').value;
+            // const fechaEmisionBaja = document.getElementById('fechaEmisionBaja').value;
+            // const fechaVencimientoBaja = document.getElementById('fechaVencimientoBaja').value;
+            // const montoReclamadoBaja = document.getElementById('montoReclamadoBaja').value;
 
 
-            // Obtener los archivos si existen
-            const documentoSolicitudMigracionOne = document.getElementById("documentoSolicitudMigracionOne");
+            // // contratacion
+            // const detalleServicioAdicional = document.getElementById('detalleServicioAdicional').value;
+            // const detallePaquete = document.getElementById('detallePaquete').value;
+            // const datosRecibomrContatacion = document.getElementById('datosRecibomrContatacion').value;
+            // const numeroReciboContratacion = document.getElementById('numeroReciboContratacion').value;
+            // const fechaEmisionContratacion = document.getElementById('fechaEmisionContratacion').value;
+            // const fechaVencimientoContratacion = document.getElementById('fechaVencimientoContratacion').value;
+            // const montoReclamadoContratacion = document.getElementById('montoReclamadoContratacion').value;
 
-            const solicitudBajaReclamo = document.getElementById('solicitudBajaReclamo');
-            const adjuntarVinculoSolicitud = document.getElementById('adjuntarVinculoSolicitud');
+            // // migracion
+            // const fechaSolicitudMigracionX = document.getElementById("fechaSolicitudMigracionX").value;
+            // const canalMigracion = document.getElementById("cmigracion").value;
+            // const especificarCanalMigracion = document.getElementById("especificarCanalMigracion").value;
+            // const codigoPedidoMigracion = document.getElementById("codigoPedidoMigracion").value;
+            // const planTarifarioMigracion = document.getElementById("planTarifarioMigracion").value;
+            // const motivoNegativaMigracion = document.getElementById("motivoNegativaMigracion").value;
+            // const solicitudAdjunta = document.getElementById("asm").value;
+            // const numeroReciboMigracionII = document.getElementById("numeroReciboMigracionII").value;
+            // const fechaEmisionMigracionIII = document.getElementById("fechaEmisionMigracionIII").value;
+            // const fechaMovimientoMigracion = document.getElementById("fechaMovimientoMigracion").value;
+            // const montoReclamadoMigracionMigracion = document.getElementById("montoReclamadoMigracionMigracion").value;
+            // const numeroReciboII = document.getElementById("numeroReciboII").value;
+            // const fechaEmisionII = document.getElementById("fechaEmisionII").value;
+            // const fechaVencimientoMigracionII = document.getElementById("fechaVencimientoMigracionII").value;
+            // const numeroReciboMigracion = document.getElementById("numeroReciboMigracion").value;
+            // const fechaEmisionMigracion = document.getElementById("fechaEmisionMigracion").value;
+            // const fechaVencimientoMigracion = document.getElementById("fechaVencimientoMigracion").value;
+            // const montoReclamadoMigracion = document.getElementById("montoReclamadoMigracion").value;
 
-            const vinculoSolicitudReclamo = document.getElementById('vinculoSolicitudReclamo');
-            const adjuntarSolicitudReclamoCuatro = document.getElementById('adjuntarSolicitudReclamoCuatro');
+            // // otros
+            // const fechaSolicitudX = document.getElementById('fechaSolicitudX').value;
+            // const ccontratacion = document.getElementById('ccontratacion').value;
+            // const especificarx = document.getElementById('especificarx').value;
+            // const servicioContratarX = document.getElementById('servicioContratarX').value;
+            // const planTarifarioX = document.getElementById('planTarifarioX').value;
+            // const numeroReciboX = document.getElementById('numeroReciboX').value;
+            // const fechaEmisionX = document.getElementById('fechaEmisionX').value;
+            // const fechaVencimientoX = document.getElementById('fechaVencimientoX').value;
+            // const mesReciboPentregaX = document.getElementById('mesReciboPentregaX').value;
+            // const direccionFisicaX = document.getElementById('direccionFisicaX').value;
+            // const fechaSolicitudFacturacionX = document.getElementById('fechaSolicitudFacturacionX').value;
+            // const cpresentacion = document.getElementById('cpresentacion').value;
+            // const especificarCanalX = document.getElementById('especificarCanalX').value;
+            // const codigoPedidoX = document.getElementById('codigoPedidoX').value;
+            // const sasfll = document.getElementById('sasfll').value;
+            // const detallePedidoX = document.getElementById('detallePedidoX').value;
 
-            const adjuntarVinculo = document.getElementById('adjuntarVinculo'); // Archivo adjunto
-            const vinculoAdjuntarSolicitud = document.getElementById('vinculoAdjuntarSolicitud'); // Archivo adjunto
-
-            const fileInput = document.getElementById('cartaPoder');
-            const hojaDocumentoAdjuntada = document.getElementById('hojaPagoReclamo');
-
-            const vinculoSolicitudSX = document.getElementById('vinculoSolicitudSX');
-
-
-            const documentoAdjuntadofsOne=adjuntarVinculo.files[0];
-            const documentoAdjuntadofsTwo=vinculoAdjuntarSolicitud.files[0];
-            const file = fileInput.files[0];  // Archivo de carta de poder
-            const hojaDocumentadaFile = hojaDocumentoAdjuntada.files[0];  // Archivo de hoja de pago
-            const documentoSolicitudReclamo=vinculoSolicitudReclamo.files[0];
-            const documentoSolicitudReclamoCuatro=adjuntarSolicitudReclamoCuatro.files[0];
-            //
-            const documentoBajaReclamo=solicitudBajaReclamo.files[0];
-            const documentoBajaSolicitud=adjuntarVinculoSolicitud.files[0];
-            //
-            const documentoMigracion=documentoSolicitudMigracionOne.files[0];
-            //
-            const documentoSolicitudX=vinculoSolicitudSX.files[0];
-
-            //
-            let documentoX="";
-            let documentoMigracionI="";
-            let documentoBajaI="";
-            let documentoBajaII="";
-            let documentoSRI="";
-            let documentoSRII=""; 
-            let documentoAdjuntadosFSI="";
-            let documentoAdjuntadosFSII=""; 
-            let fileBase64 = "";
-            let fileConstacia = "";
+            // // descargo del cliente
+            // // Obtener el valor de los campos de "Descargo de cliente" en "Reclamo"
+            // const informacionNecesariaReclamo = document.getElementById("informacionNecesariaReclamo").value;
+            // const descripcionProblemaSolicitudReclamo = document.getElementById("descripcionProblemaSolicitudReclamo").value;
 
 
-            // Solo convertimos a base64 si se selecciona un archivo
-            if (file) {
-                try {
-                    fileBase64 = await convertFileToBase64(file);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // // Obtener los archivos si existen
+            // const documentoSolicitudMigracionOne = document.getElementById("documentoSolicitudMigracionOne");
 
-            if (hojaDocumentadaFile) {
-                try {
-                    fileConstacia = await convertFileToBase64(hojaDocumentadaFile);
-                } catch (error) {
-                    console.error('Error al convertir archivo de hoja de pago:', error);
-                }
-            }
+            // const solicitudBajaReclamo = document.getElementById('solicitudBajaReclamo');
+            // const adjuntarVinculoSolicitud = document.getElementById('adjuntarVinculoSolicitud');
 
-            if (documentoAdjuntadofsOne) {
-                try {
-                    documentoAdjuntadosFSI = await convertFileToBase64(documentoAdjuntadofsOne);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // const vinculoSolicitudReclamo = document.getElementById('vinculoSolicitudReclamo');
+            // const adjuntarSolicitudReclamoCuatro = document.getElementById('adjuntarSolicitudReclamoCuatro');
 
-            if (documentoAdjuntadofsTwo) {
-                try {
-                    documentoAdjuntadosFSII = await convertFileToBase64(documentoAdjuntadofsTwo);
-                } catch (error) {
-                    console.error('Error al convertir archivo de hoja de pago:', error);
-                }
-            }
+            // const adjuntarVinculo = document.getElementById('adjuntarVinculo'); // Archivo adjunto
+            // const vinculoAdjuntarSolicitud = document.getElementById('vinculoAdjuntarSolicitud'); // Archivo adjunto
 
-            if (documentoSolicitudReclamo) {
-                try {
-                    documentoSRI = await convertFileToBase64(documentoSolicitudReclamo);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // const fileInput = document.getElementById('cartaPoder');
+            // const hojaDocumentoAdjuntada = document.getElementById('hojaPagoReclamo');
 
-            if (documentoSolicitudReclamoCuatro) {
-                try {
-                    documentoSRII = await convertFileToBase64(documentoSolicitudReclamoCuatro);
-                } catch (error) {
-                    console.error('Error al convertir archivo de hoja de pago:', error);
-                }
-            }
+            // const vinculoSolicitudSX = document.getElementById('vinculoSolicitudSX');
 
-            if (documentoBajaReclamo) {
-                try {
-                    documentoBajaI = await convertFileToBase64(documentoBajaReclamo);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
 
-            if (documentoBajaSolicitud) {
-                try {
-                    documentoBajaII = await convertFileToBase64(documentoBajaSolicitud);
-                } catch (error) {
-                    console.error('Error al convertir archivo de hoja de pago:', error);
-                }
-            }
+            // const documentoAdjuntadofsOne=adjuntarVinculo.files[0];
+            // const documentoAdjuntadofsTwo=vinculoAdjuntarSolicitud.files[0];
+            // const file = fileInput.files[0];  // Archivo de carta de poder
+            // const hojaDocumentadaFile = hojaDocumentoAdjuntada.files[0];  // Archivo de hoja de pago
+            // const documentoSolicitudReclamo=vinculoSolicitudReclamo.files[0];
+            // const documentoSolicitudReclamoCuatro=adjuntarSolicitudReclamoCuatro.files[0];
+            // //
+            // const documentoBajaReclamo=solicitudBajaReclamo.files[0];
+            // const documentoBajaSolicitud=adjuntarVinculoSolicitud.files[0];
+            // //
+            // const documentoMigracion=documentoSolicitudMigracionOne.files[0];
+            // //
+            // const documentoSolicitudX=vinculoSolicitudSX.files[0];
 
-            if (documentoMigracion) {
-                try {
-                    documentoMigracionI = await convertFileToBase64(documentoMigracion);
-                } catch (error) {
-                    console.error('Error al convertir archivo de hoja de pago:', error);
-                }
-            }
+            // //
+            // let documentoX="";
+            // let documentoMigracionI="";
+            // let documentoBajaI="";
+            // let documentoBajaII="";
+            // let documentoSRI="";
+            // let documentoSRII=""; 
+            // let documentoAdjuntadosFSI="";
+            // let documentoAdjuntadosFSII=""; 
+            // let fileBase64 = "";
+            // let fileConstacia = "";
 
-            if (documentoSolicitudX) {
-                try {
-                    documentoX = await convertFileToBase64(documentoSolicitudX);
-                } catch (error) {
-                    console.error('Error al convertir archivo de hoja de pago:', error);
-                }
-            }
 
-            // opciones
+            // // Solo convertimos a base64 si se selecciona un archivo
+            // if (file) {
+            //     try {
+            //         fileBase64 = await convertFileToBase64(file);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
 
-            // Crear un objeto para almacenar los datos validados
+            // if (hojaDocumentadaFile) {
+            //     try {
+            //         fileConstacia = await convertFileToBase64(hojaDocumentadaFile);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de hoja de pago:', error);
+            //     }
+            // }
+
+            // if (documentoAdjuntadofsOne) {
+            //     try {
+            //         documentoAdjuntadosFSI = await convertFileToBase64(documentoAdjuntadofsOne);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
+
+            // if (documentoAdjuntadofsTwo) {
+            //     try {
+            //         documentoAdjuntadosFSII = await convertFileToBase64(documentoAdjuntadofsTwo);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de hoja de pago:', error);
+            //     }
+            // }
+
+            // if (documentoSolicitudReclamo) {
+            //     try {
+            //         documentoSRI = await convertFileToBase64(documentoSolicitudReclamo);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
+
+            // if (documentoSolicitudReclamoCuatro) {
+            //     try {
+            //         documentoSRII = await convertFileToBase64(documentoSolicitudReclamoCuatro);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de hoja de pago:', error);
+            //     }
+            // }
+
+            // if (documentoBajaReclamo) {
+            //     try {
+            //         documentoBajaI = await convertFileToBase64(documentoBajaReclamo);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
+
+            // if (documentoBajaSolicitud) {
+            //     try {
+            //         documentoBajaII = await convertFileToBase64(documentoBajaSolicitud);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de hoja de pago:', error);
+            //     }
+            // }
+
+            // if (documentoMigracion) {
+            //     try {
+            //         documentoMigracionI = await convertFileToBase64(documentoMigracion);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de hoja de pago:', error);
+            //     }
+            // }
+
+            // if (documentoSolicitudX) {
+            //     try {
+            //         documentoX = await convertFileToBase64(documentoSolicitudX);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de hoja de pago:', error);
+            //     }
+            // }
+
+            // // opciones
+
+            // // Crear un objeto para almacenar los datos validados
             
 
-            let datosSeleccionados = {};
+            // let datosSeleccionados = {};
 
-            // Obtenemos los textos seleccionados de los demás select (excluyendo "Materia Reclamable")
-            const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
-            const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
-            const selectIncumplimiento = document.getElementById("ofertas").options[document.getElementById("ofertas").selectedIndex].text;
-            const selectFaltaServicio = document.getElementById("fservicio").options[document.getElementById("fservicio").selectedIndex].text;
-            const selectActivacion = document.getElementById("instalacion").options[document.getElementById("instalacion").selectedIndex].text;
-            const selectBaja = document.getElementById("sb").options[document.getElementById("sb").selectedIndex].text;
-            const selectContratacion = document.getElementById("con").options[document.getElementById("con").selectedIndex].text;
-            const selectMigracion = document.getElementById("mig").options[document.getElementById("mig").selectedIndex].text;
-            const selectOtros = document.getElementById("x").options[document.getElementById("x").selectedIndex].text;
+            // // Obtenemos los textos seleccionados de los demás select (excluyendo "Materia Reclamable")
+            // const selectFacturado = document.getElementById("facturados").options[document.getElementById("facturados").selectedIndex].text;
+            // const selectCalidad = document.getElementById("calidadidoneidad").options[document.getElementById("calidadidoneidad").selectedIndex].text;
+            // const selectIncumplimiento = document.getElementById("ofertas").options[document.getElementById("ofertas").selectedIndex].text;
+            // const selectFaltaServicio = document.getElementById("fservicio").options[document.getElementById("fservicio").selectedIndex].text;
+            // const selectActivacion = document.getElementById("instalacion").options[document.getElementById("instalacion").selectedIndex].text;
+            // const selectBaja = document.getElementById("sb").options[document.getElementById("sb").selectedIndex].text;
+            // const selectContratacion = document.getElementById("con").options[document.getElementById("con").selectedIndex].text;
+            // const selectMigracion = document.getElementById("mig").options[document.getElementById("mig").selectedIndex].text;
+            // const selectOtros = document.getElementById("x").options[document.getElementById("x").selectedIndex].text;
 
-            // Definir las opciones predeterminadas que deben ser excluidas
-            const opcionesPredeterminadas = [
-                "Selecciona la Opción", 
-                "Seleccionar Opción", 
-                "Seleccionar opción",
-                "Seleccione opción",
-                "Seleccione Opción",
-                "Seleccione una Opción",
-            ];
+            // // Definir las opciones predeterminadas que deben ser excluidas
+            // const opcionesPredeterminadas = [
+            //     "Selecciona la Opción", 
+            //     "Seleccionar Opción", 
+            //     "Seleccionar opción",
+            //     "Seleccione opción",
+            //     "Seleccione Opción",
+            //     "Seleccione una Opción",
+            // ];
 
-            // Almacenamos solo los textos si no es "Seleccionar Opción" (o cualquier opción predeterminada)
-            if (selectFacturado !== "Selecciona la Opción") datosSeleccionados.facturado = selectFacturado;
-            if (selectCalidad !== "Selecciona la Opción") datosSeleccionados.calidad = selectCalidad;
-            if (selectIncumplimiento !== "Seleccionar Opción") datosSeleccionados.incumplimiento = selectIncumplimiento;
-            if (selectFaltaServicio !== "Seleccionar Opción") datosSeleccionados.faltaServicio = selectFaltaServicio;
-            if (selectActivacion !== "Seleccionar Opción") datosSeleccionados.activacion = selectActivacion;
-            if (selectBaja !== "Seleccionar Opción") datosSeleccionados.baja = selectBaja;
-            if (selectContratacion !== "Seleccionar Opción") datosSeleccionados.contratacion = selectContratacion;
-            if (selectMigracion !== "Seleccionar Opción") datosSeleccionados.migracion = selectMigracion;
-            if (selectOtros !== "Seleccionar opción") datosSeleccionados.otros = selectOtros;
+            // // Almacenamos solo los textos si no es "Seleccionar Opción" (o cualquier opción predeterminada)
+            // if (selectFacturado !== "Selecciona la Opción") datosSeleccionados.facturado = selectFacturado;
+            // if (selectCalidad !== "Selecciona la Opción") datosSeleccionados.calidad = selectCalidad;
+            // if (selectIncumplimiento !== "Seleccionar Opción") datosSeleccionados.incumplimiento = selectIncumplimiento;
+            // if (selectFaltaServicio !== "Seleccionar Opción") datosSeleccionados.faltaServicio = selectFaltaServicio;
+            // if (selectActivacion !== "Seleccionar Opción") datosSeleccionados.activacion = selectActivacion;
+            // if (selectBaja !== "Seleccionar Opción") datosSeleccionados.baja = selectBaja;
+            // if (selectContratacion !== "Seleccionar Opción") datosSeleccionados.contratacion = selectContratacion;
+            // if (selectMigracion !== "Seleccionar Opción") datosSeleccionados.migracion = selectMigracion;
+            // if (selectOtros !== "Seleccionar opción") datosSeleccionados.otros = selectOtros;
 
-            // limpiando el objeto
-            // Crear un array con solo los valores del objeto, excluyendo "Seleccione opción"
-            //const problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => value !== "Seleccione opción");
-            // Limpiando el objeto y excluyendo las opciones predeterminadas
-            const problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => !opcionesPredeterminadas.includes(value));
-
-
-
-            // quejas
-            // Guardamos el texto de la opción seleccionada en una constante
-            const selectQueja = document.getElementById("quejasOpciones").options[document.getElementById("quejasOpciones").selectedIndex].text;
-
-            //quejas datos extras
-            // Obtener los valores de los campos en el formulario
-            const empresaOperadoraQueja = document.getElementById("empresaOperadoraQueja").value;
-            const servicioObjetoQueja = document.getElementById("servicioObjetoQueja").value;
-            const numServicioQueja = document.getElementById("numServicioQueja").value;
-            const codigoNumeroQueja = document.getElementById("codigoNumeroQueja").value;
-
-            // quejas preguntas
-            const fechaPresentacionQueja = document.getElementById("fechaPresentacionQueja").value;
-            // queja dos
-            const negativaQueja=document.getElementById("negativaQueja").value;
-            const fechaNegativaQueja=document.getElementById("fechaNegativaQueja").value;
-            const canalPresentacion=document.getElementById("canalPresentacion").value;
-            const especificarCanalQuejaDos=document.getElementById("especificarCanalQuejaDos");
-            const adjuntaPrueba=document.getElementById("adjuntaPrueba").value;
-
-            const fechaSuspendioServicioQueja=document.getElementById("fechaSuspendioServicioQueja").value;
-
-            const MediosCobranzasQuejas=document.getElementById("MediosCobranzasQuejas").value;
-            const constanciaPagoQueja=document.getElementById("constanciaPagoQueja").value;
-
-            const pagoCuentaQueja=document.getElementById("pagoCuentaQueja").value;
-            const espeficiarQueja=document.getElementById("espeficiarQueja").value;
-            const capturaQuejaCinco=document.getElementById("capturaQuejaCinco").value;
-
-            const dtramitacion=document.getElementById("dtramitacion").value;
-
-            // descargo del cliente
-            // Obtener el valor de los campos de "Descargo de cliente" en "Queja"
-            const informacionNecesariaQueja = document.getElementById("informacionNecesariaQueja").value;
-            const descripcionProblemaQueja = document.getElementById("descripcionProblemaQueja").value;
+            // // limpiando el objeto
+            // // Crear un array con solo los valores del objeto, excluyendo "Seleccione opción"
+            // //const problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => value !== "Seleccione opción");
+            // // Limpiando el objeto y excluyendo las opciones predeterminadas
+            // const problemaEspecificoValor = Object.values(datosSeleccionados).filter(value => !opcionesPredeterminadas.includes(value));
 
 
 
-            // archivos de queja
-            const medioProbatorioNegativa=document.getElementById("medioProbatorioNegativa");
+            // // quejas
+            // // Guardamos el texto de la opción seleccionada en una constante
+            // const selectQueja = document.getElementById("quejasOpciones").options[document.getElementById("quejasOpciones").selectedIndex].text;
 
-            const constanciaPagoMedioCobranza=document.getElementById("constanciaPagoMedioCobranza");
+            // //quejas datos extras
+            // // Obtener los valores de los campos en el formulario
+            // const empresaOperadoraQueja = document.getElementById("empresaOperadoraQueja").value;
+            // const servicioObjetoQueja = document.getElementById("servicioObjetoQueja").value;
+            // const numServicioQueja = document.getElementById("numServicioQueja").value;
+            // const codigoNumeroQueja = document.getElementById("codigoNumeroQueja").value;
 
-            const medioProbatoriopgQueja=document.getElementById("medioProbatoriopgQueja");
+            // // quejas preguntas
+            // const fechaPresentacionQueja = document.getElementById("fechaPresentacionQueja").value;
+            // // queja dos
+            // const negativaQueja=document.getElementById("negativaQueja").value;
+            // const fechaNegativaQueja=document.getElementById("fechaNegativaQueja").value;
+            // const canalPresentacion=document.getElementById("canalPresentacion").value;
+            // const especificarCanalQuejaDos=document.getElementById("especificarCanalQuejaDos");
+            // const adjuntaPrueba=document.getElementById("adjuntaPrueba").value;
 
-            const medioProbatoriosTramitacion=document.getElementById("medioProbatoriosTramitacion");
+            // const fechaSuspendioServicioQueja=document.getElementById("fechaSuspendioServicioQueja").value;
+
+            // const MediosCobranzasQuejas=document.getElementById("MediosCobranzasQuejas").value;
+            // const constanciaPagoQueja=document.getElementById("constanciaPagoQueja").value;
+
+            // const pagoCuentaQueja=document.getElementById("pagoCuentaQueja").value;
+            // const espeficiarQueja=document.getElementById("espeficiarQueja").value;
+            // const capturaQuejaCinco=document.getElementById("capturaQuejaCinco").value;
+
+            // const dtramitacion=document.getElementById("dtramitacion").value;
+
+            // // descargo del cliente
+            // // Obtener el valor de los campos de "Descargo de cliente" en "Queja"
+            // const informacionNecesariaQueja = document.getElementById("informacionNecesariaQueja").value;
+            // const descripcionProblemaQueja = document.getElementById("descripcionProblemaQueja").value;
 
 
 
-            // conversiones
+            // // archivos de queja
+            // const medioProbatorioNegativa=document.getElementById("medioProbatorioNegativa");
 
-            const mdprobatoriosQueja=medioProbatorioNegativa.files[0];
-            const cstMedioCobranza=constanciaPagoMedioCobranza.files[0];
-            const mdProbatorioQueja=medioProbatoriopgQueja.files[0];
-            const mdProbatorioTramitacion=medioProbatoriosTramitacion.files[0];
+            // const constanciaPagoMedioCobranza=document.getElementById("constanciaPagoMedioCobranza");
+
+            // const medioProbatoriopgQueja=document.getElementById("medioProbatoriopgQueja");
+
+            // const medioProbatoriosTramitacion=document.getElementById("medioProbatoriosTramitacion");
+
+
+
+            // // conversiones
+
+            // const mdprobatoriosQueja=medioProbatorioNegativa.files[0];
+            // const cstMedioCobranza=constanciaPagoMedioCobranza.files[0];
+            // const mdProbatorioQueja=medioProbatoriopgQueja.files[0];
+            // const mdProbatorioTramitacion=medioProbatoriosTramitacion.files[0];
 
   
-            let mdQuejaUno="";
-            let mdQuejaDos="";
-            let mdQuejaTres="";
-            let mdQuejaCuatro="";
+            // let mdQuejaUno="";
+            // let mdQuejaDos="";
+            // let mdQuejaTres="";
+            // let mdQuejaCuatro="";
 
-            if (mdprobatoriosQueja) {
-                try {
-                    mdQuejaUno = await convertFileToBase64(mdprobatoriosQueja);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // if (mdprobatoriosQueja) {
+            //     try {
+            //         mdQuejaUno = await convertFileToBase64(mdprobatoriosQueja);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
 
-            if (cstMedioCobranza) {
-                try {
-                    mdQuejaDos = await convertFileToBase64(cstMedioCobranza);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // if (cstMedioCobranza) {
+            //     try {
+            //         mdQuejaDos = await convertFileToBase64(cstMedioCobranza);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
 
-            if (mdProbatorioQueja) {
-                try {
-                    mdQuejaTres = await convertFileToBase64(mdProbatorioQueja);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // if (mdProbatorioQueja) {
+            //     try {
+            //         mdQuejaTres = await convertFileToBase64(mdProbatorioQueja);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
 
-            if (mdProbatorioTramitacion) {
-                try {
-                    mdQuejaCuatro = await convertFileToBase64(mdProbatorioTramitacion);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
+            // if (mdProbatorioTramitacion) {
+            //     try {
+            //         mdQuejaCuatro = await convertFileToBase64(mdProbatorioTramitacion);
+            //     } catch (error) {
+            //         console.error('Error al convertir archivo de carta de poder:', error);
+            //     }
+            // }
 
 
             // apelacion
 
             // opcion 
             // Guardamos el texto de la opción seleccionada en una constante
-            const selectApelacion = document.getElementById("apelacionOpciones").options[document.getElementById("apelacionOpciones").selectedIndex].text;
+            const apelacin = document.getElementById("apelacionOpciones").options[document.getElementById("apelacionOpciones").selectedIndex].text;
 
             // datos extras
             // Obtener el valor de la "Empresa Operadora"
@@ -3480,7 +3480,10 @@
                 // strasladoe,
                 // especificarCanalSinstalacion,
                 // codigoPedidoII,
-                // adsOpcionTraslado,
+                // adsOpcionTraslado,                // x_studio_fecha_emisin_carta_ds,
+             // x_studio_fecha_de_emision,
+                // x_studio_fecha_de_emision,
+               // x_studio_fecha_de_emisin_1,
                 // vinculoSolicitudReclamo:documentoSRI,
                 // fechaContratacionSInstalacion,
                 // ctopcionCinco,
@@ -3568,37 +3571,37 @@
                 //
                 //tipoUsuarioSeleccionado,
                 // quejas datos extra
-                empresaOperadoraQueja,
-                servicioObjetoQueja,
-                numServicioQueja,
-                codigoNumeroQueja,
+                // empresaOperadoraQueja,
+                // servicioObjetoQueja,
+                // numServicioQueja,
+                // codigoNumeroQueja,
 
-                // quejas preguntas
-                fechaPresentacionQueja,
-                negativaQueja,
-                fechaNegativaQueja,
-                canalPresentacion,
-                especificarCanalQuejaDos,
-                adjuntaPrueba,
-                fechaSuspendioServicioQueja,
-                MediosCobranzasQuejas,
-                constanciaPagoQueja,
-                pagoCuentaQueja,
-                espeficiarQueja,
-                capturaQuejaCinco,
-                dtramitacion,
-                medioProbatorioNegativa:mdQuejaUno,
-                constanciaPagoMedioCobranza:mdQuejaDos,
-                medioProbatoriopgQueja:mdQuejaTres,
-                medioProbatoriosTramitacion:mdQuejaCuatro,
+                // // quejas preguntas
+                // fechaPresentacionQueja,
+                // negativaQueja,
+                // fechaNegativaQueja,
+                // canalPresentacion,
+                // especificarCanalQuejaDos,
+                // adjuntaPrueba,
+                // fechaSuspendioServicioQueja,
+                // MediosCobranzasQuejas,
+                // constanciaPagoQueja,
+                // pagoCuentaQueja,
+                // espeficiarQueja,
+                // capturaQuejaCinco,
+                // dtramitacion,
+                // medioProbatorioNegativa:mdQuejaUno,
+                // constanciaPagoMedioCobranza:mdQuejaDos,
+                // medioProbatoriopgQueja:mdQuejaTres,
+                // medioProbatoriosTramitacion:mdQuejaCuatro,
 
-                // descargo del cliente
-                informacionNecesariaQueja,
-                descripcionProblemaQueja,
-
-                //Apelaciones
+                // // descargo del cliente
+                // informacionNecesariaQueja,                // x_studio_fecha_emisin_carta_ds,
+             // x_studio_fecha_de_emision,
+                // x_studio_fecha_de_emision,
+               // x_studio_fecha_de_emisin_1,
                 // selecion
-                selectApelacion,
+                apelacin,
                 //
                 //tipoUsuarioSeleccionado,
                 // datos extras
@@ -3608,6 +3611,7 @@
                 codigoNumeroApelacion,
                 numeroCartaApelacion,
                 fechaEmisionCartaApelacion,
+                // x_studio_fecha_emisin_carta_ds,
 
                 // preguntas 
                 detallePruebaApelacionUno,
@@ -3625,7 +3629,6 @@
                 montoTotalApelacionSiCinco,
                 detalleReclamoApelacionSiCinco,
                 materiaEmpresaEmitirApelacionSeis,
-
                 // descargo del cliente
                 informacionNecesariaApelacion,
                 sustentoApelacion,
@@ -3634,7 +3637,7 @@
 
             // Enviar la solicitud POST a la API Flask
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/reclamos', {
+                const response = await fetch('https://back.fiberpro.com.pe/crear_apelacion', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
