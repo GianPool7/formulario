@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <style>
         *{
             padding: 0;
@@ -17,6 +18,12 @@
         }
 
         /**/
+
+        .centrar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         summary {
             border: none;
@@ -92,6 +99,10 @@
         }
 
 
+        /* tiulo de la ultima parte */
+        h2{
+            color: white;
+        }
 
         /*Titulo*/
 
@@ -328,7 +339,9 @@
 
         .contenedorBtn{
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
@@ -358,8 +371,8 @@
         }
 
         .botonesEnviarEditar{
-            width: 50%;
-            padding: 10px;
+            width: 60%;
+            padding: 15px;
             display: flex;
             gap: 10px;
             justify-content: space-around;
@@ -401,10 +414,9 @@
         }
 
         .tituloTicket{
-            background-color: #ff4c00;
             /*border: 2px solid #002ccc;*/
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
             padding: 12px;
             color: white;
@@ -516,6 +528,74 @@
             color: white;
         }
 
+        /* ticket*/
+
+        .contenedor{
+            border-radius: 10px;
+            width: 60%;
+            display: block;
+            margin: auto;
+        }
+
+        .tituloTicket{
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            color: black;
+        }
+
+        .tituloFormulario{
+            text-align: center;
+            align-items: center;
+            display: flex;
+        }
+
+
+        .contenedorNum{
+            padding: 5px;
+            display: flex;
+            justify-content: right;
+        }
+
+        .num{
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #002ccc;
+            margin:10px ;
+        }
+
+        /* datos personales*/
+
+        .contenedorDatosCompletos{
+            width: 100%;
+            padding: 10px;
+        }
+
+        .datosPersonales{
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .datosPersonales p{
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .tituloPersonales{
+            padding: 10px;
+            background-color: #002ccc;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .txtNota{
+            border: 2px solid #002ccc; padding: 20px; border-radius: 8px; background-color: #f5f7ff; width: 50%; display: block; margin: auto; margin-bottom: 20px;
+        }
+
+        /**/
+
+        /*medias querys*/
+
         @media only screen and (max-width: 768px) {
             .contenedorOpciones {
                 width: 100%;
@@ -575,7 +655,30 @@
             .contenedorTituloDescripcion{
                 width: 100%;
             }
+
+            /*ticket*/
+            .contenedor{
+                border-radius: 10px;
+                width: 80%;
+            }
+            /**/
+
+            .tituloPersonales{
+                padding: 5px;
+                background-color: #002ccc;
+                color: white;
+                border-radius: 10px;
+                width: 100%;
+            }
+
+            /* para la nota importante */
+
+            .txtNota{
+                width: 90%;
+            }
         }
+
+        /**/
 
     </style>
 
@@ -756,6 +859,10 @@
             
                             </div>
                         </div>
+
+                        <div style="text-align: center;">
+                            <p>Al hacer clic en VALIDAR acepta haber leído nuestra <span style="color: #002ccc;font-weight: bold;"><a href="https://fiberpro.com.pe/contents/footer/Pol%C3%ADticas%20de%20Privacidad_P%C3%A1gina%20web.pdf?_t=1751393738" target="_blank">Política de Privacidad</a></span>.</p>
+                        </div>
             
                         <div class="btnContinuar">
                             <input type="button" id="validarFormularioAbonado" value="Validar">
@@ -788,6 +895,10 @@
                                 </div>
                 
                             </div>
+                        </div>
+                                
+                        <div style="text-align: center;">
+                            <p>Al hacer clic en VALIDAR acepta haber leído nuestra <span style="color: #002ccc;font-weight: bold;"><a href="https://fiberpro.com.pe/contents/footer/Pol%C3%ADticas%20de%20Privacidad_P%C3%A1gina%20web.pdf?_t=1751393738" target="_blank">Política de Privacidad</a></span>.</p>
                         </div>
             
                         <div class="btnContinuar">
@@ -850,6 +961,7 @@
                                     <label for="numDoc">Número de Documento</label>
                                     <input type="text" class="" id="numDoc" placeholder="Número de identidad" max="9" required>
                                 </div>
+                                                                    
                                 <div class="datos">
                                     <label for="distritos">Distrito</label>
                                     <select name="distritos" id="distritos" onchange="">
@@ -894,6 +1006,7 @@
                                 </div>
                             </div>
                             
+
                             <div class="btnContinuar">
                                 <input type="button" id="validarFormularioContinuar" value="Continuar">
                             </div>
@@ -1587,7 +1700,7 @@
                                     </div>
                     
                                     <div class="datos" id="">
-                                        <label for="montoReclamadoFCone">Monto reclamado:*</label>
+                                        <label for="montoReclamadoFCone">Monto reclamado</label>
                                         <input type="text" id="montoReclamadoFCone">
                                     </div>
                     
@@ -1949,8 +2062,8 @@
                         
                                                 <select name="" id="adrecibos" onchange="fsrecibo()">
                                                     <option value="" selected>Seleccione una Opción</option>
-                                                    <option value="si">Si</option>
-                                                    <option value="no">No</option>
+                                                    <option value="True">Si</option>
+                                                    <option value="False">No</option>
                                                 </select>
                         
                                             </div>
@@ -2008,8 +2121,8 @@
                     
                                             <select name="" id="adrecibosPendiente" onchange="fsreciboPendiente()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                                         </div>
                     
@@ -2085,8 +2198,8 @@
                     
                                             <select name="" id="adsOpcionTraslado" onchange="adsTraslado()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                     
                                         </div>
@@ -2140,8 +2253,8 @@
                     
                                             <select name="" id="opcionCuatroTraslado" onchange="opcionTrasladoCuatro()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                     
                                         </div>
@@ -2206,8 +2319,8 @@
                     
                                             <select name="" id="asb" onchange="adjuntarBaja()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                     
                                         </div>
@@ -2261,8 +2374,8 @@
                     
                                             <select name="" id="asT" onchange="adjuntarTraslado()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                     
                                         </div>
@@ -2430,8 +2543,8 @@
                     
                                             <select name="" id="asm" onchange="asolicitud()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                     
                                         </div>
@@ -2552,7 +2665,7 @@
                                                 <option value="Oficina">Oficina</option>
                                                 <option value="Web">Web</option>
                                                 <option value="Aplicativo">Aplicativo</option>
-                                                <option value="otros">Otros</option>
+                                                <!-- <option value="otros">Otros</option> -->
                                             </select>
                     
                                         </div>
@@ -2649,8 +2762,8 @@
                     
                                             <select name="" id="sasfll" onchange="solicitudfll()">
                                                 <option value="" selected>Seleccione una Opción</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                <option value="True">Si</option>
+                                                <option value="False">No</option>
                                             </select>
                     
                                         </div>
@@ -2701,7 +2814,7 @@
                             </div>
                             
                             <div class="contenedorDatosPersonales">
-                                <label for="descripcionProblemaSolicitudReclamo">Descripción del problema y solicitud concreta *</label>
+                                <label for="descripcionProblemaSolicitudReclamo">Descripción del problema y solicitud concreta</label>
                                 <textarea name="" id="descripcionProblemaSolicitudReclamo" maxlength="300" ></textarea>
                             </div>
 
@@ -2721,7 +2834,7 @@
                             </div>
                             
                             <div class="contenedorDatosPersonales">
-                                <label for="descripcionProblemaQueja">Descripción del problema *</label>
+                                <label for="descripcionProblemaQueja">Descripción del problema </label>
                                 <textarea name="" id="descripcionProblemaQueja" maxlength="300"></textarea>
                             </div>
 
@@ -2736,7 +2849,7 @@
                             <summary>Descargo de cliente</summary>
 
                             <div class="contenedorDatosPersonales">
-                                <label for="informacionNecesariaApelacion">Información Necesaria *</label>
+                                <label for="informacionNecesariaApelacion">Información Necesaria</label>
                                 <textarea name="" id="informacionNecesariaApelacion" maxlength="50"></textarea>
                             </div>
                             
@@ -2750,7 +2863,45 @@
                 </div>
 
                 <div class="contenedorBtn" id="btnEnviarFormulario">
-                    <input type="button" value="finalizar" id="mostrarDatos"/>
+
+                    <div class="textoNota">
+                        <div class="txtNota">
+                            <h2 style="color: #002ccc;">Nota Importante:</h2>
+                            <br>
+                            <p style="text-align: justify; color: #000;">
+                                PYD TELECOM S.R.L., identificada con RUC N.º 20556147761 y con domicilio
+                                en Av. L, Mz. L, Lote 48, Urb. Santo Domingo de Carabayllo – 2da Etapa (Av.
+                                El Parque con Av. Condorcanqui), distrito de Carabayllo, provincia y
+                                departamento de Lima, es titular del Banco de Datos Personales denominado
+                                “Reclamos, Quejas y Apelaciones”, inscrito con el código PJ-2025-44, en
+                                cumplimiento del artículo 18° de la Ley N.º 29733, Ley de Protección de Datos
+                                Personales, le informa que los datos personales que proporcione serán
+                                tratados con la finalidad de realizar gestiones vinculadas a la atención de
+                                reclamos, quejas y apelaciones sobre el producto, servicio y atención al
+                                cliente, brindar atención y validar su identidad.<br><br>
+                                Si desea ejercer sus derechos ARCO (acceso, rectificación, cancelación,
+                                oposición, información, actualización e inclusión) puede hacerlo siguiendo el
+                                procedimiento indicado en el siguiente enlace: <strong><span><a href="https://fiberpro.com.pe/contents/footer/Solicitud%20de%20Derechos%20ARCO.pdf?_t=1749754897" target="_blank">Solicitud de Derechos ARCO</a></span></strong>.<br><br>
+                                Para conocer más sobre el tratamiento de sus datos personales, puede
+                                consultar nuestra Política de Privacidad disponible en el siguiente enlace:
+                                <span style="color: #002ccc; font-weight: bold;">
+                                    <a href="https://fiberpro.com.pe/contents/footer/Pol%C3%ADticas%20de%20Privacidad_P%C3%A1gina%20web.pdf?_t=1751393738" target="_blank">
+                                        Política de Privacidad
+                                    </a>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div style="display: flex; justify-content: center; align-items: center;" class="nota">
+                            <input type="button" value="Finalizar" id="mostrarDatos"/>
+                        </div>
+
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 10px;">
+                        <p>Al hacer clic en FINALIZAR acepta haber leído nuestra <span style="color: #002ccc;font-weight: bold;"><a href="https://fiberpro.com.pe/contents/footer/Pol%C3%ADticas%20de%20Privacidad_P%C3%A1gina%20web.pdf?_t=1751393738" target="_blank">Política de Privacidad</a></span>.</p>
+                    </div>
+
                 </div>
 
             </div>
@@ -2759,35 +2910,86 @@
 
         <div class="contenedorTicket" id="cajaContenedorTicket">
 
-            <div class="cajaContenedorTickets">
+            <div class="contenedor">
 
                 <div class="tituloTicket">
-                    <h2 id="tituloTicketFinal" class="txt"></h2>
-                    <h3 id="message" class="txt"></h3>
+        
+                    <div class="tituloFormulario">
+                        <h1>DATOS DE </h1>   <h1 id="tituloTicketFinal"></h1> 
+                    </div>
+        
                 </div>
-    
-                <div class="ticket" id="resultados">
-                    <div class="datospersonalespruebas">
+        
+                <div class="contenedorNum">
+                    <div class="num">
+                        <P><strong>Código</strong> <span id="message"></span></P> 
                     </div>
                 </div>
-    
-                <div class="contenedorBtn" id="btnEnviarFormulario">
 
-                    <div class="">
-                        <h3 id="gracias"></h3>
+
+
+                <div class="contenedorDatosCompletos">
+
+                    <div class="datosPersonales">
+        
+                        <div class="tituloPersonales">
+                            <h2>Datos del reclamante</h2>
+                        </div>
+
+                        <p id="resultadodPersonales"></p>
+            
                     </div>
+            
+                    <div class="datosPersonales">
+            
+                        <div class="tituloPersonales">
+                            <h2>Datos para la notificacion y contacto</h2>
+                        </div>
 
-                    <div class="botonesEnviarEditar" id="cajadeBtnsSuccess">
-                        <input type="button" value="Editar" id="back" onclick="editarDatos()">
-                        <button type="submit" id="click">Enviar</button>
+                        <p id="resultadoNotificacion"></p>
+            
                     </div>
+            
+                    <div class="datosPersonales">
+            
+                        <div class="tituloPersonales">
+                            <h2>Datos del servicio</h2>
+                        </div>
+            
+                        <p id="dsOpcion"></p>
 
+                    </div>
+            
+                    <div class="datosPersonales">
+            
+                        <div class="tituloPersonales">
+                            <h2>Descargo del cliente</h2>
+                        </div>
 
+                        <p id="descargoClienteReclamoM"></p>
+            
+                    </div>
+        
                 </div>
 
-                <div class="home" id="home">
-                    <a href="https://fiberpro.com.pe/reclamos/" class="btnhome" id="inicio">Volver a inicio</a>
+            </div>
+
+            <div class="contenedorBtn" id="btnEnviarFormulario">
+
+                <div class="botonesEnviarEditar" id="cajadeBtnsSuccess">
+                    <input type="button" value="Editar" id="back" onclick="editarDatos()">
+                    <button type="submit" id="click">Enviar</button>
                 </div>
+
+            </div>
+            
+            <div class="centrar">
+                <p id="gracias"></p>
+            </div>
+
+            <div class="home" id="home">
+                
+                <a href="https://fiberpro.com.pe/reclamos/" class="btnhome" id="inicio">Volver a inicio</a>
 
             </div>
 
@@ -2800,7 +3002,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script> -->
     
     <script>
-        // Iniciar Flatpickr para todos los campos de fecha
+        //Iniciar Flatpickr para todos los campos de fecha
         // flatpickr(".fecha", {
         //     dateFormat: "Y-m-d",  // Cambiar el formato de fecha
         //     locale: "es"  
@@ -2857,28 +3059,7 @@
             const radioValue = document.querySelector('input[name="autorizacion"]:checked').value;
             let booleanValue = (radioValue === 'True');
 
-            // usuarios
-            // Variables para almacenar el tipo de usuario
-            const tipoUsuarioSeleccionado = "";
-
-            // Añadir eventos de clic a cada uno de los elementos
-            document.getElementById("abonado").addEventListener("click", function() {
-                tipoUsuarioSeleccionado = "abonado"; // Se ha seleccionado "Abonado"
-                console.log("Tipo de usuario seleccionado: " + tipoUsuarioSeleccionado);
-            });
-
-            document.getElementById("usuario").addEventListener("click", function() {
-                tipoUsuarioSeleccionado = "usuario"; // Se ha seleccionado "Usuario"
-                console.log("Tipo de usuario seleccionado: " + tipoUsuarioSeleccionado);
-            });
-
-            document.getElementById("representante").addEventListener("click", function() {
-                tipoUsuarioSeleccionado = "representante"; // Se ha seleccionado "Representante"
-                console.log("Tipo de usuario seleccionado: " + tipoUsuarioSeleccionado);
-            });
-
             const tipo = document.getElementById('tipoticket').value.trim();
-
             
             // datos de validacion abonado
             const nombrePadre = document.getElementById('nombrePadre').value.trim();
@@ -3158,7 +3339,7 @@
             // otros
             const fechaSolicitudX = document.getElementById('fechaSolicitudX').value;
             const ccontratacion = document.getElementById('ccontratacion').value;
-            const especificarx = document.getElementById('especificarx').value;
+            //const especificarx = document.getElementById('especificarx').value;
             const servicioContratarX = document.getElementById('servicioContratarX').value;
             const planTarifarioX = document.getElementById('planTarifarioX').value;
             const numeroReciboX = document.getElementById('numeroReciboX').value;
@@ -3218,7 +3399,7 @@
             const adjuntaPrueba = document.getElementById("adjuntaPrueba").value;
             const fechaSuspendioServicioQueja = document.getElementById("fechaSuspendioServicioQueja").value;
             const MediosCobranzasQuejas = document.getElementById("MediosCobranzasQuejas").value;
-            const constanciaPagoQueja = document.getElementById("constanciaPagoQueja").value;
+            //const constanciaPagoQueja = document.getElementById("constanciaPagoQueja").value;
             const pagoCuentaQueja = document.getElementById("pagoCuentaQueja").value;
             const espeficiarQueja = document.getElementById("espeficiarQueja").value;
             const dtramitacion = document.getElementById("dtramitacion").value;
@@ -3229,7 +3410,7 @@
 
             // booleanos
             let adjuntaPruebaBool = (adjuntaPrueba === 'True');
-            let constanciaPagoBool = (constanciaPagoQueja === 'True');
+            //let constanciaPagoBool = (constanciaPagoQueja === 'True');
             let capturaQuejaBool = (capturaQuejaCinco === 'True');
             let tramitacionBool = (dtramitacion === 'True');
             
@@ -3307,6 +3488,10 @@
             const fechaEmisionApelacionSiCuatro = document.getElementById("fechaEmisionApelacionSiCuatro").value;
             const fechaVencimientoApelacionSiCuatro = document.getElementById("fechaVencimientoApelacionSiCuatro").value;
             const montoReclamadoApelacionSiCuatro = document.getElementById("montoReclamadoApelacionSiCuatro").value;
+            // descargo del cliente
+            const informacionNecesariaApelacion = document.getElementById("informacionNecesariaApelacion").value;
+            const sustentoApelacion = document.getElementById("sustentoApelacion").value;
+
             // agregando 
             const apelacionOpcioncinco=document.getElementById("apelacionOpcioncinco").value;
             const detalleReclamoApelacionSiCuatro=document.getElementById("detalleReclamoApelacionSiCuatro").value;
@@ -3314,13 +3499,13 @@
             const detalleReclamoApelacionSiCinco=document.getElementById("detalleReclamoApelacionSiCinco").value;
             const materiaEmpresaEmitirApelacionSeis=document.getElementById("materiaEmpresaEmitirApelacionSeis").value;
 
-            console.log(valorSeleccionado);
+            console.log(tipoUsuarioSeleccionado);
             
 
             const dataApelacion = {
 
                 // //
-                tipoUsuarioSeleccionado,
+                tipoUsuario: tipoUsuarioSeleccionado,
                 // datos de validacion
                 nombrePadre,
                 nombreMadre,
@@ -3347,7 +3532,7 @@
                 // preguntas de apelacion
 
                 //apelacin,
-                apelacin,
+                idApelacion,
                 //datos extras
                 empresaOperadoraApelacion,
                 servicioMateriaApelacion,
@@ -3372,13 +3557,13 @@
                 detalleReclamoApelacionSiCinco,
                 materiaEmpresaEmitirApelacionSeis,
                 // descargo del cliente
-                //informacionNecesariaApelacion,
-                //areaEncargadaApelacionSiCuatro,
+                informacionNecesariaApelacion,
+                sustentoApelacion,
             };
 
             const dataQueja = {
                 // //
-                tipoUsuarioSeleccionado,
+                tipoUsuario: tipoUsuarioSeleccionado,
                 // datos de validacion
                 nombrePadre,
                 nombreMadre,
@@ -3406,7 +3591,7 @@
 
                 // //selecion
                 //quejaSeleccionada,
-                selectQueja,
+                idQueja,
                 //
                 //tipoUsuarioSeleccionado,
                 //quejas datos extra
@@ -3421,9 +3606,10 @@
                 canalPresentacion,
                 especificarCanalQuejaDos,
                 adjuntaPrueba:adjuntaPruebaBool,
+
                 fechaSuspendioServicioQueja,
                 MediosCobranzasQuejas,
-                constanciaPagoQueja:constanciaPagoBool,
+                //constanciaPagoQueja:constanciaPagoBool,
                 pagoCuentaQueja,
                 espeficiarQueja,
                 capturaQuejaCinco:capturaQuejaBool,
@@ -3442,7 +3628,7 @@
             const dataReclamo = {
 
                 // //
-                tipoUsuarioSeleccionado,
+                tipoUsuario: tipoUsuarioSeleccionado,
                 // datos de validacion
                 nombrePadre,
                 nombreMadre,
@@ -3469,8 +3655,8 @@
                 // preguntas de reclamos
                 // selecionar reclamo
                 //selectReclamos,
-                reclamoOpcion,
-                problemaEspecifico,
+                idReclamo,
+                idReclamoEscogido,
                 // datos del serivicio reclamo
                 empresaOperadora,
                 servicioContratado,
@@ -3630,16 +3816,27 @@
             let data;
 
             if (tipo === '3') {
-                url = 'https://pruebados-f80ed8a83d18.herokuapp.com/api/reclamos/reclamo';
+                url = 'https://pruebafiberpro-77136b83d858.herokuapp.com/api/reclamos/reclamo';
                 data =dataReclamo;
             } else if (tipo === '6') {
-                url = 'https://pruebados-f80ed8a83d18.herokuapp.com/api/reclamos/queja';
+                url = 'https://pruebafiberpro-77136b83d858.herokuapp.com/api/reclamos/queja';
                 data =dataQueja;
             } else if (tipo === '7') {
-                url = 'https://pruebados-f80ed8a83d18.herokuapp.com/api/reclamos/apelaciones';
+                url = 'https://pruebafiberpro-77136b83d858.herokuapp.com/api/reclamos/apelaciones';
                 data =dataApelacion;
             }
-                
+            
+            const botonEnviar = document.querySelector("#click");  // El botón de enviar
+            const botonEditar = document.querySelector("#back");  // El botón de editar (si existe)
+            const messageDiv = document.getElementById('message');
+
+            // Deshabilitar los botones y cambiar el texto a "Enviando..."
+            botonEnviar.disabled = true;
+            if (botonEditar) {
+                botonEditar.disabled = true;  // Si también quieres deshabilitar el botón de editar
+            }
+            botonEnviar.innerHTML = "Enviando...";
+
 
             // Enviar la solicitud POST a la API Flask
             try {
@@ -3657,7 +3854,7 @@
                 if (responseData.error) {
                     messageDiv.innerHTML = `<span class="error">${responseData.error}</span>`;
                 } else {
-                    messageDiv.innerHTML = `<span class="success"> Número: ${responseData.ticket_name}</span>`;
+                    messageDiv.innerHTML = `<span class="success">: ${responseData.ticket_name}</span>`;
                     ocultarBotonesYRedirigir();    
                     const btns=document.getElementById("cajadeBtnsSuccess");
                     btns.style.display="none";
@@ -3667,8 +3864,13 @@
                     btnVolver.style.display="block"
                 }
             } catch (error) {
-                const messageDiv = document.getElementById('message');
                 messageDiv.innerHTML = `<span class="error">Hubo un problema al enviar la solicitud: ${error.message}</span>`;
+                // Si hubo un error en el fetch, restauramos el botón para que se pueda enviar de nuevo
+                botonEnviar.disabled = false;
+                botonEnviar.innerHTML = "Enviar";  // Cambiar el texto del botón a "Enviar"
+                if (botonEditar) {
+                    botonEditar.disabled = false;  // Habilitar el botón de editar nuevamente si fue deshabilitado
+                }
             }
 
         });
@@ -3714,6 +3916,10 @@
             event.preventDefault();  // Evita el envío predeterminado
             //console.log("Formulario enviado");
             // Aquí puedes agregar la lógica para enviar el formulario manualmente (por ejemplo, con AJAX)
+                // Deshabilitar el botón de envío para evitar clics adicionales
+            // const botonEnviar = document.querySelector("#click"); // Suponiendo que el botón tiene un id 'botonEnviar'
+            // botonEnviar.disabled = true; // Deshabilitar el botón
+
         });
 
         //pantalla de carga
@@ -3776,7 +3982,7 @@
             contenedor.style.display="none"
             contenedorCajaTitulo.style.display="flex"
             // Escribir la opcion escojida
-            tituloOpcion.innerHTML="Reclamo";
+            tituloOpcion.innerHTML="RECLAMO";
             //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
             contenedorAUR.style.display="flex";
             // RECLAMOS
@@ -3797,7 +4003,7 @@
             contenedor.style.display="none"
             contenedorCajaTitulo.style.display="flex"
             // Escribir la opcion escojida
-            tituloOpcion.innerHTML="Queja";
+            tituloOpcion.innerHTML="QUEJA";
             //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
             contenedorAUR.style.display="flex";
         })
@@ -3816,7 +4022,7 @@
             contenedor.style.display="none"
             contenedorCajaTitulo.style.display="flex"
             // Escribir la opcion escojida
-            tituloOpcion.innerHTML="Apelación";
+            tituloOpcion.innerHTML="APELACIÓN";
             //Mostrar si es ABONADO - USUARIO - REPRESENTANTE
             contenedorAUR.style.display="flex";
         })
@@ -3936,6 +4142,8 @@
         const cDatosValidacionUsuario=document.getElementById("contenedorDatosValidacionUsuario")
         cDatosValidacionUsuario.open=false;
 
+        // tipo de ususario
+        let tipoUsuarioSeleccionado;
 
         // funcion para mostrar el formulario de los datos personales
 
@@ -3950,6 +4158,7 @@
             // el titulo del usuario
             tituloAUR.style.display="flex"
             txtTituloAUR.innerHTML="Abonado";
+            tipoUsuarioSeleccionado="abonado"
         })
 
         tpUsuario.addEventListener("click",function(){
@@ -3964,6 +4173,7 @@
             // el titulo del usuario
             tituloAUR.style.display="flex"
             txtTituloAUR.innerHTML="Usuario";
+            tipoUsuarioSeleccionado="usuario"
         })
 
         tpRepresentante.addEventListener("click",function(){
@@ -3981,7 +4191,11 @@
             // ocultar datos
             dValidacionAbonado.style.display="none"
             dValidacionUsuario.style.display="none"
+            tipoUsuarioSeleccionado="representante"
         })
+
+        console.log(tipoUsuarioSeleccionado);
+        
 
         // para validar los datos del abonado
         // Obtener el botón de validación
@@ -4407,6 +4621,9 @@
 
         let reclamoOpcion;
         let problemaEspecifico;
+        // id escogidos para pasar al odoo , para probar
+        let idReclamo;
+        let idReclamoEscogido;
 
         function selecion() {
 
@@ -4527,6 +4744,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Facturación y cobro";
+                    //
+                    idReclamo=1;
                     break;
 
                 case "calidad":
@@ -4542,6 +4761,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Calidad e idoneidad en la prestación del servicio";
+                    //
+                    idReclamo=2;
                     break;
 
                 case "oferta":
@@ -4557,6 +4778,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Incumplimiento de condiciones contractuales ofertas y promociones";
+                    //
+                    idReclamo=3;
                     break;
                     
                 case "falta":
@@ -4572,6 +4795,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Falta de servicio";
+                    //
+                    idReclamo=4;
 
                     break;
 
@@ -4588,6 +4813,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Instalación activación o traslado del servicio";
+                    //
+                    idReclamo=5;
 
                     break;
                     
@@ -4604,6 +4831,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Falta de ejecución de baja o suspensión del servicio";
+                    //
+                    idReclamo=6;
 
                     break;
 
@@ -4620,6 +4849,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Contratación no solicitada";
+                    //
+                    idReclamo=7;
 
                     break;
 
@@ -4636,6 +4867,8 @@
                     materiasXmaterias.style.display = 'none';
                     //
                     reclamoOpcion="Migración";
+                    //
+                    idReclamo=8;
 
                     break;
                     
@@ -4652,6 +4885,8 @@
                     materiasXmaterias.style.display = 'block';
                     //
                     reclamoOpcion="Otras materias reclamables";
+                    //
+                    idReclamo=9;
 
                     break;
             
@@ -4671,6 +4906,7 @@
             }
 
             console.log(reclamoOpcion);
+            console.log(idReclamo);
 
         }
 
@@ -4710,6 +4946,8 @@
                     contenidoFacturacion.style.display="flex";
                     conceptoFacturado.style.display="block";
                     problemaEspecifico="Desacuerdo con el cálculo de los consumos facturados"
+                    //
+                    idReclamoEscogido=1;
                     break;
                 
                 case "tarifa":
@@ -4718,6 +4956,8 @@
                     tarifaUsuario.style.display="block"
                     conceptoFacturado.style.display="block";
                     problemaEspecifico="Desacuerdo con la tarifa aplicada de consumos adicionales facturados"
+                    //
+                    idReclamoEscogido=2;
                     break;
 
                 case "reconexion":
@@ -4725,6 +4965,8 @@
                     contenidoFacturacion.style.display="flex";
                     conceptoFacturado.style.display="none";
                     problemaEspecifico="Desacuerdo con el cargo por reconexión"
+                    //
+                    idReclamoEscogido=3;
                     break;
 
                 case "dmonto":
@@ -4732,6 +4974,8 @@
                     contenidoFacturacion.style.display="flex";
                     conceptoFacturado.style.display="block";
                     problemaEspecifico="Desacuerdo con otro monto correspondiente a cualquier concepto facturado en el recibo cuyo consumo se desconoce"
+                    //
+                    idReclamoEscogido=4;
                     break;
                 
                 case "noprocesado":
@@ -4739,6 +4983,8 @@
                     contenidoFacturacion.style.display="flex";
                     medioPagoFacturacion.style.display="flex";
                     problemaEspecifico="Pagos no procesados o registrados"
+                    //
+                    idReclamoEscogido=5;
                     break;
 
                 case "nfacturados":
@@ -4746,18 +4992,24 @@
                     contenidoFacturacion.style.display="flex";
                     adHojaPagoFacturacion.style.display="flex";
                     problemaEspecifico="Cobro de montos no facturados oportunamente o realizados por documentos distintos al recibo"
+                    //
+                    idReclamoEscogido=6;
                     break;
 
                 case "cequipos":
                     nRecibo.style.display="block";
                     contenidoFacturacion.style.display="flex";
                     problemaEspecifico="Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado"
+                    //
+                    idReclamoEscogido=7;
                     break;
                 
                 case "incremento":
                     nRecibo.style.display="block";
                     contenidoFacturacion.style.display="flex";
                     problemaEspecifico="Aplicación del incremento tarifario no comunicado previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento"
+                    //
+                    idReclamoEscogido=8;
                     break;
             
                 default:
@@ -4822,6 +5074,8 @@
                 case "calidaduno":
                     contenidoci.style.display="flex"
                     problemaEspecifico="Problemas con la prestación del servicio, tales como intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros"
+                    //
+                    idReclamoEscogido=9;
                     break;
             
                 default:
@@ -4860,24 +5114,29 @@
                 case "incumplimientoUNO":
                     incumplimientoO.style.display="block"
                     problemaEspecifico="Incumplimiento de la aplicación de condiciones y tarifas del plan contratado distintas a las pactadas en el contrato"
+                    //
+                    idReclamoEscogido=10;
                     break;
             
                 case "incumplimientoDOS":
                     incumplimientoT.style.display="block"
                     problemaEspecifico="Incumplimiento de ofertas o promociones ofrecidas y/o contratadas"
-                    //
+                    ////
+                    idReclamoEscogido=11;
                     break;
 
                 case "incumplimientoTRES":
                     incumplimientoTr.style.display="block"
                     problemaEspecifico="Descuentos no reconocidos de los atributos y/o beneficios del plan contratado, oferta y/o promoción"
-                    //
+                    ////
+                    idReclamoEscogido=12;
                     break;
             
                 case "incumplimientoCUATRO":
                     incumplimientoF.style.display="block"
                     problemaEspecifico="Omisión de información o información inexacta sobre cobertura u otras características o limitaciones del servicio"
-                    //
+                    ////
+                    idReclamoEscogido=13;
                     break;
                 
                 default:
@@ -4957,6 +5216,8 @@
                     fsTwoOpcion.style.display="none";
                     fsOneOpcion.style.display="block";
                     problemaEspecifico="Interrupción, suspensión, corte o baja injustificada del servicio o sin observar el procedimiento establecido en la normativa vigente"
+                    //
+                    idReclamoEscogido=14;
                     break;
 
                 case "serviciotwo":
@@ -4965,16 +5226,22 @@
                     fsTwoOpcion.style.display="block";
                     fsF.style.display="block";
                     problemaEspecifico="Suspensión del servicio por uso prohibido en establecimientos penitenciarios"
+                    //
+                    idReclamoEscogido=15;
                     break;
 
                 case "serviciothree":
                     cfsThree.style.display="block";
                     problemaEspecifico="Falta de reactivación del servicio pese al pago del recibo"
+                                        //
+                    idReclamoEscogido=16;
                     break;
 
                 case "serviciofour":
                     cfsFour.style.display="block";
                     problemaEspecifico="Cambio de titularidad del servicio o reposición de SIM Card sin consentimiento del abonado"
+                                        //
+                    idReclamoEscogido=17;
                     break;
             
                 default:
@@ -4990,7 +5257,7 @@
             //
 
             switch (adjuntaRecibo) {
-                case "si":
+                case "True":
                     adjuntarElRecibo.style.display="block";
                     break;
             
@@ -5022,7 +5289,7 @@
 
 
             switch (recibosPendientes) {
-                case "si":
+                case "True":
                     fileRPendiente.style.display="block";
                     break;
             
@@ -5052,26 +5319,36 @@
                 case "instalacionesUno":
                     instalacionUnoDos.style.display="block";
                     problemaEspecifico="Falta de instalación del servicio fijo"
+                                        //
+                    idReclamoEscogido=18;
                     break;
 
                 case "instalacionesDos":
                     instalacionUnoDos.style.display="block";
                     problemaEspecifico="Falta de activación del servicio móvi"
+                                        //
+                    idReclamoEscogido=19;
                     break;
 
                 case "instalacionesTres":
                     intalacionTresCuatro.style.display="block";
                     problemaEspecifico="Falta de traslado del servicio"
+                                        //
+                    idReclamoEscogido=20;
                     break;
                     
                 case "instalacionesCuatro":
                     intalacionTresCuatro.style.display="block";
                     problemaEspecifico="Falta de respuesta a la solicitud de trasladado o negativa a la misma"
+                                        //
+                    idReclamoEscogido=21;
                     break;
             
                 case "instalacionesCinco":
                     instalacionCinco.style.display="block";
                     problemaEspecifico="Falta de devolución de los montos cobrados por instalación, activación o traslado no ejecutados"
+                                        //
+                    idReclamoEscogido=22;
                     break;
 
                 default:
@@ -5101,7 +5378,7 @@
             const adjuntarSolicitud=document.getElementById("adsot");
 
             switch (adsopcion) {
-                case "si":
+                case "True":
                     adjuntarSolicitud.style.display="block";
                     break;
             
@@ -5133,7 +5410,7 @@
             const fileCuatro=document.getElementById("asbaja")
 
             switch (opcionS) {
-                case "si":
+                case "True":
                     fileCuatro.style.display="block";
                     break;
             
@@ -5165,17 +5442,23 @@
                 case "bajaUno":
                     bajaOne.style.display="block";
                     problemaEspecifico="Falta de ejecución de la baja"
+                                        //
+                    idReclamoEscogido=23;
                     break;
 
                 case "bajaDos":
                     bajaDos.style.display="block";
                     problemaEspecifico="Falta de ejecución de la suspensión temporal del servicio"
+                                        //
+                    idReclamoEscogido=24;
                     break;
 
                 case "bajaTres":
                     bajaOne.style.display="block";
                     bajaTres.style.display="block";
-                    problemaEspecifico="Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla"   
+                    problemaEspecifico="Montos cobrados posteriores a la fecha en que se efectuó la baja o correspondía efectuarla"  
+                                        //
+                    idReclamoEscogido=25; 
                     break;
 
                 case "bajaCuatro":
@@ -5183,6 +5466,8 @@
                     bajaDos.style.display="block";
                     bajaTres.style.display="block"; 
                     problemaEspecifico="Montos cobrados posteriores a la fecha en que se efectuó la suspensión temporal o correspondía efectuarla"  
+                                        //
+                    idReclamoEscogido=26;
                     break;
             
                 default:  
@@ -5213,7 +5498,7 @@
 
 
             switch (opcionBaja) {
-                case "no":
+                case "True":
                     adjuntoBaja.style.display="block";
                     break;
             
@@ -5244,7 +5529,7 @@
             const fileTraslado=document.getElementById("asTraslado");
 
             switch (asTraslado) {
-                case "si":
+                case "True":
                     fileTraslado.style.display="block";
                     break;
             
@@ -5278,23 +5563,31 @@
                 case "conuno":
                     contratosUno.style.display="block";
                     problemaEspecifico="Desconoce contratación del servicio principal (*telefonía fija, acceso a internet, servicio móvil, televisión de paga)"
+                                        //
+                    idReclamoEscogido=27;
                     break;
                 
                 case "condos":
                     contratosUno.style.display="block";
                     contratoDos.style.display="block";
                     problemaEspecifico="Desconoce contratación o afiliación a servicios adicionales o suplementarios"
+                                        //
+                    idReclamoEscogido=28;
                     break;
 
                 case "contres":
                     contratosUno.style.display="block";
                     contratosTres.style.display="block";
                     problemaEspecifico="Desconoce adquisición de paquetes de tráfico o señales de programación (*datos, minutos, canales, otros)"
+                                        //
+                    idReclamoEscogido=29;
                     break;
                 
                 case "concuatro":
                     contratosUno.style.display="block";
                     problemaEspecifico="Desconoce contrato de adquisición o financiamiento de equipo terminal cuyo pago es incluido en el recibo como concepto facturable"
+                                        //
+                    idReclamoEscogido=30;
                     break;
             
                 default:
@@ -5334,22 +5627,30 @@
                 case "migracionOne":
                     migracionUno.style.display="block";
                     problemaEspecifico="Condicionamiento, negativa o falta de respuesta de la solicitud de migración"
+                                        //
+                    idReclamoEscogido=31;
                     break;
 
                 case "migracionTwo":
                     migracionUno.style.display="block";
                     migracionDos.style.display="block";
                     problemaEspecifico="Falta de ejecución de la migración dentro del plazo establecido"
+                                        //
+                    idReclamoEscogido=32;
                     break;
 
                 case "migracionThree":
                     migracionUno.style.display="block";
                     problemaEspecifico="Facturación corresponde al plan anterior"
+                                        //
+                    idReclamoEscogido=33;
                     break;
 
                 case "migracionFour":
                     migracionCuatro.style.display="block";
                     problemaEspecifico="Migración no solicitada"
+                                        //
+                    idReclamoEscogido=34;
                     break;
             
                 default:
@@ -5381,7 +5682,7 @@
             const docF=document.getElementById("asmf");
 
             switch (docM) {
-                case "si":
+                case "True":
                     docF.style.display="block";        
                     break;
             
@@ -5414,16 +5715,22 @@
                 case "xMateriasROne":
                     xReclamablesUno.style.display="block";
                     problemaEspecifico="Negativa a contratar el servicio"
+                                        //
+                    idReclamoEscogido=35;
                     break;
 
                 case "xMateriasRTwo":
                     xReclamablesDos.style.display="block";
                     problemaEspecifico="Falta de entrega de recibos"
+                                        //
+                    idReclamoEscogido=36;
                     break;
 
                 case "xMateriasRThree":
                     xReclamablesTres.style.display="block";
                     problemaEspecifico="Negativa a brindar la facturación detallada o llamadas entrantes"
+                                        //
+                    idReclamoEscogido=37;
                     break;
             
                 default:
@@ -5432,6 +5739,8 @@
             }
 
             console.log(problemaEspecifico);
+            console.log(idReclamoEscogido);
+
 
         }
 
@@ -5472,7 +5781,7 @@
             const dfll=document.getElementById("asfll");
 
             switch (solicitdu) {
-                case "si":
+                case "True":
                     dfll.style.display="block";
                     break;
             
@@ -5529,6 +5838,7 @@
         /* EMPIEZA LAS QUEJAS */
 
         let quejaSeleccionada;
+        let idQueja;
 
         function quejas() {
 
@@ -5562,6 +5872,8 @@
                     cajaApelacionenQueja.style.display="none"
                     //
                     quejaSeleccionada="Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)"
+                    //
+                    idQueja=1;
                     break;
 
                 case "quejaDos":
@@ -5576,6 +5888,8 @@
                     cajaApelacionenQueja.style.display="none"
                     //
                     quejaSeleccionada="No se permitió la presentación de reclamo, recurso de apelación o queja o no se otorgó el código respectivo"
+                    //
+                    idQueja=2;
                     break;
 
                 case "quejaTres":
@@ -5590,6 +5904,8 @@
                     cajaApelacionenQueja.style.display="none"
                     //
                     quejaSeleccionada="Suspensión del servicio pese a reclamo en trámite"
+                    //
+                    idQueja=3;
                     break;
                     
                 case "quejaCuatro":
@@ -5604,6 +5920,8 @@
                     cajaApelacionenQueja.style.display="none"
                     //
                     quejaSeleccionada="Requerimiento de pago del monto reclamado"
+                    //
+                    idQueja=4;
                     break;
 
                 case "quejaCinco":
@@ -5618,6 +5936,8 @@
                     cajaApelacionenQueja.style.display="none"
                     //
                     quejaSeleccionada="No se permitió el pago a cuenta del monto no reclamado"
+                    //
+                    idQueja=5;
                     break;
 
                 case "quejaSeis":
@@ -5632,6 +5952,8 @@
                     cajaApelacionenQueja.style.display="none"
                     //
                     quejaSeleccionada="Otros defectos de tramitación"
+                    //
+                    idQueja=6;
                     break;
                     
             
@@ -5651,6 +5973,7 @@
             }
 
             console.log(quejaSeleccionada);
+            console.log(idQueja);
 
         }
 
@@ -5784,7 +6107,10 @@
 
         /* Fin de queja */
 
-        let apelacionSelecionada="";
+        // Inicio de apelacion
+        let apelacionSelecionada="";            
+        // agregando el id con un valor entero
+        let idApelacion = null;
 
         /* Apelacion */
 
@@ -5809,6 +6135,8 @@
             document.getElementById('detailsApelacionDs').open = true;
             document.getElementById('seleccionUnicaApelacion').open=false;
 
+
+
             switch (apelacion.value) {
 
                 case "apelacionOne":
@@ -5823,6 +6151,8 @@
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
                     apelacionSelecionada="No se analizaron pruebas presentadas por el usuario";
+                    // agregando los IDS
+                    idApelacion=1;
 
                     break;
 
@@ -5838,6 +6168,8 @@
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
                     apelacionSelecionada="La carta no motiva o sustenta la decisión de la empresa sobre el reclamo";
+                    // agregando los IDS
+                    idApelacion=2;
                     break;
 
                 case "apelacionThree":
@@ -5852,6 +6184,8 @@
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
                     apelacionSelecionada="Empresa operadora emitió pronunciamiento por materia distinta a la reclamada";
+                    // agregando los IDS
+                    idApelacion=3;
                     break;
 
                 case "apelacionFour":
@@ -5868,6 +6202,8 @@
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
                     apelacionSelecionada="Empresa omitió pronunciarse por un extremo del reclamo o un recibo reclamado";
+                    // agregando los IDS
+                    idApelacion=4;
                     //
                     break;
                 case "apelacionFive":
@@ -5884,6 +6220,8 @@
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
                     apelacionSelecionada="La empresa operadora no acogió toda su pretensión";
+                    // agregando los IDS
+                    idApelacion=5;
                     break;
 
                 case "apelacionSix":
@@ -5898,6 +6236,8 @@
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
                     apelacionSelecionada="Otros";
+                    // agregando los IDS
+                    idApelacion=6;
                     break;
             
                 default:
@@ -5916,6 +6256,7 @@
             }
 
             console.log(apelacionSelecionada);
+            console.log(idApelacion);
         }
         
 
@@ -6011,7 +6352,6 @@
         contenedorDetailsExtraQueja.open=false;
         contenedorDetailsExtraApelacion.open=false;
 
-
         /* despues de formulario  reclamo*/
 
         const validarFormularioReclamo=document.getElementById("continuarFormulario");
@@ -6021,10 +6361,6 @@
             contenedorDetailsExtraReclamo.open=true;
             contenedorDetailsReclamo.open = false;
             enviar.style.display="flex";
-
-            //
-
-
         })
 
         /* Despues de formulario queja */
@@ -6065,23 +6401,26 @@
             cajaTotal.style.display="none";
 
             // Seleccionamos todos los inputs de tipo texto dentro del formulario
-            const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket input[type="date"],#DatosTicketMostrarTicket input[type="email"],#DatosTicketMostrarTicket textarea');
+            //const inputs = document.querySelectorAll('#DatosTicketMostrarTicket input[type="text"],#DatosTicketMostrarTicket input[type="date"],#DatosTicketMostrarTicket input[type="email"],#DatosTicketMostrarTicket textarea');
+            //const datosPersonales=document.getElementById("contenedorDatosPersonalesDetails")
+            // datos personales
+            // const inputs = document.querySelectorAll('#contenedorDatosPersonalesDetails input[type="text"],#contenedorDatosPersonalesDetails input[type="date"],#contenedorDatosPersonalesDetails input[type="email"]');
 
-            // Creamos una variable para almacenar los resultados
-            let datosRellenados = '';
+            // // Creamos una variable para almacenar los resultados
+            // let datosRellenados = '';
 
             // mostrar titulo en el ticket
             const titulo=document.getElementById("tituloTicketFinal")
 
             switch (valorSeleccionado) {
                 case "3":
-                    titulo.innerHTML="Reclamo";
+                    titulo.innerHTML=" RECLAMO ";
                     break;
                 case "6":
-                    titulo.innerHTML="Queja";
+                    titulo.innerHTML=" QUEJA ";
                     break;
                 case "7":
-                    titulo.innerHTML="Apelación";
+                    titulo.innerHTML=" APELACIÓN ";
                     break;
             
                 default:
@@ -6089,38 +6428,207 @@
             }
 
 
-            // Recorremos todos los inputs de tipo texto
-            inputs.forEach(input => {
-                const valor = input.value.trim(); // Obtenemos el valor del campo
+            // // Recorremos todos los inputs de tipo texto
+            // inputs.forEach(input => {
+            //     const valor = input.value.trim(); // Obtenemos el valor del campo
                 
-                // Si el campo tiene valor (no está vacío)
-                if (valor) {
-                    // Intentamos encontrar el label asociado
-                    const label = document.querySelector(`label[for="${input.id}"]`);
+            //     // Si el campo tiene valor (no está vacío)
+            //     if (valor) {
+            //         // Intentamos encontrar el label asociado
+            //         const label = document.querySelector(`label[for="${input.id}"]`);
                     
-                    // Verificamos si encontramos el label
-                    if (label) {
-                        // Extraemos el texto del label
-                        const labelText = label.innerText || label.textContent;
-                        // Convertimos saltos de línea a <br> para mostrarlos en HTML
-                        //const valorConSaltos = valor.replace(/\n/g, '<br>');
+            //         // Verificamos si encontramos el label
+            //         if (label) {
+            //             // Extraemos el texto del label
+            //             const labelText = label.innerText || label.textContent;
+            //             // Convertimos saltos de línea a <br> para mostrarlos en HTML
+            //             //const valorConSaltos = valor.replace(/\n/g, '<br>');
 
-                        // Agregamos el nombre del campo y su valor
-                        datosRellenados += `<p><strong>${labelText}:</strong> <span>${valor}</span> </p>`;
+            //             // Agregamos el nombre del campo y su valor
+            //             datosRellenados += `<p><strong>${labelText}:</strong> <span>${valor}</span> </p>`;
+            //         }
+            //     }
+            // });
+
+            // // Mostrar los resultados
+            // const resultados = document.getElementById('resultados');
+            // if (datosRellenados) {
+            //     // Si hay datos, los mostramos
+            //     resultados.innerHTML = datosRellenados;
+            // } else {
+            //     // Si no hay datos, mostramos un mensaje
+            //     resultados.innerHTML = '<p>No se han rellenado datos.</p>';
+            // }
+
+            descargoCliente();
+            datosServicio();
+            datosNotificacion();
+            obtenerDatosPersonales();
+
+        });
+
+
+        function descargoCliente() {
+            // Seleccionamos todos los 'textarea' dentro de los contenedores con los IDs respectivos
+            const dcReclamo = document.querySelectorAll('#detailsIExtraReclamo textarea');
+            const dcQueja = document.querySelectorAll('#detailIExtraQueja textarea');
+            const dcApelacion = document.querySelectorAll('#detailsIExtraApelacion textarea');
+
+            // Creamos una variable para almacenar los resultados
+            let descargoReclamo = '';
+
+            // Función para recorrer y procesar los campos
+            const procesarCampos = (campos) => {
+                campos.forEach(input => {
+                    const valor = input.value.trim(); // Obtenemos el valor del campo
+                    
+                    // Si el campo tiene valor (no está vacío)
+                    if (valor) {
+                        // Intentamos encontrar el label asociado
+                        const label = document.querySelector(`label[for="${input.id}"]`);
+                        
+                        // Verificamos si encontramos el label
+                        if (label) {
+                            // Extraemos el texto del label
+                            const labelText = label.innerText || label.textContent;
+                            
+                            // Agregamos el nombre del campo y su valor
+                            descargoReclamo += `<p><strong>${labelText}:</strong> <span>${valor}</span> </p>`;
+                        }
                     }
-                }
-            });
+                });
+            };
+
+            // Procesamos los tres contenedores (reclamo, queja y apelación)
+            procesarCampos(dcReclamo);
+            procesarCampos(dcQueja);
+            procesarCampos(dcApelacion);
 
             // Mostrar los resultados
-            const resultados = document.getElementById('resultados');
-            if (datosRellenados) {
-                // Si hay datos, los mostramos
-                resultados.innerHTML = datosRellenados;
+            const descargoClienteReclamoM = document.getElementById('descargoClienteReclamoM');
+            
+            // Si se agregaron datos, los mostramos
+            if (descargoReclamo) {
+                descargoClienteReclamoM.innerHTML = descargoReclamo;
             } else {
-                // Si no hay datos, mostramos un mensaje
-                resultados.innerHTML = '<p>No se han rellenado datos.</p>';
+                // Si no hay datos, mostramos un mensaje indicando que no se rellenaron datos
+                descargoClienteReclamoM.innerHTML = '<p>No se han rellenado datos.</p>';
             }
-        });
+        }
+
+        function datosServicio() {
+            // Seleccionamos todos los elementos select e input dentro de los contenedores correspondientes
+            const dcReclamo = document.querySelectorAll('#detailsReclamoDs select, #detailsReclamoDs input');
+            const dcQueja = document.querySelectorAll('#detailsQuejaDs select, #detailsQuejaDs input');
+            const dcApelacion = document.querySelectorAll('#detailsApelacionDs select, #detailsApelacionDs input');
+
+            // Creamos una variable para almacenar los resultados
+            let dsCompleta = '';
+
+            // Función para procesar los campos y agregar solo los que tienen valor
+            const procesarCampos = (campos) => {
+                campos.forEach(input => {
+                    const valor = input.value.trim(); // Obtenemos el valor del campo
+                    
+                    // Si el campo tiene valor (no está vacío)
+                    if (valor) {
+                        // Intentamos encontrar el label asociado
+                        const label = document.querySelector(`label[for="${input.id}"]`);
+                        
+                        // Verificamos si encontramos el label
+                        if (label) {
+                            // Extraemos el texto del label
+                            const labelText = label.innerText || label.textContent;
+                            
+                            // Agregamos el nombre del campo y su valor
+                            dsCompleta += `<p><strong>${labelText}:</strong> <span>${valor}</span> </p>`;
+                        }
+                    }
+                });
+            };
+
+            // Procesamos los tres contenedores (reclamo, queja y apelación)
+            procesarCampos(dcReclamo);
+            procesarCampos(dcQueja);
+            procesarCampos(dcApelacion);
+
+            // Mostrar los resultados
+            const dsOpcion = document.getElementById('dsOpcion');
+            
+            // Si se agregaron datos, los mostramos
+            if (dsCompleta) {
+                dsOpcion.innerHTML = dsCompleta;
+            } else {
+                // Si no hay datos, mostramos un mensaje indicando que no se rellenaron datos
+                dsOpcion.innerHTML = '<p>No se han rellenado datos.</p>';
+            }
+        }
+
+        function datosNotificacion() {
+            // Obtener el valor del campo select (Distrito)
+            const distrito = document.getElementById('distritos').value;
+
+            // Obtener el valor del campo de texto (Dirección)
+            const direccion = document.getElementById('direccion').value.trim();
+
+            // Obtener el valor del campo de email (Correo Electrónico)
+            const correo = document.getElementById('correo').value.trim();
+
+            // Mostrar los valores en la consola (o puedes hacer lo que necesites con los datos)
+            // console.log('Distrito:', distrito);
+            // console.log('Dirección:', direccion);
+            // console.log('Correo Electrónico:', correo);
+
+            // Opcional: puedes mostrar los datos en el HTML si lo necesitas
+            const resultadoNotificacion = document.getElementById('resultadoNotificacion'); // Asegúrate de tener un contenedor con id 'resultadoNotificacion'
+            if (resultadoNotificacion) {
+                resultadoNotificacion.innerHTML = `
+                    <p><strong>Distrito:</strong> ${distrito}</p>
+                    <p><strong>Dirección:</strong> ${direccion}</p>
+                    <p><strong>Correo Electrónico:</strong> ${correo}</p>
+                `;
+            }
+        }
+
+        function obtenerDatosPersonales() {
+            // Obtener los valores de los campos
+            const nombre = document.getElementById('name').value.trim();
+            const apellidos = document.getElementById('apellidos').value.trim();
+            const relacion = document.getElementById('relacion').value.trim();
+            const razonSocial = document.getElementById('razonsocial') ? document.getElementById('razonsocial').value.trim() : ''; // Si el campo Razón Social está presente
+            const cartaPoder = document.getElementById('cartaPoder').files[0] ? document.getElementById('cartaPoder').files[0].name : ''; // Obtener el nombre del archivo adjunto
+            const numeroContacto = document.getElementById('numeroContacto').value.trim();
+            const tipoDoc = document.getElementById('tipoDoc').value;
+            const numDoc = document.getElementById('numDoc').value.trim();
+
+            // // Mostrar los datos en la consola (o puedes hacer lo que necesites con los datos)
+            // console.log('Nombre:', nombre);
+            // console.log('Apellidos:', apellidos);
+            // console.log('Relación con el cliente:', relacion);
+            // console.log('Razón Social:', razonSocial);
+            // console.log('Carta Poder adjunta:', cartaPoder);
+            // console.log('Número de contacto:', numeroContacto);
+            // console.log('Tipo de Documento:', tipoDoc);
+            // console.log('Número de Documento:', numDoc);
+
+            // Opcional: Mostrar los datos en el HTML
+            const resultadodPersonales = document.getElementById('resultadodPersonales'); // Contenedor donde se mostrarán los datos
+            if (resultadodPersonales) {
+                resultadodPersonales.innerHTML = `
+                    <p><strong>Nombre:</strong> ${nombre}</p>
+                    <p><strong>Apellidos:</strong> ${apellidos}</p>
+                    <p><strong>Relación con el cliente:</strong> ${relacion}</p>
+                    <p><strong>Razón Social:</strong> ${razonSocial}</p>
+                    <p><strong>Carta Poder adjunta:</strong> ${cartaPoder ? cartaPoder : 'No adjuntada'}</p>
+                    <p><strong>Número de contacto:</strong> ${numeroContacto}</p>
+                    <p><strong>Tipo de Documento:</strong> ${tipoDoc}</p>
+                    <p><strong>Número de Documento:</strong> ${numDoc}</p>
+                `;
+            }
+        }
+
+
+
 
         function editarDatos() {
             ticketLegal.style.display="none"
