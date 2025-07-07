@@ -834,8 +834,36 @@
 
                 <details id="contenedorDatosValidacionAbonado">
                     <summary>Datos de validación</summary>
+
+                        <div style="display: flex; flex-direction: column;gap: 6px;">
+                            <div style="border: 1px solid black;background-color: aliceblue;padding: 10px;line-height: 30px;">
+                                <p style="font-weight: bold;font-size: 20px;">Estimado(a):</p>
+                                <span>
+                                    Le informamos que conforme a lo establecido en la <b>Resolución N.° 00002-2021-GG/OSIPTEL</b>, es
+                                    necesario validar su identidad para poder presentar reclamos, quejas o apelaciones.
+                                    <br>
+                                    Para una validación exitosa en condición de abonado, deberá señalar su número de documento
+                                    de identidad y la fecha de emisión. Adicionalmente, deberá responder correctamente dos (02) de
+                                    las siguientes cuatro (04) preguntas de validación.
+                                </span>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <p style="font-weight: bold; font-size: 20px;">VALIDACIÓN DE LA CONDICIÓN DE ABONADO</p>
+                            </div>
+                        </div>
+
                         <div class="datosPersonales" id="formulario_personal">
                             <div class="contenedorDatosPersonales">
+
+                                <div class="datos">
+                                    <label for="nombrePadre">Número del D. I</label>
+                                    <input type="text" id="nombrePadre" placeholder="Número del D. I">
+                                </div>
+                        
+                                <div class="datos">
+                                    <label for="nombreMadre">Fecha de emisión del D. I</label>
+                                    <input type="text" id="nombreMadre" placeholder="Fecha de emisión del D. I">
+                                </div>
             
                                 <div class="datos">
                                     <label for="nombrePadre">Nombre del Padre</label>
@@ -876,8 +904,38 @@
                         
                 <details id="contenedorDatosValidacionUsuario">
                     <summary>Datos de validación</summary>
+
+                        <div style="display: flex; flex-direction: column;gap: 6px;">
+                            <div style="border: 1px solid black;background-color: aliceblue;padding: 10px;line-height: 30px;">
+                                <p style="font-weight: bold;font-size: 20px;">Estimado(a):</p>
+                                <span>
+                                    Le informamos que conforme a lo establecido en la <b>Resolución N.° 00002-2021-GG/OSIPTEL</b>, es
+                                    necesario validar su identidad para poder presentar reclamos, quejas o apelaciones.
+                                    <br>
+                                    Para una validación exitosa en condición de usuario, deberá señalar su tipo y número de
+                                    documento de identidad. Adicionalmente, deberá responder correctamente al menos dos (02) de
+                                    las siguientes tres (03) preguntas, así como, los nombres y apellidos, y el número del documento
+                                    de identidad.
+                                </span>
+                            </div>
+                            <div style="margin-top: 20px;">
+                                <p style="font-weight: bold; font-size: 20px;">VALIDACIÓN DE LA CONDICIÓN DE USUARIO</p>
+                            </div>
+                        </div>
+
                         <div class="datosPersonales" id="formulario_personal">
+                            
                             <div class="contenedorDatosPersonales">
+                                                
+                                <div class="datos">
+                                    <label for="fechaVencimiento">Tipo del D. I</label>
+                                    <input type="text" class="fecha" class="fecha" id="Tipo del D. I">
+                                </div>
+                
+                                <div class="datos">
+                                    <label for="montoTarifa">Número del D. I</label>
+                                    <input type="text" id="montoTarifa" placeholder="Número del D. I">
+                                </div>
                 
                                 <div class="datos">
                                     <label for="fechaVencimiento">Fecha de Vencimiento del Recibo</label>
