@@ -854,13 +854,13 @@
                             <div class="contenedorDatosPersonales">
 
                                 <div class="datos">
-                                    <label for="nombrePadre">Número de Documento de Identidad</label>
-                                    <input type="text" id="nombrePadre" placeholder="Número del Documento de Identidad">
+                                    <label for="numerodocumentoidentidad">Número de Documento de Identidad</label>
+                                    <input type="text" id="numerodocumentoidentidad" placeholder="Número del Documento de Identidad">
                                 </div>
                         
                                 <div class="datos">
-                                    <label for="nombreMadre">Fecha de emisión de Documento de Identidad</label>
-                                    <input type="date" id="nombreMadre" placeholder="Fecha de emisión del Documento de Identidad">
+                                    <label for="fechaEmisionDocumentoIdentidad">Fecha de emisión de Documento de Identidad</label>
+                                    <input type="date" id="fechaEmisionDocumentoIdentidad" placeholder="Fecha de emisión del Documento de Identidad">
                                 </div>
             
                                 <div class="datos">
@@ -3122,10 +3122,15 @@
             const nombreMadre = document.getElementById('nombreMadre').value.trim();
             const lugarNacimiento = document.getElementById('lugarNacimiento').value.trim();
             const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            // nuevo campos para la validacion de abonado
+            const numeroDocumentIdentidad=document.getElementById('numerodocumentoidentidad').value;
+            const fechaEmisionDocumentoIdentidad=document.getElementById('fechaEmisionDocumentoIdentidad').value;
             // datos de validacion usuario
             const fechaVencimiento = document.getElementById('fechaVencimiento').value;
             const montoTarifa = document.getElementById('montoTarifa').value.trim();
             const direccionFacturacion = document.getElementById('direccionFacturacion').value.trim();
+            // nuevos campos para la validacion de usuario
+            const tipoDocumentoIdentidad=document.getElementById('tipodocumentoidentidad').value.trim();
             // datos personales
             const nombres = document.getElementById('name').value.trim();
             const apellidos = document.getElementById('apellidos').value.trim();
@@ -3567,10 +3572,13 @@
                 nombreMadre,
                 lugarNacimiento,
                 fechaNacimiento,
+                numeroDocumentIdentidad,
+                fechaEmisionDocumentoIdentidad,
                 //datos de validacion
                 fechaVencimiento,
                 montoTarifa,
                 direccionFacturacion,
+                tipoDocumentoIdentidad,
 
                 cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
                 nombre: nombres,
@@ -3625,10 +3633,13 @@
                 nombreMadre,
                 lugarNacimiento,
                 fechaNacimiento,
+                numeroDocumentIdentidad,
+                fechaEmisionDocumentoIdentidad,
                 //datos de validacion
                 fechaVencimiento,
                 montoTarifa,
                 direccionFacturacion,
+                tipoDocumentoIdentidad,
 
                 cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
                 nombre: nombres,
@@ -3690,10 +3701,13 @@
                 nombreMadre,
                 lugarNacimiento,
                 fechaNacimiento,
+                numeroDocumentIdentidad,
+                fechaEmisionDocumentoIdentidad,
                 //datos de validacion
                 fechaVencimiento,
                 montoTarifa,
                 direccionFacturacion,
+                tipoDocumentoIdentidad,
 
                 cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
                 nombre: nombres,
