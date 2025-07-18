@@ -1,0 +1,204 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.cajas{
+    display: flex;
+    justify-content: space-around;
+}
+
+.caja{
+    background-color: white;
+    width: 20%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-radius: 20px;
+    box-shadow: 1px 5px 10px black;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out; /* duración + efecto suave */
+}
+
+.caja:hover {
+  transform: scale(1.1); 
+}
+
+.titulo{
+    background-color: #002ccc;
+    color: white;
+    text-align: center;
+    padding: 4px;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.contenedor{
+    padding: 8px;
+}
+
+.contenedor p{
+    font-weight: bold;
+}
+
+/* preguntas */
+
+.contenedor-preguntas{
+    display: none;
+}
+
+.caja-preguntas{
+    width: 100%;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contendor-cajas{
+    width: 60%;
+    display: block;
+    margin: auto;
+}
+
+.preguntitas{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+.preguntitas div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    padding: 5px;
+}
+
+.preguntasolas{
+    padding: 10px;
+}
+
+.preguntasolas div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+
+.preguntasolas span{
+    color: red;
+}
+
+.preguntitas span{
+    color: red;
+}
+
+input{
+    width: 100%;
+    padding:5px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    border: 1px solid gray;
+}
+
+select{
+    width: 100%;
+    padding:5px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.siOno{
+    display: flex;
+    padding: 10px;
+}
+
+.sino{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-notifiacion{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.notificaciones{
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    border: 2px solid gray;
+    border-radius: 10px;
+    display: none;
+}
+/**/
+.preguntasmenor{
+    display: none;
+}
+
+/**/
+
+.opciones{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.opciones div{
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/**/
+
+.preguntas-reclamos{
+    display: none;
+}
+
+.preguntas-queja{
+    display: none;
+}
+
+.otroreclamos{
+    display: none;
+}
+
+.especificar-queja{
+    display: none;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btn button{
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: #ff4c00;
+}
