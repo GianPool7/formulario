@@ -6,6 +6,7 @@
     <title>Formulario de Reclamo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="libro.css">
+    <link href="https://fonts.cdnfonts.com/css/clan-pro" rel="stylesheet">
 </head>
 
 <body>
@@ -90,31 +91,31 @@
 
                         <div class="preguntitas">
                             <div>
-                                <label for="">Tipo de documento de identidad <span>*</span> </label>
-                                <select name="" id="">
-                                    <option value="">Selecciona un tipo de documento</option>
-                                    <option value="DNI">Documento de Identidad (DNI)</option>
+                                <label for="tipodocumento">Tipo de documento de identidad <span>*</span> </label>
+                                <select name="tipodocumento" id="tipodocumento" required>
+                                    <option value="" class="opcion-seleccionada">Selecciona un tipo de documento</option>
+                                    <!-- <option value="DNI">Documento de Identidad (DNI)</option>
                                     <option value="RUC">Registro Único de Contribuyentes (RUC)</option>
                                     <option value="Pasaporte">Pasaporte</option>
-                                    <option value="CE">Carnet de Extranjería(CE)</option>
+                                    <option value="CE">Carnet de Extranjería(CE)</option> -->
                                 </select>
                             </div>
 
                             <div>
                                 <label for="">N° del documento de identidad <span>*</span> </label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="" placeholder="Numero de identificacion *" required>
                             </div>
                         </div>
 
                         <div class="preguntitas">
                             <div>
-                                <label for="">Nombres del usuario <span>*</span> </label>
-                                <input type="text" name="" id="">
+                                <label for="">Nombres completos <span>*</span> </label>
+                                <input type="text" name="" id="" placeholder="Nombres completos *" required>
                             </div>
 
                             <div>
-                                <label for="">Apellidos del usuario <span>*</span> </label>
-                                <input type="text" name="" id="">
+                                <label for="">Apellidos completos <span>*</span> </label>
+                                <input type="text" name="" id="" placeholder="Apellidos completos *" required>
                             </div>
                         </div>
 
@@ -122,29 +123,25 @@
                             <div>
                                 <label for="menorEdad">Menor de edad <span>*</span> </label>
                                 <select name="menorEdad" id="menorEdad">
-                                    <option value="">Seleccionar Opción</option>
+                                    <option value="" class="opcion-seleccionada">Seleccionar Opción</option>
                                     <option value="Si">Si</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
 
                             <div>
-                                <label for="">Departamento <span>*</span></label>
-                                <select name="" id="">
-                                    <option value="">Seleccionar Opción</option>
-                                    <option value="Si">Si</option>
-                                    <option value="No">No</option>
+                                <label for="departamento">Departamento <span>*</span></label>
+                                <select name="departamento" id="departamento">
+                                    <option value="Lima" class="opcion-seleccionada" selected>Lima</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="preguntitas">
                             <div>
-                                <label for="">Provincias<span>*</span> </label>
-                                <select name="" id="">
+                                <label for="provincias">Provincias<span>*</span> </label>
+                                <select name="provincias" id="provincias">
                                     <option value="">Seleccionar Opción</option>
-                                    <option value="Si">Si</option>
-                                    <option value="No">No</option>
                                 </select>
                             </div>
 
@@ -173,18 +170,18 @@
                         <div class="preguntitas">
                             <div>
                                 <label for="">Direccion de correo electronico <span>*</span> </label>
-                                <input type="text" name="" id="correo">
+                                <input type="text" name="" id="correo" required>
                             </div>
                             <div>
                                 <label for="">Contacto de referencia (movil o fijo) <span>*</span> </label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="" required>
                             </div>
                         </div>
 
                         <div class="preguntasolas">
                             <div>
                                 <label for="">Dirección <span>*</span> </label>
-                                <input type="text" name="" id="direccion">
+                                <input type="text" name="" id="direccion" required>
                             </div>
                         </div>
 
@@ -193,7 +190,7 @@
                             <div class="preguntasolas">
                                 <div>
                                     <label for="">Nombre del Papá o Mamá <span>*</span> </label>
-                                    <input type="text" name="" id="">
+                                    <input type="text" name="" id="" required>
                                 </div>
                             </div>
 
@@ -245,12 +242,12 @@
                             <!-- <div class="preguntitas">
                                 <div>
                                     <label for="">Dirección <span>*</span> </label>
-                                    <input type="text" name="" id="">
+                                    <input type="text" name="" id="" required>
                                 </div>
 
                                 <div>
                                     <label for="">Contacto de referencia (movil o fijo) <span>*</span> </label>
-                                    <input type="text" name="" id="">
+                                    <input type="text" name="" id="" required>
                                 </div>
                             </div> -->
  
@@ -258,13 +255,15 @@
 
                         <div class="siOno">
                             <p>Autorizo ser notificado por el correo electrónico registrado: </p>
-                            <div class="sino">
-                                <label for="si">Si</label>
-                                <input type="radio" name="notificar" id="si" value="si">
-                            </div>
-                            <div class="sino">
-                                <label for="no">No</label>
-                                <input type="radio" name="notificar" id="no" value="no">
+                            <div class="radioinputs">
+                                <div class="sino">
+                                    <input type="radio" name="notificar" id="si" value="si">
+                                    <label for="si">Si</label>
+                                </div>
+                                <div class="sino">
+                                    <input type="radio" name="notificar" id="no" value="no">
+                                    <label for="no">No</label>
+                                </div>
                             </div>
                         </div>
 
@@ -317,7 +316,7 @@
 
                                 <!-- <div class="otroreclamos" id="otrosreclamos">
                                     <label for="">Especificar</label>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div> -->
 
                             </div>
@@ -325,7 +324,7 @@
                             <div class="preguntitas">
                                 <div>
                                     <p>Identificación del Producto o Servicio adquirido <span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                                 <div>
                                     <p>Monto del producto o servicio adquirido objeto del reclamo <span>*</span></p>
@@ -336,11 +335,11 @@
                             <div class="preguntitas">
                                 <div>
                                     <p>Especifique su inconveniente <span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                                 <div>
                                     <p>Pedido concreto del consumidor: <span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
 
@@ -364,14 +363,14 @@
 
                                 <!-- <div class="">
                                     <label for="">Especificar</label>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div> -->
                             </div>
 
                             <div class="preguntitas">
                                     <div>
                                         <p>Especifique su inconveniente <span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" required>
                                     </div>
                                     <div>
                                         <p>Pedido concreto del consumidor <span>*</span></p>
@@ -482,7 +481,67 @@
             });
         }
 
+        // consumiendos apis 
 
+        // Cargar tipos de documento
+        async function cargarTiposDocumento() {
+            try {
+                const respuesta = await fetch("https://app-externos.fiberpro.com.pe/api/get_identification_type");
+                const data = await respuesta.json();
+
+                const select = document.getElementById("tipodocumento");
+
+                data.forEach(item => {
+                    const option = document.createElement("option");
+                    option.value = item.code;
+                    option.textContent = item.name;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error al cargar tipos de documento:", error);
+            }
+        }
+
+        // Cargar departamentos
+        async function cargarDepartamentos() {
+            try {
+                const respuesta = await fetch("https://app-externos.fiberpro.com.pe/api/get_cities/cities");
+                const data = await respuesta.json();
+
+                const select = document.getElementById("departamento");
+
+                data.forEach(item => {
+                    const option = document.createElement("option");
+                    option.value = item.code;
+                    option.textContent = item.name;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error al cargar departamentos:", error);
+            }
+        }
+
+        // Cargar distritos (por ID de ciudad/provincia/departamento)
+        async function cargarDistritos(idCiudad) {
+            try {
+                const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${idCiudad}`);
+                const data = await respuesta.json();
+
+                const select = document.getElementById("provincias");
+
+                data.forEach(item => {
+                    const option = document.createElement("option");
+                    option.value = item.code;
+                    option.textContent = item.name;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error al cargar distritos:", error);
+            }
+        }
+
+        cargarTiposDocumento();
+        cargarDepartamentos();
 
     </script>
 

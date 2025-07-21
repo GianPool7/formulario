@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Clan Pro', sans-serif;
 }
 
 .cajas{
@@ -21,6 +21,10 @@
     box-shadow: 1px 5px 10px black;
     cursor: pointer;
     transition: transform 0.5s ease-in-out; /* duración + efecto suave */
+}
+
+.preguntasolas h2{
+    color: #ff4c00;
 }
 
 .caja:hover {
@@ -105,21 +109,38 @@
 
 input{
     width: 100%;
-    padding:5px;
+    padding: 20px;
     outline: none;
     border: none;
     font-size: 20px;
-    border: 1px solid gray;
+    border: 1px solid #002ccc;
+    border-radius: 10px;
 }
 
 select{
     width: 100%;
-    padding:5px;
+    padding:20px;
     outline: none;
     border: none;
     font-size: 20px;
     background-color: white;
-    border: 1px solid gray;
+    border: 1px solid #002ccc;
+    border-radius: 10px;
+}
+
+
+.opcion-seleccionada{
+    font-weight: bold;
+}
+
+
+/**/
+
+.radioinputs{
+    padding: 10px;
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
 }
 
 .siOno{
@@ -130,6 +151,7 @@ select{
 .sino{
     display: flex;
     justify-content: center;
+    gap: 10px;
     align-items: center;
 }
 
@@ -144,9 +166,10 @@ select{
     padding: 20px;
     text-align: center;
     width: 50%;
-    border: 2px solid gray;
+    border: 2px solid #11F5F7;
     border-radius: 10px;
     display: none;
+    color: #002ccc;
 }
 /**/
 .preguntasmenor{
@@ -201,4 +224,40 @@ select{
     cursor: pointer;
     color: white;
     background-color: #ff4c00;
+}
+
+/*responsivo*/
+
+
+@media only screen and (max-width: 768px) {
+    .preguntitas{
+        flex-wrap: wrap;
+    }
+    .contendor-cajas{
+        width: 100%;
+    }
+    .preguntitas div{
+        width: 100%;
+    }
+    .cajas{
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .caja{
+        background-color: white;
+        width: 80%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 6px;
+        border-radius: 20px;
+        box-shadow: 1px 5px 10px black;
+        cursor: pointer;
+        transition: transform 0.5s ease-in-out; /* duración + efecto suave */
+    }
+    .opciones{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }
