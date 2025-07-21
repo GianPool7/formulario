@@ -36,18 +36,13 @@
                     <div>
                         <p>Reclamo:</p>
                         <span>
-                            Disconformidad relacionada con
-                            los productos, servicios prestados, o
-                            comercializados por la Empresa Operadora.
+                            Disconformidad respecto a los productos o servicios comercializados por la Empresa Operadora.
                         </span>
                     </div>
                     <div>
                         <p>Queja:</p>
                         <span>
-                            Disconformidad, molestia o
-                            descontento en referencia a la calidad de la
-                            atención brindada al consumidor, por parte de
-                            la Empresa Operadora.
+                            Disconformidad, molestia o descontento respecto a la calidad de la atención recibida por parte de la Empresa Operadora.
                         </span>
                     </div>
                 </div>
@@ -102,8 +97,8 @@
                             </div>
 
                             <div>
-                                <label for="">N° del documento de identidad <span>*</span> </label>
-                                <input type="text" name="" id="" placeholder="Numero de identificacion *" required>
+                                <label for="numerodocumento">N° del documento de identidad <span>*</span> </label>
+                                <input type="text" name="numerodocumento" id="numerodocumento" placeholder="Numero de identificacion *" required>
                             </div>
                         </div>
 
@@ -311,9 +306,9 @@
                                     <label for="materiareclamo">Materia de Reclamo <span>*</span></label>
                                     <select name="materiareclamo" id="materiareclamo">
                                         <option value="">Seleccionar reclamo</option>
-                                        <option value="">Problemas con mi router/Modem</option>
-                                        <option value="">Problemas con mi repetidor</option>
-                                        <option value="otros">otros</option>
+                                        <option value="1">Problemas con mi router/Modem</option>
+                                        <option value="2">Problemas con mi repetidor</option>
+                                        <option value="3">otros</option>
                                     </select>
                                 </div>
 
@@ -355,12 +350,12 @@
                                     <label for="materiaqueja">Materia de Queja <span>*</span></label>
                                     <select name="materiaqueja" id="materiaqueja">
                                         <option value="">Seleccionar reclamo</option>
-                                        <option value="">Problema con la atención por canal presencial.</option>
-                                        <option value="">Problema con la atención por el canal WhatsApp.</option>
-                                        <option value="">Problema con la atención por el canal telefónico.</option>
-                                        <option value="">Problemas con la atención al momento de la instalación.</option>
-                                        <option value="">Problemas con la atención durante la visita técnica.</option>
-                                        <option value="">otros</option>
+                                        <option value="4">Problema con la atención por canal presencial.</option>
+                                        <option value="5">Problema con la atención por el canal WhatsApp.</option>
+                                        <option value="6">Problema con la atención por el canal telefónico.</option>
+                                        <option value="7">Problemas con la atención al momento de la instalación.</option>
+                                        <option value="8">Problemas con la atención durante la visita técnica.</option>
+                                        <option value="3">otros</option>
                                     </select>
                                 </div>
 
@@ -500,24 +495,42 @@
         });
 
         async function cargarDistritos(idCiudad) {
-        try {
-            const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${idCiudad}`);
-            const data = await respuesta.json();
+            try {
+                const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${idCiudad}`);
+                const data = await respuesta.json();
 
-            console.log("Datos recibidos:", data);  // <- Añade esto
+                console.log("Datos recibidos:", data);  // <- Añade esto
 
-            distritosSelect.innerHTML = '<option value="">Seleccionar distrito</option>'; // Mueve aquí para limpiar antes de agregar
+                distritosSelect.innerHTML = '<option value="">Seleccionar distrito</option>'; // Mueve aquí para limpiar antes de agregar
 
-            data.forEach(item => {
-            const option = document.createElement("option");
-            option.value = item.code;
-            option.textContent = item.name;
-            distritosSelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error("Error al cargar distritos:", error);
+                data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item.code;
+                option.textContent = item.name;
+                distritosSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error al cargar distritos:", error);
+            }
         }
-        }
+
+        // para enviar ala api
+
+        const tipodocumento=document.getElementById('tipodocumento').value.trim();
+        const numerodocumento=document.getElementById('numerodocumento').value.trim();
+        const nombrescompletos=document.getElementById('').value.trim();
+        const apellidoscompletos=document.getElementById('').value.trim();
+
+        const menorEdad=document.getElementById('').value.trim()
+        const departamento=document.getElementById('').value.trim()
+        const provincias=document.getElementById('').value.trim()
+        const distrito=document.getElementById('').value.trim()
+
+        const correoelectronico=document.getElementById('').value.trim()
+        const movil=document.getElementById('').value.trim()
+        const direccioncasa=document.getElementById('').value.trim()
+
+        const autorizacion=document.getElementById('').value.trim()
 
 
     </script>
