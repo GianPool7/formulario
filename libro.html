@@ -94,10 +94,10 @@
                                 <label for="tipodocumento">Tipo de documento de identidad <span>*</span> </label>
                                 <select name="tipodocumento" id="tipodocumento" required>
                                     <option value="" class="opcion-seleccionada">Selecciona un tipo de documento</option>
-                                    <!-- <option value="DNI">Documento de Identidad (DNI)</option>
+                                    <option value="DNI">Documento de Identidad (DNI)</option>
                                     <option value="RUC">Registro Único de Contribuyentes (RUC)</option>
                                     <option value="Pasaporte">Pasaporte</option>
-                                    <option value="CE">Carnet de Extranjería(CE)</option> -->
+                                    <option value="CE">Carnet de Extranjería(CE)</option>
                                 </select>
                             </div>
 
@@ -142,14 +142,17 @@
                                 <label for="provincias">Provincias<span>*</span> </label>
                                 <select name="provincias" id="provincias">
                                     <option value="">Seleccionar Opción</option>
+                                    <option value="128">Lima</option>
+                                    <option value="134">Huarochiri</option>
+                                    <option value="67">Callao</option>
                                 </select>
                             </div>
 
                             <div>
-                                <label for="">Distritos <span>*</span></label>
+                                <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos" id="distritos" onchange="">
                                     <option value="">Seleccionar Opción</option>
-                                    <option value="Ate">Ate</option>
+                                    <!-- <option value="Ate">Ate</option>
                                     <option value="Ancón">Ancón</option>
                                     <option value="Carabayllo">Carabayllo</option>
                                     <option value="Chaclacayo">Chaclacayo</option>
@@ -162,7 +165,7 @@
                                     <option value="Rimac">Rimac</option>
                                     <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
                                     <option value="San Martín de Porres">San Martín de Porres</option>
-                                    <option value="Santa Rosa">Santa Rosa</option>
+                                    <option value="Santa Rosa">Santa Rosa</option> -->
                                 </select>
                             </div>
                         </div>
@@ -482,66 +485,40 @@
         }
 
         // consumiendos apis 
+        const provinciasSelect = document.getElementById("provincias");
+        const distritosSelect = document.getElementById("distritos");
 
-        // Cargar tipos de documento
-        async function cargarTiposDocumento() {
-            try {
-                const respuesta = await fetch("https://app-externos.fiberpro.com.pe/api/get_identification_type");
-                const data = await respuesta.json();
+        provinciasSelect.addEventListener("change", () => {
+            const idCiudad = provinciasSelect.value;
 
-                const select = document.getElementById("tipodocumento");
+            // Limpiar opciones previas de distritos
+            distritosSelect.innerHTML = '<option value="">Seleccionar distrito</option>';
 
-                data.forEach(item => {
-                    const option = document.createElement("option");
-                    option.value = item.code;
-                    option.textContent = item.name;
-                    select.appendChild(option);
-                });
-            } catch (error) {
-                console.error("Error al cargar tipos de documento:", error);
+            if (idCiudad) {
+                cargarDistritos(idCiudad);
             }
-        }
+        });
 
-        // Cargar departamentos
-        async function cargarDepartamentos() {
-            try {
-                const respuesta = await fetch("https://app-externos.fiberpro.com.pe/api/get_cities/cities");
-                const data = await respuesta.json();
-
-                const select = document.getElementById("departamento");
-
-                data.forEach(item => {
-                    const option = document.createElement("option");
-                    option.value = item.code;
-                    option.textContent = item.name;
-                    select.appendChild(option);
-                });
-            } catch (error) {
-                console.error("Error al cargar departamentos:", error);
-            }
-        }
-
-        // Cargar distritos (por ID de ciudad/provincia/departamento)
         async function cargarDistritos(idCiudad) {
-            try {
-                const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${idCiudad}`);
-                const data = await respuesta.json();
+        try {
+            const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${idCiudad}`);
+            const data = await respuesta.json();
 
-                const select = document.getElementById("provincias");
+            console.log("Datos recibidos:", data);  // <- Añade esto
 
-                data.forEach(item => {
-                    const option = document.createElement("option");
-                    option.value = item.code;
-                    option.textContent = item.name;
-                    select.appendChild(option);
-                });
-            } catch (error) {
-                console.error("Error al cargar distritos:", error);
-            }
+            distritosSelect.innerHTML = '<option value="">Seleccionar distrito</option>'; // Mueve aquí para limpiar antes de agregar
+
+            data.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.code;
+            option.textContent = item.name;
+            distritosSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error("Error al cargar distritos:", error);
+        }
         }
 
-        cargarTiposDocumento();
-        cargarDepartamentos();
 
     </script>
 
