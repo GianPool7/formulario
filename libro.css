@@ -133,6 +133,15 @@ select{
     font-weight: bold;
 }
 
+/**/
+
+.queja-reclamo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: red;
+    justify-content: center;
+}
 
 /**/
 
@@ -179,7 +188,7 @@ select{
 /**/
 
 .opciones{
-    display: flex;
+    display: none;
     justify-content: space-around;
     margin-bottom: 20px;
 }
@@ -187,6 +196,17 @@ select{
 .opciones div{
     padding: 6px;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.back{
+    display: none;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #ff4c00;
+    font-weight: bold;
+    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -200,9 +220,6 @@ select{
     display: none;
 }
 
-.otroreclamos{
-    display: none;
-}
 
 .especificar-queja{
     display: none;
@@ -225,6 +242,53 @@ select{
     color: white;
     background-color: #002ccc;
 }
+/**/
+
+.contenedor-ticket{
+    display: none;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+}
+
+.contenedor-ticket div{
+    border: 2px solid #11F5F7;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor-ticket h3{
+    color: #ff4c00;
+}
+
+.contenedor-ticket p{
+    color: #002ccc;
+}
+
+.descargar{
+    border: none;
+    background-color: #ff4c00;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.inicio{
+    border: none;
+    background-color: #002ccc;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: none;
+}
+
 
 /*responsivo*/
 
