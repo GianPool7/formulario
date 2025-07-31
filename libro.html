@@ -232,7 +232,7 @@
                             </div>
                         </div>
 
-                        <div class="btn">
+                        <div class="next">
                             <p id="reclamos-queja">continuar</p>
                         </div>
 
@@ -831,7 +831,7 @@
             }
 
             var provincia=""
-            switch (parent(ticket.provincias)) {
+            switch (parseInt(ticket.provincias)) {
                 case 128:
                     provincia="Lima"
                     break;
