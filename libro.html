@@ -100,7 +100,8 @@
 
                             <div>
                                 <label for="numerodocumento">N° del documento de identidad <span>*</span> </label>
-                                <input type="text" name="numerodocumento" id="numerodocumento" placeholder="Numero de identificacion *" required>
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" name="numerodocumento" id="numerodocumento" placeholder="Numero de identificacion *" required>
+                                <p class="badge"> ! El numero del documento debe ser valido </p>
                                 <span class="error-campo" id="error-numerodocumento" style="display: none;">Este campo es obligatorio</span>
                             </div>
                         </div>
@@ -145,8 +146,8 @@
                                 <select name="provincias" id="provincias" required>
                                     <option value="">Seleccionar Opción</option>
                                     <option value="128">Lima</option>
-                                    <!-- <option value="134">Huarochiri</option> -->
-                                    <!-- <option value="67">Callao</option> -->
+                                    <option value="134">Huarochiri</option>
+                                    <option value="67">Callao</option>
                                 </select>
                                 <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
                             </div>
@@ -154,23 +155,7 @@
                             <div>
                                 <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos" id="distritos">
-                                        <option value="">Seleccionar Opción</option>
-                                        <option value="Ate">Ate</option>
-                                        <option value="Ancón">Ancón</option>
-                                        <option value="Carabayllo">Carabayllo</option>
-                                        <option value="Chaclacayo">Chaclacayo</option>
-                                        <option value="Comas">Comas</option>
-                                        <option value="El Agustino">El Agustino</option>
-                                        <!-- <option value="Ica">Ica</option> -->
-                                        <option value="Independencia">Independencia</option>
-                                        <option value="La Victoria">La Victoria</option>
-                                        <option value="Los Olivos">Los Olivos</option>
-                                        <option value="Puente Piedra">Puente Piedra</option>
-                                        <option value="Rimac">Rimac</option>
-                                        <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
-                                        <option value="San Martín de Porres">San Martín de Porres</option>
-                                        <option value="Santa Rosa">Santa Rosa</option>
-                                    </select>
+                                </select>
                                 <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
                             </div>
                         </div>
@@ -178,12 +163,14 @@
                         <div class="preguntitas">
                             <div>
                                 <label for="correo">Direccion de correo electronico <span>*</span> </label>
-                                <input type="text" name="correo" id="correo" required>
-                                <span class="error-campo" id="error-correo" style="display:none;">Este campo es obligatorio</span>
+                                <input type="email" name="correo" id="correo" placeholder="fiberpro@gmail.com" required>
+                                <p class="badge" id="error-correo" style="display:none;">! El correo electrónico debe ser válido (solo Gmail, Hotmail, Outlook o .edu)</p>
+                                <!-- <span class="error-campo" id="error-correo" style="display:none;">Este campo es obligatorio</span> -->
                             </div>
                             <div>
                                 <label for="movil">Contacto de referencia (movil o fijo) <span>*</span> </label>
-                                <input type="text" name="movil" id="movil" required>
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" placeholder="999 999 999" maxlength="9" name="movil" id="movil" required>
+                                <p class="badge"> solo tiene que contener 9 digitos </p>
                                 <span class="error-campo" id="error-movil" style="display:none;">Este campo es obligatorio</span>
                             </div>
                         </div>
@@ -191,7 +178,7 @@
                         <div class="preguntasolas">
                             <div>
                                 <label for="direccion">Dirección <span>*</span> </label>
-                                <input type="text" name="direccion" id="direccion" required>
+                                <input type="text" name="direccion" placeholder="Av." id="direccion" required>
                                 <span class="error-campo" id="error-direccion" style="display:none;">Este campo es obligatorio</span>
                             </div>
                         </div>
@@ -384,6 +371,61 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script>
+
+        // para validar el correo
+
+        const correo = document.getElementById('correo');
+        const errorCorreo = document.getElementById('error-correo');
+
+        // Regex para validar dominios específicos
+        const correoValidoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|[\w.-]+\.edu.pe)$/i;
+
+        correo.addEventListener('input', () => {
+            const esValido = correoValidoRegex.test(correo.value);
+
+            if (!esValido) {
+                errorCorreo.style.display = 'inline';
+            } else {
+                errorCorreo.style.display = 'none';
+            }
+        });
+
+
+        // fin de validacion del correo
+        // cantidad de numero en el DNI - lo cambia a numerico
+        const tipodocumento = document.getElementById('tipodocumento');
+        const cajaNroDocumento = document.getElementById('numerodocumento');
+
+        // Cambiar maxlength según el tipo de documento
+        tipodocumento.addEventListener('change', () => {
+            cajaNroDocumento.value = "";
+
+            switch (tipodocumento.value) {
+                case "DNI":
+                    cajaNroDocumento.setAttribute("maxlength", "8");
+                    break;
+                case "RUC":
+                    cajaNroDocumento.setAttribute("maxlength", "11");
+                    break;
+                case "CE":
+                case "Pasaporte":
+                    cajaNroDocumento.setAttribute("maxlength", "12");
+                    break;
+                default:
+                    cajaNroDocumento.removeAttribute("maxlength");
+            }
+        });
+
+        // Permitir solo números
+        cajaNroDocumento.addEventListener('input', () => {
+            cajaNroDocumento.value = cajaNroDocumento.value.replace(/\D/g, '');
+        });
+
+        const movil = document.getElementById('movil');
+        movil.addEventListener('input', () => {
+            movil.value = movil.value.replace(/\D/g, '');
+        });
+        //
         // el convertidor de archivo a binario
         async function getBase64(file) {
             return new Promise((resolve, reject) => {
@@ -401,7 +443,6 @@
         const queja=document.getElementById("queja");
         const reclamo=document.getElementById("reclamo");
         const edad=document.getElementById("menorEdad");
-        const correo=document.getElementById("correo");
         const txt=document.getElementById("txtrespuesta")
         const direccioncorreo=document.getElementById("txtcorreo")
         const direccion=document.getElementById("direccion")
@@ -589,41 +630,33 @@
             });
         }
 
-        // consumiendos apis 
-        // const provinciasSelect = document.getElementById("provincias");
-        // const distritosSelect = document.getElementById("distritos");
+        const provinciaSelect = document.getElementById('provincias');
+        const distritoSelect = document.getElementById('distritos');
 
-        // provinciasSelect.addEventListener("change", () => {
-        //     const idCiudad = provinciasSelect.value;
+        provinciaSelect.addEventListener('change', function () {
+            const provinciaId = this.value;
 
-        //     // Limpiar opciones previas de distritos
-        //     distritosSelect.innerHTML = '<option value="">Seleccionar distrito</option>';
+            if (!provinciaId) return;
 
-        //     if (idCiudad) {
-        //         cargarDistritos(idCiudad);
-        //     }
-        // });
+            fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en la API');
+                    return response.json();
+                })
+                .then(data => {
 
-        // async function cargarDistritos(idCiudad) {
-        //     try {
-        //         const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${idCiudad}`);
-        //         const data = await respuesta.json();
-
-        //         console.log("Datos recibidos:", data);  // <- Añade esto
-
-        //         distritosSelect.innerHTML = '<option value="">Seleccionar distrito</option>'; // Mueve aquí para limpiar antes de agregar
-
-        //         data.forEach(item => {
-        //         const option = document.createElement("option");
-        //         option.value = item.code;
-        //         option.textContent = item.name;
-        //         distritosSelect.appendChild(option);
-        //         });
-        //     } catch (error) {
-        //         console.error("Error al cargar distritos:", error);
-        //     }
-        // }
-
+                    data.forEach(distrito => {
+                        const option = document.createElement('option');
+                        option.value = distrito.value; // o el campo adecuado
+                        option.textContent = distrito.label; // o el campo adecuado
+                        distritoSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    distritoSelect.innerHTML = '<option value="">Error al cargar</option>';
+                    console.error('Error:', error);
+                });
+        });
         // para regresar
 
         const regresar=document.getElementById("regresar").addEventListener("click",()=>{

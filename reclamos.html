@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reclamo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.cdnfonts.com/css/clan-pro" rel="stylesheet">
 </head>
 
 <body>
@@ -23,6 +24,7 @@
             margin: 0;
             box-sizing: border-box;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: 'Clan Pro', sans-serif;
         }
 
         /**/
@@ -232,11 +234,22 @@
             justify-content: space-around;
         }
 
-        input[type="text"],input[type="email"],input[type="file"],input[type="date"],input[type="number"],select{
+        input[type="text"],input[type="email"],input[type="file"],input[type="date"],input[type="number"]{
             width: 100%;
-            padding: 10px;
+            padding: 20px;
             margin-bottom: 15px;
-            border: 1px solid #dddddd;
+            border: 1px solid #002ccc;
+            border-radius: 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        select{
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #002ccc;
+            border-radius: 10px;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
             outline: none;
         }
@@ -244,8 +257,9 @@
         textarea{
             background-color: aliceblue;
             width: 100%;
-            border: none;
-            padding: 10px;
+            border: 1px solid #002ccc;
+            border-radius: 10px;
+            padding: 20px;
             outline: none;
             margin-top: 10px;
             padding: 20px;
@@ -268,8 +282,6 @@
         label{
             display: block;
             margin-bottom: 5px;
-            color: #555555;
-            font-weight: bold;
         }
 
         /* continuar , despues de los datos personales*/
@@ -697,6 +709,8 @@
             </div>
         </div>
 
+        <input type="text" value="" id="tipo" name="tipo" disabled>
+
         <div id="cajaPadre">
 
             <div class="contenedorRQA" id="contenedorOpcionesQRA">
@@ -752,8 +766,8 @@
             </div>
     
             <div class="serie">
-                <input type="hidden" value="" id="tipoticket" name="tipoticket" disabled>
-                <input type="hidden" value="" id="diagnostico" name="diagnostico" disabled>
+                <input type="text" value="" id="tipoticket" name="tipoticket" disabled>
+                <input type="text" value="" id="diagnostico" name="diagnostico" disabled>
             </div>
     
             <div class="tituloOpciones" id="tituloOpcionesQRA">
@@ -4043,6 +4057,8 @@
         //el valor actual del input
         const inputTicket = document.getElementById('tipoticket');
         const inputDiagnostico = document.getElementById('diagnostico');
+        // para saber si es reclamo - queja - apelacion
+        const reclamoquejaapelacion=document.getElementById('tipo')
 
 
         // Evento
@@ -4051,10 +4067,13 @@
             // El número que deseas agregar, por ejemplo, 12345
             const numT = 3;
             const numD = 34;
+            const tiporeclamo=1;
                 
             // Asignar ese número al valor del input
             inputTicket.value = numT;
             inputDiagnostico.value = numD;
+            // agregando a un tipo
+            reclamoquejaapelacion.value=tiporeclamo;
 
             // desaparecer las cajas de opciones
             contenedor.style.display="none"
@@ -4072,10 +4091,13 @@
             // El número que deseas agregar, por ejemplo, 12345
             const numT = 6;
             const numD = 82;
+            const tipoqueja=2;
                 
             // Asignar ese número al valor del input
             inputTicket.value = numT;
             inputDiagnostico.value = numD;
+            // agregando a un tipo
+            reclamoquejaapelacion.value=tipoqueja;
 
             // desaparecer las cajas de opciones
             contenedor.style.display="none"
@@ -4091,10 +4113,13 @@
             // El número que deseas agregar, por ejemplo, 12345
             const numT = 7;
             const numD = 81;
+            const tipoapelacion=3;
                 
             // Asignar ese número al valor del input
             inputTicket.value = numT;
             inputDiagnostico.value = numD;
+            // agregando a un tipo
+            reclamoquejaapelacion.value=tipoapelacion;
 
             // desaparecer las cajas de opciones
             contenedor.style.display="none"

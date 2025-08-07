@@ -5,6 +5,19 @@
     font-family: 'Clan Pro', sans-serif;
 }
 
+/**/
+
+.badge{
+    /* background-color: #ff4c00; */ 
+    color: #ff4c00;
+    padding: 4px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/**/
+
 .cajas{
     display: flex;
     justify-content: space-around;
@@ -299,6 +312,19 @@ select{
     text-decoration: none;
 }
 
+/* para quitar las flechas de arriba y abajo */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/**/
 
 /*responsivo*/
 
