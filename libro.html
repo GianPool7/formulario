@@ -100,8 +100,8 @@
 
                             <div>
                                 <label for="numerodocumento">N° del documento de identidad <span>*</span> </label>
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" name="numerodocumento" id="numerodocumento" placeholder="Numero de identificacion *" required>
-                                <p class="badge"> ! El numero del documento debe ser valido </p>
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" name="numerodocumento" id="numerodocumento" placeholder="Numero de identificacion *" required disabled>
+                                <p class="badge" id="longitud" style="display: none;"> ! El numero del documento debe ser valido </p>
                                 <span class="error-campo" id="error-numerodocumento" style="display: none;">Este campo es obligatorio</span>
                             </div>
                         </div>
@@ -131,6 +131,18 @@
                                 <span class="error-campo" id="error-menorEdad" style="display:none;">Este campo es obligatorio</span>
                             </div>
 
+                            <div id="menor">
+
+                                <label for="padre">Nombre del Papá o Mamá <span>*</span> </label>
+                                <input type="text" name="padre" id="padre">
+                                
+                            </div>
+
+
+                        </div>
+
+                        <div class="preguntitas">
+
                             <div>
                                 <label for="departamento">Departamento <span>*</span></label>
                                 <select name="departamento" id="departamento" required>
@@ -138,9 +150,7 @@
                                 </select>
                                 <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
                             </div>
-                        </div>
 
-                        <div class="preguntitas">
                             <div>
                                 <label for="provincias">Provincias<span>*</span> </label>
                                 <select name="provincias" id="provincias" required>
@@ -152,48 +162,46 @@
                                 <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
                             </div>
 
+                        </div>
+
+                        <div class="preguntitas">
+
                             <div>
                                 <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos" id="distritos">
                                 </select>
                                 <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
                             </div>
-                        </div>
 
-                        <div class="preguntitas">
                             <div>
                                 <label for="correo">Direccion de correo electronico <span>*</span> </label>
                                 <input type="email" name="correo" id="correo" placeholder="fiberpro@gmail.com" required>
-                                <p class="badge" id="error-correo" style="display:none;">! El correo electrónico debe ser válido (solo Gmail, Hotmail, Outlook o .edu)</p>
+                                <p class="badge" id="error-correo" style="display:none;">! El correo electrónico debe ser válido</p>
                                 <!-- <span class="error-campo" id="error-correo" style="display:none;">Este campo es obligatorio</span> -->
                             </div>
+
+                        </div>
+
+
+                        <div class="preguntitas">
+
                             <div>
                                 <label for="movil">Contacto de referencia (movil o fijo) <span>*</span> </label>
                                 <input type="text" inputmode="numeric" pattern="[0-9]*" placeholder="999 999 999" maxlength="9" name="movil" id="movil" required>
-                                <p class="badge"> solo tiene que contener 9 digitos </p>
+                                <p class="badge" id="longitud-Movil"> solo tiene que contener 9 digitos </p>
                                 <span class="error-campo" id="error-movil" style="display:none;">Este campo es obligatorio</span>
                             </div>
-                        </div>
-
-                        <div class="preguntasolas">
+                        
                             <div>
                                 <label for="direccion">Dirección <span>*</span> </label>
                                 <input type="text" name="direccion" placeholder="Av." id="direccion" required>
                                 <span class="error-campo" id="error-direccion" style="display:none;">Este campo es obligatorio</span>
                             </div>
+
                         </div>
 
-                        <div class="preguntasmenor" id="menor">
 
-                            <div class="preguntasolas">
-                                <div>
-                                    <label for="padre">Nombre del Papá o Mamá <span>*</span> </label>
-                                    <input type="text" name="padre" id="padre">
-                                </div>
-                            </div>
- 
-                        </div>
-
+                        
                         <div class="siOno">
                             <p>Autorizo ser notificado por el correo electrónico registrado: </p>
                             <div class="radioinputs">
@@ -385,7 +393,7 @@
 
             if (!esValido) {
                 errorCorreo.style.display = 'inline';
-            } else {
+            } else {    
                 errorCorreo.style.display = 'none';
             }
         });
@@ -395,36 +403,83 @@
         // cantidad de numero en el DNI - lo cambia a numerico
         const tipodocumento = document.getElementById('tipodocumento');
         const cajaNroDocumento = document.getElementById('numerodocumento');
+        const longitudMaxima=document.getElementById('longitud');
 
-        // Cambiar maxlength según el tipo de documento
+        let longitudEsperada = 0;
+
+        // Actualizar estado según tipo
         tipodocumento.addEventListener('change', () => {
             cajaNroDocumento.value = "";
+            longitudMaxima.style.display = "none"; // Ocultar mensaje
 
             switch (tipodocumento.value) {
                 case "DNI":
-                    cajaNroDocumento.setAttribute("maxlength", "8");
+                    cajaNroDocumento.disabled = false;
+                    longitudEsperada = 8;
+                    cajaNroDocumento.setAttribute("maxlength", longitudEsperada);
                     break;
                 case "RUC":
-                    cajaNroDocumento.setAttribute("maxlength", "11");
+                    cajaNroDocumento.disabled = false;
+                    longitudEsperada = 11;
+                    cajaNroDocumento.setAttribute("maxlength", longitudEsperada);
                     break;
                 case "CE":
                 case "Pasaporte":
-                    cajaNroDocumento.setAttribute("maxlength", "12");
+                    cajaNroDocumento.disabled = false;
+                    longitudEsperada = 12;
+                    cajaNroDocumento.setAttribute("maxlength", longitudEsperada);
+                    break;
+                case "":
+                    cajaNroDocumento.disabled = true;
+                    cajaNroDocumento.removeAttribute("maxlength");
+                    longitudEsperada = 0;
                     break;
                 default:
+                    cajaNroDocumento.disabled = false;
                     cajaNroDocumento.removeAttribute("maxlength");
+                    longitudEsperada = 0;
             }
         });
 
-        // Permitir solo números
+        // Permitir solo números y validar longitud
         cajaNroDocumento.addEventListener('input', () => {
+            // Quitar caracteres no numéricos
             cajaNroDocumento.value = cajaNroDocumento.value.replace(/\D/g, '');
+
+            // Validar longitud si longitudEsperada > 0
+            if (longitudEsperada > 0) {
+                if (cajaNroDocumento.value.length !== longitudEsperada) {
+                    longitudMaxima.style.display = "flex"; // Mostrar mensaje
+                } else {
+                    longitudMaxima.style.display = "none"; // Ocultar mensaje
+                }
+            } else {
+                longitudMaxima.style.display = "none"; // Ocultar mensaje si no hay longitud esperada
+            }
         });
 
+        // movil
+
         const movil = document.getElementById('movil');
+        const mensajeMovil = document.getElementById('longitud-Movil');
+
+        const LONGITUD_MOVIL = 9;
+
+        // Ocultamos el mensaje inicialmente
+        mensajeMovil.style.display = "none";
+
         movil.addEventListener('input', () => {
+            // Solo números
             movil.value = movil.value.replace(/\D/g, '');
+
+            // Validar longitud exacta
+            if (movil.value.length !== LONGITUD_MOVIL) {
+                mensajeMovil.style.display = "flex";  // Mostrar mensaje
+            } else {
+                mensajeMovil.style.display = "none";  // Ocultar mensaje
+            }
         });
+
         //
         // el convertidor de archivo a binario
         async function getBase64(file) {
