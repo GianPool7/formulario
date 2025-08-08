@@ -350,7 +350,7 @@
 
 
                         <div class="btn" id="boton-reclamos">
-                            <button id="enviarReclamo" >Enviar</button>
+                            <button id="enviarReclamo">Enviar</button>
                         </div>
 
                     </div>
@@ -379,9 +379,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script>
+        // para presionar el enter
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                const tag = event.target.tagName.toLowerCase();
+                const type = event.target.type ? event.target.type.toLowerCase() : "";
+
+                // Bloquea ENTER excepto en <textarea>
+                if (tag !== 'textarea' && type !== 'submit' && type !== 'button') {
+                    event.preventDefault();
+                }
+            }
+        });
 
         // para validar el correo
-
         const correo = document.getElementById('correo');
         const errorCorreo = document.getElementById('error-correo');
 
@@ -689,21 +701,23 @@
         const distritoSelect = document.getElementById('distritos');
 
         provinciaSelect.addEventListener('change', function () {
-            const provinciaId = this.value;
+        const provinciaId = this.value;
 
-            if (!provinciaId) return;
+        // 🔴 Limpiar el select de distritos antes de cargar nuevos
+        distritoSelect.innerHTML = '';
 
-            fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
+        if (!provinciaId) return;
+
+        fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Error en la API');
                     return response.json();
                 })
                 .then(data => {
-
                     data.forEach(distrito => {
                         const option = document.createElement('option');
-                        option.value = distrito.value; // o el campo adecuado
-                        option.textContent = distrito.label; // o el campo adecuado
+                        option.value = distrito.value;
+                        option.textContent = distrito.label;
                         distritoSelect.appendChild(option);
                     });
                 })
@@ -712,6 +726,7 @@
                     console.error('Error:', error);
                 });
         });
+
         // para regresar
 
         const regresar=document.getElementById("regresar").addEventListener("click",()=>{
@@ -737,6 +752,11 @@
 
         // para enviar ala api
         document.getElementById('enviarReclamo').addEventListener('click',async function (event) {
+
+            if (event.key === 'Enter') {
+                event.preventDefault();
+            }
+
             event.preventDefault();
             // file
             const fileInput = document.getElementById('pruebasFile');
