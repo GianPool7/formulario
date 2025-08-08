@@ -709,7 +709,7 @@
             </div>
         </div>
 
-        <input type="text" value="" id="tipo" name="tipo" disabled>
+        <input type="hidden" value="" id="tipo" name="tipo" disabled>
 
         <div id="cajaPadre">
 
@@ -766,8 +766,8 @@
             </div>
     
             <div class="serie">
-                <input type="text" value="" id="tipoticket" name="tipoticket" disabled>
-                <input type="text" value="" id="diagnostico" name="diagnostico" disabled>
+                <input type="hidden" value="" id="tipoticket" name="tipoticket" disabled>
+                <input type="hidden" value="" id="diagnostico" name="diagnostico" disabled>
             </div>
     
             <div class="tituloOpciones" id="tituloOpcionesQRA">
@@ -3120,7 +3120,11 @@
         document.getElementById("claimForm").addEventListener("submit", async function(event) {
             event.preventDefault();  // Prevenir el envío normal del formulario
 
-              // Variable where the selected value will be stored
+            // si reclamo - queja - apelacion
+
+            const reclamoquejaapelacion=document.getElementById('tipo').value
+
+            // Variable where the selected value will be stored
             let valorSeleccionado = null;
 
             // Listen for the change in the radio button group
@@ -3586,7 +3590,7 @@
             
 
             const dataApelacion = {
-
+                reclamoquejaapelacion,
                 // //
                 tipoUsuario: tipoUsuarioSeleccionado,
                 // datos de validacion
@@ -3648,6 +3652,7 @@
             };
 
             const dataQueja = {
+                reclamoquejaapelacion,
                 // //
                 tipoUsuario: tipoUsuarioSeleccionado,
                 // datos de validacion
@@ -3715,7 +3720,8 @@
             };
 
             const dataReclamo = {
-
+                //
+                reclamoquejaapelacion,
                 // //
                 tipoUsuario: tipoUsuarioSeleccionado,
                 // datos de validacion
@@ -3908,13 +3914,13 @@
             let data;
 
             if (tipo === '3') {
-                url = 'https://prueba-reclamos-7209e31a7512.herokuapp.com/api/reclamos/reclamo';
+                url = 'https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/reclamos/reclamo';
                 data =dataReclamo;
             } else if (tipo === '6') {
-                url = 'https://prueba-reclamos-7209e31a7512.herokuapp.com/api/reclamos/queja';
+                url = 'https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/reclamos/queja';
                 data =dataQueja;
             } else if (tipo === '7') {
-                url = 'https://prueba-reclamos-7209e31a7512.herokuapp.com/api/reclamos/apelaciones';
+                url = 'https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/reclamos/apelaciones';
                 data =dataApelacion;
             }
             
@@ -4261,7 +4267,7 @@
             // el titulo del usuario
             tituloAUR.style.display="flex"
             txtTituloAUR.innerHTML="Abonado";
-            tipoUsuarioSeleccionado="abonado"
+            tipoUsuarioSeleccionado=7
         })
 
         tpUsuario.addEventListener("click",function(){
@@ -4276,7 +4282,7 @@
             // el titulo del usuario
             tituloAUR.style.display="flex"
             txtTituloAUR.innerHTML="Usuario";
-            tipoUsuarioSeleccionado="usuario"
+            tipoUsuarioSeleccionado=8
         })
 
         tpRepresentante.addEventListener("click",function(){
@@ -4294,7 +4300,7 @@
             // ocultar datos
             dValidacionAbonado.style.display="none"
             dValidacionUsuario.style.display="none"
-            tipoUsuarioSeleccionado="representante"
+            tipoUsuarioSeleccionado=9
         })
 
         console.log(tipoUsuarioSeleccionado);
