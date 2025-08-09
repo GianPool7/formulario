@@ -1048,7 +1048,10 @@
                 "Reclamo",
                 "Queja"
             ],
-            [`${reclamoelegido}` , `${quejaelegido}`,{styles: { valign: 'middle', halign: 'center' } }],
+            [    '',  // Espacio vacío porque la primera celda tiene rowSpan: 2
+                reclamoelegido ? "X" : "",
+                quejaelegido ? "X" : "",
+                {styles: { valign: 'middle', halign: 'center' } }],
             [
                 { content: "Detalle de la Reclamación", colSpan: 3, styles: { halign: 'center' } }
             ],
@@ -1087,8 +1090,8 @@
             // const headers = [["Columna 1", "Columna 2", "Columna 3"]];
             const data4 = [
             [  
-                `Reclamo:\n\n${reclamoelegido}`,
-                `Queja:\n\n${quejaelegido}`
+                `Reclamo:\n\n`,
+                `Queja:\n\n`
             ],
             [  
                 ``,
