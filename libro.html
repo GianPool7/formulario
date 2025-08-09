@@ -120,7 +120,8 @@
                             </div>
                         </div>
 
-                        <div class="preguntitas">
+                        <div class="menor">
+
                             <div>
                                 <label for="menorEdad">Menor de edad <span>*</span> </label>
                                 <select name="menorEdad" id="menorEdad" required>
@@ -131,14 +132,12 @@
                                 <span class="error-campo" id="error-menorEdad" style="display:none;">Este campo es obligatorio</span>
                             </div>
 
-                            <div id="menor">
+                            <div id="menor" style="display: none;">
 
                                 <label for="padre">Nombre del Papá o Mamá <span>*</span> </label>
-                                <input type="text" name="padre" id="padre">
+                                <input type="text" name="padre" id="padre" placeholder="Nombre del Padre o de la Madre">
                                 
                             </div>
-
-
                         </div>
 
                         <div class="preguntitas">
@@ -642,7 +641,7 @@
         if(edad){
             edad.addEventListener("click",()=>{
                 if (edad.value === "Si") {
-                    preguntasmenor.style.display = "block"; // muestra la caja
+                    preguntasmenor.style.display = "flex"; // muestra la caja
                 } else {
                     preguntasmenor.style.display = "none"; // oculta la caja
                 }

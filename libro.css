@@ -86,12 +86,31 @@
     margin: auto;
 }
 
+/**/
+
+.menor{
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.menor div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    padding: 5px;  
+}
+
+/**/
+
 .preguntitas{
     padding: 10px;
     display: flex;
     justify-content: space-around;
     gap: 20px;
 }
+
 .preguntitas div{
     display: flex;
     flex-direction: column;
