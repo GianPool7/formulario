@@ -1562,11 +1562,11 @@
                                             <label for="canalPresentacion">Canal donde se intento presentar el reclamo, apelacion o queja</label>
                                             <select name="" id="canalPresentacion" onchange="canal()">
                                                 <option value="">Seleccionar Opción</option>
-                                                <option value="Telefónico">Telefónico</option>
-                                                <option value="Oficina">Oficina</option>
-                                                <option value="Web">Web</option>
-                                                <option value="Aplicativo">Aplicativo</option>
-                                                <option value="otro">Otro(especificar)</option>
+                                                <option value="1">Telefónico</option>
+                                                <option value="2">Oficina</option>
+                                                <option value="3">Web</option>
+                                                <option value="5">Aplicativo</option>
+                                                <option value="6">Otro(especificar)</option>
                                             </select>
                                         </div>
                         
@@ -6092,7 +6092,7 @@
 
 
             switch (cPresentacion) {
-                case "otro":
+                case "6":
                     cQueja.style.display="block"
                     break;
             

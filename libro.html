@@ -924,49 +924,6 @@
 
             // para convertir la materia reclamable
 
-
-            let reclamoelegido=""
-            let quejaelegido=""
-
-            switch (parseInt(ticket.materiareclamable)) {
-                case 1:
-                    reclamoelegido="Problemas con mi router/Modem"
-                    break;
-                
-                case 2:
-                    reclamoelegido="Problemas con mi repetidor"
-                    break;
-
-                case 3:
-                    reclamoelegido="Otros"
-                    break;
-                
-                case 4:
-                    quejaelegido="Problema con la atención por canal presencial."
-                    break;
-
-                case 5:
-                    reclamoelegido="Problema con la atención por el canal WhatsApp."
-                    break;
-                
-                case 6:
-                    quejaelegido="Problema con la atención por el canal telefónico."
-                    break;
-            
-                case 7:
-                    quejaelegido="Problemas con la atención al momento de la instalación."
-                    break;
-                
-                case 8:
-                    quejaelegido="Problemas con la atención durante la visita técnica."
-                    break;
-
-                default:
-                        reclamoelegido = "";
-                        quejaelegido = "";
-                    break;
-            }
-
             var provincia=""
             switch (parseInt(ticket.provincias)) {
                 case 128:
@@ -981,8 +938,15 @@
                 default:
                     break;
             }
-
             //
+            let opcionseleccionadoreclamo = "";
+            let opcionseleccionadoqueja = "";
+
+            if (parseInt(ticket.tipo) === 1) {
+                opcionseleccionadoreclamo = "x";
+            } else if (parseInt(ticket.tipo) === 2) {
+                opcionseleccionadoqueja = "x";
+            }
             //
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -1083,9 +1047,9 @@
                 "Reclamo",
                 "Queja"
             ],
-            [    '',  // Espacio vacío porque la primera celda tiene rowSpan: 2
-                reclamoelegido ? "X" : "",
-                quejaelegido ? "X" : "",
+            [    
+                opcionseleccionadoreclamo,
+                opcionseleccionadoqueja,
                 {styles: { valign: 'middle', halign: 'center' } }],
             [
                 { content: "Detalle de la Reclamación", colSpan: 3, styles: { halign: 'center' } }
