@@ -176,7 +176,6 @@
                                 <label for="correo">Direccion de correo electronico <span>*</span> </label>
                                 <input type="email" name="correo" id="correo" placeholder="fiberpro@gmail.com" required>
                                 <p class="badge" id="error-correo" style="display:none;">! El correo electrónico debe ser válido</p>
-                                <!-- <span class="error-campo" id="error-correo" style="display:none;">Este campo es obligatorio</span> -->
                             </div>
 
                         </div>
@@ -378,8 +377,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script>
+        // boton
+        const btncontinuar=document.getElementById('reclamos-queja')
+        btncontinuar.style.display="none"
         // para presionar el enter
-
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 const tag = event.target.tagName.toLowerCase();
@@ -404,8 +405,12 @@
 
             if (!esValido) {
                 errorCorreo.style.display = 'inline';
+                btncontinuar.style.display="none"
+                correo.style.borderColor="red"
             } else {    
                 errorCorreo.style.display = 'none';
+                btncontinuar.style.display="block"
+                correo.style.borderColor="#002ccc"
             }
         });
 
@@ -414,16 +419,19 @@
         // cantidad de numero en el DNI - lo cambia a numerico
         const tipodocumento = document.getElementById('tipodocumento');
         const cajaNroDocumento = document.getElementById('numerodocumento');
-        const longitudMaxima=document.getElementById('longitud');
+        const longitudMaxima = document.getElementById('longitud');
 
         let longitudEsperada = 0;
+        let tipoActual = "";
 
         // Actualizar estado según tipo
         tipodocumento.addEventListener('change', () => {
             cajaNroDocumento.value = "";
             longitudMaxima.style.display = "none"; // Ocultar mensaje
 
-            switch (tipodocumento.value) {
+            tipoActual = tipodocumento.value;
+
+            switch (tipoActual) {
                 case "DNI":
                     cajaNroDocumento.disabled = false;
                     longitudEsperada = 8;
@@ -452,12 +460,17 @@
             }
         });
 
-        // Permitir solo números y validar longitud
+        // Validar input según tipo
         cajaNroDocumento.addEventListener('input', () => {
-            // Quitar caracteres no numéricos
-            cajaNroDocumento.value = cajaNroDocumento.value.replace(/\D/g, '');
+            if (tipoActual === "DNI" || tipoActual === "RUC") {
+                // 🔒 Solo números
+                cajaNroDocumento.value = cajaNroDocumento.value.replace(/\D/g, '');
+            } else if (tipoActual === "CE" || tipoActual === "Pasaporte") {
+                // ✅ Permitir letras y números (alfanuméricos)
+                cajaNroDocumento.value = cajaNroDocumento.value.replace(/[^a-zA-Z0-9]/g, '');
+            }
 
-            // Validar longitud si longitudEsperada > 0
+            // Validar longitud
             if (longitudEsperada > 0) {
                 if (cajaNroDocumento.value.length !== longitudEsperada) {
                     longitudMaxima.style.display = "flex"; // Mostrar mensaje
@@ -465,9 +478,10 @@
                     longitudMaxima.style.display = "none"; // Ocultar mensaje
                 }
             } else {
-                longitudMaxima.style.display = "none"; // Ocultar mensaje si no hay longitud esperada
+                longitudMaxima.style.display = "none";
             }
         });
+        // fin de tipo de carnet
 
         // movil
 
@@ -540,7 +554,7 @@
 
 
         // para que aparezcan reclamo o queja
-        document.getElementById("reclamos-queja").addEventListener('click', function () {
+        btncontinuar.addEventListener('click', function () {
             const campos = [
                 'tipodocumento',
                 'numerodocumento',
@@ -696,24 +710,37 @@
             });
         }
 
+        /**/
+
         const provinciaSelect = document.getElementById('provincias');
         const distritoSelect = document.getElementById('distritos');
 
         provinciaSelect.addEventListener('change', function () {
-        const provinciaId = this.value;
+            const provinciaId = this.value;
 
-        // 🔴 Limpiar el select de distritos antes de cargar nuevos
-        distritoSelect.innerHTML = '';
+            // 🔴 Limpiar el select de distritos antes de cargar nuevos
+            distritoSelect.innerHTML = '';
 
-        if (!provinciaId) return;
+            if (!provinciaId) return;
 
-        fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
+            fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Error en la API');
                     return response.json();
                 })
                 .then(data => {
                     data.forEach(distrito => {
+                        // 🔒 Ocultar "El Carmen de la Legua Reynoso" y "La Perla" si provinciaId es 67
+                        if (
+                            provinciaId === '67' &&
+                            (
+                                distrito.label.toLowerCase().includes('carmen de la legua') ||
+                                distrito.label.toLowerCase().includes('la perla')
+                            )
+                        ) {
+                            return; // No añadir esta opción
+                        }
+
                         const option = document.createElement('option');
                         option.value = distrito.value;
                         option.textContent = distrito.label;
@@ -725,6 +752,7 @@
                     console.error('Error:', error);
                 });
         });
+
 
         // para regresar
 
@@ -886,6 +914,8 @@
 
         // para gener pdf
         document.getElementById('descargarTicket').addEventListener('click', async function () {
+            const distritoLabel = distritoSelect.options[distritoSelect.selectedIndex].text;
+            //
             const ticket = window.ticketInfo;
             if (!ticket) {
                 alert('No hay información del ticket para generar PDF.');
@@ -953,7 +983,7 @@
             }
 
             //
-
+            //
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
@@ -999,7 +1029,7 @@
             const datosConsumidor = [
             ["Nombres y apellidos completos:", `${ticket.nombrescompletos} ${ticket.apellidoscompletos}`],
             ["Domicilio:", ticket.direccioncasa],
-            ["Departamento / Provincia / Distrito:", `${ticket.departamento} / ${provincia} / ${ticket.distrito}`],
+            ["Departamento / Provincia / Distrito:", `${ticket.departamento} / ${provincia} / ${distritoLabel}`],
             ["Tipo y N° de Documento de Identidad:", `${ticket.tipodocumento} - ${ticket.numerodocumento}`],
             ["Correo Electrónico:", ticket.correoelectronico],
             ["Celular:", ticket.movil],
