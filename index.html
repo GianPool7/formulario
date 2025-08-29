@@ -752,8 +752,8 @@
             </div>
     
             <div class="serie">
-                <input type="hidden" value="" id="tipoticket" name="tipoticket" disabled>
-                <input type="hidden" value="" id="diagnostico" name="diagnostico" disabled>
+                <input type="text" value="" id="tipoticket" name="tipoticket" readonly style="display: none;"/>
+                <input type="text" value="" id="tipo-user" name="tipo-user" readonly style="display: none;"/>
             </div>
     
             <div class="tituloOpciones" id="tituloOpcionesQRA">
@@ -935,7 +935,13 @@
                                                 
                                 <div class="datos">
                                     <label for="tipodocumentoidentidad">Tipo del Documento de Identidad</label>
-                                    <input type="text" id="tipodocumentoidentidad" placeholder="Documento de Identidad">
+                                    <select name="tipoDoc" id="tipodocumentoidentidad" onchange="tipoDocumento()">
+                                        <option value="">Selecciona un tipo de documento</option>
+                                        <option value="1">Documento de Identidad (DNI)</option>
+                                        <option value="6">Registro Único de Contribuyentes (RUC)</option>
+                                        <option value="7">Pasaporte</option>
+                                        <option value="4">Carnet de Extranjería(CE)</option>
+                                    </select>
                                 </div>
                 
                                 <div class="datos">
@@ -1014,11 +1020,10 @@
                                     <label for="tipoDoc">Tipo de Documento</label>
                                     <select name="tipoDoc" id="tipoDoc" onchange="tipoDocumento()">
                                         <option value="">Selecciona un tipo de documento</option>
-                                        <option value="DNI">Documento de Identidad (DNI)</option>
-                                        <option value="RUC">Registro Único de Contribuyentes (RUC)</option>
-                                        <option value="Pasaporte">Pasaporte</option>
-                                        <option value="CE">Carnet de Extranjería(CE)</option>
-                                        <option value="Otro_Documento">Documento Legal de Identidad válido requerido por la Superintendencia Nacional de Migraciones</option>
+                                        <option value="1">Documento de Identidad (DNI)</option>
+                                        <option value="6">Registro Único de Contribuyentes (RUC)</option>
+                                        <option value="7">Pasaporte</option>
+                                        <option value="4">Carnet de Extranjería(CE)</option>
                                     </select>
                                 </div>
                                 <div class="datos">
@@ -1029,22 +1034,6 @@
                                 <div class="datos">
                                     <label for="distritos">Distrito</label>
                                     <select name="distritos" id="distritos" onchange="">
-                                        <option value="">Seleccionar Opción</option>
-                                        <option value="Ate">Ate</option>
-                                        <option value="Ancón">Ancón</option>
-                                        <option value="Carabayllo">Carabayllo</option>
-                                        <option value="Chaclacayo">Chaclacayo</option>
-                                        <option value="Comas">Comas</option>
-                                        <option value="El Agustino">El Agustino</option>
-                                        <option value="Ica">Ica</option>
-                                        <option value="Independencia">Independencia</option>
-                                        <option value="La Victoria">La Victoria</option>
-                                        <option value="Los Olivos">Los Olivos</option>
-                                        <option value="Puente Piedra">Puente Piedra</option>
-                                        <option value="Rimac">Rimac</option>
-                                        <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
-                                        <option value="San Martín de Porres">San Martín de Porres</option>
-                                        <option value="Santa Rosa">Santa Rosa</option>
                                     </select>
                                 </div>
                                 <div class="datos">
@@ -1865,22 +1854,6 @@
                                         <div class="datos">
                                             <label for="distritoCalidad">Distritos</label>
                                             <select name="" id="distritoCalidad" onchange="">
-                                                <option value="">Seleccionar Opción</option>
-                                                <option value="Ate">Ate</option>
-                                                <option value="Ancón">Ancón</option>
-                                                <option value="Carabayllo">Carabayllo</option>
-                                                <option value="Chaclacayo">Chaclacayo</option>
-                                                <option value="Comas">Comas</option>
-                                                <option value="El Agustino">El Agustino</option>
-                                                <option value="Ica">Ica</option>
-                                                <option value="Independencia">Independencia</option>
-                                                <option value="La Victoria">La Victoria</option>
-                                                <option value="Los Olivos">Los Olivos</option>
-                                                <option value="Puente Piedra">Puente Piedra</option>
-                                                <option value="Rimac">Rimac</option>
-                                                <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
-                                                <option value="San Martín de Porres">San Martín de Porres</option>
-                                                <option value="Santa Rosa">Santa Rosa</option>
                                             </select>
                                         </div>
                     
@@ -3061,16 +3034,48 @@
 
     </form>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> -->
-    <!-- eespañol xd  -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script> -->
-    
     <script>
-        //Iniciar Flatpickr para todos los campos de fecha
-        // flatpickr(".fecha", {
-        //     dateFormat: "Y-m-d",  // Cambiar el formato de fecha
-        //     locale: "es"  
-        // });
+
+        // consumiendo la api de distritos
+        async function cargarDistritos() {
+            const selects = [
+                document.getElementById('distritos'),
+                document.getElementById('distritoCalidad'), // Nuevo campo
+                document.getElementById('distritofs') // Nuevo campo
+            ];
+
+            try {
+                const respuesta = await fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${128}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!respuesta.ok) {
+                    throw new Error(`Error al obtener distritos: ${respuesta.status}`);
+                }
+
+                const distritos = await respuesta.json();
+
+                selects.forEach(select => {
+                    select.innerHTML = '<option value="">Seleccionar Opción</option>';
+
+                    distritos.forEach(distrito => {
+                        const opcion = document.createElement('option');
+                        opcion.value = distrito.value;
+                        opcion.textContent = distrito.label;
+                        select.appendChild(opcion);
+                    });
+                });
+
+            } catch (error) {
+                console.error('Error al cargar distritos:', error);
+                select.innerHTML = '<option value="">Error al cargar distritos</option>';
+            }
+        }
+        // cargar distritos
+        cargarDistritos()
 
         // el manejo de fechas
         function formatDateToYYMMDD(date) {
@@ -3105,6 +3110,12 @@
         // Función para enviar el formulario como JSON
         document.getElementById("claimForm").addEventListener("submit", async function(event) {
             event.preventDefault();  // Prevenir el envío normal del formulario
+
+            // const
+
+            const tipo_user = document.getElementById('tipo-user').value.trim();
+            const tipo_ticket = document.getElementById('tipoticket').value.trim();
+
 
               // Variable where the selected value will be stored
             let valorSeleccionado = null;
@@ -3571,338 +3582,238 @@
             console.log(tipoUsuarioSeleccionado);
             
 
-            const dataApelacion = {
 
-                // //
-                tipoUsuario: tipoUsuarioSeleccionado,
-                // datos de validacion
-                nombrePadre,
-                nombreMadre,
-                lugarNacimiento,
-                fechaNacimiento,
-                numeroDocumentIdentidad,
-                fechaEmisionDocumentoIdentidad,
-                //datos de validacion
-                fechaVencimiento,
-                montoTarifa,
-                direccionFacturacion,
-                tipoDocumentoIdentidad,
+            const data = {
+            // tipo de ticket - reclamo - queja - apelacion
+            tipo_ticket,
+            // tipo de usuario
+            tipo_user,
+            // datos de validacion
+            nombrePadre,
+            nombreMadre,
+            lugarNacimiento,
+            fechaNacimiento,
+            numeroDocumentIdentidad,
+            fechaEmisionDocumentoIdentidad,
+            //datos de validacion
+            fechaVencimiento,
+            montoTarifa,
+            direccionFacturacion,
+            tipoDocumentoIdentidad,
 
-                cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
-                nombre: nombres,
-                apellidos,
-                relacion,
-                razonSocial,
-                numeroContacto,
-                tipoDoc,
-                numDoc,
-                distritos,
-                direccion,
-                correo,
-                booleanValue,
+            cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
+            nombre: nombres,
+            apellidos,
+            relacion,
+            razonSocial,
+            numeroContacto,
+            tipoDoc,
+            numDoc,
+            distritos,
+            direccion,
+            correo,
+            booleanValue,
 
-                // preguntas de apelacion
-
-                //apelacin,
-                idApelacion,
-                //datos extras
-                empresaOperadoraApelacion,
-                servicioMateriaApelacion,
-                numeroServicioApelacion,
-                codigoNumeroApelacion,
-                numeroCartaApelacion,
-                fechaEmisionCartaApelacion,
-                // preguntas 
-                detallePruebaApelacionUno,
-                detallefsApelacionDos,
-                materiaEmpresaApelacionTres,
-                apelacionopcioncuatro,
-                numeroReciboApelacionSiCuatro,
-                fechaEmisionApelacionSiCuatro,
-                fechaVencimientoApelacionSiCuatro,
-                //montoReclamadoApelacionSiCuatro,
-                detalleReclamoApelacionSiCuatro,
-                apelacionOpcioncinco,
-                numeroReciboApelacionSiCinco,
-                fechaEmisionApelacionSiCinco,
-                montoTotalApelacionSiCinco,
-                detalleReclamoApelacionSiCinco,
-                materiaEmpresaEmitirApelacionSeis,
-                // descargo del cliente
-                informacionNecesariaApelacion,
-                sustentoApelacion,
-            };
-
-            const dataQueja = {
-                // //
-                tipoUsuario: tipoUsuarioSeleccionado,
-                // datos de validacion
-                nombrePadre,
-                nombreMadre,
-                lugarNacimiento,
-                fechaNacimiento,
-                numeroDocumentIdentidad,
-                fechaEmisionDocumentoIdentidad,
-                //datos de validacion
-                fechaVencimiento,
-                montoTarifa,
-                direccionFacturacion,
-                tipoDocumentoIdentidad,
-
-                cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
-                nombre: nombres,
-                apellidos,
-                relacion,
-                razonSocial,
-                numeroContacto,
-                tipoDoc,
-                numDoc,
-                distritos,
-                direccion,
-                correo,
-                booleanValue,
-
-                // preguntas de queja
-
-                // //selecion
-                //quejaSeleccionada,
-                idQueja,
-                //
-                //tipoUsuarioSeleccionado,
-                //quejas datos extra
-                empresaOperadoraQueja,
-                servicioObjetoQueja,
-                numServicioQueja,
-                codigoNumeroQueja,
-                // quejas preguntas
-                fechaPresentacionQueja,
-                negativaQueja,
-                fechaNegativaQueja,
-                canalPresentacion,
-                especificarCanalQuejaDos,
-                adjuntaPrueba:adjuntaPruebaBool,
-
-                fechaSuspendioServicioQueja,
-                MediosCobranzasQuejas,
-                //constanciaPagoQueja:constanciaPagoBool,
-                pagoCuentaQueja,
-                espeficiarQueja,
-                capturaQuejaCinco:capturaQuejaBool,
-                dtramitacion:tramitacionBool,
-                medioProbatorioNegativa:mdQuejaUno,
-                constanciaPagoMedioCobranza:mdQuejaDos,
-                medioProbatoriopgQueja:mdQuejaTres,
-                medioProbatoriosTramitacion:mdQuejaCuatro,
-
-                // descargo del cliente
-                informacionNecesariaQueja,  
-                descripcionProblemaQueja,
-
-            };
-
-            const dataReclamo = {
-
-                // //
-                tipoUsuario: tipoUsuarioSeleccionado,
-                // datos de validacion
-                nombrePadre,
-                nombreMadre,
-                lugarNacimiento,
-                fechaNacimiento,
-                numeroDocumentIdentidad,
-                fechaEmisionDocumentoIdentidad,
-                //datos de validacion
-                fechaVencimiento,
-                montoTarifa,
-                direccionFacturacion,
-                tipoDocumentoIdentidad,
-
-                cartaPoder: fileBase64,  // Será una cadena vacía si no se cargó un archivo
-                nombre: nombres,
-                apellidos,
-                relacion,
-                razonSocial,
-                numeroContacto,
-                tipoDoc,
-                numDoc,
-                distritos,
-                direccion,
-                correo,
-                booleanValue,
-
-                // preguntas de reclamos
-                // selecionar reclamo
-                //selectReclamos,
-                idReclamo,
-                idReclamoEscogido,
-                // datos del serivicio reclamo
-                empresaOperadora,
-                servicioContratado,
-                servicioMateriaReclamo,
-                numeroServicioContratado,
-                // preguntas de facturacion
-                numeroReciboFC,
-                numeroDocumentoCobroFC,
-                fechaEmisionFC,
-                fechaVencimientoFC,
-                montoReclamadoFC,
-                conceptoFacturadoFC,
-                tarifaUsuarioFC,
-                fechaEstimadaPagoFC,
-                modalidadPagoFC,
-                especificarModalidadPagoFC,
-
-                adjuntarHojaPagoFC:adjuntarHojaPagoFCBoolean,
-                hojaDocumentoAdjuntada:fileConstacia,
-                // CALIDAD
-                fechaInicioCalidadI,
-                direccionCalidadI,
-                departamentoCalidadI,
-                provinciaCalidadI,
-                distritoCalidad,
-                calleJrAvCalidad,
-                codigoReportePrevioCalidad,
-
-                // incumplimiento
-                detalleCondicionIncumplimiento,
-                fechaIncumplimientos,
-                detalleOfertaIncumplimiento,
-                oportunidadBrindoOfertaIncumplimiento,
-                fechAproximadaIncumplimiento,
-                cbpromocionfs,
-                especificarIncumplimiento,
-                codigOtorgamientoIncumplimiento,
-                fechaCualPincumplimiento,
-                detalleAtributosIncumplimiento,
-                reciboCorrespondienteIncumplimiento,
-                fechaEmisionIncumplimineto,
-                numeroRecivoIncumplimiento,
-                fechavencimientoIncumplimineto,
-                oportunidadBrindoInfoOmitida,
-                fechaAproxInfoOmitida,
-                
-                // falta de servicio
-                fechaInicioProblemafs,
-                direccionProblemafs,
-                direccionServicio,
-                departamentofs,
-                provinciafs,
-                distritofs,
-                calleJrAvfs,
-                numerofs,
-                adrecibos:adrecibosBoolean,
-                fechaReactivarServicio,
-                fechaPagoPendiente,
-                mpagos,
-                especificarMedioPago,
-                adrecibosPendiente:adrecibosPendienteBoolean,
-                fechaSIMCARD,
-                adjuntarVinculo:documentoAdjuntadosFSI,
-                vinculoAdjuntarSolicitud:documentoAdjuntadosFSII,
-
-                // INSTALACIONES
-                fechaContratacionServicioInstalacion,
-                fechaSolicitudTrasladoInstalacion,
-                strasladoe,
-                especificarCanalSinstalacion,
-                codigoPedidoII,
-                adsOpcionTraslado:adsOpcionTrasladoBoolean,
-                fechaContratacionSInstalacion,
-                ctopcionCinco,
-                especificarInstalacion,
-                codigoPedidoInstalacion,
-                opcionCuatroTraslado:opcionCuatroTrasladoBoolean,
-                montoPendienteInstalacion,
-                vinculoSolicitudReclamo:documentoSRI,
-                adjuntarSolicitudReclamoCuatro:documentoSRII,
-
-                // baja
-                fechaSolicitudBaja,
-                cbaja,
-                especificarCanalBaja,
-                codigoPedidoBaja,
-                asb:asbBoolean,
-                fechaSolicitudSuspensionBaja,
-                ctraslado,
-                especificarCanalTraslado,
-                cPedidoBaja,
-                asT:asTBoolean,
-                datosRecibosCuestionadoBaja,
-                numeroReciboBaja,
-                fechaEmisionBaja,
-                fechaVencimientoBaja,
-                montoReclamadoBaja,
-                solicitudBajaReclamo:documentoBajaI,
-                adjuntarVinculoSolicitud:documentoBajaII,
-
-                // contratacion
-                detalleServicioAdicional,
-                detallePaquete,
-                datosRecibomrContatacion,
-                numeroReciboContratacion,
-                fechaEmisionContratacion,
-                fechaVencimientoContratacion,
-                montoReclamadoContratacion,
-
-                // MIGRACION
-                fechaSolicitudMigracionX,
-                canalMigracion,
-                especificarCanalMigracion,
-                codigoPedidoMigracion,
-                planTarifarioMigracion,
-                motivoNegativaMigracion,
-                solicitudAdjunta:solicitudAdjuntaBoolean,
-                documentoSolicitudMigracionOne:documentoMigracionI,
-                numeroReciboMigracionII,
-                fechaEmisionMigracionIII,
-                fechaMovimientoMigracion,
-                montoReclamadoMigracionMigracion,
-                numeroReciboII,
-                fechaEmisionII,
-                fechaVencimientoMigracionII,
-                numeroReciboMigracion,
-                fechaEmisionMigracion,
-                fechaVencimientoMigracion,
-                montoReclamadoMigracion,
-
-                // otros reclamos
-                fechaSolicitudX,
-                ccontratacion,
-                //especificarx,
-                servicioContratarX,
-                planTarifarioX,
-                numeroReciboX,
-                fechaEmisionX,
-                fechaVencimientoX,
-                mesReciboPentregaX,
-                direccionFisicaX,
-                fechaSolicitudFacturacionX,
-                cpresentacion,
-                especificarCanalX,
-                codigoPedidoX,
-                sasfll:sasfllBoolean,
-                vinculoSolicitudSX:documentoX,
-                detallePedidoX,
-
-                // descargo de cliente
-                informacionNecesariaReclamo,
-                descripcionProblemaSolicitudReclamo,
-            };
+            // reclamo
+            idReclamo,
+            idReclamoEscogido,
+            // facturacion y cobro
+            numeroReciboFC,
+            numeroDocumentoCobroFC,
+            fechaEmisionFC,
+            fechaVencimientoFC,
+            montoReclamadoFC,
+            conceptoFacturadoFC,
+            tarifaUsuarioFC,
+            fechaEstimadaPagoFC,
+            modalidadPagoFC,
+            especificarModalidadPagoFC,
+            adjuntarHojaPagoFC,
+            hojaDocumentoAdjuntada:fileConstacia,
+            // calidad
+            fechaInicioCalidadI,
+            direccionCalidadI,
+            departamentoCalidadI,
+            provinciaCalidadI,
+            distritoCalidad,
+            calleJrAvCalidad,
+            codigoReportePrevioCalidad,
+            //incumplimiento
+            detalleCondicionIncumplimiento,
+            fechaIncumplimientos,
+            detalleOfertaIncumplimiento,
+            oportunidadBrindoOfertaIncumplimiento,
+            fechAproximadaIncumplimiento,
+            cbpromocionfs,
+            especificarIncumplimiento,
+            codigOtorgamientoIncumplimiento,
+            fechaCualPincumplimiento,
+            detalleAtributosIncumplimiento,
+            reciboCorrespondienteIncumplimiento,
+            fechaEmisionIncumplimineto,
+            numeroRecivoIncumplimiento,
+            fechavencimientoIncumplimineto,
+            oportunidadBrindoInfoOmitida,
+            fechaAproxInfoOmitida,
+            detalleInfoOmitida,
+            cnPromocionCuatro,
+            especificarInfoOmitida,
+            // falta de servicio
+            fechaInicioProblemafs,
+            direccionProblemafs,
+            direccionServicio,
+            departamentofs,
+            provinciafs,
+            distritofs,
+            calleJrAvfs,
+            numerofs,
+            adrecibos,
+            fechaReactivarServicio,
+            fechaPagoPendiente,
+            mpagos,
+            especificarMedioPago,
+            adrecibosPendiente,
+            fechaSIMCARD,
+            adjuntarVinculo:documentoAdjuntadosFSI,
+            vinculoAdjuntarSolicitud:documentoAdjuntadosFSII,
+            // instalaciones
+            fechaContratacionServicioInstalacion,
+            fechaSolicitudTrasladoInstalacion,
+            strasladoe,
+            especificarCanalSinstalacion,
+            codigoPedidoII,
+            adsOpcionTraslado,
+            fechaContratacionSInstalacion,
+            ctopcionCinco,
+            especificarInstalacion,
+            codigoPedidoInstalacion,
+            opcionCuatroTraslado,
+            montoPendienteInstalacion,
+            vinculoSolicitudReclamo:documentoSRI,
+            adjuntarSolicitudReclamoCuatro:documentoSRII,
+            //Baja
+            fechaSolicitudBaja,
+            cbaja,
+            especificarCanalBaja,
+            codigoPedidoBaja,
+            asb,
+            fechaSolicitudSuspensionBaja,
+            ctraslado,
+            especificarCanalTraslado,
+            cPedidoBaja,
+            asT,
+            datosRecibosCuestionadoBaja,
+            numeroReciboBaja,
+            fechaEmisionBaja,
+            fechaVencimientoBaja,
+            montoReclamadoBaja,
+            solicitudBajaReclamo:documentoBajaI,
+            adjuntarVinculoSolicitud:documentoBajaII,
+            // contratos
+            detalleServicioAdicional,
+            detallePaquete,
+            datosRecibomrContatacion,
+            numeroReciboContratacion,
+            fechaEmisionContratacion,
+            fechaVencimientoContratacion,
+            montoReclamadoContratacion,
+            // migracion
+            fechaSolicitudMigracionX,
+            canalMigracion,
+            especificarCanalMigracion,
+            codigoPedidoMigracion,
+            planTarifarioMigracion,
+            motivoNegativaMigracion,
+            solicitudAdjunta,
+            numeroReciboMigracionII,
+            fechaEmisionMigracionIII,
+            fechaMovimientoMigracion,
+            montoReclamadoMigracionMigracion,
+            numeroReciboII,
+            fechaEmisionII,
+            fechaVencimientoMigracionII,
+            numeroReciboMigracion,
+            fechaEmisionMigracion,
+            fechaVencimientoMigracion,
+            montoReclamadoMigracion,
+            documentoSolicitudMigracionOne:documentoMigracionI,
+            // x
+            fechaSolicitudX,
+            ccontratacion,
+            servicioContratarX,
+            planTarifarioX,
+            numeroReciboX,
+            fechaEmisionX,
+            fechaVencimientoX,
+            mesReciboPentregaX,
+            direccionFisicaX,
+            fechaSolicitudFacturacionX,
+            cpresentacion,
+            especificarCanalX,
+            codigoPedidoX,
+            sasfll,
+            detallePedidoX,
+            documentoSolicitudX:documentoX,
 
 
-            let url;
-            let data;
 
-            if (tipo === '3') {
-                url = 'https://prueba-reclamos-7209e31a7512.herokuapp.com/api/reclamos/reclamo';
-                data =dataReclamo;
-            } else if (tipo === '6') {
-                url = 'https://prueba-reclamos-7209e31a7512.herokuapp.com/api/reclamos/queja';
-                data =dataQueja;
-            } else if (tipo === '7') {
-                url = 'https://prueba-reclamos-7209e31a7512.herokuapp.com/api/reclamos/apelaciones';
-                data =dataApelacion;
-            }
+
+            //quejas
+            idQueja,
+            fechaPresentacionQueja,
+            negativaQueja,
+            fechaNegativaQueja,
+            canalPresentacion,
+            especificarCanalQuejaDos,
+            medioProbatorioNegativa:mdQuejaUno,
+            fechaSuspendioServicioQueja,
+            MediosCobranzasQuejas,
+            adjuntaPruebaBool,
+            constanciaPagoMedioCobranza:mdQuejaDos,
+            pagoCuentaQueja,
+            espeficiarQueja,
+            capturaQuejaBool,
+            medioProbatoriopgQueja:mdQuejaTres,
+            tramitacionBool,
+            medioProbatoriosTramitacion:mdQuejaCuatro,
+
+
+
+            // fin de quejas
+
+            //apelacin,
+            idApelacion,
+            //datos extras
+            empresaOperadoraApelacion,
+            servicioContratado,
+            servicioMateriaApelacion,
+            servicioMateriaReclamo,
+            numeroServicioContratadoReclamo,
+            numeroServicioApelacion,
+            codigoNumeroApelacion,
+            numeroCartaApelacion,
+            fechaEmisionCartaApelacion,
+            // preguntas 
+            detallePruebaApelacionUno,
+            detallefsApelacionDos,
+            materiaEmpresaApelacionTres,
+            apelacionopcioncuatro,
+            numeroReciboApelacionSiCuatro,
+            fechaEmisionApelacionSiCuatro,
+            fechaVencimientoApelacionSiCuatro,
+            montoReclamadoApelacionSiCuatro,
+            detalleReclamoApelacionSiCuatro,
+            apelacionOpcioncinco,
+            numeroReciboApelacionSiCinco,
+            fechaEmisionApelacionSiCinco,
+            montoTotalApelacionSiCinco,
+            detalleReclamoApelacionSiCinco,
+            materiaEmpresaEmitirApelacionSeis
+
+        };
+
+            const url = "https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/reclamos/reclamo";
+
             
             const botonEnviar = document.querySelector("#click");  // El botón de enviar
             const botonEditar = document.querySelector("#back");  // El botón de editar (si existe)
@@ -4041,20 +3952,17 @@
         const opcionSeleccionadaApelacion=document.getElementById("apelacion");
 
         //el valor actual del input
-        const inputTicket = document.getElementById('tipoticket');
-        const inputDiagnostico = document.getElementById('diagnostico');
+        const tipo_ticket= document.getElementById('tipoticket');
 
 
         // Evento
         // Reclamos
         opcionSeleccionadaReclamos.addEventListener("click",function () {
             // El número que deseas agregar, por ejemplo, 12345
-            const numT = 3;
-            const numD = 34;
+            const numT = 1;
                 
             // Asignar ese número al valor del input
-            inputTicket.value = numT;
-            inputDiagnostico.value = numD;
+            tipo_ticket.value = numT;
 
             // desaparecer las cajas de opciones
             contenedor.style.display="none"
@@ -4070,12 +3978,10 @@
         //Quejas
         opcionSeleccionadaQueja.addEventListener("click",function () {
             // El número que deseas agregar, por ejemplo, 12345
-            const numT = 6;
-            const numD = 82;
-                
+            const numT = 2;
+
             // Asignar ese número al valor del input
-            inputTicket.value = numT;
-            inputDiagnostico.value = numD;
+            tipo_ticket.value = numT;
 
             // desaparecer las cajas de opciones
             contenedor.style.display="none"
@@ -4089,12 +3995,10 @@
         //Apelacion
         opcionSeleccionadaApelacion.addEventListener("click",function () {
             // El número que deseas agregar, por ejemplo, 12345
-            const numT = 7;
-            const numD = 81;
+            const numT = 3;
                 
             // Asignar ese número al valor del input
-            inputTicket.value = numT;
-            inputDiagnostico.value = numD;
+            tipo_ticket.value = numT;
 
             // desaparecer las cajas de opciones
             contenedor.style.display="none"
@@ -4221,7 +4125,7 @@
         cDatosValidacionUsuario.open=false;
 
         // tipo de ususario
-        let tipoUsuarioSeleccionado;
+        let tipo_user;
 
         // funcion para mostrar el formulario de los datos personales
 
@@ -4236,7 +4140,8 @@
             // el titulo del usuario
             tituloAUR.style.display="flex"
             txtTituloAUR.innerHTML="Abonado";
-            tipoUsuarioSeleccionado="abonado"
+            tipoUsuarioSeleccionado=1
+
         })
 
         tpUsuario.addEventListener("click",function(){
@@ -4251,7 +4156,7 @@
             // el titulo del usuario
             tituloAUR.style.display="flex"
             txtTituloAUR.innerHTML="Usuario";
-            tipoUsuarioSeleccionado="usuario"
+            tipoUsuarioSeleccionado=2
         })
 
         tpRepresentante.addEventListener("click",function(){
@@ -4269,10 +4174,9 @@
             // ocultar datos
             dValidacionAbonado.style.display="none"
             dValidacionUsuario.style.display="none"
-            tipoUsuarioSeleccionado="representante"
+            tipoUsuarioSeleccionado=3
         })
 
-        console.log(tipoUsuarioSeleccionado);
         
 
         // para validar los datos del abonado
@@ -4438,39 +4342,31 @@
 
         // cambiando tipo de numero de contacto
         const numeroContacto=document.getElementById("numeroContacto")
-        // numeroContacto.setAttribute("type", "number");
-        // numeroContacto.setAttribute('max', '9');
 
         // Datos personales
         const txtNum=document.getElementById("numDoc")
         txtNum.setAttribute('maxlength', '0');
-        //txtNum.setAttribute("type", "number");
-        //txtNum.setAttribute("type", "number");
 
         function tipoDocumento() {
             const option=document.getElementById("tipoDoc").value;
 
             switch (option) {
-                case "DNI":
+                case "1":
                     txtNum.setAttribute('maxlength', '8');
                     break;
 
-                case "RUC":
+                case "6":
                     txtNum.setAttribute('maxlength', '11');
                     break;
 
-                case "Pasaporte":
+                case "7":
                     txtNum.setAttribute('maxlength', '20');
                     break;
 
-                case "CE":
+                case "4":
                     txtNum.setAttribute('maxlength', '20');
                     break;
 
-                case "Otro_Documento":
-                    txtNum.setAttribute('maxlength', '20');
-                    break;
-            
                 default:
                     txtNum.setAttribute('maxlength', '0');
                     break;

@@ -1,0 +1,483 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Clan Pro', sans-serif;
+}
+
+/* cajas de reclamos - queja  - apelacion */
+
+
+
+.contenedorOpciones label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.contenedorOpciones{
+    padding: 10px;
+    text-align: center;
+    background-color: #002ccc;
+    border-radius: 10px;
+}
+.contenedorOpciones h3{
+    color: white;
+    font-weight: bold;
+}
+.contenedorTituloDescripcion{
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+}
+.descripcionCajas{
+    padding: 10px;
+    margin-top: 10px;
+    text-align: justify;
+    height: 80%;
+    color: #002ccc;
+}
+
+.contenedorTituloDescripcion:hover{
+    transform: scale(1.05);
+    /* box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); */
+}
+
+
+/**/
+
+/* la caja que tiene la validacion*/
+.validacion{
+    padding: 40px;
+    width: 70%;
+    display: none;
+    margin: auto;
+}
+
+.content_questions{
+    padding: 40px;
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+/* title */
+
+.title{
+    padding: 2px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.titulo_opciones{
+    padding: 20px;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.contenedorTitulo{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+}
+
+.btnTitulo{
+    width: 10%;
+}
+
+.tituloOpcion{
+    width: 90%;
+    text-align: center;
+}
+
+/* mensaje */
+.msg-error{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+/* cajas de text */
+
+.cajas-text{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.questions-two{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.caja-one{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/**/
+.content{
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    text-align: justify;
+}
+
+/*botones*/
+
+.volver{
+    /* outline: none; */
+    /* width: 100%; */
+    padding: 10px 20px;
+    background-color: #ff4c00;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* inputs */
+
+input[type="text"],input[type="email"],input[type="file"],input[type="date"],input[type="number"]{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #002ccc;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.caja-search{
+    display: flex;
+    gap: 10px;
+}
+
+.search{
+    background-color: #002ccc;
+    outline: none;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 60px;
+    width: 20%;
+    font-size: 20px;
+}
+
+/* selects */
+
+select{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #002ccc;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+/* text area */
+textarea{
+    background-color: aliceblue;
+    width: 100%;
+    border: 1px solid #002ccc;
+    border-radius: 10px;
+    padding: 20px;
+    outline: none;
+    margin-top: 10px;
+    padding: 20px;
+    box-shadow: 3px 2px 1px black;
+}
+
+/*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
+.contenedorRQA{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.cajaContenedor{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+}
+
+/*button*/
+
+.btn{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #002ccc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.btn:hover{
+    background-color: #001d86;
+    outline: none;
+}
+
+.siNO{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* selection*/
+
+.selections{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.content-selecction{
+    display: none;
+    justify-content: center;
+}
+
+.content-selecction-two{
+    display: none;
+    justify-content: center;
+}
+
+.selection-one{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.selection-two{
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* estilo de datos de servicio */
+
+.data-service{
+    width: 70%;
+    display: none;
+    margin: auto;
+    padding: 40px;
+}
+
+/* contenedor de descargo del cliente*/
+
+.descargo{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-descargo-cliente{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+/**/
+
+.content-btn-txt{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-Continuar{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+/*  */
+
+.btn-Continuar-datos{
+    display: none;
+    justify-content: center;
+    padding: 10px;
+}
+
+/***/
+
+.content-seccion{
+    width: 100%;
+    display: none;
+    justify-content: center;
+    padding: 10px;
+    height: 100px;
+}
+
+.seccion{
+    border: #ff4c00 2px solid;
+    border-radius: 10px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.title-seccion{
+    width: 90%;
+    text-align: center;
+}
+
+.edit{
+    width: 10%;
+}
+
+.corregir{
+    background-color: #002ccc;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+/*sequencia*/
+
+/**/
+
+.contenedor-caja{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-left: 6px solid #002ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* caja de codigo*/
+
+.codigo-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.codigo-box h3 {
+    color: #002ccc;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.codigo-contenedor {
+    background-color: #f0f4ff;
+    border: 2px dashed #002ccc;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #002ccc;
+    margin-bottom: 20px;
+}
+
+.botones-codigo button {
+    background-color: #002ccc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 15px;
+}
+
+.botones-codigo button:hover {
+    background-color: #001a99;
+}
+
+
+/**/
+
+
+@media only screen and (max-width: 768px) {
+    .questions-two{
+        flex-wrap: wrap;
+    }
+}
+
+/* fin  de la mejora*/
+
+.contenedorLoading{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px);
+}
+.loader{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+}
+.loader::before,
+.loader::after{
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+}
+.loader::before{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg,#002ccc 30%,#ff4c00 70%);
+}
+.loader::after{
+    width: 85%;
+    height: 85%;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}

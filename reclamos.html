@@ -766,8 +766,8 @@
             </div>
     
             <div class="serie">
-                <input type="hidden" value="" id="tipoticket" name="tipoticket" disabled>
-                <input type="hidden" value="" id="diagnostico" name="diagnostico" disabled>
+                <input type="hidden" value="" id="tipoticket" name="tipoticket" disabled />
+                <input type="hidden" value="" id="diagnostico" name="diagnostico" disabled />
             </div>
     
             <div class="tituloOpciones" id="tituloOpcionesQRA">
@@ -949,7 +949,9 @@
                                                 
                                 <div class="datos">
                                     <label for="tipodocumentoidentidad">Tipo del Documento de Identidad</label>
-                                    <input type="text" id="tipodocumentoidentidad" placeholder="Documento de Identidad">
+                                    <select id="tipodocumentoidentidad">
+                                        <option value="">Cargando...</option>
+                                    </select>
                                 </div>
                 
                                 <div class="datos">
@@ -1083,7 +1085,6 @@
                                     <input type="radio" name="autorizacion" id="autoriza_no" value=False>
                                 </div>
                             </div>
-                            
 
                             <div class="btnContinuar">
                                 <input type="button" id="validarFormularioContinuar" value="Continuar">
@@ -2986,6 +2987,8 @@
 
         </div>
 
+        
+
         <div class="contenedorTicket" id="cajaContenedorTicket">
 
             <div class="contenedor">
@@ -3080,11 +3083,49 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script> -->
     
     <script>
-        //Iniciar Flatpickr para todos los campos de fecha
-        // flatpickr(".fecha", {
-        //     dateFormat: "Y-m-d",  // Cambiar el formato de fecha
-        //     locale: "es"  
-        // });
+
+        // consuminedo la api de tipo de documentos
+        
+    async function cargarTiposDeDocumento() {
+        const select = document.getElementById('tipodocumentoidentidad');
+
+            try {
+                const respuesta = await fetch('https://app-externos.fiberpro.com.pe/api/get_identification_type', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+                });
+
+                if (!respuesta.ok) {
+                throw new Error(`Error al obtener datos: ${respuesta.status}`);
+                }
+
+                const tipos = await respuesta.json();
+
+                // Limpiar opciones actuales
+                select.innerHTML = '<option value="">Seleccione un tipo de documento</option>';
+
+                // Llenar el select con los datos recibidos
+                tipos.forEach(tipo => {
+                const opcion = document.createElement('option');
+                opcion.value = tipo.id; // ajusta según el nombre del campo real
+                opcion.textContent = tipo.name// ajusta al nombre correcto
+                select.appendChild(opcion);
+                });
+
+            } catch (error) {
+                console.error('Error al cargar tipos de documento:', error);
+                select.innerHTML = '<option value="">Error al cargar</option>';
+            }
+        }
+
+        // Ejecutar al cargar la página
+        cargarTiposDeDocumento();
+
+
+        //
+
 
         // el manejo de fechas
         function formatDateToYYMMDD(date) {
@@ -6440,6 +6481,7 @@
             }
 
         }
+
 
         /* el descargo del cliente */
 
