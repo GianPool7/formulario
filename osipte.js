@@ -2048,7 +2048,6 @@ function convertFileToBase64(file) {
         const tipo_user = document.getElementById('tipo-user').value.trim();
 
 
-
         // VALIDACION
         // datos de validacion abonado
         const nombrePadre = document.getElementById('nombrePadre').value.trim();

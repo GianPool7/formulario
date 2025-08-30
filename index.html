@@ -935,12 +935,7 @@
                                                 
                                 <div class="datos">
                                     <label for="tipodocumentoidentidad">Tipo del Documento de Identidad</label>
-                                    <select name="tipoDoc" id="tipodocumentoidentidad" onchange="tipoDocumento()">
-                                        <option value="">Selecciona un tipo de documento</option>
-                                        <option value="1">Documento de Identidad (DNI)</option>
-                                        <option value="6">Registro Único de Contribuyentes (RUC)</option>
-                                        <option value="7">Pasaporte</option>
-                                        <option value="4">Carnet de Extranjería(CE)</option>
+                                    <select name="tipoDoc" id="tipodocumentoidentidad">
                                     </select>
                                 </div>
                 
@@ -1018,12 +1013,7 @@
                                 </div>
                                 <div class="datos">
                                     <label for="tipoDoc">Tipo de Documento</label>
-                                    <select name="tipoDoc" id="tipoDoc" onchange="tipoDocumento()">
-                                        <option value="">Selecciona un tipo de documento</option>
-                                        <option value="1">Documento de Identidad (DNI)</option>
-                                        <option value="6">Registro Único de Contribuyentes (RUC)</option>
-                                        <option value="7">Pasaporte</option>
-                                        <option value="4">Carnet de Extranjería(CE)</option>
+                                    <select name="tipoDoc" id="tipoDoc">
                                     </select>
                                 </div>
                                 <div class="datos">
@@ -1330,7 +1320,7 @@
                     
                                 <div class="cajaRespuesta">
                                     <label for="detallePruebaApelacionUno">Detalle de pruebas presentadas y no analizadas por la empresa operadora </label>
-                                    <input type="text" name="detallePruebaApelacionUno" id="detallePruebaApelacionUno">
+                                    <input type="text" name="detallePruebaApelacionUno" id="detalle_apelacion_uno">
                                 </div>
                     
                             </div>
@@ -3025,9 +3015,7 @@
             </div>
 
             <div class="home" id="home">
-                
                 <a href="https://fiberpro.com.pe/reclamos/" class="btnhome" id="inicio">Volver a inicio</a>
-
             </div>
 
         </div>
@@ -3035,6 +3023,58 @@
     </form>
 
     <script>
+
+        // Consumir la API y llenar múltiples selects con tipos de documento
+        async function cargarTiposDeDocumento() {
+            // Lista de IDs de todos los selects que deben ser llenados
+            const selectIDs = ['tipodocumentoidentidad', 'tipoDoc'];
+
+            try {
+                const respuesta = await fetch('https://app-externos.fiberpro.com.pe/api/get_identification_type', {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!respuesta.ok) {
+                    throw new Error(`Error al obtener datos: ${respuesta.status}`);
+                }
+
+                const tipos = await respuesta.json();
+
+                // Llenar cada select por su ID
+                selectIDs.forEach(id => {
+                    const select = document.getElementById(id);
+                    if (!select) return;
+
+                    // Limpiar opciones actuales
+                    select.innerHTML = '<option value="">Seleccione un tipo de documento</option>';
+
+                    // Agregar nuevas opciones
+                    tipos.forEach(tipo => {
+                        const opcion = document.createElement('option');
+                        opcion.value = tipo.id;         // Ajusta si el campo es diferente
+                        opcion.textContent = tipo.name; // Ajusta si el campo es diferente
+                        select.appendChild(opcion);
+                    });
+                });
+
+            } catch (error) {
+                console.error('Error al cargar tipos de documento:', error);
+
+                // Mostrar mensaje de error en cada select
+                selectIDs.forEach(id => {
+                    const select = document.getElementById(id);
+                    if (!select) return;
+                    select.innerHTML = '<option value="">Error al cargar</option>';
+                });
+            }
+        }
+
+        // Ejecutar al cargar la página
+        cargarTiposDeDocumento();
+
 
         // consumiendo la api de distritos
         async function cargarDistritos() {
@@ -3117,12 +3157,47 @@
             const tipo_ticket = document.getElementById('tipoticket').value.trim();
 
 
-              // Variable where the selected value will be stored
-            let valorSeleccionado = null;
+            // VALIDACION
+            // datos de validacion abonado
+            const nombrePadre = document.getElementById('nombrePadre').value.trim();
+            const nombreMadre = document.getElementById('nombreMadre').value.trim();
+            const lugarNacimiento = document.getElementById('lugarNacimiento').value.trim();
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            const numeroDocumentIdentidad = document.getElementById('numerodocumentoidentidad').value.trim();
+            const fechaEmisionDocumentoIdentidad = document.getElementById('fechaEmisionDocumentoIdentidad').value;
+            // datos de validacion usuario
+            const fechaVencimiento = document.getElementById('fechaVencimiento').value;
+            const montoTarifa = document.getElementById('montoTarifa').value.trim();
+            const direccionFacturacion = document.getElementById('direccionFacturacion').value.trim();
+            const tipoDocumentoIdentidad = document.getElementById('tipodocumentoidentidad').value.trim();
+            // FIN DE VALIDACION
 
-            // Listen for the change in the radio button group
+            // DATOS PERSONALES
+            const nombres = document.getElementById('name').value.trim();
+            const apellidos = document.getElementById('apellidos').value.trim();
+            const relacion = document.getElementById('relacion').value.trim();
+            const razonSocial = document.getElementById('razonsocial').value.trim();
+            const numeroContacto = document.getElementById('numeroContacto').value.trim();
+            const tipoDoc = document.getElementById('tipoDoc').value.trim();
+            const numDoc = document.getElementById('numDoc').value.trim();
+            const distritos = document.getElementById('distritos').value.trim();
+            const direccion = document.getElementById('direccion').value.trim();
+            const correo = document.getElementById('correo').value.trim();
+
+            const fileInput = document.getElementById('cartaPoder');
+            const file = fileInput.files[0];  // Archivo de carta de poder
+            let fileBase64 = "";
+            // Solo convertimos a base64 si se selecciona un archivo
+            if (file) {
+                try {
+                    fileBase64 = await convertFileToBase64(file);
+                } catch (error) {
+                    console.error('Error al convertir archivo de carta de poder:', error);
+                }
+            }
+
+            // EL INPUT de autorizacion
             const radios = document.getElementsByName("autorizacion");
-
             // Loop through radios to find the selected one
             radios.forEach(radio => {
                 if (radio.checked) {
@@ -3134,65 +3209,7 @@
             const radioValue = document.querySelector('input[name="autorizacion"]:checked').value;
             let booleanValue = (radioValue === 'True');
 
-            const tipo = document.getElementById('tipoticket').value.trim();
-            
-            // datos de validacion abonado
-            const nombrePadre = document.getElementById('nombrePadre').value.trim();
-            const nombreMadre = document.getElementById('nombreMadre').value.trim();
-            const lugarNacimiento = document.getElementById('lugarNacimiento').value.trim();
-            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
-            // nuevo campos para la validacion de abonado
-            const numeroDocumentIdentidad=document.getElementById('numerodocumentoidentidad').value.trim();
-            const fechaEmisionDocumentoIdentidad=document.getElementById('fechaEmisionDocumentoIdentidad').value;
-            // datos de validacion usuario
-            const fechaVencimiento = document.getElementById('fechaVencimiento').value;
-            const montoTarifa = document.getElementById('montoTarifa').value.trim();
-            const direccionFacturacion = document.getElementById('direccionFacturacion').value.trim();
-            // nuevos campos para la validacion de usuario
-            const tipoDocumentoIdentidad=document.getElementById('tipodocumentoidentidad').value.trim();
-            // datos personales
-            const nombres = document.getElementById('name').value.trim();
-            const apellidos = document.getElementById('apellidos').value.trim();
-            const relacion = document.getElementById('relacion').value.trim();
-            const razonSocial = document.getElementById('razonsocial').value.trim();
-            const numeroContacto = document.getElementById('numeroContacto').value.trim();
-            const tipoDoc = document.getElementById('tipoDoc').value.trim();
-            const numDoc = document.getElementById('numDoc').value.trim();
-            const distritos = document.getElementById('distritos').value.trim();
-            const direccion = document.getElementById('direccion').value.trim();
-            const correo = document.getElementById('correo').value.trim();
-            // Obtener el valor de la autorización (True o False)
-            //const autoriza = document.getElementById('autoriza').value; 
-
-            
-            const fileInput = document.getElementById('cartaPoder');
-
-            //const documentoSolicitudX=vinculoSolicitudSX.files[0];
-            
-            const file = fileInput.files[0];  // Archivo de carta de poder
-
-            let fileBase64 = "";
-            // Solo convertimos a base64 si se selecciona un archivo
-            if (file) {
-                try {
-                    fileBase64 = await convertFileToBase64(file);
-                } catch (error) {
-                    console.error('Error al convertir archivo de carta de poder:', error);
-                }
-            }
-            
-            // reclamos
-
-            // opcion materias
-            //const selectReclamos = document.getElementById("materias").value;
-
-            // Datos de servicio reclamo
-            const empresaOperadora = document.getElementById('empresaOperadorReclamo').value.trim();
-            const servicioContratado = document.getElementById('servicioContratadoReclamo').value.trim();
-            const servicioMateriaReclamo = document.getElementById('servicioMateriaReclamo').value.trim();
-            const numeroServicioContratado = document.getElementById('numeroServicioContratadoReclamo').value.trim();
             // Datos de facturación y cobro
-            //const correoFC = document.getElementById('correo').value.trim();
             const numeroReciboFC = document.getElementById('numeroReciboFCone').value.trim();
             const numeroDocumentoCobroFC = document.getElementById('numeroDocumentoCobroFCone').value.trim();
             const fechaEmisionFC = document.getElementById('fechaEmisionFCone').value.trim();
@@ -3217,9 +3234,7 @@
                 }
             }
 
-
             // // calidad
-            // // Obtener los valores de los campos del formulario y guardarlos en constantes
             const fechaInicioCalidadI = document.getElementById('fechaInicioCalidadI').value.trim();
             const direccionCalidadI = document.getElementById('direccionCalidadI').value.trim();
             const departamentoCalidadI = document.getElementById('departamentoCalidadI').value.trim();
@@ -3227,9 +3242,7 @@
             const distritoCalidad = document.getElementById('distritoCalidad').value.trim();
             const calleJrAvCalidad = document.getElementById('CalleJrAvCalidad').value.trim();
             const codigoReportePrevioCalidad = document.getElementById('codigoReportePrevioCalidad').value.trim();
-
             // // incumplimiento
-            // //Obtener los valores de los campos en constantes
             const detalleCondicionIncumplimiento = document.getElementById('detalleCondicionIncumplimiento').value.trim();
             const fechaIncumplimientos = document.getElementById('fechaIncumplimiento').value;
             const detalleOfertaIncumplimiento = document.getElementById('detalleOfertaIncumplimiento').value.trim();
@@ -3244,13 +3257,13 @@
             const fechaEmisionIncumplimineto = document.getElementById('fechaEmisionIncumplimineto').value;
             const numeroRecivoIncumplimiento = document.getElementById('numeroRecivoIncumplimiento').value.trim();
             const fechavencimientoIncumplimineto = document.getElementById('fechavencimientoIncumplimineto').value;
-           
             const oportunidadBrindoInfoOmitida = document.getElementById('oportunidadBrindoInfoOmitida').value;
             const fechaAproxInfoOmitida = document.getElementById('fechaAproxInfoOmitida').value;
-
-
-            //falta de servicio
-            // Obtener los valores de los inputs y almacenarlos en constantes
+            const detalleInfoOmitida=document.getElementById("detalleInfoOmitida").value
+            const cnPromocionCuatro=document.getElementById("cnPromocionCuatro").value
+            const especificarInfoOmitida=document.getElementById("especificarInfoOmitida").value
+            
+            // falta de servicio
             const fechaInicioProblemafs = document.getElementById('fechaInicioProblemafs').value;
             const direccionProblemafs = document.getElementById('direccionProblemafs').value;
             const direccionServicio = document.getElementById('direccionServicio').value;
@@ -3270,16 +3283,14 @@
             const especificarMedioPago = document.getElementById('especificarMedioPago').value;
             // // Recibo de pago pendiente
             const adrecibosPendiente = document.getElementById('adrecibosPendiente').value;
-
             // // Fecha del cambio de SIM Card
             const fechaSIMCARD = document.getElementById('fechaSIMCARD').value;
-
             const adjuntarVinculo = document.getElementById('adjuntarVinculo'); // Archivo adjunto
             const vinculoAdjuntarSolicitud = document.getElementById('vinculoAdjuntarSolicitud'); // Archivo adjunto
 
             const documentoAdjuntadofsOne=adjuntarVinculo.files[0];
             const documentoAdjuntadofsTwo=vinculoAdjuntarSolicitud.files[0];
-            
+
             let documentoAdjuntadosFSI="";
             let documentoAdjuntadosFSII=""; 
             if (documentoAdjuntadofsOne) {
@@ -3299,7 +3310,6 @@
             }
 
             // INSTALACIONES
-            // Obtener valores de los campos de fecha
             const fechaContratacionServicioInstalacion = document.getElementById('fechaContratacionServicioInstalacion').value;
             const fechaSolicitudTrasladoInstalacion = document.getElementById('fechaSolicitudTrasladoInstalacion').value;
             const strasladoe = document.getElementById('strasladoe').value;
@@ -3334,7 +3344,6 @@
                     console.error('Error al convertir archivo de hoja de pago:', error);
                 }
             }
-
 
             //baja
             const fechaSolicitudBaja = document.getElementById('fechaSolicitudBaja').value;
@@ -3444,32 +3453,9 @@
                     console.error('Error al convertir archivo de hoja de pago:', error);
                 }
             }
-            // descargo del cliente
-            // descargo del cliente
-            // Obtener el valor de los campos de "Descargo de cliente" en "Reclamo"
-            const informacionNecesariaReclamo = document.getElementById("informacionNecesariaReclamo").value;
-            const descripcionProblemaSolicitudReclamo = document.getElementById("descripcionProblemaSolicitudReclamo").value;
-
-            // cambiando para boleanos
-            let adrecibosBoolean = (adrecibos === 'True');
-            let adjuntarHojaPagoFCBoolean = (adjuntarHojaPagoFC === 'True');
-            let adrecibosPendienteBoolean = (adrecibosPendiente === 'True');
-            let adsOpcionTrasladoBoolean = (adsOpcionTraslado === 'True');
-            let opcionCuatroTrasladoBoolean = (opcionCuatroTraslado === 'True');
-            let asbBoolean = (asb === 'True');
-            let asTBoolean = (asT === 'True');
-            let solicitudAdjuntaBoolean = (solicitudAdjunta === 'True');
-            let sasfllBoolean = (sasfll === 'True');
 
 
-            // datos para envio de queja
-            // Variables específicas de queja
-            const selectQueja = document.getElementById("quejasOpciones").value;
-            // datos de servicio
-            const empresaOperadoraQueja = document.getElementById("empresaOperadoraQueja").value;
-            const servicioObjetoQueja = document.getElementById("servicioObjetoQueja").value;
-            const numServicioQueja = document.getElementById("numServicioQueja").value;
-            const codigoNumeroQueja = document.getElementById("codigoNumeroQueja").value;
+            // quejas
             // preguntas especificas
             const fechaPresentacionQueja = document.getElementById("fechaPresentacionQueja").value;
             const negativaQueja = document.getElementById("negativaQueja").value;
@@ -3484,9 +3470,6 @@
             const espeficiarQueja = document.getElementById("espeficiarQueja").value;
             const dtramitacion = document.getElementById("dtramitacion").value;
             const capturaQuejaCinco=document.getElementById("capturaQuejaCinco").value;
-            // descargo del cliente
-            const informacionNecesariaQueja = document.getElementById("informacionNecesariaQueja").value;
-            const descripcionProblemaQueja = document.getElementById("descripcionProblemaQueja").value;
 
             // booleanos
             let adjuntaPruebaBool = (adjuntaPrueba === 'True');
@@ -3496,7 +3479,7 @@
             
 
             // archivos de queja
-             // Variables para los archivos de queja
+            // Variables para los archivos de queja
             const medioProbatorioNegativa = document.getElementById("medioProbatorioNegativa");
             const constanciaPagoMedioCobranza = document.getElementById("constanciaPagoMedioCobranza");
             const medioProbatoriopgQueja = document.getElementById("medioProbatoriopgQueja");
@@ -3545,43 +3528,39 @@
                 }
             }
 
+            // fin de quejas
 
-            // // apelacion
-
-            // seleccion
-            const apelacin = document.getElementById("apelacionOpciones").value;
+            // apelacion
 
             // datos del servicio
-            const empresaOperadoraApelacion = document.getElementById("empresaOperadoraApelacion").value;
+            const empresaOperadoraApelacion = document.getElementById("empresaOperadorReclamo").value;
+            const servicioContratado=document.getElementById("servicioContratadoReclamo").value;
             const servicioMateriaApelacion = document.getElementById("servicioMateriaApelacion").value;
+            
+            const servicioMateriaReclamo = document.getElementById("servicioMateriaReclamo").value;
+            const numeroServicioContratadoReclamo = document.getElementById("numeroServicioContratadoReclamo").value;
+
             const numeroServicioApelacion = document.getElementById("numeroServicioApelacion").value;
-            const codigoNumeroApelacion = document.getElementById("codigoNumeroApelacion").value;
+            const codigoNumeroApelacion = document.getElementById("codigoNumeroQueja").value;
             const numeroCartaApelacion = document.getElementById("numeroCartaApelacion").value;
             const fechaEmisionCartaApelacion = document.getElementById("fechaEmisionCartaApelacion").value;
-
             // enviar datos
-            const detallePruebaApelacionUno = document.getElementById("detallePruebaApelacionUno").value;
+            const detalle_apelacion_uno = document.getElementById("detalle_apelacion_uno").value;
             const detallefsApelacionDos = document.getElementById("detallefsApelacionDos").value;
             const materiaEmpresaApelacionTres = document.getElementById("materiaEmpresaApelacionTres").value;
             const apelacionopcioncuatro = document.getElementById("apelacionopcioncuatro").value;
             const numeroReciboApelacionSiCuatro = document.getElementById("numeroReciboApelacionSiCuatro").value;
             const fechaEmisionApelacionSiCuatro = document.getElementById("fechaEmisionApelacionSiCuatro").value;
             const fechaVencimientoApelacionSiCuatro = document.getElementById("fechaVencimientoApelacionSiCuatro").value;
-            const montoReclamadoApelacionSiCuatro = document.getElementById("montoReclamadoApelacionSiCuatro").value;
-            // descargo del cliente
-            const informacionNecesariaApelacion = document.getElementById("informacionNecesariaApelacion").value;
-            const sustentoApelacion = document.getElementById("sustentoApelacion").value;
-
-            // agregando 
-            const apelacionOpcioncinco=document.getElementById("apelacionOpcioncinco").value;
-            const detalleReclamoApelacionSiCuatro=document.getElementById("detalleReclamoApelacionSiCuatro").value;
-            const numeroReciboApelacionSiCinco=document.getElementById("numeroReciboApelacionSiCinco").value;
-            const detalleReclamoApelacionSiCinco=document.getElementById("detalleReclamoApelacionSiCinco").value;
-            const materiaEmpresaEmitirApelacionSeis=document.getElementById("materiaEmpresaEmitirApelacionSeis").value;
-
-            console.log(tipoUsuarioSeleccionado);
+            const montoReclamadoApelacionSiCuatro=document.getElementById("montoReclamadoApelacionSiCuatro").value
+            const detalleReclamoApelacionSiCuatro = document.getElementById("detalleReclamoApelacionSiCuatro").value;
+            const apelacionOpcioncinco = document.getElementById("apelacionOpcioncinco").value;
+            const numeroReciboApelacionSiCinco = document.getElementById("numeroReciboApelacionSiCinco").value;
+            const fechaEmisionApelacionSiCinco = document.getElementById("fechaEmisionApelacionSiCinco").value;
+            const montoTotalApelacionSiCinco = document.getElementById("montoTotalApelacionSiCinco").value;
+            const detalleReclamoApelacionSiCinco = document.getElementById("detalleReclamoApelacionSiCinco").value;
+            const materiaEmpresaEmitirApelacionSeis = document.getElementById("materiaEmpresaEmitirApelacionSeis").value;
             
-
 
             const data = {
             // tipo de ticket - reclamo - queja - apelacion
@@ -3794,7 +3773,7 @@
             numeroCartaApelacion,
             fechaEmisionCartaApelacion,
             // preguntas 
-            detallePruebaApelacionUno,
+            detalle_apelacion_uno,
             detallefsApelacionDos,
             materiaEmpresaApelacionTres,
             apelacionopcioncuatro,
@@ -4344,43 +4323,39 @@
         const numeroContacto=document.getElementById("numeroContacto")
 
         // Datos personales
-        const txtNum=document.getElementById("numDoc")
-        txtNum.setAttribute('maxlength', '0');
+        // const txtNum=document.getElementById("numDoc")
+        // txtNum.setAttribute('maxlength', '0');
 
-        function tipoDocumento() {
-            const option=document.getElementById("tipoDoc").value;
+        // function tipoDocumento() {
+        //     const option=document.getElementById("tipoDoc").value;
 
-            switch (option) {
-                case "1":
-                    txtNum.setAttribute('maxlength', '8');
-                    break;
+        //     switch (option) {
+        //         case "1":
+        //             txtNum.setAttribute('maxlength', '8');
+        //             break;
 
-                case "6":
-                    txtNum.setAttribute('maxlength', '11');
-                    break;
+        //         case "6":
+        //             txtNum.setAttribute('maxlength', '11');
+        //             break;
 
-                case "7":
-                    txtNum.setAttribute('maxlength', '20');
-                    break;
+        //         case "7":
+        //             txtNum.setAttribute('maxlength', '20');
+        //             break;
 
-                case "4":
-                    txtNum.setAttribute('maxlength', '20');
-                    break;
+        //         case "4":
+        //             txtNum.setAttribute('maxlength', '20');
+        //             break;
 
-                default:
-                    txtNum.setAttribute('maxlength', '0');
-                    break;
-            }
+        //         default:
+        //             txtNum.setAttribute('maxlength', '0');
+        //             break;
+        //     }
 
-        }
+        // }
 
 
         // para continuar con el formulario
-
-
         // Selecciona todas las cajas con la clase 'opcionesPrimero'
-
-
         const sApelacion=document.getElementById("seleccionarApelacion");
         const sQueja=document.getElementById("seleccionarQueja");
         const sReclamo=document.getElementById("seleccionarReclamo");
@@ -6086,6 +6061,8 @@
         // agregando el id con un valor entero
         let idApelacion = null;
 
+        console.log(idApelacion);
+        
         /* Apelacion */
 
         function apelaciones() {
@@ -6124,7 +6101,6 @@
                     cajaQuejaenApelacion.style.display="none";
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
-                    apelacionSelecionada="No se analizaron pruebas presentadas por el usuario";
                     // agregando los IDS
                     idApelacion=1;
 
@@ -6141,7 +6117,6 @@
                     cajaQuejaenApelacion.style.display="none";
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
-                    apelacionSelecionada="La carta no motiva o sustenta la decisión de la empresa sobre el reclamo";
                     // agregando los IDS
                     idApelacion=2;
                     break;
@@ -6157,7 +6132,6 @@
                     cajaQuejaenApelacion.style.display="none";
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
-                    apelacionSelecionada="Empresa operadora emitió pronunciamiento por materia distinta a la reclamada";
                     // agregando los IDS
                     idApelacion=3;
                     break;
@@ -6175,7 +6149,6 @@
                     cajaQuejaenApelacion.style.display="none";
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
-                    apelacionSelecionada="Empresa omitió pronunciarse por un extremo del reclamo o un recibo reclamado";
                     // agregando los IDS
                     idApelacion=4;
                     //
@@ -6193,7 +6166,6 @@
                     cajaQuejaenApelacion.style.display="none";
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
-                    apelacionSelecionada="La empresa operadora no acogió toda su pretensión";
                     // agregando los IDS
                     idApelacion=5;
                     break;
@@ -6209,7 +6181,6 @@
                     cajaQuejaenApelacion.style.display="none";
                     cajaReclamoenApelacion.style.display="none";
                     // opcion correcta
-                    apelacionSelecionada="Otros";
                     // agregando los IDS
                     idApelacion=6;
                     break;

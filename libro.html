@@ -12,17 +12,9 @@
 <body>
 
     <div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="reclamos.html">Reclamos</a>
-            <a href="libro.html">Libro de reclamaciones</a>
-        </nav>
-    </div>
-
-    <div>
         <input type="number" disabled id="tipo" style="display: none;">
 
-        <div class="cajas">
+        <div class="cajas" id="contenedor-indecopi-reclamos">
             <div class="caja" id="indecopi">
                 <div class="titulo">
                     <h3>INDECOPI</h3>
@@ -296,7 +288,7 @@
                                         <option value="6">Problema con la atención por el canal telefónico.</option>
                                         <option value="7">Problemas con la atención al momento de la instalación.</option>
                                         <option value="8">Problemas con la atención durante la visita técnica.</option>
-                                        <option value="3">otros</option>
+                                        <option value="9">otros</option>
                                     </select>
                                 </div>
 
@@ -518,6 +510,8 @@
         //
         const tipo=document.getElementById('tipo');
         // const cuando escojemos
+        const content_indecopi_osiptel=document.getElementById("contenedor-indecopi-reclamos")
+        //
         const indecopi=document.getElementById("indecopi");
         const reclamos = document.getElementById("reclamos");
         const queja=document.getElementById("queja");
@@ -642,7 +636,7 @@
 
         if (materiaqueja) {
             materiaqueja.addEventListener("click",()=>{
-                if (materiaqueja.value==="3") {
+                if (materiaqueja.value==="9") {
                     otrosreclamos.style.display="block";
                 }else{
                     otrosreclamos.style.display="none"
@@ -701,6 +695,7 @@
         if (indecopi) {
             indecopi.addEventListener("click",()=>{
                 preguntas.style.display = "block";
+                content_indecopi_osiptel.style.display="none"
             })
         }
 
