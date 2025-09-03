@@ -130,10 +130,20 @@ function convertFileToBase64(file) {
     caja_code.style.display="none"
 
     // para mostrar las cajas de cada
-    const content_data_personales_back=document.getElementById("content-datos-personales-atras")
-    const content_data_servicio_back=document.getElementById("content-datos-servicio-atras")
-    const content_preguntas_respuestas_back=document.getElementById("content-preguntas-respuestas")
-    const content_descargo_cliente_back=document.getElementById("content-descargo-cliente")
+    // sequence
+    const content_sequencia=document.getElementById("sequence-data")
+    content_sequencia.style.display="none"
+    const datos_personales_sequence=document.getElementById("datos-personales")
+    const materia_reclamo_sequence=document.getElementById("materia-reclamo")
+    const datos_servicio_sequence=document.getElementById("dato-servicio")
+    const preguntas_sequence=document.getElementById("preguntas")
+    const descargo_cliente_sequence=document.getElementById("descargo-cliente")
+    datos_personales_sequence.style.display="none"
+    materia_reclamo_sequence.style.display="none"
+    datos_servicio_sequence.style.display="none"
+    preguntas_sequence.style.display="none"
+    descargo_cliente_sequence.style.display="none"
+
 
     //
     const claim = document.getElementById("reclamo").addEventListener('click', () => {
@@ -704,68 +714,10 @@ function convertFileToBase64(file) {
         if (isValid) {
             mostrarSeccionPorTipoTicket();
             questions_datos_personales.style.display="none"
-            content_data_personales_back.style.display="flex"
-            title_datos_personales.textContent="Datos Personales"
+            content_sequencia.style.display="flex"
+            datos_personales_sequence.style.display="flex"
         }
     });
-
-    // fin de datos personales su validacion
-
-    // para los data-target
-
-    // const pasos = document.querySelectorAll(".content-sequence");
-
-    // pasos.forEach((step, indexClicked) => {
-    //     step.addEventListener("click", function () {
-    //         if (step.classList.contains("disabled")) return; // No hacer nada si está deshabilitado
-
-    //         const targetId = step.getAttribute("data-target");
-    //         if (!targetId) return;
-
-    //         // Pintar solo los anteriores y el actual
-    //         pasos.forEach((s, i) => {
-    //             if (i <= indexClicked) {
-    //                 s.classList.add("active");
-    //                 s.classList.remove("disabled");
-    //             } else {
-    //                 s.classList.remove("active");
-    //             }
-    //         });
-
-    //         // Ocultar todas las secciones
-    //         document.querySelectorAll(".step-section").forEach(section => section.style.display = "none");
-
-    //         // Mostrar la sección correspondiente
-    //         const targetSection = document.getElementById(targetId);
-    //         if (targetSection) {
-    //             targetSection.style.display = "block";
-    //         } else {
-    //             console.warn("Sección no encontrada:", targetId);
-    //         }
-
-    //         // Mostrar/ocultar según paso
-    //         if (targetId === "materia-elegido-datos-servicio") {
-    //             btn_apelacion.style.display="flex"
-    //             show_data_service_appeal()
-    //         } else {
-    //             btn_apelacion.style.display = "none";
-    //             hidden_data_service()
-    //         }
-
-    //         // Mostrar/ocultar según paso
-    //         if (targetId === "descargo-cliente") {
-    //             data_appeal.style.display = "block";
-    //         } else {
-    //             data_appeal.style.display = "none";
-    //         }
-    //     });
-    // });
-
-
-
-
-
-
 
     // fin de data-target
 
@@ -882,9 +834,8 @@ function convertFileToBase64(file) {
         btn_apelacion.style.display="none"
         // para mostar el boton que te envia a descargo de cliente
         next_apelacion.style.display="flex"
-        //
-        content_data_servicio_back.style.display="flex"
-        title_content_datos_servicios.textContent="Apelacion & Datos de Servicio"
+        // para mostrar la sequencia
+        materia_reclamo_sequence.style.flex
 
         switch (idApelacion) {
             case 1:
