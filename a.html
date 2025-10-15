@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Difuminado con Movimiento Real</title>
+  <style>
+    :root {
+      --primary-blue: #0036A1;
+      --accent-orange: #FF8308;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(180deg, #ffffff, #f4f4f4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Puntos de color difuminados con movimiento visible */
+    .blur-dot {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.25;
+      z-index: 0;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .dot-orange {
+      background: var(--accent-orange);
+      top: 10%;
+      left: 10%;
+      animation: floatOrange 25s ease-in-out infinite;
+    }
+
+    .dot-blue {
+      background: var(--primary-blue);
+      bottom: 5%;
+      right: 10%;
+      animation: floatBlue 30s ease-in-out infinite;
+    }
+
+    .dot-mixed {
+      background: linear-gradient(45deg, var(--primary-blue), var(--accent-orange));
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      opacity: 0.1;
+      animation: floatMixed 35s ease-in-out infinite;
+    }
+
+    /* Animaciones con trayectorias únicas */
+    @keyframes floatOrange {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(60px, -40px); }
+    }
+
+    @keyframes floatBlue {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-80px, 30px); }
+    }
+
+    @keyframes floatMixed {
+      0%, 100% { transform: translate(-50%, -50%); }
+      50% { transform: translate(-60%, -55%); }
+    }
+
+    /* Caja de login */
+    .login-box {
+      position: relative;
+      z-index: 1;
+      width: 360px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 25px;
+      color: var(--primary-blue);
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      outline: none;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .login-box input::placeholder {
+      color: #aaa;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--accent-orange);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background-color: #e67300;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Puntos de color animados -->
+  <div class="blur-dot dot-orange"></div>
+  <div class="blur-dot dot-blue"></div>
+  <div class="blur-dot dot-mixed"></div>
+
+  <!-- Caja de login -->
+  <div class="login-box">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" placeholder="Usuario" />
+    <input type="password" placeholder="Contraseña" />
+    <button>Entrar</button>
+  </div>
+
+</body>
+</html>

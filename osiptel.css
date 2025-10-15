@@ -8,42 +8,91 @@
 
 /* cajas de reclamos - queja  - apelacion */
 
-
-
-.contenedorOpciones label{
-    font-size: 20px;
-    font-weight: bold;
-}
-.contenedorOpciones{
-    padding: 10px;
+.contenedorRQA{
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    background-color: #002ccc;
-    border-radius: 10px;
-}
-.contenedorOpciones h3{
-    color: white;
-    font-weight: bold;
-}
-.contenedorTituloDescripcion{
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    cursor: pointer;
-}
-.descripcionCajas{
+    justify-content: center;
+    gap: 20px;
     padding: 10px;
-    margin-top: 10px;
-    text-align: justify;
-    height: 80%;
+    height: 100vh;
+    background-color: aliceblue;
+}
+
+.titleRQA{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.titleRQA h2{
+    font-size: 35px;
+}
+
+.cajaContenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 10px;
+}
+
+.content-icon{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.icon{
+    font-size: 50px;
     color: #002ccc;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    border-radius: 100%;
+    width: 18%;
 }
 
-.contenedorTituloDescripcion:hover{
-    transform: scale(1.05);
-    /* box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2); */
+.contenedorTituloDescripcion{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+    text-align: center;
+    width: 18%;
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 2px 1px 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+.contenedorTituloDescripcion:hover {
+    transform: scale(1.05); /* Escala al 105% del tamaño original */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra un poco más intensa al hacer hover */
+}
+
+
+.contenedorOpciones h3{
+    color: #ff4c00;
+}
+
+/**/
+
+
+@media only screen and (max-width: 768px) {
+    .questions-two{
+        flex-wrap: wrap;
+    }
+    /* los contonedores de reclamo - queja - apelacion*/
+    .contenedorTituloDescripcion{
+        width: 100%;
+    }
+
+    .icon{
+        width: 25%;
+    }
+    
 }
 
 
@@ -60,7 +109,7 @@
 .content_questions{
     padding: 40px;
     width: 70%;
-    display: block;
+    display: none;
     margin: auto;
 }
 
@@ -153,6 +202,17 @@
     transition: background-color 0.3s ease;
 }
 
+.atras{
+    padding: 10px 20px;
+    background-color: #002ccc;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;  
+}
+
 /* inputs */
 
 input[type="text"],input[type="email"],input[type="file"],input[type="date"],input[type="number"]{
@@ -209,20 +269,9 @@ textarea{
 }
 
 /*Contenedor de las opciones : Reclamo - Quejas - Apelacion*/
-.contenedorRQA{
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
 
-.cajaContenedor{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 10px;
-    gap: 20px;
-}
+
+
 
 /*button*/
 
@@ -296,15 +345,16 @@ textarea{
 .descargo{
     padding: 10px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .content-descargo-cliente{
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    justify-content: center;
+    gap: 25px;
+    padding: 5px;
 }
 
 /**/
@@ -319,6 +369,7 @@ textarea{
     display: flex;
     justify-content: center;
     padding: 10px;
+    gap: 20px;
 }
 
 /*  */
@@ -433,6 +484,8 @@ textarea{
 
 .content-sequence{
     padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-content-sequence{
@@ -453,6 +506,7 @@ textarea{
     justify-content: center;
     gap: 10px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .contenedor-caja-sequencia i{
@@ -461,14 +515,7 @@ textarea{
     align-items: center;
 }
 
-/**/
 
-
-@media only screen and (max-width: 768px) {
-    .questions-two{
-        flex-wrap: wrap;
-    }
-}
 
 /* fin  de la mejora*/
 

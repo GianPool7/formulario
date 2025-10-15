@@ -354,6 +354,19 @@
 
         /* para quitar las flechas de arriba y abajo */
 
+        /* para el mensajito */
+
+        .message{
+            background-color: aliceblue;
+            border-radius: 20px; 
+            padding: 20px;
+        }
+
+        .message-two{
+            margin: 20px 0 20px 0;
+            text-align: center;
+        }
+
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -730,9 +743,25 @@
 
                         </div>
 
+                        <!-- SECCIÓN FINAL AGRUPADA -->
+                        <div class="message" id="seccion-final-envio">
+                            <div id="nota-importante">
+                                <strong>NOTA IMPORTANTE:</strong><br><br>
+                                PYD TELECOM S.R.L., identificada con RUC N°. 20556147761 y con domicilio en Av. L, Mz. L, Lote 48, Urb. Santo Domingo de Carabayllo – 2da Etapa (Av. El Parque con Av. Condorcanqui), distrito de Carabayllo, provincia y departamento de Lima, es titular del Banco de Datos Personales denominado “Libro de Reclamaciones”, inscrito con el código PJ-2025-1901, y en cumplimiento del Artículo 18° de la Ley N°. 29733, Ley de Protección de Datos Personales, le informa que los datos personales que proporcione serán tratados con la finalidad de realizar gestiones vinculadas a la atención de reclamos y quejas sobre el producto y atención al cliente, brindar el servicio de atención al cliente y validar la identidad del cliente.<br><br>
+                                Si desea ejercer sus Derechos ARCO (acceso, rectificación, cancelación, oposición, información, actualización e inclusión) puede hacerlo siguiendo el procedimiento indicado en el siguiente enlace: 
+                                <a href="https://fiberpro.com.pe/contents/footer/Solicitud%20de%20Derechos%20ARCO.pdf?_t=1751572810" target="_blank" style="color:#007bff;">Solicitud de Derechos ARCO</a>.<br><br>
+                                Para conocer más sobre el tratamiento de sus datos personales, puede consultar nuestra Política de Privacidad disponible en el siguiente enlace:
+                                <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank" style="color:#007bff;">Política de Privacidad</a>.
+                            </div>
+                        </div>
 
                         <div class="btn" id="boton-reclamos">
                             <button id="enviarReclamo">Enviar</button>
+                        </div>
+
+                        <div class="message-two" id="politica-privacidad">
+                            <p>Al hacer clic en ENVIAR aceptas haber leído nuestra
+                            <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank" style="color:#007bff;">Política de Privacidad</a>.</p>
                         </div>
 
                     </div>
@@ -782,6 +811,11 @@
 
         // Regex para validar dominios específicos
         const correoValidoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|[\w.-]+\.edu.pe)$/i;
+
+        const mensajeFinal=document.getElementById("seccion-final-envio")
+        const ppMessage=document.getElementById("politica-privacidad")
+        mensajeFinal.style.display="none"
+        ppMessage.style.display="none"
 
         correo.addEventListener('input', () => {
             const esValido = correoValidoRegex.test(correo.value);
@@ -994,6 +1028,7 @@
                 datosconsumidor.style.display = "none";
                 btnRegresar.style.display = "flex";
             }
+
         });
 
         //
@@ -1054,6 +1089,9 @@
                 boton.style.display="flex"
                 cajareclamo.style.display="flex"
                 cajapreguntasreclamosquejas.style.display="block"
+                // mostrando el mensajito
+                mensajeFinal.style.display="block"
+                ppMessage.style.display="block"
                 // limpiando cajas
                 materiaqueja.value=""
                 const productos=document.getElementById('producto').value=""
@@ -1072,6 +1110,9 @@
                 boton.style.display="flex"
                 cajareclamo.style.display="none"
                 cajapreguntasreclamosquejas.style.display="block"
+                // mostrando el mensajito
+                mensajeFinal.style.display="block"
+                ppMessage.style.display="block"
                 // limpiando cajas
                 materiareclamo.value=""
                 const productos=document.getElementById('producto').value=""
@@ -1249,7 +1290,7 @@
                 libroreclamaciones.pruebas = pruebasBase64;
             }
 
-            const url = "https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/libroreclamaciones";
+            const url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones";
 
             try {
                 const response = await fetch(url, {

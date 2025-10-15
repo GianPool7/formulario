@@ -444,7 +444,6 @@ function convertFileToBase64(file) {
         }
     }
 
-
     function volveruser() {
         content_suscriber_user_representative.style.display = "flex";
         title_suscriber_user_representative.style.display = "none";
@@ -682,9 +681,6 @@ function convertFileToBase64(file) {
     }
 
 
-    // para el titulo de reclamo, queja y apelacion elegida
-    const title_reclamo_queja_apelacion_elegida=document.getElementById("title-rqa-elegida")
-
     // fin de funcion de validacion de datos personales
 
     function mostrarSeccionPorTipoTicket() {
@@ -706,8 +702,6 @@ function convertFileToBase64(file) {
     }
 
     // boton de continuar, para mostrar los selection
-
-    const title_datos_personales=document.getElementById("title-datos-personales")
 
     document.getElementById("validarFormularioContinuar").addEventListener("click", () => {
         const isValid = validarCamposGenerales() && validarCamposAutorizacion() && validarCamposTipoUsuario();

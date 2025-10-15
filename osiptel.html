@@ -22,48 +22,28 @@
             </nav>
         </div>
 
-        <div class="content-sequence" id="sequence-data">
-            <div class="menu-content-sequence">
-                <div class="contenedor-caja-sequencia" id="datos-personales">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <p>Datos personales</p>
-                </div>
-                <div class="contenedor-caja-sequencia" id="materia-reclamo">
-                    <i class="fa-regular fa-circle"></i>
-                    <!-- <i class="fa-regular fa-circle-check"></i> -->
-                    <p>Materia de reclamo</p>
-                </div>
-                <div class="contenedor-caja-sequencia" id="dato-servicio">
-                    <i class="fa-regular fa-circle"></i>
-                    <!-- <i class="fa-regular fa-circle-check"></i> -->
-                    <p>Datos de servicio</p>
-                </div>
-                <div class="contenedor-caja-sequencia" id="preguntas">
-                    <i class="fa-regular fa-circle"></i>
-                    <!-- <i class="fa-regular fa-circle-check"></i> -->
-                    <p>Preguntas</p>
-                </div>
-                <div class="contenedor-caja-sequencia" id="descargo-cliente">
-                    <i class="fa-regular fa-circle"></i>
-                    <!-- <i class="fa-regular fa-circle-check"></i> -->
-                    <p>Descargo del cliente</p>
-                </div>
-                <div class="contenedor-caja-sequencia" id="finalizar">
-                    <i class="fa-regular fa-circle"></i>
-                    <!-- <i class="fa-regular fa-circle-check"></i> -->
-                    <p>Finalizar</p>
-                </div>
-            </div>
-        </div>
 
 
         <div id="cajaPadre">
 
             <div class="contenedorRQA" id="contenedorOpcionesQRA">
 
+                <div class="titleRQA">
+                    <h2>Selecciona tu tipo de solicitud</h2>
+                    <p>Elige la opción que mejor describa tu situación para iniciar el proceso.</p>
+                </div>
+
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion" name="cajasValores" id="reclamo" data-value="3">
+                    <div class="contenedorTituloDescripcion" name="cajasValores" id="reclamo">
+
+                        <div class="content-icon">
+                            <div class="icon">
+                                <i class="fa-regular fa-file"></i>
+                            </div>
+                        </div>
+                        
+
                         <div class="contenedorOpciones">
                             <h3>Reclamo</h3>
                         </div>
@@ -72,17 +52,25 @@
                             <p>
                                 Registra tu reclamo sobre:
 
-                            <ul>
-                                <li>La calidad del servicio de internet. </li>
-                                <li>Desacuerdo sobre la facturación. </li>
-                                <li>Otros inconvenientes con el servicio contratado. </li>
-                            </ul>
+                                <br>
+                                <span>- La calidad del servicio de internet.</span>
+                                <br>
+                                <span>- Desacuerdo sobre la facturación.</span>
+                                <br>
+                                <span>- Otros inconvenientes con el servicio contratado. </span>
 
                             </p>
                         </div>
                     </div>
 
-                    <div class="contenedorTituloDescripcion" name="cajasValores" id="queja" data-value="6">
+                    <div class="contenedorTituloDescripcion" name="cajasValores" id="queja">
+
+                        <div class="content-icon">
+                            <div class="icon">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                        </div>
+
                         <div class="contenedorOpciones">
                             <h3 for="queja">Queja</h3>
                         </div>
@@ -95,7 +83,14 @@
                         </div>
                     </div>
 
-                    <div class="contenedorTituloDescripcion" name="cajasValores" id="apelacion" data-value="7">
+                    <div class="contenedorTituloDescripcion" name="cajasValores" id="apelacion">
+
+                        <div class="content-icon">
+                            <div class="icon">
+                                <i class="fa-solid fa-gavel"></i>
+                            </div>
+                        </div>
+
                         <div class="contenedorOpciones">
                             <h3 for="apelacion">Apelación</h3>
                         </div>
@@ -117,78 +112,63 @@
                 <input type="text" value="" id="tipo-user" name="tipo-user" readonly style="display: none;"/>
             </div>
 
-            <div class="titulo_opciones" id="queja-reclamo-apelacion">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" class="volver" onclick="volverRQA()" value="Atrás">
+            <div class="content-sequence" id="sequence-data">
+                <div class="menu-content-sequence">
+                    <div class="contenedor-caja-sequencia" id="select-type-claim" data-index="1">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <p id="title_type_select">Reclamo/Queja/Apelacion</p>
                     </div>
-                    <div class="tituloOpcion">
-                        <h3 id="opcion"></h3>
+                    <div class="contenedor-caja-sequencia" id="select-type-user" data-index="2">
+                        <i class="fa-solid fa-circle-check" id="check-type-user"></i>
+                        <p id="title_type_user"></p>
                     </div>
-                </div>
-            </div>
-
-            <div class="titulo_opciones" id="title-susbcriber-user-Representative">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" class="volver" onclick="volveruser()" value="Atrás"/>
+                    <div class="contenedor-caja-sequencia" id="datos-personales" data-index="3">
+                        <i class="fa-solid fa-circle-check" id="check-datos-personales"></i>
+                        <p>Datos personales</p>
                     </div>
-                    <div class="tituloOpcion">
-                        <h3 id="title-user"></h3>
+                    <div class="contenedor-caja-sequencia" id="materia-reclamo" data-index="4">
+                        <i class="fa-solid fa-circle-check" id="check-materia"></i>
+                        <!-- <i class="fa-solid fa-circle-check-check"></i> -->
+                        <p>Materia de reclamo</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="titulo_opciones" id="content-datos-personales-atras">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" class="volver" onclick="volverDatosPersonales()" value="Atrás"/>
+                    <div class="contenedor-caja-sequencia" id="dato-servicio" data-index="5">
+                        <i class="fa-solid fa-circle-check" id="check-datos-servicio"></i>
+                        <!-- <i class="fa-solid fa-circle-check-check"></i> -->
+                        <p>Datos de servicio</p>
                     </div>
-                    <div class="tituloOpcion">
-                        <h3 id="title-datos-personales"></h3>
+                    <div class="contenedor-caja-sequencia" id="preguntas" data-index="6">
+                        <i class="fa-solid fa-circle-check" id="check-preguntas"></i>
+                        <!-- <i class="fa-solid fa-circle-check-check"></i> -->
+                        <p>Preguntas</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="titulo_opciones" id="content-datos-servicio-atras">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" class="volver" onclick="volveropciondatosservicio()" value="Atrás"/>
+                    <div class="contenedor-caja-sequencia" id="descargo-cliente" data-index="7">
+                        <i class="fa-solid fa-circle-check" id="check-descargo-cliente"></i>
+                        <!-- <i class="fa-solid fa-circle-check-check"></i> -->
+                        <p>Descargo del cliente</p>
                     </div>
-                    <div class="tituloOpcion">
-                        <h3 id="title-datos-servicio"></h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="titulo_opciones" id="content-preguntas-respuestas">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" class="volver" onclick="volverpreguntasyrespuestas()" value="Atrás"/>
-                    </div>
-                    <div class="tituloOpcion">
-                        <h3 id="title-preguntas-respuestas"></h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="titulo_opciones" id="content-descargo-cliente">
-                <div class="contenedorTitulo">
-                    <div class="btnTitulo">
-                        <input type="button" class="volver" onclick="volverdescargocliente()" value="Atrás"/>
-                    </div>
-                    <div class="tituloOpcion">
-                        <h3 id="title-descargo-cliente"></h3>
+                    <div class="contenedor-caja-sequencia" id="finalizar" data-index="8">
+                        <i class="fa-regular fa-circle" id="check-finalizar"></i>
+                        <!-- <i class="fa-solid fa-circle-check-check"></i> -->
+                        <p>Finalizar</p>
                     </div>
                 </div>
             </div>
 
             <div class="contenedorRQA" id="content-susbcriber-user-Representative" style="display: none;">
 
+                <div class="titleRQA">
+                    <h2>Selecciona tu Tipo de Identidad</h2>
+                    <p>Por favor, elige la opción que mejor describe tu relación con el servicio.</p>
+                </div>
+
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado"
-                        data-value="1">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado">
+                        <div class="content-icon">
+                            <div class="icon">
+                                <i class="fa-regular fa-file"></i>
+                            </div>
+                        </div>
 
                         <div class="contenedorOpciones">
                             <!-- <input type="radio" name="tipoUsuario" value="abonado" id="abonado"> -->
@@ -203,8 +183,13 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="usuario"
-                        data-value="2">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="usuario">
+
+                        <div class="content-icon">
+                            <div class="icon">
+                                <i class="fa-solid fa-user-group"></i>
+                            </div>
+                        </div>
 
                         <div class="contenedorOpciones">
                             <!-- <input type="radio" name="tipoUsuario" value="usuario" id="usuario"> -->
@@ -219,8 +204,13 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="representante"
-                        data-value="3">
+                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="representante">
+
+                        <div class="content-icon">
+                            <div class="icon">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                        </div>
 
                         <div class="contenedorOpciones">
                             <!-- <input type="radio" name="tipoUsuario" value="representante" id="representante"> -->
@@ -235,6 +225,7 @@
                     </div>
 
                 </div>
+
             </div>
 
             <div class="codigo-box" id="code">
@@ -247,9 +238,8 @@
                 </div>
             </div>
 
-
             <!-- datos de validación  -->
-            <div class="validacion" id="validation">
+            <div class="validacion" id="validation" data-group="validacion">
                 <div class="title">
                     <span>VALIDACIÓN DE IDENTIDAD DE LA CONDICIÓN DE <span
                             id="type-user-abonado-usuario-representante"></span></span>
@@ -332,6 +322,7 @@
                         </div>
                         <!-- fin de abonado -->
                         <div id="usuario-content">
+
                             <div class="questions-two">
                                 <div class="caja-one">
                                     <label for="montoTarifa">Monto del plan tarifario: </label>
@@ -346,14 +337,12 @@
                                 </div>
                             </div>
 
-                            <div class="questions-one">
-
+                            <div class="questions-one" id="content-facturacion-abonado">
                                 <div class="caja-one">
                                     <label for="direccionFacturacion">Dirección de Facturación: </label>
                                     <input type="text" id="direccionFacturacion" placeholder="Dirección">
                                     <p class="msg-error" id="error-direccion-facturacion">Este campo es obligatorio!</p>
                                 </div>
-
                             </div>
                         </div>
                         <!-- usuario -->
@@ -370,13 +359,14 @@
                     </div>
 
                     <div class="btn-Continuar">
-                        <input type="button" class="volver" value="Validar" id="validar-datos-validacion" onclick="validarDatosvalidacion()"/>
+                        <input type="button" class="volver" value="Validar" onclick="validarDatosPersonales()"/>
                     </div>
                 </div>
             </div>
 
             <!-- datos personales -->
-            <div class="validacion" id="content-datos">
+            <div class="validacion" id="content-datos" data-group="datos-personales">
+
                 <div class="questions-two">
 
                     <div class="caja-one">
@@ -486,269 +476,275 @@
         </div>
 
 
-        <div id="materia-elegido-datos-servicio">
+        <div id="materia-elegido-datos-servicio" style="display: none;">
             <!-- para seleccionar las opciones --->
-            <div class="selections">
+            <div class="selections" id="content-materia-selection">
 
                 <div class="title">
                     <h2 id="title-rqa-elegida"></h2>
                 </div>
 
                 <div class="content-selecction" id="select-apelacion">
-                        <div class="selection-one">
-                            <label for="apelacionOpciones">Apelación Especifica</label>
-                            <select name="materiaReclamable" id="apelacionOpciones" onchange="apelaciones()">
-                                <option value="ninguno" selected>Seleccionar Opción</option>
-                                <option value="apelacionOne">No se analizaron pruebas presentadas por el usuario</option>
-                                <option value="apelacionTwo">La carta no motiva o sustenta la decisión de la empresa sobre el
-                                    reclamo</option>
-                                <option value="apelacionThree">Empresa operadora emitió pronunciamiento por materia distinta a
-                                    la reclamada</option>
-                                <option value="apelacionFour">Empresa omitió pronunciarse por un extremo del reclamo o un recibo
-                                    reclamado</option>
-                                <option value="apelacionFive">La empresa operadora no acogió toda su pretensión</option>
-                                <option value="apelacionSix">Otros</option>
-                            </select>
-                        </div>
+                    <div class="selection-one">
+                        <label for="apelacionOpciones">Apelación Especifica</label>
+                        <select name="materiaReclamable" id="apelacionOpciones">
+                            <option value="ninguno" selected>Seleccionar Opción</option>
+                            <option value="apelacionOne">No se analizaron pruebas presentadas por el usuario</option>
+                            <option value="apelacionTwo">La carta no motiva o sustenta la decisión de la empresa sobre el
+                                reclamo</option>
+                            <option value="apelacionThree">Empresa operadora emitió pronunciamiento por materia distinta a
+                                la reclamada</option>
+                            <option value="apelacionFour">Empresa omitió pronunciarse por un extremo del reclamo o un recibo
+                                reclamado</option>
+                            <option value="apelacionFive">La empresa operadora no acogió toda su pretensión</option>
+                            <option value="apelacionSix">Otros</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="content-selecction" id="select-queja">
-                        <div class="selection-one">
-                            <label for="quejasOpciones">Objeto de la queja </label>
-                            <select name="materiaReclamable" id="quejasOpciones" onchange="quejas()">seleccionarQueja
-                                <option value="ninguna" selected>Seleccionar Opción</option>
-                                <option value="quejaUno">Falta de respuesta al reclamo (aplicación de silencio administrativo
-                                    positivo)</option>
-                                <option value="quejaDos">No se permitió la presentación de reclamo, recurso de apelación o queja
-                                    o no se otorgó el código respectivo</option>
-                                <option value="quejaTres">Suspensión del servicio pese a reclamo en trámite</option>
-                                <option value="quejaCuatro">Requerimiento de pago del monto reclamado</option>
-                                <option value="quejaCinco">No se permitió el pago a cuenta del monto no reclamado</option>
-                                <option value="quejaSeis">Otros defectos de tramitación</option>
-                            </select>
-                        </div>
+                    <div class="selection-one">
+                        <label for="quejasOpciones">Objeto de la queja </label>
+                        <select name="materiaReclamable" id="quejasOpciones">seleccionarQueja
+                            <option value="ninguna" selected>Seleccionar Opción</option>
+                            <option value="quejaSeis">Falta de respuesta al reclamo (aplicación de silencio administrativo
+                                positivo)</option>
+                            <option value="quejaUno">No se permitió la presentación de reclamo, recurso de apelación o queja
+                                o no se otorgó el código respectivo</option>
+                            <option value="quejaDos">Suspensión del servicio pese a reclamo en trámite</option>
+                            <option value="quejaTres">Requerimiento de pago del monto reclamado</option>
+                            <option value="quejaCuatro">No se permitió el pago a cuenta del monto no reclamado</option>
+                            <option value="quejaCinco">Otros defectos de tramitación</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="content-selecction-two" id="select-reclamo">
                     <div class="selection-two">
 
-                            <div class="materiaReclamable">
-                                <label for="materias">Materias Reclamables</label>
-                                <select name="materiaReclamable" id="matter-claim" onchange="reclamo()">
-                                    <option value="ningun" selected>Seleccionar Opción</option>
-                                    <option id="mUno" value="fcs">Facturación y cobro</option>
-                                    <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
-                                    <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y
-                                        promociones</option>
-                                    <option id="mCuatro" value="falta">Falta de servicio</option>
-                                    <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio
-                                    </option>
-                                    <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio
-                                    </option>
-                                    <option id="mSiete" value="contratacion">Contratación no solicitada</option>
-                                    <option id="mOcho" value="migracion">Migración</option>
-                                    <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
-                                </select>
-                            </div>
+                        <div class="materiaReclamable">
+                            <label for="materias">Materias Reclamables</label>
+                            <select name="materiaReclamable" id="matter-claim" onchange="reclamo()">
+                                <option value="ningun" selected>Seleccionar Opción</option>
+                                <option id="mUno" value="fcs">Facturación y cobro</option>
+                                <option id="mDos" value="calidad">Calidad e idoneidad en la prestación del servicio</option>
+                                <option id="mTres" value="oferta">Incumplimiento de condiciones contractuales ofertas y
+                                    promociones</option>
+                                <option id="mCuatro" value="falta">Falta de servicio</option>
+                                <option id="mCinco" value="instalacion">Instalación activación o traslado del servicio
+                                </option>
+                                <option id="mSeis" value="baja">Falta de ejecución de baja o suspensión del servicio
+                                </option>
+                                <option id="mSiete" value="contratacion">Contratación no solicitada</option>
+                                <option id="mOcho" value="migracion">Migración</option>
+                                <option id="mNueve" value="xmaterias">Otras materias reclamables</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="fc" style="display: none;">
+                        <div class="fc" id="fc" style="display: none;">
 
-                                <label for="facturados">Problema Especifico</label>
-                                <select name="" id="facturados" onchange="facturado()">
-                                    <option id="flimpio" value="" selected>Selecciona la Opción</option>
-                                    <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados
-                                    </option>
-                                    <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales
-                                        facturados</option>
-                                    <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
-                                    <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier
-                                        concepto facturado en el recibo cuyo consumo se desconoce</option>
-                                    <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
-                                    <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o
-                                        realizados por documentos distintos al recibo</option>
-                                    <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por
-                                        desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales
-                                        vinculados a la permanencia del servicio público de telecomunicaciones contratado
-                                    </option>
-                                    <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado
-                                        previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos
-                                        (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento
-                                    </option>
-                                </select>
+                            <label for="facturados">Problema Especifico</label>
+                            <select name="" id="facturados" onchange="facturado()">
+                                <option id="flimpio" value="" selected>Selecciona la Opción</option>
+                                <option id="fUno" value="calculo">Desacuerdo con el cálculo de los consumos facturados
+                                </option>
+                                <option id="fDos" value="tarifa">Desacuerdo con la tarifa aplicada de consumos adicionales
+                                    facturados</option>
+                                <option id="fTres" value="reconexion">Desacuerdo con el cargo por reconexión</option>
+                                <option id="fCuatro" value="dmonto">Desacuerdo con otro monto correspondiente a cualquier
+                                    concepto facturado en el recibo cuyo consumo se desconoce</option>
+                                <option id="fCinco" value="noprocesado">Pagos no procesados o registrados</option>
+                                <option id="fSeis" value="nfacturados">Cobro de montos no facturados oportunamente o
+                                    realizados por documentos distintos al recibo</option>
+                                <option id="fSiete" value="cequipos">Cobros de equipos terminales incluido en el recibo por
+                                    desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales
+                                    vinculados a la permanencia del servicio público de telecomunicaciones contratado
+                                </option>
+                                <option id="fOcho" value="incremento">Aplicación del incremento tarifario no comunicado
+                                    previamente al abonado, respecto de los recibos que se emitan hasta el periodo de dos
+                                    (2) meses desde el vencimiento del primer recibo en que se aplicó dicho incremento
+                                </option>
+                            </select>
 
-                            </div>
+                        </div>
 
-                            <div class="fc" id="cs" style="display: none;">
-                                <label for="calidad">Problema Especifico</label>
-                                <select name="" id="calidadidoneidad" onchange="calidad()">
-                                    <option value="" selected>Selecciona la Opción</option>
-                                    <option id="cuno" value="calidaduno">Problemas con la prestación del servicio, tales como
-                                        intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="cs" style="display: none;">
+                            <label for="calidad">Problema Especifico</label>
+                            <select name="" id="calidadidoneidad" onchange="calidad()">
+                                <option value="" selected>Selecciona la Opción</option>
+                                <option id="cuno" value="calidaduno">Problemas con la prestación del servicio, tales como
+                                    intermitencia, lentitud, comunicaciones entrecortadas o con ruido, entre otros</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="op" style="display: none;">
-                                <label for="ofertas">Problema Especifico</label>
-                                <select name="" id="ofertas" onchange="incumpliento()">
-                                    <option value="" selected>Seleccionar Opción</option>
-                                    <option value="incumplimientoUNO">Incumplimiento de la aplicación de condiciones y tarifas
-                                        del plan contratado distintas a las pactadas en el contrato</option>
-                                    <option value="incumplimientoDOS">Incumplimiento de ofertas o promociones ofrecidas y/o
-                                        contratadas</option>
-                                    <option value="incumplimientoTRES">Descuentos no reconocidos de los atributos y/o beneficios
-                                        del plan contratado, oferta y/o promoción</option>
-                                    <option value="incumplimientoCUATRO">Omisión de información o información inexacta sobre
-                                        cobertura u otras características o limitaciones del servicio</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="op" style="display: none;">
+                            <label for="ofertas">Problema Especifico</label>
+                            <select name="" id="ofertas" onchange="incumpliento()">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="incumplimientoUNO">Incumplimiento de la aplicación de condiciones y tarifas
+                                    del plan contratado distintas a las pactadas en el contrato</option>
+                                <option value="incumplimientoDOS">Incumplimiento de ofertas o promociones ofrecidas y/o
+                                    contratadas</option>
+                                <option value="incumplimientoTRES">Descuentos no reconocidos de los atributos y/o beneficios
+                                    del plan contratado, oferta y/o promoción</option>
+                                <option value="incumplimientoCUATRO">Omisión de información o información inexacta sobre
+                                    cobertura u otras características o limitaciones del servicio</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="fs" style="display: none;">
-                                <label for="fservicio">Problema Especifico</label>
-                                <select name="serivio" id="fservicio" onchange="faltaServicios()">
-                                    <option value="" selected>Seleccionar Opción</option>
-                                    <option value="servicioone">Interrupción, suspensión, corte o baja injustificada del
-                                        servicio o sin observar el procedimiento establecido en la normativa vigente</option>
-                                    <option value="serviciotwo">Suspensión del servicio por uso prohibido en establecimientos
-                                        penitenciarios</option>
-                                    <option value="serviciothree">Falta de reactivación del servicio pese al pago del recibo
-                                    </option>
-                                    <option value="serviciofour"> Cambio de titularidad del servicio o reposición de SIM Card
-                                        sin consentimiento del abonado</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="fs" style="display: none;">
+                            <label for="fservicio">Problema Especifico</label>
+                            <select name="serivio" id="fservicio" onchange="faltaServicios()">
+                                <option value="" selected>Seleccionar Opción</option>
+                                <option value="servicioone">Interrupción, suspensión, corte o baja injustificada del
+                                    servicio o sin observar el procedimiento establecido en la normativa vigente</option>
+                                <option value="serviciotwo">Suspensión del servicio por uso prohibido en establecimientos
+                                    penitenciarios</option>
+                                <option value="serviciothree">Falta de reactivación del servicio pese al pago del recibo
+                                </option>
+                                <option value="serviciofour"> Cambio de titularidad del servicio o reposición de SIM Card
+                                    sin consentimiento del abonado</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="ia" style="display: none;">
-                                <label for="instalacion">Problema Especifico</label>
-                                <select name="" id="instalacion" onchange="instalaciones();">
-                                    <option value="" selected>Seleccionar Opción </option>
-                                    <option value="instalacionesUno">Falta de instalación del servicio fijo</option>
-                                    <option value="instalacionesDos">Falta de activación del servicio móvil</option>
-                                    <option value="instalacionesTres">Falta de traslado del servicio</option>
-                                    <option value="instalacionesCuatro">Falta de respuesta a la solicitud de trasladado o
-                                        negativa a la misma</option>
-                                    <option value="instalacionesCinco">Falta de devolución de los montos cobrados por
-                                        instalación, activación o traslado no ejecutados</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="ia" style="display: none;">
+                            <label for="instalacion">Problema Especifico</label>
+                            <select name="" id="instalacion" onchange="instalaciones();">
+                                <option value="" selected>Seleccionar Opción </option>
+                                <option value="instalacionesUno">Falta de instalación del servicio fijo</option>
+                                <option value="instalacionesDos">Falta de activación del servicio móvil</option>
+                                <option value="instalacionesTres">Falta de traslado del servicio</option>
+                                <option value="instalacionesCuatro">Falta de respuesta a la solicitud de trasladado o
+                                    negativa a la misma</option>
+                                <option value="instalacionesCinco">Falta de devolución de los montos cobrados por
+                                    instalación, activación o traslado no ejecutados</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="sus" style="display: none;">
-                                <label for="sb">Problema Especifico</label>
-                                <select name="" id="sb" onchange="baja()">
-                                    <option value="" selected>Seleccionar Opción </option>
-                                    <option value="bajaUno">Falta de ejecución de la baja</option>
-                                    <option value="bajaDos">Falta de ejecución de la suspensión temporal del servicio</option>
-                                    <option value="bajaTres">Montos cobrados posteriores a la fecha en que se efectuó la baja o
-                                        correspondía efectuarla</option>
-                                    <option value="bajaCuatro">Montos cobrados posteriores a la fecha en que se efectuó la
-                                        suspensión temporal o correspondía efectuarla</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="sus" style="display: none;">
+                            <label for="sb">Problema Especifico</label>
+                            <select name="" id="sb" onchange="baja()">
+                                <option value="" selected>Seleccionar Opción </option>
+                                <option value="bajaUno">Falta de ejecución de la baja</option>
+                                <option value="bajaDos">Falta de ejecución de la suspensión temporal del servicio</option>
+                                <option value="bajaTres">Montos cobrados posteriores a la fecha en que se efectuó la baja o
+                                    correspondía efectuarla</option>
+                                <option value="bajaCuatro">Montos cobrados posteriores a la fecha en que se efectuó la
+                                    suspensión temporal o correspondía efectuarla</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="ct" style="display: none;">
-                                <label for="con">Problema Especifico</label>
-                                <select name="" id="con" onchange="contratos();">
-                                    <option value="">Seleccionar Opción</option>
-                                    <option value="conuno">Desconoce contratación del servicio principal (*telefonía fija,
-                                        acceso a internet, servicio móvil, televisión de paga)</option>
-                                    <option value="condos">Desconoce contratación o afiliación a servicios adicionales o
-                                        suplementarios</option>
-                                    <option value="contres">Desconoce adquisición de paquetes de tráfico o señales de
-                                        programación (*datos, minutos, canales, otros)</option>
-                                    <option value="concuatro">Desconoce contrato de adquisición o financiamiento de equipo
-                                        terminal cuyo pago es incluido en el recibo como concepto facturable</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="ct" style="display: none;">
+                            <label for="con">Problema Especifico</label>
+                            <select name="" id="con" onchange="contratos();">
+                                <option value="">Seleccionar Opción</option>
+                                <option value="conuno">Desconoce contratación del servicio principal (*telefonía fija,
+                                    acceso a internet, servicio móvil, televisión de paga)</option>
+                                <option value="condos">Desconoce contratación o afiliación a servicios adicionales o
+                                    suplementarios</option>
+                                <option value="contres">Desconoce adquisición de paquetes de tráfico o señales de
+                                    programación (*datos, minutos, canales, otros)</option>
+                                <option value="concuatro">Desconoce contrato de adquisición o financiamiento de equipo
+                                    terminal cuyo pago es incluido en el recibo como concepto facturable</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="mi" style="display: none;">
-                                <label for="mig">Problema Especifico</label>
-                                <select name="" id="mig" onchange="migracionReclamable()">
-                                    <option value="">Seleccione opción</option>
-                                    <option value="migracionOne">Condicionamiento, negativa o falta de respuesta de la solicitud
-                                        de migración</option>
-                                    <option value="migracionTwo">Falta de ejecución de la migración dentro del plazo establecido
-                                    </option>
-                                    <option value="migracionThree">Facturación corresponde al plan anterior</option>
-                                    <option value="migracionFour">Migración no solicitada</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="mi" style="display: none;">
+                            <label for="mig">Problema Especifico</label>
+                            <select name="" id="mig" onchange="migracionReclamable()">
+                                <option value="">Seleccione opción</option>
+                                <option value="migracionOne">Condicionamiento, negativa o falta de respuesta de la solicitud
+                                    de migración</option>
+                                <option value="migracionTwo">Falta de ejecución de la migración dentro del plazo establecido
+                                </option>
+                                <option value="migracionThree">Facturación corresponde al plan anterior</option>
+                                <option value="migracionFour">Migración no solicitada</option>
+                            </select>
+                        </div>
 
-                            <div class="fc" id="xma" style="display: none;">
-                                <label for="x">Problema Especifico</label>
-                                <select name="" id="x" onchange="xMaterias()">
-                                    <option value="">Seleccione opción</option>
-                                    <option value="xMateriasROne">Negativa a contratar el servicio</option>
-                                    <option value="xMateriasRTwo">Falta de entrega de recibos</option>
-                                    <option value="xMateriasRThree">Negativa a brindar la facturación detallada o llamadas
-                                        entrantes</option>
-                                </select>
-                            </div>
+                        <div class="fc" id="xma" style="display: none;">
+                            <label for="x">Problema Especifico</label>
+                            <select name="" id="x" onchange="xMaterias()">
+                                <option value="">Seleccione opción</option>
+                                <option value="xMateriasROne">Negativa a contratar el servicio</option>
+                                <option value="xMateriasRTwo">Falta de entrega de recibos</option>
+                                <option value="xMateriasRThree">Negativa a brindar la facturación detallada o llamadas
+                                    entrantes</option>
+                            </select>
+                        </div>
 
                     </div>
+                </div>
+
+                <div class="btn-Continuar">
+                    <input type="button" class="volver" id="materiaApelacionbtn" value="continuar" onclick="apelaciones()">
+                    <input type="button" class="volver" id="materiaQuejabtn" value="continuar" onclick="quejas()">
+                    <input type="button" class="volver" id="materiaReclamobtn" value="continuar" onclick="reclamos()">
                 </div>
             </div>
             <!-- DATOS DEL SERVICIO -->
             <div class="data-service" id="data-service-complete">
                 <!-- reclamo -->
                 <div class="title">
-                        <h2 id="data-service-title"></h2>
+                    <h2 id="data-service-title"></h2>
                 </div>
 
                 <div class="questions-two" id="data-service-select">
-                        <div class="caja-one" id="select-claim-complaint-appeal">
-                            <label for="empresaOperadorReclamo">Empresa Operadora</label>
-                            <select name="empresaOperadorReclamo" id="empresaOperadorReclamo">
-                                <option value="FiberPro - PYD Telecom S.R.L">FiberPro - PYD Telecom S.R.L</option>
-                            </select>
-                        </div>
-                        <div class="caja-one" id="select-claim-complaint">
-                            <label for="servicioContratadoReclamo">Servicio Contratado</label>
-                            <select name="servicioContratadoReclamo" id="servicioContratadoReclamo">
-                                <option value="Internet de acceso fijo">Internet de acceso fijo</option>
-                            </select>
-                        </div>
+                    <div class="caja-one" id="select-claim-complaint-appeal">
+                        <label for="empresaOperadorReclamo">Empresa Operadora</label>
+                        <select name="empresaOperadorReclamo" id="empresaOperadorReclamo">
+                            <option value="FiberPro - PYD Telecom S.R.L">FiberPro - PYD Telecom S.R.L</option>
+                        </select>
+                    </div>
+                    <div class="caja-one" id="select-claim-complaint">
+                        <label for="servicioContratadoReclamo" id="title-select-complaint-appeal">Servicio Contratado</label>
+                        <select name="servicioContratadoReclamo" id="servicioContratadoReclamo">
+                            <option value="Internet de acceso fijo">Internet de acceso fijo</option>
+                        </select>
+                    </div>
 
-                        <div class="caja-one" id="select-appeal">
-                            <label for="servicioMateriaApelacion">Servicio materia de apelación </label>
-                            <select name="" id="servicioMateriaApelacion">
-                                <option value="">Seleccionar Opción</option>
-                                <option value="Materia de apelacion">Materia de apelacion</option>
-                                <option
-                                    value="Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)">
-                                    Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)</option>
-                                <option
-                                    value="No se permitió la presentación de reclamo, recurso de apelación o queja o no se otorgó el código respectivo">
-                                    No se permitió la presentación de reclamo, recurso de apelación o queja o no se otorgó
-                                    el código respectivo</option>
-                                <option value="Suspensión del servicio pese a reclamo en trámite">Suspensión del servicio
-                                    pese a reclamo en trámite</option>
-                                <option value="Requerimiento de pago del monto reclamado">Requerimiento de pago del monto
-                                    reclamado</option>
-                                <option value="No se permitió el pago a cuenta del monto no reclamado">No se permitió el
-                                    pago a cuenta del monto no reclamado</option>
-                                <option value="Otros defectos de tramitación">Otros defectos de tramitación</option>
-                                <option value="Facturación y cobro">Facturación y cobro</option>
-                                <option value="Calidad e idoneidad en la prestación del servicio">Calidad e idoneidad en la
-                                    prestación del servicio</option>
-                                <option value="Incumplimiento de condiciones contractuales ofertas y promociones">
-                                    Incumplimiento de condiciones contractuales ofertas y promociones</option>
-                                <option value="Falta de servicio">Falta de servicio</option>
-                                <option value="Instalación activación o traslado del servicio">Instalación activación o
-                                    traslado del servicio</option>
-                                <option value="Falta de ejecución de baja o suspensión del servicio">Falta de ejecución de
-                                    baja o suspensión del servicio</option>
-                                <option value="Recargas">Recargas</option>
-                                <option value="Contratación no solicitada">Contratación no solicitada</option>
-                                <option value="Migración">Migración</option>
-                                <option value="Portabilidad">Portabilidad</option>
-                                <option value="Otras materias reclamables">Otras materias reclamables</option>
-                                <option
-                                    value="Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado">
-                                    Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado
-                                    o por reintegro del descuento de equipos terminales vinculados a la permanencia del
-                                    servicio público de telecomunicaciones contratado</option>
-                                <option value="otros">otros</option>
-                            </select>
-                        </div>
+                    <div class="caja-one" id="select-appeal">
+                        <label for="servicioMateriaApelacion">Servicio materia de apelación </label>
+                        <select name="" id="servicioMateriaApelacion">
+                            <option value="">Seleccionar Opción</option>
+                            <option value="Materia de apelacion">Materia de apelacion</option>
+                            <option
+                                value="Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)">
+                                Falta de respuesta al reclamo (aplicación de silencio administrativo positivo)</option>
+                            <option
+                                value="No se permitió la presentación de reclamo, recurso de apelación o queja o no se otorgó el código respectivo">
+                                No se permitió la presentación de reclamo, recurso de apelación o queja o no se otorgó
+                                el código respectivo</option>
+                            <option value="Suspensión del servicio pese a reclamo en trámite">Suspensión del servicio
+                                pese a reclamo en trámite</option>
+                            <option value="Requerimiento de pago del monto reclamado">Requerimiento de pago del monto
+                                reclamado</option>
+                            <option value="No se permitió el pago a cuenta del monto no reclamado">No se permitió el
+                                pago a cuenta del monto no reclamado</option>
+                            <option value="Otros defectos de tramitación">Otros defectos de tramitación</option>
+                            <option value="Facturación y cobro">Facturación y cobro</option>
+                            <option value="Calidad e idoneidad en la prestación del servicio">Calidad e idoneidad en la
+                                prestación del servicio</option>
+                            <option value="Incumplimiento de condiciones contractuales ofertas y promociones">
+                                Incumplimiento de condiciones contractuales ofertas y promociones</option>
+                            <option value="Falta de servicio">Falta de servicio</option>
+                            <option value="Instalación activación o traslado del servicio">Instalación activación o
+                                traslado del servicio</option>
+                            <option value="Falta de ejecución de baja o suspensión del servicio">Falta de ejecución de
+                                baja o suspensión del servicio</option>
+                            <option value="Recargas">Recargas</option>
+                            <option value="Contratación no solicitada">Contratación no solicitada</option>
+                            <option value="Migración">Migración</option>
+                            <option value="Portabilidad">Portabilidad</option>
+                            <option value="Otras materias reclamables">Otras materias reclamables</option>
+                            <option
+                                value="Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado o por reintegro del descuento de equipos terminales vinculados a la permanencia del servicio público de telecomunicaciones contratado">
+                                Cobros de equipos terminales incluido en el recibo por desacuerdo en el monto facturado
+                                o por reintegro del descuento de equipos terminales vinculados a la permanencia del
+                                servicio público de telecomunicaciones contratado</option>
+                            <option value="otros">otros</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="questions-two" id="data-service-claim">
@@ -766,14 +762,14 @@
                 </div>
 
                 <div class="questions-two" id="data-service-complaint-appeal">
-                        <div class="caja-one">
-                            <label for="numeroServicioApelacion">Número del servicio reclamado o del contratado del abonado </label>
-                            <input type="text" id="numeroServicioApelacion">
-                        </div>
-                        <div class="caja-one">
-                            <label for="codigoNumeroQueja">Código o número de reclamo </label>
-                            <input type="text" id="codigoNumeroQueja">
-                        </div>
+                    <div class="caja-one">
+                        <label for="numeroServicioApelacion">Número del servicio reclamado o del contratado del abonado </label>
+                        <input type="text" id="numeroServicioApelacion">
+                    </div>
+                    <div class="caja-one">
+                        <label for="codigoNumeroQueja">Código o número de reclamo </label>
+                        <input type="text" id="codigoNumeroQueja">
+                    </div>
                 </div>
                 
                 <div class="questions-two" id="data-service-appeal">
@@ -796,12 +792,11 @@
             <input type="button" class="volver" id="cargar-queja" value="Continuar" onclick="pestañaQueja()">
             <input type="button" class="volver" id="cargar-reclamo" value="Continuar" onclick="pestañaReclamo()">
         </div>
-
         <!-- FIN DE DATOS DEL SERVICIO -->
 
 
         <!-- Descargo del cliente-->
-        <div class="descargo" id="descargo-cliente" style="display: none;">
+        <div class="descargo" id="contents-descargo-cliente">
             <div class="content-descargo-cliente">
                 <div class="title">
                     <h2>Descargo de cliente</h2>
@@ -817,11 +812,12 @@
                     <textarea name="" id="descripcionProblemaSolicitudReclamo" maxlength="300" ></textarea>
                 </div>
             </div>
+            
+            <div class="btn-Continuar" id="continuar-pp">
+                <input type="button" class="volver" value="Continuar" onclick="continuarpoliticas()"/>
+            </div>
         </div>
 
-        <div class="btn-Continuar" id="continuar-pp">
-            <input type="button" class="volver" value="Continuar" onclick="continuarpoliticas()"/>
-        </div>
         <!-- fin de descargo de cliente -->
 
         <!-- apelacion -->
@@ -968,7 +964,7 @@
 
             </div>
 
-            <div class="btn-Continuar" >
+            <div class="btn-Continuar">
                 <input type="button" class="volver" id="seguir-apelacion" value="continuar" onclick="continuarApelacion()">
             </div>
 
@@ -978,12 +974,12 @@
         <!-- queja -->
         <div class="content_questions" id="data-content-queja">
 
-            <div class="caja-one" id="quejaPreguntaUno" style="display: none;">
+            <div class="caja-one" id="quejaPreguntaUno">
                 <label for="fechaPresentacionQueja">Fecha de presentación del reclamo</label>
                 <input type="date" class="fecha" id="fechaPresentacionQueja">
             </div>
 
-            <div class="caja-one" id="quejaPreguntaDos" style="display: none;">
+            <div class="caja-one" id="quejaPreguntaDos">
 
                 <div class="questions-two">
                     <div class="caja-one">
@@ -1047,12 +1043,12 @@
 
             </div>
 
-            <div class="caja-one" id="quejaPreguntaTres" style="display: none;">
+            <div class="caja-one" id="quejaPreguntaTres">
                 <label for="fechaSuspendioServicioQueja">Fecha en la cual se habría suspendido el servicio</label>
                 <input type="date" class="fecha" name="fechaSuspendioServicioQueja" id="fechaSuspendioServicioQueja">
             </div>
 
-            <div class="caja-one" id="quejaPreguntaCuatro" style="display: none;">
+            <div class="caja-one" id="quejaPreguntaCuatro">
 
                 <div class="caja-one">
                     <label for="MediosCobranzasQuejas">Medio de cobranza </label>
@@ -1086,7 +1082,7 @@
 
             </div>
 
-            <div class="caja-one" id="quejaPreguntaCinco" style="display: none;">
+            <div class="caja-one" id="quejaPreguntaCinco">
 
                 <div class="questions-two">
                     <div class="caja-one">
@@ -1125,7 +1121,7 @@
 
             </div>
 
-            <div class="caja-one" id="quejaPreguntaSeis" style="display: none;">
+            <div class="caja-one" id="quejaPreguntaSeis">
 
                 <div class="questions-two">
 
@@ -1147,7 +1143,7 @@
 
             </div>
 
-            <div class="btn-Continuar" >
+            <div class="btn-Continuar">
                 <input type="button" class="volver" id="seguir-queja" value="continuar" onclick="continuaQueja()">
             </div>
 
@@ -2240,7 +2236,7 @@
             </div>
             <!--- OTROS -->
 
-            <div class="btn-Continuar" >
+            <div class="btn-Continuar">
                 <input type="button" class="volver" id="seguir-reclamo" value="continuar" onclick="continuarReclamo()">
             </div>
 
@@ -2249,7 +2245,7 @@
 
 
         <!--  -->
-        <div id="politicas-privaciada">
+        <div id="politicas-privacidad" style="display: none;">
             <div class="contenedor-caja">
                 <h2 style="color: #002ccc;">Nota Importante:</h2>
                 <br>
@@ -2279,11 +2275,11 @@
             </div>
 
             <div style="text-align: center; margin-top: 10px;">
-                <p>Al hacer clic en FINALIZAR acepta haber leído nuestra <span style="color: #002ccc;font-weight: bold;"><a href="https://fiberpro.com.pe/contents/footer/Pol%C3%ADticas%20de%20Privacidad_P%C3%A1gina%20web.pdf?_t=1751393738" target="_blank">Política de Privacidad</a></span>.</p>
+                <p>Al hacer clic en Enviar acepta haber leído nuestra <span style="color: #002ccc;font-weight: bold;"><a href="https://fiberpro.com.pe/contents/footer/Pol%C3%ADticas%20de%20Privacidad_P%C3%A1gina%20web.pdf?_t=1751393738" target="_blank">Política de Privacidad</a></span>.</p>
             </div>
 
             <div class="btn-Continuar">
-                <button class="btn" type="submit" id="enviar">FINALIZAR</button>
+                <button class="btn" type="submit" id="enviarFormulario">Enviar</button>
             </div>
 
         </div>
@@ -2294,6 +2290,6 @@
 
 </body>
 
-<script src="osipte.js"></script>
+<script src="osiptel.js"></script>
 
 </html>
