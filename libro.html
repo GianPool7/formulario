@@ -429,7 +429,7 @@
         }
     </style>
 
-    <div>
+    <div id="todas-sedes">
         <input type="text" value="2" id="sedes" disabled>
     </div>
 
@@ -1023,7 +1023,10 @@
         distritos_icas.style.display="none"
         //
         const identificar_sede=document.getElementById("sedes").value
-        identificar_sede.style.display="none"
+
+        const todas_sedes_ica_lima=document.getElementById("todas-sedes")
+        todas_sedes_ica_lima.style.display="none"
+        //
         identificar_sede.disabled=true
         //
         const boton_enviar_ica=document.getElementById("boton-ica")
