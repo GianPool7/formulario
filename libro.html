@@ -46,6 +46,15 @@
             transition: transform 0.5s ease-in-out; /* duración + efecto suave */
         }
 
+        .sede{
+            background-color: #002ccc;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+
         .preguntasolas h2{
             color: #ff4c00;
         }
@@ -294,6 +303,10 @@
             padding: 10px;
         }
 
+        .btn-ica{
+            background-color: #ff4c00;
+        }
+
         .btn button{
             width: 30%;
             padding: 10px;
@@ -417,6 +430,10 @@
     </style>
 
     <div>
+        <input type="text" value="1" id="sedes" disabled>
+    </div>
+
+    <div>
         <input type="number" disabled id="tipo" style="display: none;">
 
         <div class="cajas" id="contenedor-indecopi-reclamos">
@@ -537,7 +554,7 @@
                             </div>
                         </div>
 
-                        <div class="preguntitas">
+                        <div class="preguntitas" id="departamentos-lima">
 
                             <div>
                                 <label for="departamento">Departamento <span>*</span></label>
@@ -548,8 +565,8 @@
                             </div>
 
                             <div>
-                                <label for="provincias">Provincias<span>*</span> </label>
-                                <select name="provincias" id="provincias" required>
+                                <label for="provincias-lima">Provincias<span>*</span> </label>
+                                <select name="provincias-lima" id="provincias-lima" required>
                                     <option value="">Seleccionar Opción</option>
                                     <option value="128">Lima</option>
                                     <option value="134">Huarochiri</option>
@@ -560,11 +577,53 @@
 
                         </div>
 
-                        <div class="preguntitas">
+                        <div class="preguntitas" id="departamentos-ica">
 
                             <div>
+                                <label for="departamento-ica">Departamento <span>*</span></label>
+                                <select name="departamento-ica" id="departamento-ica" required>
+                                    <option value="Ica" class="opcion-seleccionada" selected>Ica</option>
+                                </select>
+                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                            <div>
+                                <label for="provincias-ica">Provincias<span>*</span> </label>
+                                <select name="provincias-ica" id="provincias-ica" required>
+                                    <option value="Ica" selected>Ica</option>
+                                </select>
+                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="preguntitas">
+
+                            <div id="distritos-lima">
                                 <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos" id="distritos">
+                                </select>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                            <div id="distritos-icas">
+                                <label for="distritos">Distritos <span>*</span></label>
+                                <select name="distritos-ica" id="distritos-ica">
+                                    <option value="">Seleccionar opción</option>
+                                    <option value="Ica">Ica</option>
+                                    <option value="La Tinguiña">La Tinguiña</option>
+                                    <option value="Los Aquijes">Los Aquijes</option>
+                                    <option value="Ocucaje">Ocucaje</option>
+                                    <option value="Pachacutec">Pachacutec</option>
+                                    <option value="Parcona">Parcona</option>
+                                    <option value="Pueblo Nuevo">Pueblo Nuevo</option>
+                                    <option value="Salas">Salas</option>
+                                    <option value="Tate">Tate</option>
+                                    <option value="San Jose De Los Molinos">San Jose De Los Molinos</option>
+                                    <option value="San Juan Bautista">San Juan Bautista</option>
+                                    <option value="Santiago">Santiago</option>
+                                    <option value="Subtanjalla">Subtanjalla</option>
                                 </select>
                                 <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
                             </div>
@@ -759,6 +818,10 @@
                             <button id="enviarReclamo">Enviar</button>
                         </div>
 
+                        <div class="btn" id="boton-ica">
+                            <button id="enviarCorreo">Enviar ica</button>
+                        </div>
+
                         <div class="message-two" id="politica-privacidad">
                             <p>Al hacer clic en ENVIAR aceptas haber leído nuestra
                             <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank" style="color:#007bff;">Política de Privacidad</a>.</p>
@@ -776,10 +839,20 @@
                     <h3>Gracias,</h3>
                     <p>Has llenado correctamente el formulario</p>
                     <p id="codigo"></p>
-                    <button id="descargarTicket" class="descargar">Descargar Documento</button>
+                    <p>Se envio una copia del formulario a tu correo</p>
                     <a href="https://fiberpro.com.pe/" class="inicio">Inicio</a>
                 </div>
             </div>
+
+            <div id="descargarTicketContainerIca" class="contenedor-ticket">
+                <div>
+                    <h3>Gracias,</h3>
+                    <p>Has llenado correctamente el formulario</p>
+                    <p>Te estaremos enviado un correo con respuesta reclamo</p>
+                    <a href="https://fiberpro.com.pe/sede-ica/" class="inicio">Inicio</a>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -789,6 +862,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script>
+
+
         // boton
         const btncontinuar=document.getElementById('reclamos-queja')
         btncontinuar.style.display="none"
@@ -936,6 +1011,20 @@
         const tipo=document.getElementById('tipo');
         // const cuando escojemos
         const content_indecopi_osiptel=document.getElementById("contenedor-indecopi-reclamos")
+        // los select de los departamentos
+        const departamentos_lima=document.getElementById("departamentos-lima")
+        const departamentos_ica=document.getElementById("departamentos-ica")
+        departamentos_lima.style.display="none"
+        departamentos_ica.style.display="none"
+        // select de los distritos
+        const distritos_lima=document.getElementById("distritos-lima")
+        const distritos_icas=document.getElementById("distritos-icas")
+        distritos_lima.style.display="none"
+        distritos_icas.style.display="none"
+        //
+        const identificar_sede=document.getElementById("sedes").value
+        const boton_enviar_ica=document.getElementById("boton-ica")
+        boton_enviar_ica.style.display="none"
         //
         const indecopi=document.getElementById("indecopi");
         const reclamos = document.getElementById("reclamos");
@@ -970,49 +1059,80 @@
         cajapreguntasreclamosquejas.style.display="none"
         // 
         const contenedorreclamoyqueja=document.getElementById("contenedor-reclamos-queja")
+        //
 
+        if (identificar_sede=="1") {
+            departamentos_lima.style.display="flex"
+            distritos_lima.style.display="flex"
+        }else if (identificar_sede=="2") {
+            departamentos_ica.style.display="flex"
+            distritos_icas.style.display="flex"
+        }
 
-        // para que aparezcan reclamo o queja
         btncontinuar.addEventListener('click', function () {
-            const campos = [
-                'tipodocumento',
-                'numerodocumento',
-                'nombres',
-                'apellidos',
-                'menorEdad',
-                'departamento',
-                'provincias',
-                'distritos',
-                'correo',
-                'movil',
-                'direccion'
-            ];
 
-            let formularioValido = true;
+        // 🔹 Listas de campos por sede
+        const campos_lima = [
+            'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
+            'departamento', 'provincias-lima', 'distritos', 'correo', 'movil', 'direccion'
+        ];
 
-            campos.forEach(id => {
+        const campos_ica = [
+            'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
+            'departamento-ica', 'provincias-ica', 'correo', 'movil', 'direccion'
+        ];
+
+        let formularioValido = true;
+
+        /**
+         * Valida los campos visibles y marca errores
+         */
+            const validarCampos = (campos) => {
+                campos.forEach(id => {
                 const campo = document.getElementById(id);
                 const error = document.getElementById('error-' + id);
 
-                if (!campo.value.trim()) {
+                // Ignorar campos inexistentes o ocultos
+                if (!campo || campo.offsetParent === null) return;
+
+                // Obtener valor según tipo de campo
+                let valor = '';
+                if (campo.tagName === 'SELECT') valor = campo.value;
+                else if (campo.type === 'checkbox' || campo.type === 'radio')
+                    valor = campo.checked ? 'checked' : '';
+                else valor = campo.value ? campo.value.trim() : '';
+
+                // Validar vacío
+                if (!valor) {
                     formularioValido = false;
                     campo.classList.add('campo-invalido');
                     if (error) error.style.display = 'block';
                 } else {
                     campo.classList.remove('campo-invalido');
                     if (error) error.style.display = 'none';
+
                 }
 
-                // Opción: actualizar error al escribir luego de hacer clic
-                campo.addEventListener('input', () => {
-                    if (campo.value.trim()) {
-                        campo.classList.remove('campo-invalido');
-                        if (error) error.style.display = 'none';
+                // Eliminar error al escribir o cambiar
+                const evento = (campo.tagName === 'SELECT') ? 'change' : 'input';
+                campo.addEventListener(evento, () => {
+                    const nuevoValor = (campo.tagName === 'SELECT') ? campo.value : campo.value.trim();
+                    if (nuevoValor) {
+                    campo.classList.remove('campo-invalido');
+                    if (error) error.style.display = 'none';
                     }
                 });
-            });
+                });
+            };
 
-            // Validar el campo radio "notificar"
+            // 🔹 Validar según sede activa
+            if (identificar_sede == "1") {
+                validarCampos(campos_lima);
+            } else if (identificar_sede == "2") {
+                validarCampos(campos_ica);
+            }
+
+            // 🔹 Validar radio “notificar”
             const notificar = document.querySelector('input[name="notificar"]:checked');
             if (!notificar) {
                 document.getElementById('mensajeError').style.display = 'block';
@@ -1021,15 +1141,18 @@
                 document.getElementById('mensajeError').style.display = 'none';
             }
 
+            // 🔹 Resultado final
             if (formularioValido) {
-                // Mostrar siguiente sección
                 reclamoQueja.style.display = 'flex';
                 contenedorreclamoyqueja.style.display = "block";
                 datosconsumidor.style.display = "none";
                 btnRegresar.style.display = "flex";
+            } else {
+                console.warn("❌ Formulario con errores");
             }
-
+        
         });
+
 
         //
         const radios = document.querySelectorAll('input[name="notificar"]');
@@ -1071,7 +1194,6 @@
             
         }
 
-
         if(edad){
             edad.addEventListener("click",()=>{
                 if (edad.value === "Si") {
@@ -1087,6 +1209,7 @@
                 preguntasreclamos.style.display="block";
                 preguntasquejas.style.display="none";
                 boton.style.display="flex"
+                // id_sede(identificar_sede)
                 cajareclamo.style.display="flex"
                 cajapreguntasreclamosquejas.style.display="block"
                 // mostrando el mensajito
@@ -1108,6 +1231,7 @@
                 preguntasquejas.style.display="block";
                 preguntasreclamos.style.display="none";
                 boton.style.display="flex"
+                // id_sede(identificar_sede)
                 cajareclamo.style.display="none"
                 cajapreguntasreclamosquejas.style.display="block"
                 // mostrando el mensajito
@@ -1130,6 +1254,7 @@
                 content_indecopi_osiptel.style.display="none"
             })
         }
+        
 
         if (reclamos) {
             reclamos.addEventListener("click", () => {
@@ -1139,50 +1264,39 @@
 
         /**/
 
-        const provinciaSelect = document.getElementById('provincias');
+        // Cargar distritos desde API cuando sede = 1
+        if (identificar_sede == "1") {
+        const provinciaSelect = document.getElementById('provincias-lima');
         const distritoSelect = document.getElementById('distritos');
 
         provinciaSelect.addEventListener('change', function () {
             const provinciaId = this.value;
-
-            // 🔴 Limpiar el select de distritos antes de cargar nuevos
-            distritoSelect.innerHTML = '';
+            distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
 
             if (!provinciaId) return;
 
             fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
-                .then(response => {
-                    if (!response.ok) throw new Error('Error en la API');
-                    return response.json();
-                })
-                .then(data => {
-                    data.forEach(distrito => {
-                        // 🔒 Ocultar "El Carmen de la Legua Reynoso" y "La Perla" si provinciaId es 67
-                        if (
-                            provinciaId === '67' &&
-                            (
-                                distrito.label.toLowerCase().includes('carmen de la legua') ||
-                                distrito.label.toLowerCase().includes('la perla')
-                            )
-                        ) {
-                            return; // No añadir esta opción
-                        }
-
-                        const option = document.createElement('option');
-                        option.value = distrito.value;
-                        option.textContent = distrito.label;
-                        distritoSelect.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    distritoSelect.innerHTML = '<option value="">Error al cargar</option>';
-                    console.error('Error:', error);
+            .then(response => response.json())
+            .then(data => {
+                distritoSelect.innerHTML = '';
+                data.forEach(distrito => {
+                const option = document.createElement('option');
+                option.value = distrito.value;
+                option.textContent = distrito.label;
+                distritoSelect.appendChild(option);
                 });
+            })
+            .catch(err => {
+                console.error('❌ Error al cargar distritos:', err);
+                distritoSelect.innerHTML = '<option value="">Error al cargar</option>';
+            });
         });
 
+        // 🔹 Llamar automáticamente al cargar
+        provinciaSelect.dispatchEvent(new Event('change'));
+        }
 
         // para regresar
-
         const regresar=document.getElementById("regresar").addEventListener("click",()=>{
             datosconsumidor.style.display="block"
             // reclamoQueja.style.display = 'none';
@@ -1201,407 +1315,164 @@
             preguntasquejas.style.display="none";
             //
             boton.style.display="none"
+            //
+            mensajeFinal.style.display="none"
+            ppMessage.style.display="none"
         })
 
+        /* para la seleccion */
+        let quejaOreclamo = "";
+        // Variable global para guardar el valor actual seleccionado
+        let materiareclamableica = "";
+
+        // Esperar a que el DOM esté listo
+        document.addEventListener("DOMContentLoaded", () => {
+            // para brindar el reclamo
+            if (reclamo && queja) {
+                reclamo.addEventListener("click", () => {
+                quejaOreclamo = "1";
+                });
+                queja.addEventListener("click", () => {
+                quejaOreclamo = "2";
+                });
+            }
+
+            // Escuchar cambios en el select de reclamo
+            if (materiareclamo) {
+                materiareclamo.addEventListener("change", (e) => {
+                materiareclamableica = e.target.value;
+                });
+            }
+            // Escuchar cambios en el select de queja
+            if (materiaqueja) {
+                materiaqueja.addEventListener("change", (e) => {
+                materiareclamableica = e.target.value;
+                });
+            }
+            console.log(materiareclamableica);
+        });
+
+
+        // fin de la funcion global de los id
 
         // para enviar ala api
-        document.getElementById('enviarReclamo').addEventListener('click',async function (event) {
+       document.getElementById('enviarReclamo').addEventListener('click', async function (event) {
+        event.preventDefault();
 
-            if (event.key === 'Enter') {
-                event.preventDefault();
-            }
+        const boton = document.getElementById('enviarReclamo');
+        const textoOriginal = boton.textContent;
+        boton.textContent = 'Enviando...';
+        boton.disabled = true;
+        btnRegresar.style.display = "none";
 
-            event.preventDefault();
-            // file
-            const fileInput = document.getElementById('pruebasFile');
-                let pruebasBase64 = null;
-                if (fileInput.files.length > 0) {
-                    pruebasBase64 = await getBase64(fileInput.files[0]);
-                }
-            //
-            const boton = document.getElementById('enviarReclamo');
-            const textoOriginal = boton.textContent;
-            boton.textContent = 'Enviando...';
-            boton.disabled = true; // evitar doble clic
-            btnRegresar.style.display="none"
-            //
-            // tipo de libro de reclamaciones
-            const tipo=document.getElementById('tipo').value;
-            //
-            const tipodocumento=document.getElementById('tipodocumento').value.trim();
-            const numerodocumento=document.getElementById('numerodocumento').value.trim();
-            const nombrescompletos=document.getElementById('nombres').value.trim();
-            const apellidoscompletos=document.getElementById('apellidos').value.trim();
-            const menorEdad=document.getElementById('menorEdad').value.trim()
-            const departamento=document.getElementById('departamento').value.trim()
-            const provincias=document.getElementById('provincias').value.trim()
-            const distrito=document.getElementById('distritos').value.trim()
-            const correoelectronico=document.getElementById('correo').value.trim()
-            const movil=document.getElementById('movil').value.trim()
-            const direccioncasa=document.getElementById('direccion').value.trim()
-            const nombrePadre=document.getElementById('padre').value.trim()
+        // --- ARCHIVO ---
+        const fileInput = document.getElementById('pruebasFile');
+        let pruebasBase64 = null;
+        if (fileInput.files.length > 0) {
+            pruebasBase64 = await getBase64(fileInput.files[0]);
+        }
 
-            const autorizacionRaw = document.querySelector('input[name="notificar"]:checked')?.value || "";
-            const autorizacion = autorizacionRaw === "si" ? "si" : ""; // vacio si es no
+        // --- DATOS COMUNES ---
+        const sedesicalima = document.getElementById('sedes').value.trim();
+        const tipo = document.getElementById('tipo').value;
 
+        const dataBase = {
+            sedesicalima,
+            tipo,
+            tipodocumento: document.getElementById('tipodocumento').value.trim(),
+            numerodocumento: document.getElementById('numerodocumento').value.trim(),
+            nombrescompletos: document.getElementById('nombres').value.trim(),
+            apellidoscompletos: document.getElementById('apellidos').value.trim(),
+            menorEdad: document.getElementById('menorEdad').value.trim(),
+            correoelectronico: document.getElementById('correo').value.trim(),
+            movil: document.getElementById('movil').value.trim(),
+            direccioncasa: document.getElementById('direccion').value.trim(),
+            nombrePadre: document.getElementById('padre').value.trim(),
+            autorizacion: document.querySelector('input[name="notificar"]:checked')?.value === "si" ? "si" : "",
+            materiareclamable: document.getElementById('materiareclamo').value.trim() || document.getElementById('materiaqueja').value.trim(),
+            otrosreclamable: document.getElementById('detalle-reclamo').value.trim(),
+            productos: document.getElementById('producto').value.trim(),
+            precio: document.getElementById('precio').value.trim(),
+            detalle: document.getElementById('detalle').value.trim(),
+            pedido: document.getElementById('pedido').value.trim(),
+        };
 
+        if (pruebasBase64) dataBase.pruebas = pruebasBase64;
 
-            const materiareclamable=document.getElementById('materiareclamo').value.trim() || document.getElementById('materiaqueja').value.trim();
-            const otrosreclamable=document.getElementById('detalle-reclamo').value.trim();
+        // --- SEGÚN SEDE ---
+        let url = "";
+        let payload = {};
 
-            const productos=document.getElementById('producto').value.trim()
-            const precio=document.getElementById('precio').value.trim()
-            const detalle=document.getElementById('detalle').value.trim()
-            const pedido=document.getElementById('pedido').value.trim()
+        if (sedesicalima === "1") {
+            url = "https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/libroreclamaciones/v2";
+            payload = {
+                ...dataBase,
+                departamento: document.getElementById('departamento').value.trim(),
+                provincias: document.getElementById('provincias-lima').value.trim(),
+                distrito: document.getElementById('distritos').value.trim(),
+            };
+        } else if (sedesicalima === "2") {
+            url = "https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/enviar_pdf";   
+            payload = {
+                ...dataBase,
+                departamento: document.getElementById('departamento-ica').value.trim(),
+                provincias: document.getElementById('provincias-ica').value.trim(),
+                distrito: document.getElementById('distritos-ica').value.trim(),
+            };
+        } else {
+            alert("Debe seleccionar una sede válida.");
+            boton.textContent = textoOriginal;
+            boton.disabled = false;
+            return;
+        }
 
-        
-            //console.log("Autorización seleccionada:", autorizacion); // 👈 Prueba esto
+        // --- ENVÍO ---
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
-            //const materiadequeja=document.getElementById('materiaqueja').value.trim()
-            // const otrasquejas=document.getElementById('otrasquejas')?.value.trim() || "";
+            const result = await response.json();
 
-            const libroreclamaciones={
-                //
-                tipo,
-                //
-                tipodocumento,
-                numerodocumento,
-                nombrescompletos,
-                apellidoscompletos,
-                menorEdad,
-                departamento,
-                provincias,
-                distrito,
-                correoelectronico,
-                movil,
-                direccioncasa,
-                autorizacion,
-                nombrePadre,
-                materiareclamable,
-                otrosreclamable,
-                productos,
-                precio,
-                detalle,
-                pedido,
-            }
-
-            // Agregar el archivo si existe
-            if (pruebasBase64) {
-                libroreclamaciones.pruebas = pruebasBase64;
-            }
-
-            const url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones";
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(libroreclamaciones)
-                });
-
-                const result = await response.json();
-
+            if (sedesicalima === "1") {
+                // ✅ LIMA - genera ticket
                 if (result.ticket_id) {
-                    // ✅ Éxito
                     boton.style.display = 'none';
                     document.getElementById('descargarTicketContainer').style.display = 'flex';
                     document.getElementById('codigo').innerText = `Tu código de reclamo es: ${result.ticket_id}`;
-                    contenedorreclamoyqueja.style.display="none"
-                    window.ticketInfo = {
-                        ...libroreclamaciones,
-                        ticket_id: result.ticket_id
-                    };
+                    contenedorreclamoyqueja.style.display = "none";
+                    window.ticketInfo = { ...payload, ticket_id: result.ticket_id };
                 } else {
                     document.getElementById('codigo').innerText = 'Error al registrar el reclamo.';
                     console.error('Error:', result);
                 }
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error de red o del servidor');
-            } finally {
-                // Restaurar botón si ocurrió error (no se restaura si fue exitoso, porque lo ocultas)
-                if (boton.style.display !== 'none') {
-                    boton.textContent = textoOriginal;
-                    boton.disabled = false;
+            } else if (sedesicalima === "2") {
+                // ✅ ICA - solo confirma envío
+                if (result.success) {
+                    contenedorreclamoyqueja.style.display = "none";
+                    boton.style.display = 'none';
+                    document.getElementById('descargarTicketContainerIca').style.display = 'flex';
+                } else {
+                    alert("Error al enviar el reclamo a la sede Ica.");
+                    console.error('Error:', result);
                 }
             }
-        })
 
-        function cargarImagenComoBase64(url) {
-            return fetch(url)
-                .then(res => res.blob())
-                .then(blob => new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => resolve(reader.result);
-                    reader.readAsDataURL(blob);
-                }));
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error de red o del servidor');
+        } finally {
+            if (boton.style.display !== 'none') {
+                boton.textContent = textoOriginal;
+                boton.disabled = false;
+            }
         }
-
-
-        // para gener pdf
-        document.getElementById('descargarTicket').addEventListener('click', async function () {
-            const distritoLabel = distritoSelect.options[distritoSelect.selectedIndex].text;
-            //
-            const ticket = window.ticketInfo;
-            if (!ticket) {
-                alert('No hay información del ticket para generar PDF.');
-                return;
-            }
-
-            // para convertir la materia reclamable
-
-
-            let reclamoelegido=""
-            let quejaelegido=""
-
-            switch (parseInt(ticket.materiareclamable)) {
-                case 1:
-                    reclamoelegido="Problemas con mi router/Modem"
-                    break;
-                
-                case 2:
-                    reclamoelegido="Problemas con mi repetidor"
-                    break;
-
-                case 3:
-                    reclamoelegido="Otros"
-                    break;
-                
-                case 4:
-                    quejaelegido="Problema con la atención por canal presencial."
-                    break;
-
-                case 5:
-                    reclamoelegido="Problema con la atención por el canal WhatsApp."
-                    break;
-                
-                case 6:
-                    quejaelegido="Problema con la atención por el canal telefónico."
-                    break;
-            
-                case 7:
-                    quejaelegido="Problemas con la atención al momento de la instalación."
-                    break;
-                
-                case 8:
-                    quejaelegido="Problemas con la atención durante la visita técnica."
-                    break;
-
-                default:
-                        reclamoelegido = "";
-                        quejaelegido = "";
-                    break;
-            }
-
-            var provincia=""
-            switch (parseInt(ticket.provincias)) {
-                case 128:
-                    provincia="Lima"
-                    break;
-                case 134:
-                    provincia="Huarochiri"
-                    break;
-                case 67:
-                    provincia="Callao"
-                    break;
-                default:
-                    break;
-            }
-            //
-            let opcionseleccionadoreclamo = "";
-            let opcionseleccionadoqueja = "";
-
-            if (parseInt(ticket.tipo) === 1) {
-                opcionseleccionadoreclamo = "x";
-            } else if (parseInt(ticket.tipo) === 2) {
-                opcionseleccionadoqueja = "x";
-            }
-            //
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            const logoURL = "data:image/png;base64,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";
-
-            // 🎯 Header azul personalizado (#002ccc)
-            doc.setFillColor(0, 44, 204); // R, G, B
-            doc.rect(0, 0, 210, 30, 'F');  // Rectángulo: x, y, width, height, tipo (F = fill)
-
-            // 📷 Logo (x, y, width, height)
-            doc.addImage(logoURL, 'PNG', 4, 5, 50, 20);
-
-            // Título del Header
-            doc.setFontSize(18);
-            doc.setTextColor(255, 255, 255); // Texto blanco
-            doc.setFont("Helvetica","bold");
-            doc.text("LIBRO DE RECLAMACIONES", 105, 18, null, null, "center");
-
-            // ================== ENCABEZADO ===================
-            doc.setTextColor(0,0,0); // Texto negro
-            doc.setFont("Helvetica", "bold");
-            doc.setFontSize(12);
-
-            // Columna izquierda: Empresa
-            doc.text("PYD Telecom S.R.L – RUC: 20556147761", 10, 37);
-            doc.text("Av. L Mza. L Lote. 48, Carabayllo, Lima", 10, 44);
-
-            // Columna derecha: Fecha y Código
-            const fechaActual = new Date().toLocaleDateString();
-            doc.text(`Fecha: ${fechaActual}`, 150, 37);
-            doc.text(`Código de Reclamación: ${ticket.ticket_id}`, 110, 44);
-
-            // ================== SECCIÓN 1 ===================
-            let y = 60;
-            doc.setFontSize(14);
-            doc.setFont("Helvetica", "bold");
-            doc.text("1. IDENTIFICACIÓN DEL CONSUMIDOR", 10, y);
-
-            y += 10;
-            doc.setFontSize(12);
-
-            // Campos de identificación
-            const datosConsumidor = [
-            ["Nombres y apellidos completos:", `${ticket.nombrescompletos} ${ticket.apellidoscompletos}`],
-            ["Domicilio:", ticket.direccioncasa],
-            ["Departamento / Provincia / Distrito:", `${ticket.departamento} / ${provincia} / ${distritoLabel}`],
-            ["Tipo y N° de Documento de Identidad:", `${ticket.tipodocumento} - ${ticket.numerodocumento}`],
-            ["Correo Electrónico:", ticket.correoelectronico],
-            ["Celular:", ticket.movil],
-            ["¿Eres menor de edad?", ticket.menorEdad]
-            ];
-
-            datosConsumidor.forEach(([label, value]) => {
-            doc.setFont("Helvetica", "bold");
-            doc.text(label, 10, y);
-            y += 6;
-            doc.setFont("Helvetica", "normal");
-            doc.text(doc.splitTextToSize(value, 190), 10, y);
-            y += 10;
-            });
-
-            // ================== SECCIÓN 2 ===================
-            doc.setFont("Helvetica", "bold");
-            doc.setFontSize(14);
-            doc.text("2. IDENTIFICACIÓN DEL BIEN ADQUIRIDO", 10, y);
-            y += 10;
-
-            doc.setFontSize(12);
-            const datosProducto = [
-            ["Tipo de bien:", reclamoelegido || quejaelegido ],
-            ["Monto del producto o servicio:", ticket.precio],
-            ["Descripción:", ticket.detalle]
-            ];
-
-            datosProducto.forEach(([label, value]) => {
-            doc.setFont("Helvetica", "bold");
-            doc.text(label, 10, y);
-            y += 6;
-            doc.setFont("Helvetica", "normal");
-            doc.text(doc.splitTextToSize(value, 190), 10, y);
-            y += 10;
-            });
-
-            // Salto a segunda hoja
-            doc.addPage();
-
-            // ================== SECCIÓN 3 ===================
-            doc.setFont("Helvetica", "bold");
-            doc.setFontSize(14);
-            doc.text("3. TIPO Y DETALLE DE LA RECLAMACIÓN", 10, 30);
-
-
-            // Datos para la tabla
-            // const headers = [["Columna 1", "Columna 2", "Columna 3"]];
-            const data3 = [
-            [      { content: "Tipo de Reclamación", rowSpan: 2, styles: { valign: 'middle', halign: 'center' } },
-                "Reclamo",
-                "Queja"
-            ],
-            [    
-                opcionseleccionadoreclamo,
-                opcionseleccionadoqueja,
-                {styles: { valign: 'middle', halign: 'center' } }],
-            [
-                { content: "Detalle de la Reclamación", colSpan: 3, styles: { halign: 'center' } }
-            ],
-            [{
-                content:`${ticket.detalle}`,colSpan:3,styles:{halign:'center'}
-            }],
-            [{
-                content:"Pedido concreto del consumidor", colSpan:3,styles:{halign:'center'}
-            }],
-            [{
-                content:`${ticket.pedido}`,colSpan:3,styles:{halign:'center'}
-            }
-            ]
-            ];
-
-            // Crear la tabla
-            doc.autoTable({
-            // head: headers,
-            body: data3,
-            startY: 40, // posición vertical donde empieza la tabla
-            theme: 'grid', // << aquí va el theme
-            columnStyles: {
-                    0: { cellWidth: 'wrap' }, // Tipo de Reclamación
-                    1: { cellWidth: 'wrap' }, // Reclamo
-                    2: { cellWidth: 'wrap' }  // Queja
-                }
-            });
-
-
-            // ================== SECCIÓN 4 ===================
-            doc.setFont("Helvetica", "bold");
-            doc.setFontSize(14);
-            doc.text("4. OBSERVACIONES Y ACCIONES ADOPTADAS", 10, 100);
-
-            // Datos para la tabla
-            // const headers = [["Columna 1", "Columna 2", "Columna 3"]];
-            const data4 = [
-            [  
-                `Reclamo:\n\n`,
-                `Queja:\n\n`
-            ],
-            [  
-                ``,
-                ``
-            ],
-            [  
-                "FIRMA DEL CONSUMIDOR",
-                `FIRMA DEL PROVEEDOR`
-            ],
-            ];
-
-            // Crear la tabla
-            doc.autoTable({
-            // head: headers,
-            body: data4,
-            startY: 110, // posición vertical donde empieza la tabla
-            theme: 'grid' // << aquí va el theme
-            });
-
-
-            // ================== SECCIÓN 5 ===================
-            doc.setFontSize(12);
-            doc.setFont("Helvetica", "normal");
-            const texto1 = "*El proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles improrrogable.";
-            const texto2 = "*Esta cuenta de correo se utiliza exclusivamente para el envío de constancias de recepción de reclamos. No está habilitada para recibir mensajes. Por favor, sírvase de no enviar correos a esta dirección electrónica.";
-
-            const maxWidth = 190; // Ancho máximo de texto en mm
-
-            const lines1 = doc.splitTextToSize(texto1, maxWidth);
-            const lines2 = doc.splitTextToSize(texto2, maxWidth);
-
-            doc.text(lines1, 10, 170); 
-            // Para el segundo texto, la Y debe sumar la cantidad de líneas * alto línea (por ejemplo 7 u 8)
-            doc.text(lines2, 10, 170 + lines1.length * 7 + 5);
-            
-            doc.save(`${ticket.ticket_id}.pdf`);
-
-        });
-
+    });
 
 
     </script>
+    
 </body>
 </html>
