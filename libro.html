@@ -1410,7 +1410,7 @@
         let payload = {};
 
         if (sedesicalima === "1") {
-            url = "https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/libroreclamaciones/v2";
+            url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones/v2";
             payload = {
                 ...dataBase,
                 departamento: document.getElementById('departamento').value.trim(),
@@ -1418,7 +1418,7 @@
                 distrito: document.getElementById('distritos').value.trim(),
             };
         } else if (sedesicalima === "2") {
-            url = "https://libro-reclamaciones-fiberpro-e2b1f36f0380.herokuapp.com/api/enviar_pdf";   
+            url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/enviar_pdf";   
             payload = {
                 ...dataBase,
                 departamento: document.getElementById('departamento-ica').value.trim(),
