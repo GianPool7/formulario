@@ -13,6 +13,10 @@
 
 <body>
 
+    <div id="ica-lima">
+        <input type="text" value="2" id="sedes-ica-lima" readonly>
+    </div>
+
     <form action="" method="post" class="contendioFormulario" id="claimForm" enctype="multipart/form-data">
         <div>
             <nav>
@@ -112,7 +116,9 @@
                 <input type="text" value="" id="tipo-user" name="tipo-user" readonly style="display: none;"/>
             </div>
 
+            <!-- secuencia -->
             <div class="content-sequence" id="sequence-data">
+
                 <div class="menu-content-sequence">
                     <div class="contenedor-caja-sequencia" id="select-type-claim" data-index="1">
                         <i class="fa-solid fa-circle-check"></i>
@@ -152,6 +158,7 @@
                         <p>Finalizar</p>
                     </div>
                 </div>
+
             </div>
 
             <div class="contenedorRQA" id="content-susbcriber-user-Representative" style="display: none;">
@@ -163,7 +170,7 @@
 
                 <div class="cajaContenedor">
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="abonado">
+                    <div class="contenedorTituloDescripcion" name="tipoUsuario" id="abonado">
                         <div class="content-icon">
                             <div class="icon">
                                 <i class="fa-regular fa-file"></i>
@@ -183,7 +190,7 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="usuario">
+                    <div class="contenedorTituloDescripcion" name="tipoUsuario" id="usuario">
 
                         <div class="content-icon">
                             <div class="icon">
@@ -204,7 +211,7 @@
 
                     </div>
 
-                    <div class="contenedorTituloDescripcion" class="tipoUsuario" name="tipoUsuario" id="representante">
+                    <div class="contenedorTituloDescripcion" name="tipoUsuario" id="representante">
 
                         <div class="content-icon">
                             <div class="icon">
@@ -367,7 +374,7 @@
             <!-- datos personales -->
             <div class="validacion" id="content-datos" data-group="datos-personales">
 
-                <div class="questions-two">
+                <div class="questions-two" id="identificacion-lima">
 
                     <div class="caja-one">
                         <label for="tipoDoc">Tipo de Documento</label>
@@ -381,6 +388,30 @@
                         <div class="caja-search">
                             <input type="text" class="" id="numDoc" placeholder="Número de identidad" max="9" required>
                             <button type="button" class="search" onclick="buscarcliente()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        <span class="msg-error" id="campo-numero-doc">Campo obligatorio !</span>
+                    </div>
+
+                </div>
+
+                <div class="questions-two" id="identificacion-ica">
+
+                    <div class="caja-one">
+                        <label for="tipoDoc-ica">Tipo de Documento</label>
+                        <select name="tipoDoc-ica" id="tipoDoc-ica" onchange="tipoDocIca()">
+                            <option value="" selected>Escojer una opcion</option>
+                            <option value="DNI">DNI</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="C.E.">C.E.</option>
+                            <option value="RUC">RUC</option>
+                        </select>
+                        <span class="msg-error" id="campo-tipo-doc">Campo obligatorio !</span>
+                    </div>
+
+                    <div class="caja-one">
+                        <label for="numDoc-ica">Número de Documento</label>
+                        <div class="caja-search">
+                            <input type="text" class="" id="numDoc-ica" placeholder="Número de identidad" max="9" required>
                         </div>
                         <span class="msg-error" id="campo-numero-doc">Campo obligatorio !</span>
                     </div>
@@ -428,12 +459,34 @@
                             max="9" required>
                         <span class="msg-error" id="campo-numero">Campo obligatorio !</span>
                     </div>
-                    <div class="caja-one">
+                    <div class="caja-one" id="distritos-lima">
                         <label for="distritos">Distrito</label>
                         <select name="distritos" id="distritos" onchange="">
                         </select>
                         <span class="msg-error" id="campo-distrito">Campo obligatorio !</span>
                     </div>
+
+                    <div class="caja-one" id="distritos-ica">
+                        <label for="distritos-ica">Distrito</label>
+                        <select name="distritos-ica" id="distritos-ica" onchange="">
+                            <option value="Seleccionar">Seleccionar</option>
+                            <option value="ICA">ICA</option>
+                            <option value="La Tinguiña">La Tinguiña</option>
+                            <option value="Los Aquijes">Los Aquijes</option>
+                            <option value="Ocucaje">Ocucaje</option>
+                            <option value="Pachacutec">Pachacutec</option>
+                            <option value="Parcona">Parcona</option>
+                            <option value="Pueblo Nuevo">Pueblo Nuevo</option>
+                            <option value="Salas">Salas</option>
+                            <option value="Tate">Tate</option>
+                            <option value="San Jose De Los Molinos">San Jose De Los Molinos</option>
+                            <option value="San Juan Bautista">San Juan Bautista</option>
+                            <option value="Santiago">Santiago</option>
+                            <option value="Subtanjalla">Subtanjalla</option>
+                        </select>
+                        <span class="msg-error" id="campo-distrito">Campo obligatorio !</span>
+                    </div>
+                    
                 </div>
 
                 <div class="questions-two">
@@ -452,7 +505,9 @@
                 </div>
 
                 <div class="datos_solo" id="escojerCorreo">
+
                     <p>Autoriza ser notificado por correo electrónico </p>
+
                     <div class="siNO">
                         <div class="oCorreo">
                             <label for="autoriza_si">Sí</label>
@@ -463,9 +518,11 @@
                             <input type="radio" name="autorizacion" id="autoriza_no" value=False>
                         </div>
                     </div>
+                    
                     <div>
                         <span class="msg-error" id="campo-autorizacion">Campo obligatorio !</span>
                     </div>
+
                 </div>
 
                 <div class="btn-Continuar">
@@ -677,7 +734,7 @@
                 </div>
 
                 <div class="btn-Continuar">
-                    <input type="button" class="volver" id="materiaApelacionbtn" value="continuar" onclick="apelaciones()">
+                    <input type="button" class="volver" id="materiaApelacionbtn" value="continuar" onclick="apelacion()">
                     <input type="button" class="volver" id="materiaQuejabtn" value="continuar" onclick="quejas()">
                     <input type="button" class="volver" id="materiaReclamobtn" value="continuar" onclick="reclamos()">
                 </div>
@@ -911,7 +968,7 @@
 
                 <div class="caja-one">
                     <label for="apelacionOpcioncinco">Falta acoger todo o parte del monto reclamado </label>
-                    <select name="apelacionOpcioncinco" id="apelacionOpcioncinco" onchange="apelacionCinco();">
+                    <select name="apelacionOpcioncinco" id="apelacionOpcioncinco" onchange="apelacionCinco()">
                         <option value="" selected>Seleccione Opción</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -2290,6 +2347,6 @@
 
 </body>
 
-<script src="osiptel.js"></script>
+<script src="osiptelv2.js"></script>
 
 </html>
