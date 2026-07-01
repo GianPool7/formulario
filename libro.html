@@ -430,7 +430,7 @@
     </style>
 
     <div id="todas-sedes">
-        <input type="hidden" value="1" id="sedes" disabled>
+        <input type="hidden" value="3" id="sedes" disabled>
     </div>
 
     <div>
@@ -559,6 +559,7 @@
                             <div>
                                 <label for="departamento">Departamento <span>*</span></label>
                                 <select name="departamento" id="departamento" required>
+                                    <!-- <option value="Ica" class="opcion-seleccionada" selected>Ica</option> -->
                                     <option value="Lima" class="opcion-seleccionada" selected>Lima</option>
                                 </select>
                                 <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
@@ -571,6 +572,7 @@
                                     <option value="128">Lima</option>
                                     <option value="134">Huarochiri</option>
                                     <option value="67">Callao</option>
+
                                 </select>
                                 <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
                             </div>
@@ -591,6 +593,30 @@
                                 <label for="provincias-ica">Provincias<span>*</span> </label>
                                 <select name="provincias-ica" id="provincias-ica" required>
                                     <option value="Ica" selected>Ica</option>
+                                </select>
+                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="preguntitas" id="departamentos-ica-chincha-pisco">
+
+                            <div>
+                                <label for="departamento-ica-chincha-pisco">Departamento <span>*</span></label>
+                                <select name="departamento-ica-chincha-pisco" id="departamento-ica-chincha-pisco" required>
+                                    <option value="1101" class="opcion-seleccionada" selected>Ica</option>
+                                </select>
+                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+
+                            <div>
+                                <label for="provincias-ica-chincha-pisco">Provincias<span>*</span> </label>
+                                <select name="provincias-ica-chincha-pisco" id="provincias-ica-chincha-pisco" required>
+                                    <option value="" selected>Seleccionar opción</option>
+                                    <option value="1102" >Chincha</option>
+                                    <option value="1105" >Pisco</option>
                                 </select>
                                 <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
                             </div>
@@ -624,6 +650,48 @@
                                     <option value="San Juan Bautista">San Juan Bautista</option>
                                     <option value="Santiago">Santiago</option>
                                     <option value="Subtanjalla">Subtanjalla</option>
+                                </select>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                            <div id="distritos-icas-chincha-pisco">
+                                <label for="distritos">Distritos <span>*</span></label>
+                                <select name="distritos_ica_chincha_pisco" id="distritos_ica_chincha_pisco" disabled>
+
+                                    <option value="" >Seleccionar opción</option>
+
+                                </select>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                            <div id="distritos-icas-chincha">
+                                <label for="distritos">Distritos <span>*</span></label>
+                                <select name="distritos-ica-chincha" id="distritos-ica-chincha">
+
+                                    <option value="">Seleccionar opción</option>
+                                    <option value="110201">Chincha Alta</option>
+                                    <option value="110204">Chincha Baja</option>
+                                    <option value="110205">El Carmen</option>
+                                    <option value="110211">Tambo de Mora</option>
+                                    <option value="110202">Alta Laram</option>
+                                    <option value="110210">Sunampe</option>
+                                    <option value="110206">Grocio Prado</option>
+                                    <option value="110207">Pueblo Nuevo</option>
+
+                                </select>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                            </div>
+
+                            <div id="distritos-icas-pisco">
+                                <label for="distritos">Distritos <span>*</span></label>
+                                <select name="distritos-ica-pisco" id="distritos-ica-pisco">
+                                    <!-- pisco -->
+                                    <option value="">Seleccionar opción</option>
+                                    <option value="110501">Pisco</option>
+                                    <option value="110503">Humay</option>
+                                    <option value="110504">Independencia</option>
+                                    <option value="110507">San Clemente</option>
+                                    <option value="110505">Tupac Amaru Inca</option>
                                 </select>
                                 <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
                             </div>
@@ -840,6 +908,7 @@
                     <p>Has llenado correctamente el formulario</p>
                     <p id="codigo"></p>
                     <p>Se envio una copia del formulario a tu correo</p>
+                    <p><b>Si no esta en su bandeja de entrada revisar en SPAM, Gracias</b></p>
                     <a href="https://fiberpro.com.pe/" class="inicio">Inicio</a>
                 </div>
             </div>
@@ -1014,16 +1083,49 @@
         // los select de los departamentos
         const departamentos_lima=document.getElementById("departamentos-lima")
         const departamentos_ica=document.getElementById("departamentos-ica")
+        const departamentos_ica_chincha_pisco=document.getElementById("departamentos-ica-chincha-pisco")
         departamentos_lima.style.display="none"
         departamentos_ica.style.display="none"
+        departamentos_ica_chincha_pisco.style.display="none"
         // select de los distritos
         const distritos_lima=document.getElementById("distritos-lima")
         const distritos_icas=document.getElementById("distritos-icas")
+        const distritos_icas_chincha_pisco=document.getElementById("distritos-icas-chincha-pisco")
         distritos_lima.style.display="none"
         distritos_icas.style.display="none"
+        distritos_icas_chincha_pisco.style.display="none"
+        // distritos
+        const distritos_ica_chincha=document.getElementById("distritos-icas-chincha")        
+        const distritos_ica_pisco=document.getElementById("distritos-icas-pisco")
+        distritos_ica_chincha.style.display="none"
+        distritos_ica_pisco.style.display="none"
         //
         const identificar_sede=document.getElementById("sedes").value
+        //
+        const distritos_ica_chincha_pisco=document.getElementById("provincias-ica-chincha-pisco")
+        distritos_ica_chincha_pisco.addEventListener('change',(event)=>{
+            
+            
+            if (event.target.value=="1102") {
+                // Mostrar distritos de Chincha
+                // Aquí puedes agregar la lógica para mostrar los distritos de Chincha
+                //alert("hola chincha")
+                distritos_ica_chincha.style.display="flex"
+                distritos_ica_pisco.style.display="none"
+                distritos_icas_chincha_pisco.style.display="none"
 
+            } else if (event.target.value=="1105") {
+                // Mostrar distritos de Pisco
+                // Aquí puedes agregar la lógica para mostrar los distritos de Pisco
+                //alert("hola pisco")
+                distritos_ica_pisco.style.display="flex"
+                distritos_ica_chincha.style.display="none"
+                distritos_icas_chincha_pisco.style.display="none"
+            }
+
+        })
+
+        //
         const todas_sedes_ica_lima=document.getElementById("todas-sedes")
         todas_sedes_ica_lima.style.display="none"
         //
@@ -1073,6 +1175,9 @@
         }else if (identificar_sede=="2") {
             departamentos_ica.style.display="flex"
             distritos_icas.style.display="flex"
+        }else if (identificar_sede=="3") {
+            departamentos_ica_chincha_pisco.style.display="flex"
+            distritos_icas_chincha_pisco.style.display="flex"
         }
 
         btncontinuar.addEventListener('click', function () {
@@ -1382,6 +1487,9 @@
         const sedesicalima = document.getElementById('sedes').value.trim();
         const tipo = document.getElementById('tipo').value;
 
+        const correoElectronico = document.getElementById('correo').value.trim();
+        const autorizaNotificacionCorreo = document.querySelector('input[name="notificar"]:checked')?.value === "si";
+
         const dataBase = {
             sedesicalima,
             tipo,
@@ -1390,11 +1498,15 @@
             nombrescompletos: document.getElementById('nombres').value.trim(),
             apellidoscompletos: document.getElementById('apellidos').value.trim(),
             menorEdad: document.getElementById('menorEdad').value.trim(),
-            correoelectronico: document.getElementById('correo').value.trim(),
+            correoelectronico: correoElectronico,
+            correo: correoElectronico,
+            email: correoElectronico,
             movil: document.getElementById('movil').value.trim(),
             direccioncasa: document.getElementById('direccion').value.trim(),
             nombrePadre: document.getElementById('padre').value.trim(),
-            autorizacion: document.querySelector('input[name="notificar"]:checked')?.value === "si" ? "si" : "",
+            autorizacion: autorizaNotificacionCorreo ? "si" : "no",
+            autorizacion_correo: autorizaNotificacionCorreo,
+            notificar_por_correo: autorizaNotificacionCorreo,
             materiareclamable: document.getElementById('materiareclamo').value.trim() || document.getElementById('materiaqueja').value.trim(),
             otrosreclamable: document.getElementById('detalle-reclamo').value.trim(),
             productos: document.getElementById('producto').value.trim(),
@@ -1425,7 +1537,15 @@
                 provincias: document.getElementById('provincias-ica').value.trim(),
                 distrito: document.getElementById('distritos-ica').value.trim(),
             };
-        } else {
+        } else if (sedesicalima === "3") {
+            url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones/chincha-pisco";   
+            payload = {
+                ...dataBase,
+                departamento: document.getElementById('departamento-ica').value.trim(),
+                provincias: document.getElementById('provincias-ica').value.trim(),
+                distrito: document.getElementById('distritos-ica').value.trim(),
+            };
+        }else {
             alert("Debe seleccionar una sede válida.");
             boton.textContent = textoOriginal;
             boton.disabled = false;
@@ -1440,7 +1560,11 @@
                 body: JSON.stringify(payload)
             });
 
-            const result = await response.json();
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(result.error || result.message || `Error HTTP ${response.status}`);
+            }
 
             if (sedesicalima === "1") {
                 // ✅ LIMA - genera ticket
