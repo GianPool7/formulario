@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://fonts.cdnfonts.com/css/clan-pro" rel="stylesheet">
 </head>
+
 <body>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
@@ -18,8 +20,8 @@
 
         /**/
 
-        .badge{
-            /* background-color: #ff4c00; */ 
+        .badge {
+            /* background-color: #ff4c00; */
             color: #ff4c00;
             padding: 4px;
             border-radius: 10px;
@@ -28,12 +30,12 @@
 
         /**/
 
-        .cajas{
+        .cajas {
             display: flex;
             justify-content: space-around;
         }
 
-        .caja{
+        .caja {
             background-color: white;
             width: 20%;
             padding: 10px;
@@ -43,10 +45,11 @@
             border-radius: 20px;
             box-shadow: 1px 5px 10px black;
             cursor: pointer;
-            transition: transform 0.5s ease-in-out; /* duración + efecto suave */
+            transition: transform 0.5s ease-in-out;
+            /* duración + efecto suave */
         }
 
-        .sede{
+        .sede {
             background-color: #002ccc;
             padding: 10px;
             margin: 10px;
@@ -55,15 +58,15 @@
             cursor: pointer;
         }
 
-        .preguntasolas h2{
+        .preguntasolas h2 {
             color: #ff4c00;
         }
 
         .caja:hover {
-        transform: scale(1.1); 
+            transform: scale(1.1);
         }
 
-        .titulo{
+        .titulo {
             background-color: #002ccc;
             color: white;
             text-align: center;
@@ -75,21 +78,21 @@
             margin: auto;
         }
 
-        .contenedor{
+        .contenedor {
             padding: 8px;
         }
 
-        .contenedor p{
+        .contenedor p {
             font-weight: bold;
         }
 
         /* preguntas */
 
-        .contenedor-preguntas{
+        .contenedor-preguntas {
             display: none;
         }
 
-        .caja-preguntas{
+        .caja-preguntas {
             width: 100%;
             padding: 20px;
             margin-top: 40px;
@@ -100,7 +103,7 @@
             gap: 10px;
         }
 
-        .contendor-cajas{
+        .contendor-cajas {
             width: 60%;
             display: block;
             margin: auto;
@@ -108,30 +111,30 @@
 
         /**/
 
-        .menor{
+        .menor {
             padding: 10px;
             display: flex;
             gap: 20px;
         }
 
-        .menor div{
+        .menor div {
             display: flex;
             flex-direction: column;
             gap: 10px;
             width: 50%;
-            padding: 5px;  
+            padding: 5px;
         }
 
         /**/
 
-        .preguntitas{
+        .preguntitas {
             padding: 10px;
             display: flex;
             justify-content: space-around;
             gap: 20px;
         }
 
-        .preguntitas div{
+        .preguntitas div {
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -139,26 +142,26 @@
             padding: 5px;
         }
 
-        .preguntasolas{
+        .preguntasolas {
             padding: 10px;
         }
 
-        .preguntasolas div{
+        .preguntasolas div {
             display: flex;
             flex-direction: column;
             gap: 10px;
             padding: 5px;
         }
 
-        .preguntasolas span{
+        .preguntasolas span {
             color: red;
         }
 
-        .preguntitas span{
+        .preguntitas span {
             color: red;
         }
 
-        input{
+        input {
             width: 100%;
             padding: 20px;
             outline: none;
@@ -179,9 +182,9 @@
             border-radius: 10px;
         }
 
-        select{
+        select {
             width: 100%;
-            padding:20px;
+            padding: 20px;
             outline: none;
             border: none;
             font-size: 20px;
@@ -191,13 +194,13 @@
         }
 
 
-        .opcion-seleccionada{
+        .opcion-seleccionada {
             font-weight: bold;
         }
 
         /**/
 
-        .queja-reclamo{
+        .queja-reclamo {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -207,33 +210,33 @@
 
         /**/
 
-        .radioinputs{
+        .radioinputs {
             padding: 10px;
             display: flex;
             width: 50%;
             justify-content: space-around;
         }
 
-        .siOno{
+        .siOno {
             display: flex;
             padding: 10px;
         }
 
-        .sino{
+        .sino {
             display: flex;
             justify-content: center;
             gap: 10px;
             align-items: center;
         }
 
-        .contenedor-notifiacion{
+        .contenedor-notifiacion {
             width: 100%;
             padding: 20px;
             display: flex;
             justify-content: center;
         }
 
-        .notificaciones{
+        .notificaciones {
             padding: 20px;
             text-align: center;
             width: 50%;
@@ -242,26 +245,27 @@
             display: none;
             color: #002ccc;
         }
+
         /**/
-        .preguntasmenor{
+        .preguntasmenor {
             display: none;
         }
 
         /**/
 
-        .opciones{
+        .opciones {
             display: none;
             justify-content: space-around;
             margin-bottom: 20px;
         }
 
-        .opciones div{
+        .opciones div {
             padding: 6px;
             border-radius: 10px;
             cursor: pointer;
         }
 
-        .back{
+        .back {
             display: none;
             justify-content: center;
             padding: 10px;
@@ -272,7 +276,7 @@
             cursor: pointer;
         }
 
-        .next{
+        .next {
             padding: 10px;
             margin-bottom: 10px;
             color: #002ccc;
@@ -284,30 +288,30 @@
 
         /**/
 
-        .preguntas-reclamos{
+        .preguntas-reclamos {
             display: none;
         }
 
-        .preguntas-queja{
+        .preguntas-queja {
             display: none;
         }
 
 
-        .especificar-queja{
+        .especificar-queja {
             display: none;
         }
 
-        .btn{
+        .btn {
             display: flex;
             justify-content: center;
             padding: 10px;
         }
 
-        .btn-ica{
+        .btn-ica {
             background-color: #ff4c00;
         }
 
-        .btn button{
+        .btn button {
             width: 30%;
             padding: 10px;
             border-radius: 10px;
@@ -318,16 +322,17 @@
             color: white;
             background-color: #002ccc;
         }
+
         /**/
 
-        .contenedor-ticket{
+        .contenedor-ticket {
             display: none;
             justify-content: center;
             text-align: center;
             font-size: 20px;
         }
 
-        .contenedor-ticket div{
+        .contenedor-ticket div {
             border: 2px solid #11F5F7;
             border-radius: 10px;
             padding: 15px;
@@ -336,15 +341,15 @@
             gap: 10px;
         }
 
-        .contenedor-ticket h3{
+        .contenedor-ticket h3 {
             color: #ff4c00;
         }
 
-        .contenedor-ticket p{
+        .contenedor-ticket p {
             color: #002ccc;
         }
 
-        .descargar{
+        .descargar {
             border: none;
             background-color: #ff4c00;
             padding: 5px;
@@ -354,7 +359,7 @@
             font-size: 20px;
         }
 
-        .inicio{
+        .inicio {
             border: none;
             background-color: #002ccc;
             padding: 5px;
@@ -369,25 +374,25 @@
 
         /* para el mensajito */
 
-        .message{
+        .message {
             background-color: aliceblue;
-            border-radius: 20px; 
+            border-radius: 20px;
             padding: 20px;
         }
 
-        .message-two{
+        .message-two {
             margin: 20px 0 20px 0;
             text-align: center;
         }
 
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         input[type="number"] {
-        -moz-appearance: textfield;
+            -moz-appearance: textfield;
         }
 
         /**/
@@ -396,20 +401,24 @@
 
 
         @media only screen and (max-width: 768px) {
-            .preguntitas{
+            .preguntitas {
                 flex-wrap: wrap;
             }
-            .contendor-cajas{
+
+            .contendor-cajas {
                 width: 100%;
             }
-            .preguntitas div{
+
+            .preguntitas div {
                 width: 100%;
             }
-            .cajas{
+
+            .cajas {
                 flex-wrap: wrap;
                 padding: 10px;
             }
-            .caja{
+
+            .caja {
                 background-color: white;
                 width: 80%;
                 padding: 10px;
@@ -420,9 +429,11 @@
                 border-radius: 20px;
                 box-shadow: 1px 5px 10px black;
                 cursor: pointer;
-                transition: transform 0.5s ease-in-out; /* duración + efecto suave */
+                transition: transform 0.5s ease-in-out;
+                /* duración + efecto suave */
             }
-            .opciones{
+
+            .opciones {
                 flex-wrap: wrap;
                 gap: 10px;
             }
@@ -451,13 +462,15 @@
                     <div>
                         <p>Reclamo:</p>
                         <span>
-                            Disconformidad respecto a los productos o servicios comercializados por la Empresa Operadora.
+                            Disconformidad respecto a los productos o servicios comercializados por la Empresa
+                            Operadora.
                         </span>
                     </div>
                     <div>
                         <p>Queja:</p>
                         <span>
-                            Disconformidad, molestia o descontento respecto a la calidad de la atención recibida por parte de la Empresa Operadora.
+                            Disconformidad, molestia o descontento respecto a la calidad de la atención recibida por
+                            parte de la Empresa Operadora.
                         </span>
                     </div>
                 </div>
@@ -487,11 +500,8 @@
         </div>
 
         <div class="contenedor-preguntas" id="preguntas">
-
             <form action="" id="">
-
                 <div class="caja-preguntas">
-
                     <div class="contendor-cajas" id="datosconsumidor">
 
                         <div class="preguntasolas">
@@ -503,39 +513,47 @@
                             <div>
                                 <label for="tipodocumento">Tipo de documento de identidad <span>*</span> </label>
                                 <select name="tipodocumento" id="tipodocumento" required>
-                                    <option value="" class="opcion-seleccionada">Selecciona un tipo de documento</option>
+                                    <option value="" class="opcion-seleccionada">Selecciona un tipo de documento
+                                    </option>
                                     <option value="DNI">Documento de Identidad (DNI)</option>
                                     <option value="RUC">Registro Único de Contribuyentes (RUC)</option>
                                     <option value="Pasaporte">Pasaporte</option>
                                     <option value="CE">Carnet de Extranjería(CE)</option>
                                 </select>
-                                <span class="error-campo" id="error-tipodocumento" style="display: none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-tipodocumento" style="display: none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div>
                                 <label for="numerodocumento">N° del documento de identidad <span>*</span> </label>
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" name="numerodocumento" id="numerodocumento" placeholder="Numero de identificacion *" required disabled>
-                                <p class="badge" id="longitud" style="display: none;"> ! El numero del documento debe ser valido </p>
-                                <span class="error-campo" id="error-numerodocumento" style="display: none;">Este campo es obligatorio</span>
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" name="numerodocumento"
+                                    id="numerodocumento" placeholder="Numero de identificacion *" required disabled>
+                                <p class="badge" id="longitud" style="display: none;"> ! El numero del documento debe
+                                    ser valido </p>
+                                <span class="error-campo" id="error-numerodocumento" style="display: none;">Este campo
+                                    es obligatorio</span>
                             </div>
                         </div>
 
                         <div class="preguntitas">
                             <div>
                                 <label for="nombres">Nombres completos <span>*</span> </label>
-                                <input type="text" name="nombres" id="nombres" placeholder="Nombres completos *" required>
-                                <span class="error-campo" id="error-nombres" style="display:none;">Este campo es obligatorio</span>
+                                <input type="text" name="nombres" id="nombres" placeholder="Nombres completos *"
+                                    required>
+                                <span class="error-campo" id="error-nombres" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div>
                                 <label for="apellidos">Apellidos completos <span>*</span> </label>
-                                <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos completos *" required>
-                                <span class="error-campo" id="error-apellidos" style="display:none;">Este campo es obligatorio</span>
+                                <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos completos *"
+                                    required>
+                                <span class="error-campo" id="error-apellidos" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
                         </div>
 
                         <div class="menor">
-
                             <div>
                                 <label for="menorEdad">Menor de edad <span>*</span> </label>
                                 <select name="menorEdad" id="menorEdad" required>
@@ -543,14 +561,13 @@
                                     <option value="Si">Si</option>
                                     <option value="No">No</option>
                                 </select>
-                                <span class="error-campo" id="error-menorEdad" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-menorEdad" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div id="menor" style="display: none;">
-
                                 <label for="padre">Nombre del Papá o Mamá <span>*</span> </label>
                                 <input type="text" name="padre" id="padre" placeholder="Nombre del Padre o de la Madre">
-                                
                             </div>
                         </div>
 
@@ -562,7 +579,8 @@
                                     <!-- <option value="Ica" class="opcion-seleccionada" selected>Ica</option> -->
                                     <option value="Lima" class="opcion-seleccionada" selected>Lima</option>
                                 </select>
-                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div>
@@ -572,9 +590,9 @@
                                     <option value="128">Lima</option>
                                     <option value="134">Huarochiri</option>
                                     <option value="67">Callao</option>
-
                                 </select>
-                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                         </div>
@@ -586,7 +604,8 @@
                                 <select name="departamento-ica" id="departamento-ica" required>
                                     <option value="Ica" class="opcion-seleccionada" selected>Ica</option>
                                 </select>
-                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div>
@@ -594,35 +613,36 @@
                                 <select name="provincias-ica" id="provincias-ica" required>
                                     <option value="Ica" selected>Ica</option>
                                 </select>
-                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                         </div>
-
 
                         <div class="preguntitas" id="departamentos-ica-chincha-pisco">
 
                             <div>
                                 <label for="departamento-ica-chincha-pisco">Departamento <span>*</span></label>
-                                <select name="departamento-ica-chincha-pisco" id="departamento-ica-chincha-pisco" required>
-                                    <option value="1101" class="opcion-seleccionada" selected>Ica</option>
+                                <select name="departamento-ica-chincha-pisco" id="departamento-ica-chincha-pisco"
+                                    required>
+                                    <option value="Ica" class="opcion-seleccionada" selected>Ica</option>
                                 </select>
-                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-departamento" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
-
 
                             <div>
                                 <label for="provincias-ica-chincha-pisco">Provincias<span>*</span> </label>
                                 <select name="provincias-ica-chincha-pisco" id="provincias-ica-chincha-pisco" required>
                                     <option value="" selected>Seleccionar opción</option>
-                                    <option value="1102" >Chincha</option>
-                                    <option value="1105" >Pisco</option>
+                                    <option value="100">Chincha</option>
+                                    <option value="103">Pisco</option>
                                 </select>
-                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-provincias" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                         </div>
-
 
                         <div class="preguntitas">
 
@@ -630,7 +650,8 @@
                                 <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos" id="distritos">
                                 </select>
-                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div id="distritos-icas">
@@ -651,35 +672,34 @@
                                     <option value="Santiago">Santiago</option>
                                     <option value="Subtanjalla">Subtanjalla</option>
                                 </select>
-                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div id="distritos-icas-chincha-pisco">
                                 <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos_ica_chincha_pisco" id="distritos_ica_chincha_pisco" disabled>
-
-                                    <option value="" >Seleccionar opción</option>
-
+                                    <option value="">Seleccionar opción</option>
                                 </select>
-                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div id="distritos-icas-chincha">
                                 <label for="distritos">Distritos <span>*</span></label>
                                 <select name="distritos-ica-chincha" id="distritos-ica-chincha">
-
                                     <option value="">Seleccionar opción</option>
-                                    <option value="110201">Chincha Alta</option>
-                                    <option value="110204">Chincha Baja</option>
-                                    <option value="110205">El Carmen</option>
-                                    <option value="110211">Tambo de Mora</option>
-                                    <option value="110202">Alta Laram</option>
-                                    <option value="110210">Sunampe</option>
-                                    <option value="110206">Grocio Prado</option>
-                                    <option value="110207">Pueblo Nuevo</option>
-
+                                    <option value="1007">Chincha Alta</option>
+                                    <option value="1010">Chincha Baja</option>
+                                    <option value="1011">El Carmen</option>
+                                    <option value="1017">Tambo de Mora</option>
+                                    <option value="1008">Alta Laram</option>
+                                    <option value="1016">Sunampe</option>
+                                    <option value="1012">Grocio Prado</option>
+                                    <option value="1013">Pueblo Nuevo</option>
                                 </select>
-                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
 
                             <div id="distritos-icas-pisco">
@@ -687,43 +707,40 @@
                                 <select name="distritos-ica-pisco" id="distritos-ica-pisco">
                                     <!-- pisco -->
                                     <option value="">Seleccionar opción</option>
-                                    <option value="110501">Pisco</option>
-                                    <option value="110503">Humay</option>
-                                    <option value="110504">Independencia</option>
-                                    <option value="110507">San Clemente</option>
-                                    <option value="110505">Tupac Amaru Inca</option>
+                                    <option value="1028">Pisco</option>
+                                    <option value="1030">Humay</option>
+                                    <option value="1031">Independencia</option>
+                                    <option value="1034">San Clemente</option>
+                                    <option value="1035">Tupac Amaru Inca</option>
                                 </select>
-                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-distritos" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
-
                             <div>
                                 <label for="correo">Direccion de correo electronico <span>*</span> </label>
                                 <input type="email" name="correo" id="correo" placeholder="fiberpro@gmail.com" required>
-                                <p class="badge" id="error-correo" style="display:none;">! El correo electrónico debe ser válido</p>
+                                <p class="badge" id="error-correo" style="display:none;">! El correo electrónico debe
+                                    ser válido</p>
                             </div>
-
                         </div>
 
-
                         <div class="preguntitas">
-
                             <div>
                                 <label for="movil">Contacto de referencia (movil o fijo) <span>*</span> </label>
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" placeholder="999 999 999" maxlength="9" name="movil" id="movil" required>
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" placeholder="999 999 999"
+                                    maxlength="9" name="movil" id="movil" required>
                                 <p class="badge" id="longitud-Movil"> solo tiene que contener 9 digitos </p>
-                                <span class="error-campo" id="error-movil" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-movil" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
-                        
                             <div>
                                 <label for="direccion">Dirección <span>*</span> </label>
                                 <input type="text" name="direccion" placeholder="Av." id="direccion" required>
-                                <span class="error-campo" id="error-direccion" style="display:none;">Este campo es obligatorio</span>
+                                <span class="error-campo" id="error-direccion" style="display:none;">Este campo es
+                                    obligatorio</span>
                             </div>
-
                         </div>
 
-
-                        
                         <div class="siOno">
                             <p>Autorizo ser notificado por el correo electrónico registrado: </p>
                             <div class="radioinputs">
@@ -752,16 +769,15 @@
                         <div class="next">
                             <p id="reclamos-queja">continuar</p>
                         </div>
-
                     </div>
-
                 </div>
-                
+
                 <div id="contenedor-reclamos-queja">
 
                     <div class="back" id="contenedor-regresar">
                         <div>
-                            <p id="regresar"> < Volver</p>
+                            <p id="regresar">
+                                < Volver</p>
                         </div>
                     </div>
 
@@ -772,7 +788,8 @@
                                 <h2>Reclamo</h2>
                             </div>
                             <div class="contenedor">
-                                <span>Disconformidad relacionada con los productos o servicios prestados comercializados por la Empresa Operadora.</span>
+                                <span>Disconformidad relacionada con los productos o servicios prestados comercializados
+                                    por la Empresa Operadora.</span>
                             </div>
                         </div>
 
@@ -781,17 +798,14 @@
                                 <h2>Queja</h2>
                             </div>
                             <div class="contenedor">
-                                <span>Disconformidad, molestia o descontento en referencia a la calidad de la atención brindada al consumidor, por parte de la Empresa Operadora.</span>
+                                <span>Disconformidad, molestia o descontento en referencia a la calidad de la atención
+                                    brindada al consumidor, por parte de la Empresa Operadora.</span>
                             </div>
                         </div>
-
                     </div>
 
-
                     <div class="contendor-cajas">
-
                         <div class="preguntas-reclamos" id="contenedorpreguntasreclamos">
-
                             <div class="preguntasolas">
                                 <div>
                                     <label for="materiareclamo">Materia de Reclamo <span>*</span></label>
@@ -802,14 +816,10 @@
                                         <option value="3">otros</option>
                                     </select>
                                 </div>
-
                             </div>
-
-
                         </div>
 
                         <div class="preguntas-queja" id="contenedorpreguntasquejas">
-
                             <div class="preguntasolas">
                                 <div>
                                     <label for="materiaqueja">Materia de Queja <span>*</span></label>
@@ -818,31 +828,27 @@
                                         <option value="4">Problema con la atención por canal presencial.</option>
                                         <option value="5">Problema con la atención por el canal WhatsApp.</option>
                                         <option value="6">Problema con la atención por el canal telefónico.</option>
-                                        <option value="7">Problemas con la atención al momento de la instalación.</option>
+                                        <option value="7">Problemas con la atención al momento de la instalación.
+                                        </option>
                                         <option value="8">Problemas con la atención durante la visita técnica.</option>
                                         <option value="9">otros</option>
                                     </select>
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="" id="preguntas-reclamos-queja">
-
                             <div class="preguntasolas">
-
                                 <div class="otroreclamos" style="display: none;" id="otrosreclamos">
                                     <label for="">Especificar</label>
                                     <input type="text" id="detalle-reclamo">
                                 </div>
-
                             </div>
 
                             <div class="preguntitas" id="preguntasreclamos">
                                 <div>
                                     <p>Identificación del Producto o Servicio adquirido <span>*</span></p>
-                                    <input type="text" id="producto" >
+                                    <input type="text" id="producto">
                                 </div>
                                 <div>
                                     <p>Monto del producto o servicio adquirido objeto del reclamo <span>*</span></p>
@@ -867,18 +873,30 @@
                                     <input type="file" name="" id="pruebasFile">
                                 </div>
                             </div>
-
                         </div>
 
                         <!-- SECCIÓN FINAL AGRUPADA -->
                         <div class="message" id="seccion-final-envio">
                             <div id="nota-importante">
                                 <strong>NOTA IMPORTANTE:</strong><br><br>
-                                PYD TELECOM S.R.L., identificada con RUC N°. 20556147761 y con domicilio en Av. L, Mz. L, Lote 48, Urb. Santo Domingo de Carabayllo – 2da Etapa (Av. El Parque con Av. Condorcanqui), distrito de Carabayllo, provincia y departamento de Lima, es titular del Banco de Datos Personales denominado “Libro de Reclamaciones”, inscrito con el código PJ-2025-1901, y en cumplimiento del Artículo 18° de la Ley N°. 29733, Ley de Protección de Datos Personales, le informa que los datos personales que proporcione serán tratados con la finalidad de realizar gestiones vinculadas a la atención de reclamos y quejas sobre el producto y atención al cliente, brindar el servicio de atención al cliente y validar la identidad del cliente.<br><br>
-                                Si desea ejercer sus Derechos ARCO (acceso, rectificación, cancelación, oposición, información, actualización e inclusión) puede hacerlo siguiendo el procedimiento indicado en el siguiente enlace: 
-                                <a href="https://fiberpro.com.pe/contents/footer/Solicitud%20de%20Derechos%20ARCO.pdf?_t=1751572810" target="_blank" style="color:#007bff;">Solicitud de Derechos ARCO</a>.<br><br>
-                                Para conocer más sobre el tratamiento de sus datos personales, puede consultar nuestra Política de Privacidad disponible en el siguiente enlace:
-                                <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank" style="color:#007bff;">Política de Privacidad</a>.
+                                PYD TELECOM S.R.L., identificada con RUC N°. 20556147761 y con domicilio en Av. L, Mz.
+                                L, Lote 48, Urb. Santo Domingo de Carabayllo – 2da Etapa (Av. El Parque con Av.
+                                Condorcanqui), distrito de Carabayllo, provincia y departamento de Lima, es titular del
+                                Banco de Datos Personales denominado “Libro de Reclamaciones”, inscrito con el código
+                                PJ-2025-1901, y en cumplimiento del Artículo 18° de la Ley N°. 29733, Ley de Protección
+                                de Datos Personales, le informa que los datos personales que proporcione serán tratados
+                                con la finalidad de realizar gestiones vinculadas a la atención de reclamos y quejas
+                                sobre el producto y atención al cliente, brindar el servicio de atención al cliente y
+                                validar la identidad del cliente.<br><br>
+                                Si desea ejercer sus Derechos ARCO (acceso, rectificación, cancelación, oposición,
+                                información, actualización e inclusión) puede hacerlo siguiendo el procedimiento
+                                indicado en el siguiente enlace:
+                                <a href="https://fiberpro.com.pe/contents/footer/Solicitud%20de%20Derechos%20ARCO.pdf?_t=1751572810"
+                                    target="_blank" style="color:#007bff;">Solicitud de Derechos ARCO</a>.<br><br>
+                                Para conocer más sobre el tratamiento de sus datos personales, puede consultar nuestra
+                                Política de Privacidad disponible en el siguiente enlace:
+                                <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank"
+                                    style="color:#007bff;">Política de Privacidad</a>.
                             </div>
                         </div>
 
@@ -892,14 +910,12 @@
 
                         <div class="message-two" id="politica-privacidad">
                             <p>Al hacer clic en ENVIAR aceptas haber leído nuestra
-                            <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank" style="color:#007bff;">Política de Privacidad</a>.</p>
+                                <a href="https://fiberpro.com.pe/politicas-privacidad/" target="_blank"
+                                    style="color:#007bff;">Política de Privacidad</a>.
+                            </p>
                         </div>
-
                     </div>
-
                 </div>
-                
-
             </form>
 
             <div id="descargarTicketContainer" class="contenedor-ticket">
@@ -921,21 +937,17 @@
                     <a href="https://fiberpro.com.pe/sede-ica/" class="inicio">Inicio</a>
                 </div>
             </div>
-
-
         </div>
     </div>
-    
+
     <!-- Pegas la imagen como <img> oculta en el HTML -->
     <img id="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." style="display: none;">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script>
-
-
         // boton
-        const btncontinuar=document.getElementById('reclamos-queja')
-        btncontinuar.style.display="none"
+        const btncontinuar = document.getElementById('reclamos-queja')
+        btncontinuar.style.display = "none"
         // para presionar el enter
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
@@ -956,25 +968,24 @@
         // Regex para validar dominios específicos
         const correoValidoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|[\w.-]+\.edu.pe)$/i;
 
-        const mensajeFinal=document.getElementById("seccion-final-envio")
-        const ppMessage=document.getElementById("politica-privacidad")
-        mensajeFinal.style.display="none"
-        ppMessage.style.display="none"
+        const mensajeFinal = document.getElementById("seccion-final-envio")
+        const ppMessage = document.getElementById("politica-privacidad")
+        mensajeFinal.style.display = "none"
+        ppMessage.style.display = "none"
 
         correo.addEventListener('input', () => {
             const esValido = correoValidoRegex.test(correo.value);
 
             if (!esValido) {
                 errorCorreo.style.display = 'inline';
-                btncontinuar.style.display="none"
-                correo.style.borderColor="red"
-            } else {    
+                btncontinuar.style.display = "none"
+                correo.style.borderColor = "red"
+            } else {
                 errorCorreo.style.display = 'none';
-                btncontinuar.style.display="block"
-                correo.style.borderColor="#002ccc"
+                btncontinuar.style.display = "block"
+                correo.style.borderColor = "#002ccc"
             }
         });
-
 
         // fin de validacion del correo
         // cantidad de numero en el DNI - lo cambia a numerico
@@ -1077,162 +1088,165 @@
             });
         }
         //
-        const tipo=document.getElementById('tipo');
+        const tipo = document.getElementById('tipo');
         // const cuando escojemos
-        const content_indecopi_osiptel=document.getElementById("contenedor-indecopi-reclamos")
+        const content_indecopi_osiptel = document.getElementById("contenedor-indecopi-reclamos")
         // los select de los departamentos
-        const departamentos_lima=document.getElementById("departamentos-lima")
-        const departamentos_ica=document.getElementById("departamentos-ica")
-        const departamentos_ica_chincha_pisco=document.getElementById("departamentos-ica-chincha-pisco")
-        departamentos_lima.style.display="none"
-        departamentos_ica.style.display="none"
-        departamentos_ica_chincha_pisco.style.display="none"
+        const departamentos_lima = document.getElementById("departamentos-lima")
+        const departamentos_ica = document.getElementById("departamentos-ica")
+        const departamentos_ica_chincha_pisco = document.getElementById("departamentos-ica-chincha-pisco")
+        departamentos_lima.style.display = "none"
+        departamentos_ica.style.display = "none"
+        departamentos_ica_chincha_pisco.style.display = "none"
         // select de los distritos
-        const distritos_lima=document.getElementById("distritos-lima")
-        const distritos_icas=document.getElementById("distritos-icas")
-        const distritos_icas_chincha_pisco=document.getElementById("distritos-icas-chincha-pisco")
-        distritos_lima.style.display="none"
-        distritos_icas.style.display="none"
-        distritos_icas_chincha_pisco.style.display="none"
+        const distritos_lima = document.getElementById("distritos-lima")
+        const distritos_icas = document.getElementById("distritos-icas")
+        const distritos_icas_chincha_pisco = document.getElementById("distritos-icas-chincha-pisco")
+        distritos_lima.style.display = "none"
+        distritos_icas.style.display = "none"
+        distritos_icas_chincha_pisco.style.display = "none"
         // distritos
-        const distritos_ica_chincha=document.getElementById("distritos-icas-chincha")        
-        const distritos_ica_pisco=document.getElementById("distritos-icas-pisco")
-        distritos_ica_chincha.style.display="none"
-        distritos_ica_pisco.style.display="none"
+        const distritos_ica_chincha = document.getElementById("distritos-icas-chincha")
+        const distritos_ica_pisco = document.getElementById("distritos-icas-pisco")
+        distritos_ica_chincha.style.display = "none"
+        distritos_ica_pisco.style.display = "none"
         //
-        const identificar_sede=document.getElementById("sedes").value
+        const identificar_sede = document.getElementById("sedes").value
         //
-        const distritos_ica_chincha_pisco=document.getElementById("provincias-ica-chincha-pisco")
-        distritos_ica_chincha_pisco.addEventListener('change',(event)=>{
-            
-            
-            if (event.target.value=="1102") {
+        const distritos_ica_chincha_pisco = document.getElementById("provincias-ica-chincha-pisco")
+        distritos_ica_chincha_pisco.addEventListener('change', (event) => {
+
+            if (event.target.value == "100") {
                 // Mostrar distritos de Chincha
                 // Aquí puedes agregar la lógica para mostrar los distritos de Chincha
                 //alert("hola chincha")
-                distritos_ica_chincha.style.display="flex"
-                distritos_ica_pisco.style.display="none"
-                distritos_icas_chincha_pisco.style.display="none"
+                distritos_ica_chincha.style.display = "flex"
+                distritos_ica_pisco.style.display = "none"
+                distritos_icas_chincha_pisco.style.display = "none"
 
-            } else if (event.target.value=="1105") {
+            } else if (event.target.value == "103") {
                 // Mostrar distritos de Pisco
                 // Aquí puedes agregar la lógica para mostrar los distritos de Pisco
                 //alert("hola pisco")
-                distritos_ica_pisco.style.display="flex"
-                distritos_ica_chincha.style.display="none"
-                distritos_icas_chincha_pisco.style.display="none"
+                distritos_ica_pisco.style.display = "flex"
+                distritos_ica_chincha.style.display = "none"
+                distritos_icas_chincha_pisco.style.display = "none"
             }
-
         })
 
         //
-        const todas_sedes_ica_lima=document.getElementById("todas-sedes")
-        todas_sedes_ica_lima.style.display="none"
+        const todas_sedes_ica_lima = document.getElementById("todas-sedes")
+        todas_sedes_ica_lima.style.display = "none"
         //
-        identificar_sede.disabled=true
+        identificar_sede.disabled = true
         //
-        const boton_enviar_ica=document.getElementById("boton-ica")
-        boton_enviar_ica.style.display="none"
+        const boton_enviar_ica = document.getElementById("boton-ica")
+        boton_enviar_ica.style.display = "none"
         //
-        const indecopi=document.getElementById("indecopi");
+        const indecopi = document.getElementById("indecopi");
         const reclamos = document.getElementById("reclamos");
-        const queja=document.getElementById("queja");
-        const reclamo=document.getElementById("reclamo");
-        const edad=document.getElementById("menorEdad");
-        const txt=document.getElementById("txtrespuesta")
-        const direccioncorreo=document.getElementById("txtcorreo")
-        const direccion=document.getElementById("direccion")
-        const materiareclamo=document.getElementById("materiareclamo")
-        const materiaqueja=document.getElementById("materiaqueja")
+        const queja = document.getElementById("queja");
+        const reclamo = document.getElementById("reclamo");
+        const edad = document.getElementById("menorEdad");
+        const txt = document.getElementById("txtrespuesta")
+        const direccioncorreo = document.getElementById("txtcorreo")
+        const direccion = document.getElementById("direccion")
+        const materiareclamo = document.getElementById("materiareclamo")
+        const materiaqueja = document.getElementById("materiaqueja")
         // const de las preguntas que estan invisible
-        const preguntas=document.getElementById("preguntas");
-        const preguntasreclamos=document.getElementById("contenedorpreguntasreclamos")
-        const preguntasquejas=document.getElementById("contenedorpreguntasquejas")
-        const preguntasmenor=document.getElementById("menor")
-        const message=document.getElementById("msj")
-        const otrosreclamos=document.getElementById("otrosreclamos")
+        const preguntas = document.getElementById("preguntas");
+        const preguntasreclamos = document.getElementById("contenedorpreguntasreclamos")
+        const preguntasquejas = document.getElementById("contenedorpreguntasquejas")
+        const preguntasmenor = document.getElementById("menor")
+        const message = document.getElementById("msj")
+        const otrosreclamos = document.getElementById("otrosreclamos")
         // para el radio buttom si
-        const boton=document.getElementById("boton-reclamos")
-        boton.style.display="none"
+        const boton = document.getElementById("boton-reclamos")
+        boton.style.display = "none"
         // el contenedor de los datos de consumidor
-        const datosconsumidor=document.getElementById("datosconsumidor")
+        const datosconsumidor = document.getElementById("datosconsumidor")
         // las opciones
-        const reclamoQueja=document.getElementById("opciones-reclamo-queja")
+        const reclamoQueja = document.getElementById("opciones-reclamo-queja")
         // para voler
-        const btnRegresar=document.getElementById("contenedor-regresar")
+        const btnRegresar = document.getElementById("contenedor-regresar")
         // cajas parecidad
-        const cajareclamo=document.getElementById("preguntasreclamos")
+        const cajareclamo = document.getElementById("preguntasreclamos")
         // caja completa de las pregutnas de reclamos
-        const cajapreguntasreclamosquejas=document.getElementById("preguntas-reclamos-queja")
-        cajapreguntasreclamosquejas.style.display="none"
+        const cajapreguntasreclamosquejas = document.getElementById("preguntas-reclamos-queja")
+        cajapreguntasreclamosquejas.style.display = "none"
         // 
-        const contenedorreclamoyqueja=document.getElementById("contenedor-reclamos-queja")
+        const contenedorreclamoyqueja = document.getElementById("contenedor-reclamos-queja")
         //
 
-        if (identificar_sede=="1") {
-            departamentos_lima.style.display="flex"
-            distritos_lima.style.display="flex"
-        }else if (identificar_sede=="2") {
-            departamentos_ica.style.display="flex"
-            distritos_icas.style.display="flex"
-        }else if (identificar_sede=="3") {
-            departamentos_ica_chincha_pisco.style.display="flex"
-            distritos_icas_chincha_pisco.style.display="flex"
+        if (identificar_sede == "1") {
+            departamentos_lima.style.display = "flex"
+            distritos_lima.style.display = "flex"
+        } else if (identificar_sede == "2") {
+            departamentos_ica.style.display = "flex"
+            distritos_icas.style.display = "flex"
+        } else if (identificar_sede == "3") {
+            departamentos_ica_chincha_pisco.style.display = "flex"
+            distritos_icas_chincha_pisco.style.display = "flex"
         }
 
         btncontinuar.addEventListener('click', function () {
 
-        // 🔹 Listas de campos por sede
-        const campos_lima = [
-            'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
-            'departamento', 'provincias-lima', 'distritos', 'correo', 'movil', 'direccion'
-        ];
+            // 🔹 Listas de campos por sede
+            const campos_lima = [
+                'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
+                'departamento', 'provincias-lima', 'distritos', 'correo', 'movil', 'direccion'
+            ];
 
-        const campos_ica = [
-            'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
-            'departamento-ica', 'provincias-ica', 'correo', 'movil', 'direccion'
-        ];
+            const campos_ica = [
+                'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
+                'departamento-ica', 'provincias-ica', 'correo', 'movil', 'direccion'
+            ];
 
-        let formularioValido = true;
+            const campos_chincha_pisco = [
+                'tipodocumento', 'numerodocumento', 'nombres', 'apellidos', 'menorEdad',
+                'departamento-ica-chincha-pisco', 'provincias-ica-chincha-pisco', 
+                'distritos-ica-chincha', 'distritos-ica-pisco', 'correo', 'movil', 'direccion'
+            ];
 
-        /**
-         * Valida los campos visibles y marca errores
-         */
+            let formularioValido = true;
+
+            /**
+             * Valida los campos visibles y marca errores
+             */
             const validarCampos = (campos) => {
                 campos.forEach(id => {
-                const campo = document.getElementById(id);
-                const error = document.getElementById('error-' + id);
+                    const campo = document.getElementById(id);
+                    const error = document.getElementById('error-' + id);
 
-                // Ignorar campos inexistentes o ocultos
-                if (!campo || campo.offsetParent === null) return;
+                    // Ignorar campos inexistentes o ocultos
+                    if (!campo || campo.offsetParent === null) return;
 
-                // Obtener valor según tipo de campo
-                let valor = '';
-                if (campo.tagName === 'SELECT') valor = campo.value;
-                else if (campo.type === 'checkbox' || campo.type === 'radio')
-                    valor = campo.checked ? 'checked' : '';
-                else valor = campo.value ? campo.value.trim() : '';
+                    // Obtener valor según tipo de campo
+                    let valor = '';
+                    if (campo.tagName === 'SELECT') valor = campo.value;
+                    else if (campo.type === 'checkbox' || campo.type === 'radio')
+                        valor = campo.checked ? 'checked' : '';
+                    else valor = campo.value ? campo.value.trim() : '';
 
-                // Validar vacío
-                if (!valor) {
-                    formularioValido = false;
-                    campo.classList.add('campo-invalido');
-                    if (error) error.style.display = 'block';
-                } else {
-                    campo.classList.remove('campo-invalido');
-                    if (error) error.style.display = 'none';
-
-                }
-
-                // Eliminar error al escribir o cambiar
-                const evento = (campo.tagName === 'SELECT') ? 'change' : 'input';
-                campo.addEventListener(evento, () => {
-                    const nuevoValor = (campo.tagName === 'SELECT') ? campo.value : campo.value.trim();
-                    if (nuevoValor) {
-                    campo.classList.remove('campo-invalido');
-                    if (error) error.style.display = 'none';
+                    // Validar vacío
+                    if (!valor) {
+                        formularioValido = false;
+                        campo.classList.add('campo-invalido');
+                        if (error) error.style.display = 'block';
+                    } else {
+                        campo.classList.remove('campo-invalido');
+                        if (error) error.style.display = 'none';
                     }
-                });
+
+                    // Eliminar error al escribir o cambiar
+                    const evento = (campo.tagName === 'SELECT') ? 'change' : 'input';
+                    campo.addEventListener(evento, () => {
+                        const nuevoValor = (campo.tagName === 'SELECT') ? campo.value : campo.value.trim();
+                        if (nuevoValor) {
+                            campo.classList.remove('campo-invalido');
+                            if (error) error.style.display = 'none';
+                        }
+                    });
                 });
             };
 
@@ -1241,6 +1255,8 @@
                 validarCampos(campos_lima);
             } else if (identificar_sede == "2") {
                 validarCampos(campos_ica);
+            } else if (identificar_sede == "3") { // CORRECCIÓN: Ahora sí valida Sede 3
+                validarCampos(campos_chincha_pisco);
             }
 
             // 🔹 Validar radio “notificar”
@@ -1261,52 +1277,46 @@
             } else {
                 console.warn("❌ Formulario con errores");
             }
-        
         });
 
-
-        //
         const radios = document.querySelectorAll('input[name="notificar"]');
         radios.forEach(radio => {
-        radio.addEventListener("change", () => {
+            radio.addEventListener("change", () => {
                 if (radio.value === "si" && radio.checked) {
                     message.style.display = "block";
-                    txt.textContent=`La respuesta será notificada al siguiente correo electrónico:`
-                    direccioncorreo.textContent=`${correo.value}`
+                    txt.textContent = `La respuesta será notificada al siguiente correo electrónico:`
+                    direccioncorreo.textContent = `${correo.value}`
                 } else if (radio.value === "no" && radio.checked) {
                     message.style.display = "block";
-                    txt.textContent=`La respuesta será notificada a la siguiente dirección:`
-                    direccioncorreo.textContent=`${direccion.value}`
+                    txt.textContent = `La respuesta será notificada a la siguiente dirección:`
+                    direccioncorreo.textContent = `${direccion.value}`
                 }
             });
         });
 
         // para otros  en materia reclamable o queja
-
         if (materiareclamo) {
-            materiareclamo.addEventListener("click",()=>{
-                if (materiareclamo.value==="3") {
-                    otrosreclamos.style.display="block";
-                }else{
-                    otrosreclamos.style.display="none"
+            materiareclamo.addEventListener("click", () => {
+                if (materiareclamo.value === "3") {
+                    otrosreclamos.style.display = "block";
+                } else {
+                    otrosreclamos.style.display = "none"
                 }
             })
-            
         }
 
         if (materiaqueja) {
-            materiaqueja.addEventListener("click",()=>{
-                if (materiaqueja.value==="9") {
-                    otrosreclamos.style.display="block";
-                }else{
-                    otrosreclamos.style.display="none"
+            materiaqueja.addEventListener("click", () => {
+                if (materiaqueja.value === "9") {
+                    otrosreclamos.style.display = "block";
+                } else {
+                    otrosreclamos.style.display = "none"
                 }
             })
-            
         }
 
-        if(edad){
-            edad.addEventListener("click",()=>{
+        if (edad) {
+            edad.addEventListener("click", () => {
                 if (edad.value === "Si") {
                     preguntasmenor.style.display = "flex"; // muestra la caja
                 } else {
@@ -1316,119 +1326,116 @@
         }
 
         if (reclamo) {
-            reclamo.addEventListener("click",()=>{
-                preguntasreclamos.style.display="block";
-                preguntasquejas.style.display="none";
-                boton.style.display="flex"
+            reclamo.addEventListener("click", () => {
+                preguntasreclamos.style.display = "block";
+                preguntasquejas.style.display = "none";
+                boton.style.display = "flex"
                 // id_sede(identificar_sede)
-                cajareclamo.style.display="flex"
-                cajapreguntasreclamosquejas.style.display="block"
+                cajareclamo.style.display = "flex"
+                cajapreguntasreclamosquejas.style.display = "block"
                 // mostrando el mensajito
-                mensajeFinal.style.display="block"
-                ppMessage.style.display="block"
+                mensajeFinal.style.display = "block"
+                ppMessage.style.display = "block"
                 // limpiando cajas
-                materiaqueja.value=""
-                const productos=document.getElementById('producto').value=""
-                const precio=document.getElementById('precio').value=""
-                const detalle=document.getElementById('detalle').value=""
-                const pedido=document.getElementById('pedido').value=""
+                materiaqueja.value = ""
+                const productos = document.getElementById('producto').value = ""
+                const precio = document.getElementById('precio').value = ""
+                const detalle = document.getElementById('detalle').value = ""
+                const pedido = document.getElementById('pedido').value = ""
                 // agregando id al tipo
-                tipo.value=1
+                tipo.value = 1
             })
         }
 
         if (queja) {
-            queja.addEventListener("click",()=>{
-                preguntasquejas.style.display="block";
-                preguntasreclamos.style.display="none";
-                boton.style.display="flex"
+            queja.addEventListener("click", () => {
+                preguntasquejas.style.display = "block";
+                preguntasreclamos.style.display = "none";
+                boton.style.display = "flex"
                 // id_sede(identificar_sede)
-                cajareclamo.style.display="none"
-                cajapreguntasreclamosquejas.style.display="block"
+                cajareclamo.style.display = "none"
+                cajapreguntasreclamosquejas.style.display = "block"
                 // mostrando el mensajito
-                mensajeFinal.style.display="block"
-                ppMessage.style.display="block"
+                mensajeFinal.style.display = "block"
+                ppMessage.style.display = "block"
                 // limpiando cajas
-                materiareclamo.value=""
-                const productos=document.getElementById('producto').value=""
-                const precio=document.getElementById('precio').value=""
-                const detalle=document.getElementById('detalle').value=""
-                const pedido=document.getElementById('pedido').value=""
+                materiareclamo.value = ""
+                const productos = document.getElementById('producto').value = ""
+                const precio = document.getElementById('precio').value = ""
+                const detalle = document.getElementById('detalle').value = ""
+                const pedido = document.getElementById('pedido').value = ""
                 // agregando id al tipo
-                tipo.value=2
+                tipo.value = 2
             })
         }
 
         if (indecopi) {
-            indecopi.addEventListener("click",()=>{
+            indecopi.addEventListener("click", () => {
                 preguntas.style.display = "block";
-                content_indecopi_osiptel.style.display="none"
+                content_indecopi_osiptel.style.display = "none"
             })
         }
-        
 
         if (reclamos) {
             reclamos.addEventListener("click", () => {
-            window.open("https://fiberpro.com.pe/reclamos/", "_blank");
+                window.open("https://fiberpro.com.pe/reclamos/", "_blank");
             });
         }
-
-        /**/
 
         // Cargar distritos desde API cuando sede = 1
         if (identificar_sede == "1") {
-        const provinciaSelect = document.getElementById('provincias-lima');
-        const distritoSelect = document.getElementById('distritos');
+            const provinciaSelect = document.getElementById('provincias-lima');
+            const distritoSelect = document.getElementById('distritos');
 
-        provinciaSelect.addEventListener('change', function () {
-            const provinciaId = this.value;
-            distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
+            provinciaSelect.addEventListener('change', function () {
+                const provinciaId = this.value;
+                distritoSelect.innerHTML = '<option value="">Seleccione un distrito</option>';
 
-            if (!provinciaId) return;
+                if (!provinciaId) return;
 
-            fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
-            .then(response => response.json())
-            .then(data => {
-                distritoSelect.innerHTML = '';
-                data.forEach(distrito => {
-                const option = document.createElement('option');
-                option.value = distrito.value;
-                option.textContent = distrito.label;
-                distritoSelect.appendChild(option);
-                });
-            })
-            .catch(err => {
-                console.error('❌ Error al cargar distritos:', err);
-                distritoSelect.innerHTML = '<option value="">Error al cargar</option>';
+                fetch(`https://app-externos.fiberpro.com.pe/api/get_district/${provinciaId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        distritoSelect.innerHTML = '';
+                        data.forEach(distrito => {
+                            const option = document.createElement('option');
+                            option.value = distrito.value;
+                            option.textContent = distrito.label;
+                            distritoSelect.appendChild(option);
+                        });
+                    })
+                    .catch(err => {
+                        console.error('❌ Error al cargar distritos:', err);
+                        distritoSelect.innerHTML = '<option value="">Error al cargar</option>';
+                    });
             });
-        });
 
-        // 🔹 Llamar automáticamente al cargar
-        provinciaSelect.dispatchEvent(new Event('change'));
+            // 🔹 Llamar automáticamente al cargar
+            provinciaSelect.dispatchEvent(new Event('change'));
         }
 
         // para regresar
-        const regresar=document.getElementById("regresar").addEventListener("click",()=>{
-            datosconsumidor.style.display="block"
+        const regresar = document.getElementById("regresar").addEventListener("click", () => {
+            datosconsumidor.style.display = "block"
             // reclamoQueja.style.display = 'none';
-            btnRegresar.style.display="none"
-            cajapreguntasreclamosquejas.style.display="none"
-            contenedorreclamoyqueja.style.display="none"
+            btnRegresar.style.display = "none"
+            cajapreguntasreclamosquejas.style.display = "none"
+            contenedorreclamoyqueja.style.display = "none"
             // limpiando cajas
-            materiareclamo.value=""
-            materiaqueja.value=""
-            const productos=document.getElementById('producto').value=""
-            const precio=document.getElementById('precio').value=""
-            const detalle=document.getElementById('detalle').value=""
-            const pedido=document.getElementById('pedido').value=""
+            materiareclamo.value = ""
+            materiaqueja.value = ""
+            const productos = document.getElementById('producto').value = ""
+            const precio = document.getElementById('precio').value = ""
+            const detalle = document.getElementById('detalle').value = ""
+            const pedido = document.getElementById('pedido').value = ""
             //
-            preguntasreclamos.style.display="none";
-            preguntasquejas.style.display="none";
+            preguntasreclamos.style.display = "none";
+            preguntasquejas.style.display = "none";
             //
-            boton.style.display="none"
+            boton.style.display = "none"
             //
-            mensajeFinal.style.display="none"
-            ppMessage.style.display="none"
+            mensajeFinal.style.display = "none"
+            ppMessage.style.display = "none"
         })
 
         /* para la seleccion */
@@ -1441,168 +1448,175 @@
             // para brindar el reclamo
             if (reclamo && queja) {
                 reclamo.addEventListener("click", () => {
-                quejaOreclamo = "1";
+                    quejaOreclamo = "1";
                 });
                 queja.addEventListener("click", () => {
-                quejaOreclamo = "2";
+                    quejaOreclamo = "2";
                 });
             }
 
             // Escuchar cambios en el select de reclamo
             if (materiareclamo) {
                 materiareclamo.addEventListener("change", (e) => {
-                materiareclamableica = e.target.value;
+                    materiareclamableica = e.target.value;
                 });
             }
             // Escuchar cambios en el select de queja
             if (materiaqueja) {
                 materiaqueja.addEventListener("change", (e) => {
-                materiareclamableica = e.target.value;
+                    materiareclamableica = e.target.value;
                 });
             }
             console.log(materiareclamableica);
         });
 
-
         // fin de la funcion global de los id
 
         // para enviar ala api
-       document.getElementById('enviarReclamo').addEventListener('click', async function (event) {
-        event.preventDefault();
+        document.getElementById('enviarReclamo').addEventListener('click', async function (event) {
+            event.preventDefault();
 
-        const boton = document.getElementById('enviarReclamo');
-        const textoOriginal = boton.textContent;
-        boton.textContent = 'Enviando...';
-        boton.disabled = true;
-        btnRegresar.style.display = "none";
+            const boton = document.getElementById('enviarReclamo');
+            const textoOriginal = boton.textContent;
+            boton.textContent = 'Enviando...';
+            boton.disabled = true;
+            btnRegresar.style.display = "none";
 
-        // --- ARCHIVO ---
-        const fileInput = document.getElementById('pruebasFile');
-        let pruebasBase64 = null;
-        if (fileInput.files.length > 0) {
-            pruebasBase64 = await getBase64(fileInput.files[0]);
-        }
-
-        // --- DATOS COMUNES ---
-        const sedesicalima = document.getElementById('sedes').value.trim();
-        const tipo = document.getElementById('tipo').value;
-
-        const correoElectronico = document.getElementById('correo').value.trim();
-        const autorizaNotificacionCorreo = document.querySelector('input[name="notificar"]:checked')?.value === "si";
-
-        const dataBase = {
-            sedesicalima,
-            tipo,
-            tipodocumento: document.getElementById('tipodocumento').value.trim(),
-            numerodocumento: document.getElementById('numerodocumento').value.trim(),
-            nombrescompletos: document.getElementById('nombres').value.trim(),
-            apellidoscompletos: document.getElementById('apellidos').value.trim(),
-            menorEdad: document.getElementById('menorEdad').value.trim(),
-            correoelectronico: correoElectronico,
-            correo: correoElectronico,
-            email: correoElectronico,
-            movil: document.getElementById('movil').value.trim(),
-            direccioncasa: document.getElementById('direccion').value.trim(),
-            nombrePadre: document.getElementById('padre').value.trim(),
-            autorizacion: autorizaNotificacionCorreo ? "si" : "no",
-            autorizacion_correo: autorizaNotificacionCorreo,
-            notificar_por_correo: autorizaNotificacionCorreo,
-            materiareclamable: document.getElementById('materiareclamo').value.trim() || document.getElementById('materiaqueja').value.trim(),
-            otrosreclamable: document.getElementById('detalle-reclamo').value.trim(),
-            productos: document.getElementById('producto').value.trim(),
-            precio: document.getElementById('precio').value.trim(),
-            detalle: document.getElementById('detalle').value.trim(),
-            pedido: document.getElementById('pedido').value.trim(),
-        };
-
-        if (pruebasBase64) dataBase.pruebas = pruebasBase64;
-
-        // --- SEGÚN SEDE ---
-        let url = "";
-        let payload = {};
-
-        if (sedesicalima === "1") {
-            url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones/v2";
-            payload = {
-                ...dataBase,
-                departamento: document.getElementById('departamento').value.trim(),
-                provincias: document.getElementById('provincias-lima').value.trim(),
-                distrito: document.getElementById('distritos').value.trim(),
-            };
-        } else if (sedesicalima === "2") {
-            url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/enviar_pdf";   
-            payload = {
-                ...dataBase,
-                departamento: document.getElementById('departamento-ica').value.trim(),
-                provincias: document.getElementById('provincias-ica').value.trim(),
-                distrito: document.getElementById('distritos-ica').value.trim(),
-            };
-        } else if (sedesicalima === "3") {
-            url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones/chincha-pisco";   
-            payload = {
-                ...dataBase,
-                departamento: document.getElementById('departamento-ica').value.trim(),
-                provincias: document.getElementById('provincias-ica').value.trim(),
-                distrito: document.getElementById('distritos-ica').value.trim(),
-            };
-        }else {
-            alert("Debe seleccionar una sede válida.");
-            boton.textContent = textoOriginal;
-            boton.disabled = false;
-            return;
-        }
-
-        // --- ENVÍO ---
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            const result = await response.json().catch(() => ({}));
-
-            if (!response.ok) {
-                throw new Error(result.error || result.message || `Error HTTP ${response.status}`);
+            // --- ARCHIVO ---
+            const fileInput = document.getElementById('pruebasFile');
+            let pruebasBase64 = null;
+            if (fileInput.files.length > 0) {
+                pruebasBase64 = await getBase64(fileInput.files[0]);
             }
+
+            // --- DATOS COMUNES ---
+            const sedesicalima = document.getElementById('sedes').value.trim();
+            const tipo = document.getElementById('tipo').value;
+
+            const correoElectronico = document.getElementById('correo').value.trim();
+            const autorizaNotificacionCorreo = document.querySelector('input[name="notificar"]:checked')?.value === "si";
+
+            const dataBase = {
+                sedesicalima,
+                tipo,
+                tipodocumento: document.getElementById('tipodocumento').value.trim(),
+                numerodocumento: document.getElementById('numerodocumento').value.trim(),
+                nombrescompletos: document.getElementById('nombres').value.trim(),
+                apellidoscompletos: document.getElementById('apellidos').value.trim(),
+                menorEdad: document.getElementById('menorEdad').value.trim(),
+                correoelectronico: correoElectronico,
+                correo: correoElectronico,
+                email: correoElectronico,
+                movil: document.getElementById('movil').value.trim(),
+                direccioncasa: document.getElementById('direccion').value.trim(),
+                nombrePadre: document.getElementById('padre').value.trim(),
+                autorizacion: autorizaNotificacionCorreo,
+                autorizacion_correo: autorizaNotificacionCorreo,
+                notificar_por_correo: autorizaNotificacionCorreo,
+                materiareclamable: document.getElementById('materiareclamo').value.trim() || document.getElementById('materiaqueja').value.trim(),
+                otrosreclamable: document.getElementById('detalle-reclamo').value.trim(),
+                productos: document.getElementById('producto').value.trim(),
+                precio: document.getElementById('precio').value.trim(),
+                detalle: document.getElementById('detalle').value.trim(),
+                pedido: document.getElementById('pedido').value.trim(),
+            };
+
+            if (pruebasBase64) dataBase.pruebas = pruebasBase64;
+
+            // --- SEGÚN SEDE ---
+            let url = "";
+            let payload = {};
 
             if (sedesicalima === "1") {
-                // ✅ LIMA - genera ticket
-                if (result.ticket_id) {
-                    boton.style.display = 'none';
-                    document.getElementById('descargarTicketContainer').style.display = 'flex';
-                    document.getElementById('codigo').innerText = `Tu código de reclamo es: ${result.ticket_id}`;
-                    contenedorreclamoyqueja.style.display = "none";
-                    window.ticketInfo = { ...payload, ticket_id: result.ticket_id };
-                } else {
-                    document.getElementById('codigo').innerText = 'Error al registrar el reclamo.';
-                    console.error('Error:', result);
-                }
+                url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones/v2";
+                payload = {
+                    ...dataBase,
+                    departamento: document.getElementById('departamento').value.trim(),
+                    provincias: document.getElementById('provincias-lima').value.trim(),
+                    distrito: document.getElementById('distritos').value.trim(),
+                };
             } else if (sedesicalima === "2") {
-                // ✅ ICA - solo confirma envío
-                if (result.success) {
-                    contenedorreclamoyqueja.style.display = "none";
-                    boton.style.display = 'none';
-                    document.getElementById('descargarTicketContainerIca').style.display = 'flex';
-                } else {
-                    alert("Error al enviar el reclamo a la sede Ica.");
-                    console.error('Error:', result);
-                }
-            }
+                url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/enviar_pdf";
+                payload = {
+                    ...dataBase,
+                    departamento: document.getElementById('departamento-ica').value.trim(),
+                    provincias: document.getElementById('provincias-ica').value.trim(),
+                    distrito: document.getElementById('distritos-ica').value.trim(),
+                };
+            } else if (sedesicalima === "3") {
+                url = "https://prueba-reclamos-7209e31a7512.herokuapp.com/api/libroreclamaciones/chincha-pisco";
+                let distrito = "";
 
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error de red o del servidor');
-        } finally {
-            if (boton.style.display !== 'none') {
+                const provincia = document.getElementById("provincias-ica-chincha-pisco").value;
+
+                if (provincia === "100") {
+                    distrito = document.getElementById("distritos-ica-chincha").value;
+                } else if (provincia === "103") {
+                    distrito = document.getElementById("distritos-ica-pisco").value;
+                }
+                payload = {
+                    ...dataBase,
+                    departamento: document.getElementById('departamento-ica-chincha-pisco').value.trim(),
+                    provincias: provincia,
+                    distrito: distrito,
+                };
+            } else {
+                alert("Debe seleccionar una sede válida.");
                 boton.textContent = textoOriginal;
                 boton.disabled = false;
+                return;
             }
-        }
-    });
 
+            // --- ENVÍO ---
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok) {
+                    throw new Error(result.error || result.message || `Error HTTP ${response.status}`);
+                }
+
+                if (sedesicalima === "1") {
+                    // ✅ LIMA - genera ticket
+                    if (result.ticket_id) {
+                        boton.style.display = 'none';
+                        document.getElementById('descargarTicketContainer').style.display = 'flex';
+                        document.getElementById('codigo').innerText = `Tu código de reclamo es: ${result.ticket_id}`;
+                        contenedorreclamoyqueja.style.display = "none";
+                        window.ticketInfo = { ...payload, ticket_id: result.ticket_id };
+                    } else {
+                        document.getElementById('codigo').innerText = 'Error al registrar el reclamo.';
+                        console.error('Error:', result);
+                    }
+                } else if (sedesicalima === "2" || sedesicalima === "3") {
+                    // ✅ ICA - solo confirma envío
+                    if (result.success) {
+                        contenedorreclamoyqueja.style.display = "none";
+                        boton.style.display = 'none';
+                        document.getElementById('descargarTicketContainerIca').style.display = 'flex';
+                    } else {
+                        alert("Error al enviar el reclamo a la sede Ica.");
+                        console.error('Error:', result);
+                    }
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error de red o del servidor');
+            } finally {
+                if (boton.style.display !== 'none') {
+                    boton.textContent = textoOriginal;
+                    boton.disabled = false;
+                }
+            }
+        });
     </script>
-    
+
 </body>
+
 </html>
