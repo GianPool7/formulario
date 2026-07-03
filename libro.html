@@ -1521,7 +1521,11 @@
                 pedido: document.getElementById('pedido').value.trim(),
             };
 
-            if (pruebasBase64) dataBase.pruebas = pruebasBase64;
+            if (pruebasBase64) {
+                dataBase.pruebas = pruebasBase64;
+                dataBase.nombreArchivo = fileInput.files[0].name;
+                dataBase.tipoArchivo = fileInput.files[0].type;
+            }
 
             // --- SEGÚN SEDE ---
             let url = "";
